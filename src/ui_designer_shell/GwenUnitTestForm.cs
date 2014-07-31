@@ -19,8 +19,8 @@ namespace ui_designer_shell
 
             m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
             m_glCtrl.Dock = DockStyle.Fill;
-
             this.Controls.Add(m_glCtrl);
+
             ftime = new List<long>();
             stopwatch = new Stopwatch();
         }
