@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F0872212-C4F0-46FF-87D8-65A77D708D57}</ProjectGuid>
+    <ProjectGuid>{3AA0BE89-52DA-4A8D-8C42-2DF2828D1F0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ui_lib</RootNamespace>
-    <AssemblyName>ui_lib</AssemblyName>
+    <RootNamespace>ui_designer</RootNamespace>
+    <AssemblyName>ui_designer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gwen">
+      <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.dll</HintPath>
+    </Reference>
+    <Reference Include="Gwen.Renderer.Tao">
+      <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.Renderer.Tao.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -40,13 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Enums.cs" />
-    <Compile Include="Base\Structs.cs" />
-    <Compile Include="Controls\Button.cs" />
-    <Compile Include="Elements\Image.cs" />
-    <Compile Include="Elements\Node.cs" />
-    <Compile Include="Elements\Text.cs" />
+    <Compile Include="Render.cs" />
+    <Compile Include="Render_Gwen.cs" />
+    <Compile Include="Scene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ui_lib\ui_lib.csproj">
+      <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
+      <Name>ui_lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

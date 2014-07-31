@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ui_designer;
 
 namespace ui_designer_shell
 {
@@ -16,6 +17,10 @@ namespace ui_designer_shell
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // setup the scene 
+            SceneManager.Instance = new SceneManager();
+
             Application.Run(new MainForm());
         }
     }

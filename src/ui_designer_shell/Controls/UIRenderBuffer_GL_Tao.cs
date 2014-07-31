@@ -7,18 +7,18 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
+using ui_designer;
 
 namespace ui_designer_shell.Controls
 {
     public partial class UIRenderBuffer_GL_Tao : UserControl
     {
-        private Canvas canvas;
+        private Gwen.Control.Canvas canvas;
         private Gwen.Renderer.Tao renderer;
         private Gwen.Skin.Base skin;
 
         public UIRenderBuffer_GL_Tao()
         {
-
             InitializeComponent();
         }
 
@@ -50,6 +50,10 @@ namespace ui_designer_shell.Controls
             canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
             canvas.KeyboardInputEnabled = true;
             canvas.MouseInputEnabled = true;
+
+            SceneManager.Instance.Configure(
+                new GwenRenderContext(canvas, renderer), 
+                new GwenRenderSystem());
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -69,6 +73,11 @@ namespace ui_designer_shell.Controls
         {
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
             canvas.RenderCanvas();
+
+            renderer.Begin();
+            renderer.DrawFilledRect(new Rectangle(new Point(100, 100), new Size(100, 100)));
+            SceneManager.Instance.RenderScene();
+            renderer.End();
         }
 
         private void glControl_MouseDown(object sender, MouseEventArgs e)
