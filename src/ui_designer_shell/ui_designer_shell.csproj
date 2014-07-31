@@ -40,14 +40,11 @@
     <Reference Include="Gwen">
       <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.dll</HintPath>
     </Reference>
-    <Reference Include="Gwen.Renderer.OpenTK">
-      <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.Renderer.OpenTK.dll</HintPath>
-    </Reference>
-    <Reference Include="Gwen.Renderer.SFML">
-      <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.Renderer.SFML.dll</HintPath>
-    </Reference>
     <Reference Include="Gwen.Renderer.Tao">
       <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.Renderer.Tao.dll</HintPath>
+    </Reference>
+    <Reference Include="Gwen.UnitTest">
+      <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.UnitTest.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -65,6 +62,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tao.OpenGl">
+      <HintPath>..\packages_local\GwenCS-2014-07-29\lib\Tao\Tao.OpenGl.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.Platform.Windows">
+      <HintPath>..\packages_local\GwenCS-2014-07-29\lib\Tao\Tao.Platform.Windows.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\UIRenderBuffer_GL_Tao.cs">
@@ -98,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UIObjectPropertyGrid.resx">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UIRenderBuffer_GL_Tao.resx">
+      <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

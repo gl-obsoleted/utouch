@@ -1,4 +1,5 @@
 *.suo
+*.user
 /src/ui_designer_shell/bin
 /src/ui_designer_shell/obj
 /src/packages_local/GwenCS-2014-07-29/Gwen/bin
@@ -18,3 +19,4 @@
 /src/packages_local/GwenCS-2014-07-29/Gwen.UnitTest/bin
 /src/packages_local/GwenCS-2014-07-29/Gwen.UnitTest/obj
 /src/packages
+
