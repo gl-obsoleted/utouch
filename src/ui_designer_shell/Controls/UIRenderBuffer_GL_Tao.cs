@@ -1,44 +1,35 @@
 ﻿using Gwen;
 using Gwen.Control;
 using System;
-using System;
 using System.Collections.Generic;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing;
 using System.Linq;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms;
 using Tao.OpenGl;
 
 namespace ui_designer_shell.Controls
-//namespace Gwen.Sample.Tao
 {
     public partial class UIRenderBuffer_GL_Tao : UserControl
-    //public partial class GlForm : Form
     {
         private Canvas canvas;
         private Gwen.Renderer.Tao renderer;
         private Gwen.Skin.Base skin;
-        private Gwen.UnitTest.UnitTest test;
-
-        const int fps_frames = 50;
-        private readonly List<long> ftime;
-        private readonly Stopwatch stopwatch;
-        private long lastTime;
 
         public UIRenderBuffer_GL_Tao()
         {
-            ftime = new List<long>();
-            stopwatch = new Stopwatch();
 
             InitializeComponent();
+        }
+
+        public Canvas GetCanvas()
+        {
+            return canvas;
+        }
+
+        public Gwen.Renderer.Tao GetRenderer()
+        {
+            return renderer;
         }
 
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
@@ -59,11 +50,6 @@ namespace ui_designer_shell.Controls
             canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
             canvas.KeyboardInputEnabled = true;
             canvas.MouseInputEnabled = true;
-
-            test = new Gwen.UnitTest.UnitTest(canvas);
-
-            stopwatch.Restart();
-            lastTime = 0;
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -81,22 +67,6 @@ namespace ui_designer_shell.Controls
 
         private void glControl_Paint(object sender, PaintEventArgs e)
         {
-            if (ftime.Count == fps_frames)
-                ftime.RemoveAt(0);
-
-            ftime.Add(stopwatch.ElapsedMilliseconds - lastTime);
-            lastTime = stopwatch.ElapsedMilliseconds;
-
-            if (stopwatch.ElapsedMilliseconds > 1000)
-            {
-                test.Note = String.Format("String Cache size: {0}", renderer.TextCacheSize);
-                test.Fps = 1000f * ftime.Count / ftime.Sum();
-                stopwatch.Restart();
-
-                if (renderer.TextCacheSize > 1000) // each cached string is an allocated texture, flush the cache once in a while in your real project
-                    renderer.FlushTextCache();
-            }
-
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
             canvas.RenderCanvas();
         }
@@ -225,13 +195,12 @@ namespace ui_designer_shell.Controls
             try
             {
                 canvas.Dispose();
+                skin.Dispose();
+                renderer.Dispose();
             }
             catch (NullReferenceException)
             {
             }
-
-            skin.Dispose();
-            renderer.Dispose();
         }
     }
 }

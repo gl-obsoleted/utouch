@@ -16,5 +16,11 @@ namespace ui_designer_shell
         {
             InitializeComponent();
         }
+
+        private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
+        {
+            GwenUnitTestForm tf = new GwenUnitTestForm();
+            tf.Show();
+        }
     }
 }

@@ -47,6 +47,8 @@
             this.buttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -54,13 +56,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.uiLayoutTree1 = new ui_designer_shell.UILayoutTree();
-            this.uiObjectPropertyGrid1 = new ui_designer_shell.UIObjectPropertyGrid();
-            this.uiRenderBuffer_GL_Tao1 = new ui_designer_shell.Controls.UIRenderBuffer_GL_Tao();
+            this.uiLayoutTree1 = new ui_designer_shell.Controls.UILayoutTree();
+            this.uiObjectPropertyGrid1 = new ui_designer_shell.Controls.UIObjectPropertyGrid();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.pageProject.SuspendLayout();
@@ -77,7 +77,8 @@
             this.fileToolStripMenuItem,
             this.panelsToolStripMenuItem,
             this.addToolStripMenuItem,
-            this.actionsToolStripMenuItem});
+            this.actionsToolStripMenuItem,
+            this.testFramesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 25);
@@ -210,6 +211,21 @@
             this.actionsToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.actionsToolStripMenuItem.Text = "&Actions";
             // 
+            // testFramesToolStripMenuItem
+            // 
+            this.testFramesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemGwenUnitTest});
+            this.testFramesToolStripMenuItem.Name = "testFramesToolStripMenuItem";
+            this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
+            this.testFramesToolStripMenuItem.Text = "TestFrames";
+            // 
+            // menuItemGwenUnitTest
+            // 
+            this.menuItemGwenUnitTest.Name = "menuItemGwenUnitTest";
+            this.menuItemGwenUnitTest.Size = new System.Drawing.Size(159, 22);
+            this.menuItemGwenUnitTest.Text = "Gwen UnitTest";
+            this.menuItemGwenUnitTest.Click += new System.EventHandler(this.menuItemGwenUnitTest_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 540);
@@ -227,10 +243,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.uiRenderBuffer_GL_Tao1);
             this.splitContainer1.Size = new System.Drawing.Size(784, 515);
             this.splitContainer1.SplitterDistance = 151;
             this.splitContainer1.TabIndex = 2;
@@ -310,14 +322,6 @@
             this.uiObjectPropertyGrid1.Size = new System.Drawing.Size(137, 241);
             this.uiObjectPropertyGrid1.TabIndex = 0;
             // 
-            // uiRenderBuffer_GL_Tao1
-            // 
-            this.uiRenderBuffer_GL_Tao1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiRenderBuffer_GL_Tao1.Location = new System.Drawing.Point(0, 0);
-            this.uiRenderBuffer_GL_Tao1.Name = "uiRenderBuffer_GL_Tao1";
-            this.uiRenderBuffer_GL_Tao1.Size = new System.Drawing.Size(629, 515);
-            this.uiRenderBuffer_GL_Tao1.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -333,7 +337,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -376,9 +379,10 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage pageLayout;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private UILayoutTree uiLayoutTree1;
-        private UIObjectPropertyGrid uiObjectPropertyGrid1;
-        private Controls.UIRenderBuffer_GL_Tao uiRenderBuffer_GL_Tao1;
+        private ui_designer_shell.Controls.UILayoutTree uiLayoutTree1;
+        private ui_designer_shell.Controls.UIObjectPropertyGrid uiObjectPropertyGrid1;
+        private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
     }
 }
 

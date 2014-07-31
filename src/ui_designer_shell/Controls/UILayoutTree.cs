@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ui_designer_shell
+namespace ui_designer_shell.Controls
 {
     public partial class UILayoutTree : UserControl
     {

@@ -76,6 +76,12 @@
     <Compile Include="Controls\UIRenderBuffer_GL_Tao.Designer.cs">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GwenUnitTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GwenUnitTestForm.Designer.cs">
+      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UIRenderBuffer_GL_Tao.resx">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GwenUnitTestForm.resx">
+      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -1,4 +1,4 @@
-﻿namespace ui_designer_shell
+﻿namespace ui_designer_shell.Controls
 {
     partial class UILayoutTree
     {
