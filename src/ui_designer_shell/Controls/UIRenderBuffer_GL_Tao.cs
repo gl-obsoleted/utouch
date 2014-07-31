@@ -39,9 +39,6 @@ namespace ui_designer_shell.Controls
             stopwatch = new Stopwatch();
 
             InitializeComponent();
-
-            Width = 1024;
-            Height = 768;
         }
 
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
@@ -71,6 +68,13 @@ namespace ui_designer_shell.Controls
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
         {
+            Gl.glClearColor(1f, 0f, 0f, 1f);
+            Gl.glMatrixMode(Gl.GL_PROJECTION);
+            Gl.glLoadIdentity();
+            Gl.glOrtho(0, glControl.Width, glControl.Height, 0, -1, 1);
+            Gl.glMatrixMode(Gl.GL_MODELVIEW);
+            Gl.glViewport(0, 0, glControl.Width, glControl.Height);
+
             if (canvas != null)
                 canvas.SetSize(glControl.Width, glControl.Height);
         }
