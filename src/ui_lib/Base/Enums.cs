@@ -14,4 +14,11 @@ namespace ui_lib.Base
         Right,
         Center,
     }
+
+    public enum Resolution
+    {
+        RT_800x600,
+        RT_1024x768,
+        RT_Customized,
+    }
 }

@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("<not_specified>");
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.m_layoutTreeView = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
-            // treeView1
+            // m_layoutTreeView
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
+            this.m_layoutTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_layoutTreeView.Location = new System.Drawing.Point(0, 0);
+            this.m_layoutTreeView.Name = "m_layoutTreeView";
             treeNode1.Name = "Root";
             treeNode1.Tag = "Root";
             treeNode1.Text = "<not_specified>";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.m_layoutTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            this.treeView1.Size = new System.Drawing.Size(319, 347);
-            this.treeView1.TabIndex = 0;
+            this.m_layoutTreeView.Size = new System.Drawing.Size(319, 347);
+            this.m_layoutTreeView.TabIndex = 0;
             // 
             // UILayoutTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.m_layoutTreeView);
             this.Name = "UILayoutTree";
             this.Size = new System.Drawing.Size(319, 347);
             this.ResumeLayout(false);
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView m_layoutTreeView;
     }
 }

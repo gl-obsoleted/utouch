@@ -25,6 +25,7 @@ namespace ui_lib.Elements
         public Alignment AlignH { get; set; }
         public Alignment AlignV { get; set; }
         public int Margin { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// 构造一个默认有效的对象（无父节点）
@@ -44,7 +45,7 @@ namespace ui_lib.Elements
         /// 我们显式地 SetParent 而不是 set 属性 Parent，语义上更明确.
         /// </summary>
         /// <param name="parent"></param>
-        public void SetParent(Node parent)
+        public virtual void SetParent(Node parent)
         {
             m_parent = parent;
         }

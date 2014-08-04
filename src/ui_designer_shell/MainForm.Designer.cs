@@ -51,18 +51,18 @@
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.m_tabControl = new System.Windows.Forms.TabControl();
             this.pageProject = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.uiLayoutTree1 = new ui_designer_shell.Controls.UILayoutTree();
+            this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
             this.uiObjectPropertyGrid1 = new ui_designer_shell.Controls.UIObjectPropertyGrid();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.m_tabControl.SuspendLayout();
             this.pageProject.SuspendLayout();
             this.pageLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -242,21 +242,21 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel1.Controls.Add(this.m_tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(784, 515);
             this.splitContainer1.SplitterDistance = 151;
             this.splitContainer1.TabIndex = 2;
             // 
-            // tabControl1
+            // m_tabControl
             // 
-            this.tabControl1.Controls.Add(this.pageProject);
-            this.tabControl1.Controls.Add(this.pageLayout);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(151, 515);
-            this.tabControl1.TabIndex = 0;
+            this.m_tabControl.Controls.Add(this.pageProject);
+            this.m_tabControl.Controls.Add(this.pageLayout);
+            this.m_tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_tabControl.Location = new System.Drawing.Point(0, 0);
+            this.m_tabControl.Name = "m_tabControl";
+            this.m_tabControl.SelectedIndex = 0;
+            this.m_tabControl.Size = new System.Drawing.Size(151, 515);
+            this.m_tabControl.TabIndex = 0;
             // 
             // pageProject
             // 
@@ -297,7 +297,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.uiLayoutTree1);
+            this.splitContainer2.Panel1.Controls.Add(this.m_uiLayoutTree);
             // 
             // splitContainer2.Panel2
             // 
@@ -306,13 +306,13 @@
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
             // 
-            // uiLayoutTree1
+            // m_uiLayoutTree
             // 
-            this.uiLayoutTree1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiLayoutTree1.Location = new System.Drawing.Point(0, 0);
-            this.uiLayoutTree1.Name = "uiLayoutTree1";
-            this.uiLayoutTree1.Size = new System.Drawing.Size(137, 238);
-            this.uiLayoutTree1.TabIndex = 0;
+            this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_uiLayoutTree.Location = new System.Drawing.Point(0, 0);
+            this.m_uiLayoutTree.Name = "m_uiLayoutTree";
+            this.m_uiLayoutTree.Size = new System.Drawing.Size(137, 238);
+            this.m_uiLayoutTree.TabIndex = 0;
             // 
             // uiObjectPropertyGrid1
             // 
@@ -340,7 +340,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.m_tabControl.ResumeLayout(false);
             this.pageProject.ResumeLayout(false);
             this.pageLayout.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -375,12 +375,12 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl m_tabControl;
         private System.Windows.Forms.TabPage pageProject;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage pageLayout;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private ui_designer_shell.Controls.UILayoutTree uiLayoutTree1;
+        private ui_designer_shell.Controls.UILayoutTree m_uiLayoutTree;
         private ui_designer_shell.Controls.UIObjectPropertyGrid uiObjectPropertyGrid1;
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;

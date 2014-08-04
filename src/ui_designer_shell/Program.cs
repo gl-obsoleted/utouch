@@ -18,9 +18,6 @@ namespace ui_designer_shell
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // setup the scene 
-            SceneManager.Instance = new SceneManager();
-
             Application.Run(new MainForm());
         }
     }

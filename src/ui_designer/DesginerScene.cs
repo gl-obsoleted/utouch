@@ -4,19 +4,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ui_lib.Base;
 using ui_lib.Elements;
+using ui_lib.Widgets;
 
 namespace ui_designer
 {
-    public partial class Scene
+    public partial class DesginerScene
     {
-        public Scene()
+        public DesginerScene()
         {
-            m_root = new Node();
-            m_root.Position = new Point(300, 300);
+            m_root = new RootNode();
 
             m_tc = new TransformContext();
         }
+
+        public RootNode GetRootNode() { return m_root; }
 
         public void Render(IRenderContext rc, IRenderSystem rs)
         {
@@ -37,7 +40,7 @@ namespace ui_designer
             m_root.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs, tc); });
         }
 
-        private Node m_root;
+        private RootNode m_root;
         private TransformContext m_tc;
     }
 }

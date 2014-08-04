@@ -88,7 +88,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SceneManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\UILayoutTree.cs">
@@ -103,6 +102,7 @@
     <Compile Include="Controls\UIObjectPropertyGrid.Designer.cs">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShellConstants.cs" />
     <EmbeddedResource Include="Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +145,10 @@
     <ProjectReference Include="..\ui_designer\ui_designer.csproj">
       <Project>{3aa0be89-52da-4a8d-8c42-2df2828d1f0a}</Project>
       <Name>ui_designer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ui_lib\ui_lib.csproj">
+      <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
+      <Name>ui_lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

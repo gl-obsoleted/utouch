@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ui_designer;
 
 namespace ui_designer_shell
 {
@@ -19,6 +20,13 @@ namespace ui_designer_shell
             m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
             m_glCtrl.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
+
+            // for debugging purpose only
+            m_tabControl.SelectedIndex = 1;
+
+            m_scene = new DesginerScene();
+            m_glCtrl.SetScene(m_scene);
+            m_uiLayoutTree.SetScene(m_scene);
         }
 
         private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
@@ -35,5 +43,7 @@ namespace ui_designer_shell
         {
             m_testButton = new Gwen.Control.Button(m_glCtrl.GetCanvas());
         }
+
+        private DesginerScene m_scene;
     }
 }

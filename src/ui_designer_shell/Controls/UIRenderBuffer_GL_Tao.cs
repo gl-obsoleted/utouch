@@ -13,6 +13,10 @@ namespace ui_designer_shell.Controls
 {
     public partial class UIRenderBuffer_GL_Tao : UserControl
     {
+        private DesginerScene m_scene;
+        private GwenRenderContext m_renderContext;
+        private GwenRenderSystem m_renderSystem;
+
         private Gwen.Control.Canvas canvas;
         private Gwen.Renderer.Tao renderer;
         private Gwen.Skin.Base skin;
@@ -20,6 +24,11 @@ namespace ui_designer_shell.Controls
         public UIRenderBuffer_GL_Tao()
         {
             InitializeComponent();
+        }
+
+        public void SetScene(DesginerScene scene)
+        {
+            m_scene = scene;
         }
 
         public Canvas GetCanvas()
@@ -51,9 +60,8 @@ namespace ui_designer_shell.Controls
             canvas.KeyboardInputEnabled = true;
             canvas.MouseInputEnabled = true;
 
-            SceneManager.Instance.Configure(
-                new GwenRenderContext(canvas, renderer), 
-                new GwenRenderSystem());
+            m_renderContext = new GwenRenderContext(canvas, renderer);
+            m_renderSystem = new GwenRenderSystem();
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -75,8 +83,8 @@ namespace ui_designer_shell.Controls
             canvas.RenderCanvas();
 
             renderer.Begin();
-            renderer.DrawFilledRect(new Rectangle(new Point(100, 100), new Size(100, 100)));
-            SceneManager.Instance.RenderScene();
+            if (m_scene != null)
+                m_scene.Render(m_renderContext, m_renderSystem);
             renderer.End();
         }
 

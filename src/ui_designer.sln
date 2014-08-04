@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ui_designer_shell", "ui_designer_shell\ui_designer_shell.csproj", "{E2DE1E50-94F1-4CCD-9F49-41AD0F71D980}"
 	ProjectSection(ProjectDependencies) = postProject
+		{F0872212-C4F0-46FF-87D8-65A77D708D57} = {F0872212-C4F0-46FF-87D8-65A77D708D57}
 		{3AA0BE89-52DA-4A8D-8C42-2DF2828D1F0A} = {3AA0BE89-52DA-4A8D-8C42-2DF2828D1F0A}
 	EndProjectSection
 EndProject
