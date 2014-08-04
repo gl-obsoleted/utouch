@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,9 @@ namespace ui_designer
             if (grc == null)
                 return;
 
-            grc.m_renderer.DrawLinedRect(node.GetBounds());
+            Rectangle rect = node.GetBounds();
+            rect.Offset(tc.m_accumTranslate);
+            grc.m_renderer.DrawLinedRect(rect);
         }
     }
 }

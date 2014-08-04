@@ -15,6 +15,14 @@ namespace ui_designer
         public DesginerScene()
         {
             m_root = new RootNode();
+            Node m_child = new Node();
+            m_child.Position = new Point(50, 50);
+            m_child.Size = new Size(50, 50);
+            Node m_child2 = new Node();
+            m_child2.Position = new Point(150, 50);
+            m_child2.Size = new Size(50, 50);
+            m_root.Attach(m_child);
+            m_root.Attach(m_child2);
 
             m_tc = new TransformContext();
         }
@@ -36,8 +44,11 @@ namespace ui_designer
                 return;
 
             rs.RenderNode(n, rc, tc);
-
-            m_root.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs, tc); });
+            tc.m_accumTranslate.X += n.Position.X;
+            tc.m_accumTranslate.Y += n.Position.Y;
+            n.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs, tc); });
+            tc.m_accumTranslate.X -= n.Position.X;
+            tc.m_accumTranslate.Y -= n.Position.Y;
         }
 
         private RootNode m_root;

@@ -14,7 +14,7 @@ namespace ui_lib.Widgets
 
         public RootNode()
         {
-            base.SetParent(null);
+            base.m_parent = null;
             base.Name = RootNodeConstants.Default_Name;
 
             OnFullscreenChanged();
@@ -27,16 +27,7 @@ namespace ui_lib.Widgets
             OnFullscreenChanged();
         }
 
-        /// <summary>
-        /// The parent of a root node should always be null
-        /// </summary>
-        /// <param name="parent"></param>
-        public override void SetParent(Node parent)
-        {
-            System.Diagnostics.Debug.Assert(false);
-        }
-
-        private void OnFullscreenChanged()
+        protected void OnFullscreenChanged()
         {
             if (IsFullscren)
             {
@@ -54,6 +45,6 @@ namespace ui_lib.Widgets
             }
         }
 
-        private bool m_isFullscreen = RootNodeConstants.Default_IsFullscreen;
+        protected bool m_isFullscreen = RootNodeConstants.Default_IsFullscreen;
     }
 }

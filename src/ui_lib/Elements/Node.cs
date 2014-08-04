@@ -41,13 +41,10 @@ namespace ui_lib.Elements
             m_children = new List<Node>();
         }
 
-        /// <summary>
-        /// 我们显式地 SetParent 而不是 set 属性 Parent，语义上更明确.
-        /// </summary>
-        /// <param name="parent"></param>
-        public virtual void SetParent(Node parent)
+        public void Attach(Node n)
         {
-            m_parent = parent;
+            m_children.Add(n);
+            n.m_parent = this;
         }
 
         public void TraverseChildren(OnIteration callback) 
@@ -63,7 +60,7 @@ namespace ui_lib.Elements
             return new Rectangle(Position, Size);
         }
 
-        private Node m_parent;
-        private List<Node> m_children = new List<Node>();
+        protected Node m_parent;
+        protected List<Node> m_children = new List<Node>();
     }
 }
