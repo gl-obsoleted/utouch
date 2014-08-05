@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archive.cs" />
     <Compile Include="Render.cs" />
     <Compile Include="Render_Gwen.cs" />
     <Compile Include="DesginerScene.cs" />

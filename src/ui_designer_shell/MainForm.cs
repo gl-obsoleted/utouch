@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ui_designer;
+using ui_lib.Elements;
 
 namespace ui_designer_shell
 {
@@ -27,6 +28,11 @@ namespace ui_designer_shell
             m_scene = new DesginerScene();
             m_glCtrl.SetScene(m_scene);
             m_uiLayoutTree.SetScene(m_scene);
+
+            // connect the layout tree and the property grid
+            m_uiLayoutTree.SelectionChange += m_uiPropertyGrid.OnLayoutTreeSelectionChange;
+            m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
+            m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeUtil.HasNameCollisionWithSiblings(node, newName); };
         }
 
         private void menuItemGwenUnitTest_Click(object sender, EventArgs e)

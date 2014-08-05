@@ -44,6 +44,7 @@
             treeNode1});
             this.m_layoutTreeView.Size = new System.Drawing.Size(319, 347);
             this.m_layoutTreeView.TabIndex = 0;
+            this.m_layoutTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.m_layoutTreeView_AfterSelect);
             // 
             // UILayoutTree
             // 

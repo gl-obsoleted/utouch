@@ -12,6 +12,8 @@ using ui_lib.Elements;
 
 namespace ui_designer_shell.Controls
 {
+    public delegate void OnSelectedNodeChanged(Node n);
+
     public partial class UILayoutTree : UserControl
     {
         public UILayoutTree()
@@ -31,8 +33,8 @@ namespace ui_designer_shell.Controls
         public void PopulateLayout()
         {
             string rootKey = ShellConstants.UILayoutTree_RootName;
-            bool ret = m_layoutTreeView.Nodes.ContainsKey(rootKey);
-            System.Diagnostics.Debug.Assert(ret);
+            if (!m_layoutTreeView.Nodes.ContainsKey(rootKey))
+                return;
 
             Node sceneRoot = m_scene.GetRootNode();
             TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
@@ -41,6 +43,8 @@ namespace ui_designer_shell.Controls
             treeRoot.Tag = sceneRoot;
 
             PopulateNodeRecursively(treeRoot);
+
+            m_layoutTreeView.ExpandAll();
         }
 
         public void PopulateNodeRecursively(TreeNode treeNode)
@@ -65,11 +69,27 @@ namespace ui_designer_shell.Controls
             }
         }
 
+        public event OnSelectedNodeChanged SelectionChange;
+
         private string GenerateNodeLabel(Node sceneNode)
         {
             return string.Format("{0} - [{1}]", sceneNode.Name, sceneNode.GetType().Name);
         }
 
         private DesginerScene m_scene;
+
+        private void m_layoutTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode treeNode = e.Node;
+            if (treeNode == null)
+                return;
+
+            Node sceneNode = treeNode.Tag as Node;
+            if (sceneNode == null)
+                return;
+
+            if (SelectionChange != null)
+                SelectionChange(sceneNode);
+        }
     }
 }

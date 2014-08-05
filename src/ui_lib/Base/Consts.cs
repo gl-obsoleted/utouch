@@ -10,6 +10,8 @@ namespace ui_lib.Base
     public class Constants
     {
         public static readonly Point ZeroPoint = new Point { X = 0, Y = 0 };
+
+        public static readonly int INVALID_ID = -1;
     }
 
     public class ResolutionLut

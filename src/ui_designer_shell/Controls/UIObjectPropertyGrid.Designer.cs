@@ -28,20 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.advPropertyGrid1 = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.m_propertyGrid = new DevComponents.DotNetBar.AdvPropertyGrid();
             this.Position = new DevComponents.DotNetBar.PropertySettings();
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_propertyGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // advPropertyGrid1
+            // m_propertyGrid
             // 
-            this.advPropertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.advPropertyGrid1.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.advPropertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.advPropertyGrid1.Name = "advPropertyGrid1";
-            this.advPropertyGrid1.Size = new System.Drawing.Size(332, 408);
-            this.advPropertyGrid1.TabIndex = 0;
-            this.advPropertyGrid1.Text = "advPropertyGrid1";
+            this.m_propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_propertyGrid.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.m_propertyGrid.HelpType = DevComponents.DotNetBar.ePropertyGridHelpType.Panel;
+            this.m_propertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.m_propertyGrid.Name = "m_propertyGrid";
+            this.m_propertyGrid.Size = new System.Drawing.Size(332, 408);
+            this.m_propertyGrid.TabIndex = 0;
+            this.m_propertyGrid.Text = "advPropertyGrid1";
+            this.m_propertyGrid.ProvidePropertyValueList += new DevComponents.DotNetBar.PropertyValueListEventHandler(this.m_propertyGrid_ProvidePropertyValueList);
+            this.m_propertyGrid.PropertyValueChanged += new System.ComponentModel.PropertyChangedEventHandler(this.m_propertyGrid_PropertyValueChanged);
+            this.m_propertyGrid.PropertyValueChanging += new DevComponents.DotNetBar.PropertyValueChangingEventHandler(this.m_propertyGrid_PropertyValueChanging);
+            this.m_propertyGrid.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.m_propertyGrid_PropertyChanged);
             // 
             // Position
             // 
@@ -52,17 +57,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.advPropertyGrid1);
+            this.Controls.Add(this.m_propertyGrid);
             this.Name = "UIObjectPropertyGrid";
             this.Size = new System.Drawing.Size(332, 408);
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_propertyGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGrid1;
+        private DevComponents.DotNetBar.AdvPropertyGrid m_propertyGrid;
         private DevComponents.DotNetBar.PropertySettings Position;
 
 

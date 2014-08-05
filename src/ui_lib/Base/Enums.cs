@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ui_lib.Base
 {
-    public enum Alignment
+    public enum AlignHori
+    {
+        Left,
+        Center,
+        Right,
+    }
+
+    public enum AlignVert
     {
         Top,
+        Middle,
         Bottom,
-        Left,
-        Right,
-        Center,
     }
 
     public enum Resolution

@@ -57,7 +57,7 @@
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
-            this.uiObjectPropertyGrid1 = new ui_designer_shell.Controls.UIObjectPropertyGrid();
+            this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -301,7 +301,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.uiObjectPropertyGrid1);
+            this.splitContainer2.Panel2.Controls.Add(this.m_uiPropertyGrid);
             this.splitContainer2.Size = new System.Drawing.Size(137, 483);
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
@@ -314,13 +314,13 @@
             this.m_uiLayoutTree.Size = new System.Drawing.Size(137, 238);
             this.m_uiLayoutTree.TabIndex = 0;
             // 
-            // uiObjectPropertyGrid1
+            // m_uiPropertyGrid
             // 
-            this.uiObjectPropertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiObjectPropertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.uiObjectPropertyGrid1.Name = "uiObjectPropertyGrid1";
-            this.uiObjectPropertyGrid1.Size = new System.Drawing.Size(137, 241);
-            this.uiObjectPropertyGrid1.TabIndex = 0;
+            this.m_uiPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_uiPropertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.m_uiPropertyGrid.Name = "m_uiPropertyGrid";
+            this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
+            this.m_uiPropertyGrid.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -381,7 +381,7 @@
         private System.Windows.Forms.TabPage pageLayout;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private ui_designer_shell.Controls.UILayoutTree m_uiLayoutTree;
-        private ui_designer_shell.Controls.UIObjectPropertyGrid uiObjectPropertyGrid1;
+        private ui_designer_shell.Controls.UIObjectPropertyGrid m_uiPropertyGrid;
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
     }
