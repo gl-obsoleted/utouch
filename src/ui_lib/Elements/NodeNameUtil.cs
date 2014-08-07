@@ -7,7 +7,7 @@ using ui_lib.Base;
 
 namespace ui_lib.Elements
 {
-    public class NodeUtil
+    public class NodeNameUtil
     {
         public static void ResetIDAllocLut() 
         {

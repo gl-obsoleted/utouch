@@ -51,7 +51,8 @@
     <Compile Include="Elements\Image.cs" />
     <Compile Include="Elements\Node.cs" />
     <Compile Include="Elements\NodeData.cs" />
-    <Compile Include="Elements\NodeUtil.cs" />
+    <Compile Include="Elements\NodeJsonUtil.cs" />
+    <Compile Include="Elements\NodeNameUtil.cs" />
     <Compile Include="Elements\Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widgets\RootNode.cs" />

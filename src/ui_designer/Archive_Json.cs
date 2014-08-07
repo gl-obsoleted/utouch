@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ui_lib.Elements;
+using ui_lib.Widgets;
 
 namespace ui_designer
 {
+    public abstract class JsonCreationConverter<T> : JsonConverter
+    {
+        /// <summary>
+        /// Create an instance of objectType, based properties in the JSON object
+        /// </summary>
+        /// <param name="objectType">type of object expected</param>
+        /// <param name="jObject">
+        /// contents of JSON object that will be deserialized
+        /// </param>
+        /// <returns></returns>
+        protected abstract T Create(Type objectType, JObject jObject);
+
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(T).IsAssignableFrom(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader,
+                                        Type objectType,
+                                         object existingValue,
+                                         JsonSerializer serializer)
+        {
+            // Load JObject from stream
+            JObject jObject = JObject.Load(reader);
+
+            // Create target object based on JObject
+            T target = Create(objectType, jObject);
+
+            // Populate the object properties
+            serializer.Populate(jObject.CreateReader(), target);
+
+            return target;
+        }
+
+        public override void WriteJson(JsonWriter writer,
+                                       object value,
+                                       JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class NodeConverter : JsonCreationConverter<Node>
+    {
+        protected override Node Create(Type objectType, JObject jObject)
+        {
+            return NodeJsonUtil.CreateNode(jObject); 
+        }
+    }
+
     public class Archive_Json : IArchive
     {
-        public ArchiveType GetType()
+        public ArchiveType GetArcType()
         {
             return ArchiveType.Json;
         }
@@ -30,11 +82,17 @@ namespace ui_designer
                 using (StreamReader file = File.OpenText(targetLocation))
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
-                    JObject o2 = (JObject)JToken.ReadFrom(reader);
-                    string typeFullName = (string)o2["__type_info__"];
-                    object o = o2.ToObject(Type.GetType(typeFullName));
-                    if (o is Node)
-                        return o as Node;
+                    JObject jsonObject = (JObject)JToken.ReadFrom(reader);
+                    JsonSerializer se = JsonSerializer.CreateDefault();
+                    se.Converters.Add(new NodeConverter());
+                    object obj = jsonObject.ToObject(NodeJsonUtil.GetNodeType(jsonObject), se);
+                    if (!(obj is Node))
+                        return null;
+
+                    // 手动恢复每个 node 的 m_parent 字段
+                    Node root = obj as Node;
+                    SceneGraphUtil.UnifyParents(root);
+                    return root;
                 }
             }
             catch (Exception e)
@@ -46,16 +104,14 @@ namespace ui_designer
 
         public bool SaveTo(Node node, string targetLocation)
         {
-            m_object = (JObject)JToken.FromObject(node);
+            JObject obj = (JObject)JToken.FromObject(node);
             //System.Diagnostics.Debug.Write(m_object.ToString());
 
             using (StreamWriter file = File.CreateText(targetLocation))
             {
-                file.Write(m_object.ToString());
+                file.Write(obj.ToString());
             }
             return true;
         }
-
-        JObject m_object;
     }
 }

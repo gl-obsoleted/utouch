@@ -17,7 +17,7 @@ namespace ui_designer
 
     public interface IArchive
     {
-        ArchiveType GetType();
+        ArchiveType GetArcType();
 
         bool Validate(string targetLocation);
 

@@ -32,7 +32,7 @@ namespace ui_designer_shell
             // connect the layout tree and the property grid
             m_uiLayoutTree.SelectionChange += m_uiPropertyGrid.OnLayoutTreeSelectionChange;
             m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
-            m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeUtil.HasNameCollisionWithSiblings(node, newName); };
+            m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
         }
 
         private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace ui_designer_shell
             if (m_scene != null)
                 m_scene.Dispose();
 
-            NodeUtil.ResetIDAllocLut();
+            NodeNameUtil.ResetIDAllocLut();
 
             m_scene = new DesginerScene();
             m_glCtrl.SetScene(m_scene);

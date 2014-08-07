@@ -39,7 +39,7 @@ namespace ui_lib.Elements
 
         public void Attach(Node n)
         {
-            n.Name = NodeUtil.GenerateUniqueChildName(this, n);
+            n.Name = NodeNameUtil.GenerateUniqueChildName(this, n);
             m_children.Add(n);
             n.m_parent = this;
         }
@@ -55,6 +55,12 @@ namespace ui_lib.Elements
         public Rectangle GetBounds()
         {
             return new Rectangle(Position, Size);
+        }
+
+        public void UnifyParentOfChildren()
+        {
+            foreach (Node n in m_children)
+                n.m_parent = this;
         }
 
         protected Node m_parent;

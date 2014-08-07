@@ -29,7 +29,7 @@ namespace ui_designer_shell.Controls
         public void SetScene(DesginerScene scene)
         {
             m_scene = scene;
-            Invalidate(true);
+            glControl.Invalidate();
         }
 
         public Canvas GetCanvas()

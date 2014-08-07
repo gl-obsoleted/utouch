@@ -25,8 +25,12 @@ namespace ui_designer
             //Node m_child2 = new Node();
             //m_child2.Position = new Point(150, 50);
             //m_child2.Size = new Size(50, 50);
+            //Node m_child3 = new RootNode();
+            //m_child3.Position = new Point(220, 50);
+            //m_child3.Size = new Size(50, 50);
             //m_root.Attach(m_child);
             //m_root.Attach(m_child2);
+            //m_root.Attach(m_child3);
         }
 
         public void Dispose()
