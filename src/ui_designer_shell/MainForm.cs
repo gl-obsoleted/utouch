@@ -27,9 +27,7 @@ namespace ui_designer_shell
 
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
 
-            m_scene = new DesginerScene();
-            m_glCtrl.SetScene(m_scene);
-            m_uiLayoutTree.SetScene(m_scene);
+            ResetScene();
 
             // connect the layout tree and the property grid
             m_uiLayoutTree.SelectionChange += m_uiPropertyGrid.OnLayoutTreeSelectionChange;
@@ -57,6 +55,32 @@ namespace ui_designer_shell
         private void m_menuSave_Click(object sender, EventArgs e)
         {
             m_scene.Save("test.json");
+        }
+
+        private void m_menuOpen_Click(object sender, EventArgs e)
+        {
+            // 这里重置前，应先提示用户保存
+            ResetScene();
+            m_scene.Load("test.json");
+            m_uiLayoutTree.PopulateLayout();
+            m_glCtrl.Invalidate(true);
+        }
+
+        private void m_menuNew_Click(object sender, EventArgs e)
+        {
+            ResetScene();
+        }
+
+        private void ResetScene()
+        {
+            if (m_scene != null)
+                m_scene.Dispose();
+
+            NodeUtil.ResetIDAllocLut();
+
+            m_scene = new DesginerScene();
+            m_glCtrl.SetScene(m_scene);
+            m_uiLayoutTree.SetScene(m_scene);
         }
     }
 }

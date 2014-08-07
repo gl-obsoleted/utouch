@@ -10,7 +10,7 @@ using ui_lib.Widgets;
 
 namespace ui_designer
 {
-    public partial class DesginerScene
+    public partial class DesginerScene : IDisposable
     {
         /// <summary>
         /// 只读属性
@@ -19,21 +19,29 @@ namespace ui_designer
 
         public DesginerScene()
         {
-            Node m_child = new Node();
-            m_child.Position = new Point(50, 50);
-            m_child.Size = new Size(50, 50);
-            Node m_child2 = new Node();
-            m_child2.Position = new Point(150, 50);
-            m_child2.Size = new Size(50, 50);
-            m_root.Attach(m_child);
-            m_root.Attach(m_child2);
+            //Node m_child = new Node();
+            //m_child.Position = new Point(50, 50);
+            //m_child.Size = new Size(50, 50);
+            //Node m_child2 = new Node();
+            //m_child2.Position = new Point(150, 50);
+            //m_child2.Size = new Size(50, 50);
+            //m_root.Attach(m_child);
+            //m_root.Attach(m_child2);
+        }
+
+        public void Dispose()
+        {
+
         }
 
         public bool Load(string targetLocation)
         {
             Node loaded = m_archiveSys.Load(targetLocation);
             if (loaded == null || !(loaded is RootNode))
+            {
+                System.Diagnostics.Debug.WriteLine("[err] Loading failed.");
                 return false;
+            }
 
             m_root = loaded as RootNode;
             return true;

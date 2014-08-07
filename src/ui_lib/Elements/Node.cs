@@ -14,7 +14,7 @@ namespace ui_lib.Elements
 
     public partial class Node
     {
-        #region 公开的属性，如果不希望被序列化，应该放到这里并加上 [JsonIgnore]
+        #region 公开的逻辑属性，如果不希望被序列化，可放到这里并加上 [JsonIgnore]
         
         [JsonIgnore]
         [Browsable(false)]

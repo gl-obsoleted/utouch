@@ -53,10 +53,10 @@ namespace ui_lib.Elements
 
         #endregion
 
-        #region 序列化属性（正常地序列化存取，属性界面不可见）
+        #region 序列化属性（正常地序列化存取，属性界面只读或不可见）
 
-        [Browsable(false)]
-        public string __type_info__ { get { return GetType().FullName; } }
+        [ReadOnly(true)]
+        public string __type_info__ { get { return GetType().AssemblyQualifiedName; } }
 
         [Browsable(false)]
         public List<Node> Children { get { return m_children; } }

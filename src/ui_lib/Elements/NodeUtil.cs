@@ -9,19 +9,39 @@ namespace ui_lib.Elements
 {
     public class NodeUtil
     {
+        public static void ResetIDAllocLut() 
+        {
+            s_idAlloc.Clear(); 
+        }
+
         /// <summary>
         /// 当向 destNode 节点添加子节点时，检测并生成一个独特的节点名
         /// </summary>
         public static string GenerateUniqueChildName(Node destNode, Node srcNode)
         {
-            string srcName = srcNode.Name;
-            destNode.TraverseChildren((Node child) => {
+            string generatedName = srcNode.Name;
+            foreach (Node child in destNode.Children)
+            {
                 // 这里 id 顺序递增的情况下，理论上最多生成两次
-                while (child.Name == srcName)
-                    srcName = GetNextAvailName(srcNode.GetType().Name);
-            });
+                while (child.Name == generatedName)
+                    generatedName = GetNextAvailName(srcNode.GetType().Name);
+            }
 
-            return srcName;
+            return generatedName;
+        }
+
+        /// <summary>
+        /// 判断是否与目标节点的子节点有命名冲突
+        /// </summary>
+        public static bool HasNameCollisionWithTargetChildren(Node destNode, Node srcNode)
+        {
+            foreach (Node child in destNode.Children)
+            {
+                if (srcNode.Name == child.Name)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>
