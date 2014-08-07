@@ -34,11 +34,6 @@ namespace ui_designer_shell.Controls
             return m_propertyGrid;
         }
 
-        private void m_propertyGrid_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("PropertyChanged");
-        }
-
         private void m_propertyGrid_PropertyValueChanged(object sender, PropertyChangedEventArgs e)
         {
             if (PropertyValueChanged != null)
@@ -59,7 +54,6 @@ namespace ui_designer_shell.Controls
 
         private void m_propertyGrid_ProvidePropertyValueList(object sender, DevComponents.DotNetBar.PropertyValueListEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("ProvidePropertyValueList");
 
         }
     }

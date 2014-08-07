@@ -12,9 +12,13 @@ namespace ui_designer
 {
     public partial class DesginerScene
     {
+        /// <summary>
+        /// 只读属性
+        /// </summary>
+        public RootNode Root { get { return m_root; } }
+
         public DesginerScene()
         {
-            m_root = new RootNode();
             Node m_child = new Node();
             m_child.Position = new Point(50, 50);
             m_child.Size = new Size(50, 50);
@@ -23,35 +27,30 @@ namespace ui_designer
             m_child2.Size = new Size(50, 50);
             m_root.Attach(m_child);
             m_root.Attach(m_child2);
-
-            m_tc = new TransformContext();
         }
 
-        public RootNode GetRootNode() { return m_root; }
-
-        public void Render(IRenderContext rc, IRenderSystem rs)
+        public bool Load(string targetLocation)
         {
-            m_tc.Reset();
-            RenderNodeRecursively(m_root, rc, rs, m_tc);
+            Node loaded = m_archiveSys.Load(targetLocation);
+            if (loaded == null || !(loaded is RootNode))
+                return false;
+
+            m_root = loaded as RootNode;
+            return true;
         }
 
-        private void RenderNodeRecursively(Node n, IRenderContext rc, IRenderSystem rs, TransformContext tc)
+        public bool Save(string targetLocation)
         {
-            if (n == null)
-                return;
-
-            if (!n.Visible) // 'Visible == false' would hide all children 
-                return;
-
-            rs.RenderNode(n, rc, tc);
-            tc.m_accumTranslate.X += n.Position.X;
-            tc.m_accumTranslate.Y += n.Position.Y;
-            n.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs, tc); });
-            tc.m_accumTranslate.X -= n.Position.X;
-            tc.m_accumTranslate.Y -= n.Position.Y;
+            return m_archiveSys.Save(m_root, targetLocation);
         }
 
-        private RootNode m_root;
-        private TransformContext m_tc;
+        public void Render(RenderContext rc, RenderDevice rs)
+        {
+            m_renderSys.Render(m_root, rc, rs);
+        }
+
+        private RootNode m_root = new RootNode();
+        private RenderSystem m_renderSys = new RenderSystem();
+        private ArchiveSystem m_archiveSys = new ArchiveSystem();
     }
 }

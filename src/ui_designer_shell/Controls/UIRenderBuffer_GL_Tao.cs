@@ -15,7 +15,7 @@ namespace ui_designer_shell.Controls
     {
         private DesginerScene m_scene;
         private GwenRenderContext m_renderContext;
-        private GwenRenderSystem m_renderSystem;
+        private GwenRenderDevice m_renderDevice;
 
         private Gwen.Control.Canvas canvas;
         private Gwen.Renderer.Tao renderer;
@@ -61,7 +61,7 @@ namespace ui_designer_shell.Controls
             canvas.MouseInputEnabled = true;
 
             m_renderContext = new GwenRenderContext(canvas, renderer);
-            m_renderSystem = new GwenRenderSystem();
+            m_renderDevice = new GwenRenderDevice();
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -84,7 +84,7 @@ namespace ui_designer_shell.Controls
 
             renderer.Begin();
             if (m_scene != null)
-                m_scene.Render(m_renderContext, m_renderSystem);
+                m_scene.Render(m_renderContext, m_renderDevice);
             renderer.End();
         }
 

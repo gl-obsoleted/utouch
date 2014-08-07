@@ -36,6 +36,9 @@
     <Reference Include="Gwen.Renderer.Tao">
       <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.Renderer.Tao.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -47,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archive.cs" />
+    <Compile Include="ArchiveUtil.cs" />
+    <Compile Include="Archive_Json.cs" />
     <Compile Include="Render.cs" />
     <Compile Include="Render_Gwen.cs" />
     <Compile Include="DesginerScene.cs" />
@@ -57,6 +62,9 @@
       <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
       <Name>ui_lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

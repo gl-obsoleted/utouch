@@ -46,7 +46,6 @@
             this.m_propertyGrid.ProvidePropertyValueList += new DevComponents.DotNetBar.PropertyValueListEventHandler(this.m_propertyGrid_ProvidePropertyValueList);
             this.m_propertyGrid.PropertyValueChanged += new System.ComponentModel.PropertyChangedEventHandler(this.m_propertyGrid_PropertyValueChanged);
             this.m_propertyGrid.PropertyValueChanging += new DevComponents.DotNetBar.PropertyValueChangingEventHandler(this.m_propertyGrid_PropertyValueChanging);
-            this.m_propertyGrid.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.m_propertyGrid_PropertyChanged);
             // 
             // Position
             // 

@@ -10,19 +10,23 @@ namespace ui_lib.Widgets
 {
     public class RootNode : Node
     {
-        public bool IsFullscren { get { return m_isFullscreen; } }
+        public bool IsFullscren 
+        { 
+            get 
+            { 
+                return m_isFullscreen; 
+            } 
+            set 
+            { 
+                m_isFullscreen = value;
+                OnFullscreenChanged(); 
+            }
+        }
 
         public RootNode()
         {
             base.m_parent = null;
             base.Name = RootNodeConstants.Default_Name;
-
-            OnFullscreenChanged();
-        }
-
-        public void SetAsFullscreen(bool fullscreen)
-        {
-            m_isFullscreen = fullscreen;
 
             OnFullscreenChanged();
         }

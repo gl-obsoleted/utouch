@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,13 +46,18 @@
     <Compile Include="Base\Consts.cs" />
     <Compile Include="Base\Enums.cs" />
     <Compile Include="Base\Structs.cs" />
+    <Compile Include="Base\Utilities.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Elements\Image.cs" />
     <Compile Include="Elements\Node.cs" />
+    <Compile Include="Elements\NodeData.cs" />
     <Compile Include="Elements\NodeUtil.cs" />
     <Compile Include="Elements\Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widgets\RootNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,6 +25,8 @@ namespace ui_designer_shell
             // for debugging purpose only
             m_tabControl.SelectedIndex = 1;
 
+            ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
+
             m_scene = new DesginerScene();
             m_glCtrl.SetScene(m_scene);
             m_uiLayoutTree.SetScene(m_scene);
@@ -51,5 +53,10 @@ namespace ui_designer_shell
         }
 
         private DesginerScene m_scene;
+
+        private void m_menuSave_Click(object sender, EventArgs e)
+        {
+            m_scene.Save("test.json");
+        }
     }
 }

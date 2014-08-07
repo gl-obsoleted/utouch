@@ -8,7 +8,7 @@ using ui_lib.Elements;
 
 namespace ui_designer
 {
-    public class GwenRenderContext : IRenderContext
+    public class GwenRenderContext : RenderContext
     {
         public GwenRenderContext(Gwen.Control.Canvas canvas, Gwen.Renderer.Tao renderer) 
         {
@@ -20,16 +20,16 @@ namespace ui_designer
         public Gwen.Renderer.Tao m_renderer;
     }
 
-    public class GwenRenderSystem : IRenderSystem
+    public class GwenRenderDevice : RenderDevice
     {
-        public void RenderNode(Node node, IRenderContext rc, TransformContext tc)
+        public void RenderNode(Node node, RenderContext rc)
         {
             GwenRenderContext grc = rc as GwenRenderContext;
             if (grc == null)
                 return;
 
             Rectangle rect = node.GetBounds();
-            rect.Offset(tc.m_accumTranslate);
+            rect.Offset(grc.m_accumTranslate);
             grc.m_renderer.DrawLinedRect(rect);
         }
     }

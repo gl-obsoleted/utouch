@@ -21,7 +21,7 @@ namespace ui_designer_shell.Controls
             InitializeComponent();
 
             m_layoutTreeView.Nodes.Clear();
-            m_layoutTreeView.Nodes.Add(ShellConstants.UILayoutTree_RootName, "<unspecified>");
+            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(ShellConstants.UILayoutTree_RootName, "<unspecified>");
         }
 
         public void SetScene(DesginerScene scene)
@@ -36,11 +36,10 @@ namespace ui_designer_shell.Controls
             if (!m_layoutTreeView.Nodes.ContainsKey(rootKey))
                 return;
 
-            Node sceneRoot = m_scene.GetRootNode();
             TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
-            treeRoot.Name = sceneRoot.Name;
-            treeRoot.Text = GenerateNodeLabel(sceneRoot);
-            treeRoot.Tag = sceneRoot;
+            treeRoot.Name = m_scene.Root.Name;
+            treeRoot.Text = GenerateNodeLabel(m_scene.Root);
+            treeRoot.Tag = m_scene.Root;
 
             PopulateNodeRecursively(treeRoot);
 

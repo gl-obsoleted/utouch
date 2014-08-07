@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -11,45 +12,19 @@ namespace ui_lib.Elements
 {
     public delegate void OnIteration(Node n);
 
-    public class Node
+    public partial class Node
     {
-        /// <summary>
-        /// 常用属性（只读）
-        /// </summary>
+        #region 公开的属性，如果不希望被序列化，应该放到这里并加上 [JsonIgnore]
+        
+        [JsonIgnore]
         [Browsable(false)]
         public Node Parent { get { return m_parent; } }
-        public List<Node> Children { get { return m_children; } }
+
+        #endregion
+
 
         /// <summary>
-        /// 常用属性（可读可写）
-        /// </summary>
-        [Category("Node")]
-        [Description("相对父节点的位置 (影响所有子节点)")]
-        public Point Position { get; set; }
-        [Category("Node")]
-        [Description("尺寸")]
-        public Size Size { get; set; }
-        [Category("Node")]
-        [Description("是否可见 (影响所有子节点)")]
-        public bool Visible { get; set; }
-        [Category("Node")]
-        [Description("水平方向上的对齐")]
-        public AlignHori AlignH { get; set; }
-        [Category("Node")]
-        [Description("垂直方向上的对齐")]
-        public AlignVert AlignV { get; set; }
-        [Category("Node")]
-        [Description("外部间距")]
-        public int Margin { get; set; }
-        [Category("Node")]
-        [Description("名字 (可指定，但需要在当前路径下唯一)")]
-        public string Name { get; set; }
-        [Category("Node")]
-        [Description("标记 (可任意起，不影响正常逻辑)")]
-        public string Tag { get; set; }
-
-        /// <summary>
-        /// 构造一个默认有效的对象（无父节点）
+        /// 构造一个无父节点的默认有效的对象
         /// </summary>
         public Node()
         {
@@ -60,7 +35,6 @@ namespace ui_lib.Elements
             AlignH = AlignHori.Center;
             AlignV = AlignVert.Middle;
             Margin = 3;
-            m_children = new List<Node>();
         }
 
         public void Attach(Node n)
@@ -85,5 +59,6 @@ namespace ui_lib.Elements
 
         protected Node m_parent;
         protected List<Node> m_children = new List<Node>();
+
     }
 }
