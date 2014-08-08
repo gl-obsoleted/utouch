@@ -1,0 +1,51 @@
+{
+  "IsFullscren": false,
+  "Name": "Root",
+  "Position": "100, 100",
+  "Size": "300, 300",
+  "Visible": true,
+  "AlignH": 1,
+  "AlignV": 1,
+  "Margin": 3,
+  "Tag": null,
+  "__type_info__": "ui_lib.Widgets.RootNode, ui_lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "Children": [
+    {
+      "Name": "Node",
+      "Position": "50, 50",
+      "Size": "50, 50",
+      "Visible": true,
+      "AlignH": 1,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "__type_info__": "ui_lib.Elements.Node, ui_lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Children": []
+    },
+    {
+      "Name": "Node<1>",
+      "Position": "150, 50",
+      "Size": "50, 50",
+      "Visible": true,
+      "AlignH": 1,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "__type_info__": "ui_lib.Elements.Node, ui_lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Children": []
+    },
+    {
+      "IsFullscren": false,
+      "Name": "Root",
+      "Position": "220, 50",
+      "Size": "50, 50",
+      "Visible": true,
+      "AlignH": 1,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "__type_info__": "ui_lib.Widgets.RootNode, ui_lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Children": []
+    }
+  ]
+}
