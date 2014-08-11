@@ -10,5 +10,8 @@ namespace ui_designer_shell
     class ShellConstants
     {
         public static readonly string UILayoutTree_RootName = RootNodeConstants.Default_Name;
+
+        public static readonly string TempFolderName = "temp";
+        public static readonly string LogFilename = "ui_designer.log";
     }
 }

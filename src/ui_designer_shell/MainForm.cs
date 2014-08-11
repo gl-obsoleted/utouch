@@ -54,14 +54,14 @@ namespace ui_designer_shell
 
         private void m_menuSave_Click(object sender, EventArgs e)
         {
-            m_scene.Save(@"..\..\..\..\testdata\test.json");
+            m_scene.Save(@"testdata\test.json");
         }
 
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             // 这里重置前，应先提示用户保存
             ResetScene();
-            m_scene.Load(@"..\..\..\..\testdata\test.json");
+            m_scene.Load(@"testdata\test.json");
             m_uiLayoutTree.PopulateLayout();
             m_glCtrl.Invalidate(true);
         }

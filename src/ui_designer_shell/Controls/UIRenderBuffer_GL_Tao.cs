@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
@@ -53,7 +54,7 @@ namespace ui_designer_shell.Controls
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
 
             renderer = new Gwen.Renderer.Tao();
-            skin = new Gwen.Skin.TexturedBase(renderer, "DefaultSkin.png");
+            skin = new Gwen.Skin.TexturedBase(renderer, Path.Combine("media", "DefaultSkin.png"));
             canvas = new Canvas(skin);
             canvas.SetSize(glControl.Width, glControl.Height);
             canvas.ShouldDrawBackground = true;
