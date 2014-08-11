@@ -57,7 +57,12 @@ namespace ui_designer_shell
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0}\n\n细节请查看 log 文件 '{1}'，按 'OK' 退出程序。", e.Message, Session.GetLogFilePath()));
+                    Session.Log("===== Unexpected Exception Begin =====");
+                    Session.Log(e.GetType().Name);
+                    Session.Log(e.Message);
+                    Session.Log(e.StackTrace);
+                    Session.Log("===== Unexpected Exception End   =====");
+                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
                     return;
                 }
             }
