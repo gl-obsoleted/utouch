@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -99,6 +99,12 @@
     <Compile Include="Controls\UIObjectPropertyGrid.Designer.cs">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResForm.Designer.cs">
+      <DependentUpon>ResForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShellConstants.cs" />
     <EmbeddedResource Include="Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
@@ -124,6 +130,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ResForm.resx">
+      <DependentUpon>ResForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -82,5 +82,11 @@ namespace ui_designer_shell
             m_glCtrl.SetScene(m_scene);
             m_uiLayoutTree.SetScene(m_scene);
         }
+
+        private void m_menuResForm_Click(object sender, EventArgs e)
+        {
+            ResForm tf = new ResForm();
+            tf.Show();
+        }
     }
 }
