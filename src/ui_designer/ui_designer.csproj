@@ -49,14 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConsts.cs" />
     <Compile Include="Archive.cs" />
     <Compile Include="ArchiveUtil.cs" />
     <Compile Include="Archive_Json.cs" />
+    <Compile Include="ConfigVars.cs" />
     <Compile Include="Render.cs" />
     <Compile Include="Render_Gwen.cs" />
     <Compile Include="DesginerScene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceneGraphUtil.cs" />
+    <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ui_lib\ui_lib.csproj">

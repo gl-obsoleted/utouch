@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ui_designer;
+using ui_lib.Base;
 using ui_lib.Elements;
 
 namespace ui_designer_shell
@@ -52,6 +53,8 @@ namespace ui_designer_shell
 
         private DesginerScene m_scene;
 
+        private ResForm m_resForm = new ResForm();
+
         private void m_menuSave_Click(object sender, EventArgs e)
         {
             m_scene.Save(@"testdata\test.json");
@@ -85,8 +88,23 @@ namespace ui_designer_shell
 
         private void m_menuResForm_Click(object sender, EventArgs e)
         {
-            ResForm tf = new ResForm();
-            tf.Show();
+            m_resForm.Show(this);
+
+            string loc = ConfigUserPref.Instance.GetValue("forms.res_form", "location");
+            string size = ConfigUserPref.Instance.GetValue("forms.res_form", "size");
+            if (loc.Length != 0 && size.Length != 0)
+            {
+                Point pt = Utilities.StringToPoint(loc);
+                Size sz = Utilities.StringToSize(size);
+                m_resForm.SetDesktopBounds(pt.X, pt.Y, sz.Width, sz.Height);
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Point pt = PointToScreen(m_resForm.Location);
+            ConfigUserPref.Instance.SetValue("forms.res_form", "location", Utilities.PointToString(pt));
+            ConfigUserPref.Instance.SetValue("forms.res_form", "size", Utilities.SizeToString(m_resForm.Size));
         }
     }
 }

@@ -48,6 +48,7 @@
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuResForm = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.m_tabControl = new System.Windows.Forms.TabControl();
@@ -57,7 +58,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
-            this.m_menuResForm = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -168,36 +168,36 @@
             // nodeToolStripMenuItem
             // 
             this.nodeToolStripMenuItem.Name = "nodeToolStripMenuItem";
-            this.nodeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nodeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.nodeToolStripMenuItem.Text = "Node";
             // 
             // imageToolStripMenuItem
             // 
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.imageToolStripMenuItem.Text = "Image";
             // 
             // textToolStripMenuItem
             // 
             this.textToolStripMenuItem.Name = "textToolStripMenuItem";
-            this.textToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.textToolStripMenuItem.Text = "Text";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(130, 6);
             // 
             // buttonToolStripMenuItem
             // 
             this.buttonToolStripMenuItem.Name = "buttonToolStripMenuItem";
-            this.buttonToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buttonToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.buttonToolStripMenuItem.Text = "Button";
             // 
             // checkboxToolStripMenuItem
             // 
             this.checkboxToolStripMenuItem.Name = "checkboxToolStripMenuItem";
-            this.checkboxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.checkboxToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.checkboxToolStripMenuItem.Text = "Checkbox";
             // 
             // actionsToolStripMenuItem
@@ -221,6 +221,13 @@
             this.menuItemGwenUnitTest.Size = new System.Drawing.Size(159, 22);
             this.menuItemGwenUnitTest.Text = "Gwen UnitTest";
             this.menuItemGwenUnitTest.Click += new System.EventHandler(this.menuItemGwenUnitTest_Click);
+            // 
+            // m_menuResForm
+            // 
+            this.m_menuResForm.Name = "m_menuResForm";
+            this.m_menuResForm.Size = new System.Drawing.Size(159, 22);
+            this.m_menuResForm.Text = "ResForm";
+            this.m_menuResForm.Click += new System.EventHandler(this.m_menuResForm_Click);
             // 
             // statusStrip1
             // 
@@ -318,13 +325,6 @@
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
             // 
-            // m_menuResForm
-            // 
-            this.m_menuResForm.Name = "m_menuResForm";
-            this.m_menuResForm.Size = new System.Drawing.Size(159, 22);
-            this.m_menuResForm.Text = "ResForm";
-            this.m_menuResForm.Click += new System.EventHandler(this.m_menuResForm_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -337,6 +337,7 @@
             this.Name = "MainForm";
             this.Text = "UI Designer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

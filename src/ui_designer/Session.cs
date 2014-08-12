@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace ui_designer_shell
+namespace ui_designer
 {
-    class Session
+    public class Session
     {
         public static string SessionFolder;
 
@@ -18,6 +19,17 @@ namespace ui_designer_shell
             string content = string.Format(format, args);
             string fulltime = DateTime.Now.ToString("HH-mm-ss ");
             Session.LogFile.WriteLine(fulltime + content);
+        }
+
+        public static void LogExceptionDetail(Exception e)
+        {
+            Interlocked.Increment(ref ExceptionCounter);
+
+            Log("===== Exception #{0} Begin =====", ExceptionCounter);
+            Log(e.GetType().Name);
+            Log(e.Message);
+            Log(e.StackTrace);
+            Log("===== Exception #{0} End   =====", ExceptionCounter);
         }
 
         public static string GetLogFilePath()
@@ -35,5 +47,7 @@ namespace ui_designer_shell
 
             return fs.Name;
         }
+
+        static int ExceptionCounter = 0;
     }
 }

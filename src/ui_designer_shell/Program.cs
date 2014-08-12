@@ -33,7 +33,7 @@ namespace ui_designer_shell
             DateTime dt = DateTime.Now;
             string date = dt.ToString("yyyy-MM-dd");
             string fulltime = date + dt.ToString("-HH-mm-ss");
-            string sessionFolder = Path.Combine(ShellConstants.TempFolderName, date, fulltime);
+            string sessionFolder = Path.Combine(AppConsts.TempFolderName, date, fulltime);
             try
             {
                 if (!Directory.Exists(sessionFolder))
@@ -51,20 +51,26 @@ namespace ui_designer_shell
             {
                 Session.Log("Log started. '{0}'", Session.GetLogFilePath());
 
+                if (!ConfigTypical.Instance.LoadTypical())
+                {
+                    MessageBox.Show(string.Format("配置文件初始化失败。 \n\n按 'OK' 退出程序。"));
+                    return;
+                }
+
+                ConfigUserPref.Instance.Init();
+
                 try
                 {
-                    Application.Run(new MainForm());
+                    MainForm mainForm = new MainForm();
+                    Application.Run(mainForm);
                 }
                 catch (Exception e)
                 {
-                    Session.Log("===== Unexpected Exception Begin =====");
-                    Session.Log(e.GetType().Name);
-                    Session.Log(e.Message);
-                    Session.Log(e.StackTrace);
-                    Session.Log("===== Unexpected Exception End   =====");
+                    Session.LogExceptionDetail(e);
                     MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
-                    return;
                 }
+
+                ConfigUserPref.Instance.Save();
             }
         }
     }

@@ -36,12 +36,12 @@
             this.metroTileItem2 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
             this.metroTileItem5 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem6 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem7 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem8 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -157,6 +157,17 @@
             // 
             this.metroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // metroTileItem9
+            // 
+            this.metroTileItem9.Name = "metroTileItem9";
+            this.metroTileItem9.SymbolColor = System.Drawing.Color.Empty;
+            this.metroTileItem9.Text = "metroTileItem9";
+            this.metroTileItem9.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
+            // 
+            // 
+            // 
+            this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
             // itemContainer2
             // 
             // 
@@ -216,17 +227,6 @@
             // 
             // 
             this.metroTileItem8.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // metroTileItem9
-            // 
-            this.metroTileItem9.Name = "metroTileItem9";
-            this.metroTileItem9.SymbolColor = System.Drawing.Color.Empty;
-            this.metroTileItem9.Text = "metroTileItem9";
-            this.metroTileItem9.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
-            // 
-            // 
-            // 
-            this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
             // ResForm
             // 

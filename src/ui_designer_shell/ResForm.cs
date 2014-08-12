@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ui_designer;
+using ui_lib.Base;
 
 namespace ui_designer_shell
 {

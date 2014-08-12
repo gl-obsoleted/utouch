@@ -105,7 +105,6 @@
     <Compile Include="ResForm.Designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Session.cs" />
     <Compile Include="ShellConstants.cs" />
     <EmbeddedResource Include="Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
