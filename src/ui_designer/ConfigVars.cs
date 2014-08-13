@@ -11,7 +11,7 @@ namespace ui_designer
 {
     public class ConfigTypical
     {
-        public string DefaultResourceFilePath;
+        public List<string> ReourceImages;
 
         public static ConfigTypical Instance = new ConfigTypical();
 

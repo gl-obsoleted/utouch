@@ -50,15 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConsts.cs" />
-    <Compile Include="Archive.cs" />
-    <Compile Include="ArchiveUtil.cs" />
-    <Compile Include="Archive_Json.cs" />
+    <Compile Include="Archive\Archive.cs" />
+    <Compile Include="Archive\ArchiveUtil.cs" />
+    <Compile Include="Archive\Archive_Json.cs" />
     <Compile Include="ConfigVars.cs" />
-    <Compile Include="Render.cs" />
-    <Compile Include="Render_Gwen.cs" />
-    <Compile Include="DesginerScene.cs" />
+    <Compile Include="Render\Render.cs" />
+    <Compile Include="Render\Render_Gwen.cs" />
+    <Compile Include="Resource\ResourceManager.cs" />
+    <Compile Include="Scene\DesginerScene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SceneGraphUtil.cs" />
+    <Compile Include="Scene\SceneGraphUtil.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

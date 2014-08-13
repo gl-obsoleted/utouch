@@ -27,13 +27,19 @@ namespace ui_designer_shell
             m_tabControl.SelectedIndex = 1;
 
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
+        }
 
-            ResetScene();
+        public bool Init()
+        {
+            if (!ResetScene())
+                return false;
 
             // connect the layout tree and the property grid
             m_uiLayoutTree.SelectionChange += m_uiPropertyGrid.OnLayoutTreeSelectionChange;
             m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
             m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
+            
+            return true;
         }
 
         private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
@@ -63,7 +69,9 @@ namespace ui_designer_shell
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             // 这里重置前，应先提示用户保存
-            ResetScene();
+            if (!ResetScene())
+                return;
+
             m_scene.Load(@"testdata\test.json");
             m_uiLayoutTree.PopulateLayout();
             m_glCtrl.Invalidate(true);
@@ -74,7 +82,7 @@ namespace ui_designer_shell
             ResetScene();
         }
 
-        private void ResetScene()
+        private bool ResetScene()
         {
             if (m_scene != null)
                 m_scene.Dispose();
@@ -82,8 +90,12 @@ namespace ui_designer_shell
             NodeNameUtil.ResetIDAllocLut();
 
             m_scene = new DesginerScene();
+            if (!m_scene.Init())
+                return false;
+
             m_glCtrl.SetScene(m_scene);
             m_uiLayoutTree.SetScene(m_scene);
+            return true;
         }
 
         private void m_menuResForm_Click(object sender, EventArgs e)

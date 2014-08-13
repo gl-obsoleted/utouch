@@ -33,6 +33,16 @@ namespace ui_designer
             //m_root.Attach(m_child3);
         }
 
+        public bool Init()
+        {
+            foreach (string resFile in ConfigTypical.Instance.ReourceImages)
+            {
+                if (!m_resMgr.LoadFile(resFile))
+                    return false;
+            }
+            return true;
+        }
+
         public void Dispose()
         {
 
@@ -64,5 +74,6 @@ namespace ui_designer
         private RootNode m_root = new RootNode();
         private RenderSystem m_renderSys = new RenderSystem();
         private ArchiveSystem m_archiveSys = new ArchiveSystem();
+        private ResourceManager m_resMgr = new ResourceManager();
     }
 }

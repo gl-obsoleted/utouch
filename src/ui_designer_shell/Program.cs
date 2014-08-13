@@ -62,6 +62,12 @@ namespace ui_designer_shell
                 try
                 {
                     MainForm mainForm = new MainForm();
+                    if (!mainForm.Init())
+                    {
+                        MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
+                        return;
+                    }
+
                     Application.Run(mainForm);
                 }
                 catch (Exception e)
