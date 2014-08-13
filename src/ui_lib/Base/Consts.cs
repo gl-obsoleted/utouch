@@ -12,6 +12,12 @@ namespace ui_lib.Base
         public static readonly Point ZeroPoint = new Point { X = 0, Y = 0 };
 
         public const int INVALID_ID = -1;
+
+        public const string ResIndexFilePostfix = ".txt";
+        public const string ResImageFilePostfix = ".png";
+
+        public const string ResourceProtocol = "uires://";
+        public const char ResourceDelimeter = ':';
     }
 
     public class ResolutionLut

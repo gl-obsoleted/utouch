@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ui_lib;
 using ui_lib.Base;
 using ui_lib.Elements;
 using ui_lib.Widgets;
@@ -19,16 +20,24 @@ namespace ui_designer
 
         public DesginerScene()
         {
-            //Node m_child = new Node();
-            //m_child.Position = new Point(50, 50);
-            //m_child.Size = new Size(50, 50);
+            ImageNode m_child = new ImageNode();
+            m_child.ResLocation = "uires://testres/uiatlas:4880yuanbao.png";
+            m_child.Position = new Point(50, 50);
+            m_child.Size = new Size(50, 50);
+            m_root.Attach(m_child);
+
+            ImageNode m_child2 = new ImageNode();
+            m_child2.ResLocation = "uires://testres/uiatlas:+.png";
+            m_child2.Position = new Point(150, 50);
+            m_child2.Size = new Size(50, 50);
+            m_root.Attach(m_child2);
+
             //Node m_child2 = new Node();
             //m_child2.Position = new Point(150, 50);
             //m_child2.Size = new Size(50, 50);
             //Node m_child3 = new RootNode();
             //m_child3.Position = new Point(220, 50);
             //m_child3.Size = new Size(50, 50);
-            //m_root.Attach(m_child);
             //m_root.Attach(m_child2);
             //m_root.Attach(m_child3);
         }
@@ -37,7 +46,7 @@ namespace ui_designer
         {
             foreach (string resFile in ConfigTypical.Instance.ReourceImages)
             {
-                if (!m_resMgr.LoadFile(resFile))
+                if (!ResourceManager.Instance.LoadFile(resFile))
                     return false;
             }
             return true;
@@ -74,6 +83,5 @@ namespace ui_designer
         private RootNode m_root = new RootNode();
         private RenderSystem m_renderSys = new RenderSystem();
         private ArchiveSystem m_archiveSys = new ArchiveSystem();
-        private ResourceManager m_resMgr = new ResourceManager();
     }
 }

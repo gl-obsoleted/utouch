@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ui_lib;
+using ui_lib.Base;
 
 namespace ui_designer
 {
@@ -74,7 +76,7 @@ namespace ui_designer
         /// </summary>
         public void Init()
         {
-            JObject loaded = LoadJObject(AppConsts.UserPrefFilePath);
+            JObject loaded = JsonUtil.LoadJObject(AppConsts.UserPrefFilePath);
             if (loaded != null)
             {
                 m_jsonObject = loaded;
@@ -151,24 +153,6 @@ namespace ui_designer
             }
 
             return current;
-        }
-
-        private JObject LoadJObject(string filepath)
-        {
-            try
-            {
-                // read JSON directly from a file
-                using (StreamReader file = File.OpenText(filepath))
-                using (JsonTextReader reader = new JsonTextReader(file))
-                {
-                    return (JObject)JToken.ReadFrom(reader);
-                }
-            }
-            catch (Exception e)
-            {
-                Session.LogExceptionDetail(e);
-                return null;
-            }
         }
 
         /// <summary>

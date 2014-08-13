@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,16 +46,20 @@
   <ItemGroup>
     <Compile Include="Base\Consts.cs" />
     <Compile Include="Base\Enums.cs" />
+    <Compile Include="Base\JsonUtil.cs" />
+    <Compile Include="Base\ResUtil.cs" />
     <Compile Include="Base\Structs.cs" />
     <Compile Include="Base\Utilities.cs" />
     <Compile Include="Controls\Button.cs" />
-    <Compile Include="Elements\Image.cs" />
+    <Compile Include="Elements\ImageNode.cs" />
     <Compile Include="Elements\Node.cs" />
     <Compile Include="Elements\NodeData.cs" />
     <Compile Include="Elements\NodeJsonUtil.cs" />
     <Compile Include="Elements\NodeNameUtil.cs" />
     <Compile Include="Elements\Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceManager.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="Widgets\RootNode.cs" />
   </ItemGroup>
   <ItemGroup>

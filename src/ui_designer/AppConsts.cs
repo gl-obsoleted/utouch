@@ -11,7 +11,7 @@ namespace ui_designer
     {
         public static readonly string TempFolderName = "temp";
         public static string UserPrefFilePath = Path.Combine(AppConsts.TempFolderName, "user_pref.json");
-        
+
         public const string ConfigFileDefault = "cfg_default.json";
         public const string ConfigFileUser = "cfg_user.json";
     }

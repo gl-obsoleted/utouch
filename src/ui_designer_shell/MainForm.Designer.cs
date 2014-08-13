@@ -58,6 +58,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
+            this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -202,6 +203,8 @@
             // 
             // actionsToolStripMenuItem
             // 
+            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.m_menuDelete});
             this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
             this.actionsToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.actionsToolStripMenuItem.Text = "&Actions";
@@ -325,6 +328,14 @@
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
             // 
+            // m_menuDelete
+            // 
+            this.m_menuDelete.Name = "m_menuDelete";
+            this.m_menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Text = "删除(&D)";
+            this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -388,6 +399,7 @@
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
         private System.Windows.Forms.ToolStripMenuItem m_menuResForm;
+        private System.Windows.Forms.ToolStripMenuItem m_menuDelete;
     }
 }
 

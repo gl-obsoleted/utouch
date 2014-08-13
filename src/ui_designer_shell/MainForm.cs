@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ui_designer;
+using ui_lib;
 using ui_lib.Base;
 using ui_lib.Elements;
 
@@ -117,6 +118,11 @@ namespace ui_designer_shell
             Point pt = PointToScreen(m_resForm.Location);
             ConfigUserPref.Instance.SetValue("forms.res_form", "location", Utilities.PointToString(pt));
             ConfigUserPref.Instance.SetValue("forms.res_form", "size", Utilities.SizeToString(m_resForm.Size));
+        }
+
+        private void m_menuDelete_Click(object sender, EventArgs e)
+        {
+            Session.Message("Delete");
         }
     }
 }

@@ -35,6 +35,7 @@
             // m_layoutTreeView
             // 
             this.m_layoutTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_layoutTreeView.ItemHeight = 18;
             this.m_layoutTreeView.Location = new System.Drawing.Point(0, 0);
             this.m_layoutTreeView.Name = "m_layoutTreeView";
             treeNode1.Name = "Root";

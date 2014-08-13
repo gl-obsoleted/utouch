@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace ui_designer
+namespace ui_lib
 {
     public class Session
     {
@@ -46,6 +47,13 @@ namespace ui_designer
                 return "";
 
             return fs.Name;
+        }
+
+        public static DialogResult Message(string format, params object[] args)
+        {
+            string msg = string.Format(format, args);
+            Log("=MESSAGE SHOWN=: ", msg);
+            return MessageBox.Show(msg);
         }
 
         static int ExceptionCounter = 0;
