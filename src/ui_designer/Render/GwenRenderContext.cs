@@ -12,9 +12,11 @@ namespace ui_designer
         {
             m_canvas = canvas;
             m_renderer = renderer;
+            m_font = new Gwen.Font(renderer);
         }
 
         public Gwen.Control.Canvas m_canvas;
         public Gwen.Renderer.Tao m_renderer;
+        public Gwen.Font m_font;
     }
 }

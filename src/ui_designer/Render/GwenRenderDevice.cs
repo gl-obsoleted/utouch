@@ -22,6 +22,10 @@ namespace ui_designer
             {
                 RenderImageNode(node as ImageNode, grc);
             }
+            else if (node is TextNode)
+            {
+                RenderTextNode(node as TextNode, grc);
+            }
             else
             {
                 Rectangle rect = node.GetBounds();
@@ -38,11 +42,22 @@ namespace ui_designer
                 Rectangle rect = imageNode.GetBounds();
                 rect.Offset(grc.m_accumTranslate);
                 grc.m_renderer.DrawTexturedRect(tri.texture, rect,
-                    tri.u1, 
-                    tri.v1, 
-                    tri.u2, 
+                    tri.u1,
+                    tri.v1,
+                    tri.u2,
                     tri.v2);
             }
+        }
+
+        private void RenderTextNode(TextNode textNode, GwenRenderContext grc)
+        {
+            Point loc = textNode.Position;
+            loc.Offset(grc.m_accumTranslate);
+
+            Color c = grc.m_renderer.DrawColor;
+            grc.m_renderer.DrawColor = textNode.Color;
+            grc.m_renderer.RenderText(grc.m_font, loc, textNode.Text);
+            grc.m_renderer.DrawColor = c;
         }
     }
 }

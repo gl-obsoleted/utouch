@@ -56,7 +56,7 @@
     <Compile Include="Elements\NodeData.cs" />
     <Compile Include="Elements\NodeJsonUtil.cs" />
     <Compile Include="Elements\NodeNameUtil.cs" />
-    <Compile Include="Elements\Text.cs" />
+    <Compile Include="Elements\TextNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManager.cs" />
     <Compile Include="Session.cs" />

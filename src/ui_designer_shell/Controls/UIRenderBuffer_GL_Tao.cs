@@ -48,6 +48,7 @@ namespace ui_designer_shell.Controls
         public void OnSelectSceneNode(Node n, object sender)
         {
             m_selectedSceneNode = n;
+            glControl.Invalidate();
         }
 
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)

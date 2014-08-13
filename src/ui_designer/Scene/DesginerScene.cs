@@ -32,14 +32,12 @@ namespace ui_designer
             m_child2.Size = new Size(50, 50);
             m_root.Attach(m_child2);
 
-            //Node m_child2 = new Node();
-            //m_child2.Position = new Point(150, 50);
-            //m_child2.Size = new Size(50, 50);
-            //Node m_child3 = new RootNode();
-            //m_child3.Position = new Point(220, 50);
-            //m_child3.Size = new Size(50, 50);
-            //m_root.Attach(m_child2);
-            //m_root.Attach(m_child3);
+            TextNode m_child3 = new TextNode();
+            m_child3.Text = "hello world";
+            m_child3.Color = Color.Purple;
+            m_child3.Position = new Point(50, 120);
+            m_child3.Size = new Size(100, 30);
+            m_root.Attach(m_child3);
         }
 
         public bool Init()
