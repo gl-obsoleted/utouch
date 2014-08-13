@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
 using ui_designer;
+using ui_lib.Elements;
 
 namespace ui_designer_shell.Controls
 {
@@ -41,6 +42,12 @@ namespace ui_designer_shell.Controls
         public Gwen.Renderer.Tao GetRenderer()
         {
             return renderer;
+        }
+
+        Node m_selectedSceneNode;
+        public void OnSelectSceneNode(Node n, object sender)
+        {
+            m_selectedSceneNode = n;
         }
 
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
@@ -87,6 +94,23 @@ namespace ui_designer_shell.Controls
             renderer.Begin();
             if (m_scene != null)
                 m_scene.Render(m_renderContext, m_renderDevice);
+
+            //float[] c = new float[4];
+            //Gl.glGetFloatv(Gl.GL_CURRENT_COLOR, c);
+            //Gl.glColor3f(1.0f, 0.0f, 0.0f);
+            //Gl.glColor4fv(c);
+
+            if (m_selectedSceneNode != null)
+            {
+                Rectangle rect = m_selectedSceneNode.GetWorldBounds();
+                rect.Inflate(5, 5);
+
+                Color c = renderer.DrawColor;
+                renderer.DrawColor = Color.Red;
+                renderer.DrawLinedRect(rect);
+                renderer.DrawColor = c;
+            }
+
             renderer.End();
         }
 
@@ -118,6 +142,9 @@ namespace ui_designer_shell.Controls
                 btn = 1;
             }
             canvas.Input_MouseButton(btn, false);
+
+            Node n = m_scene.Pick(new Point(prevX, prevY));
+            ShellNotifier.Instance.SelectSceneNode(n, this);
 
             glControl.Invalidate();
         }

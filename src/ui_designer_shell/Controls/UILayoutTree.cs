@@ -12,8 +12,6 @@ using ui_lib.Elements;
 
 namespace ui_designer_shell.Controls
 {
-    public delegate void OnSelectedNodeChanged(Node n);
-
     public partial class UILayoutTree : UserControl
     {
         public UILayoutTree()
@@ -68,7 +66,44 @@ namespace ui_designer_shell.Controls
             }
         }
 
-        public event OnSelectedNodeChanged SelectionChange;
+        public void OnSelectSceneNode(Node n, object sender)
+        {
+            string rootKey = ShellConstants.UILayoutTree_RootName;
+            if (n == null || !m_layoutTreeView.Nodes.ContainsKey(rootKey))
+            {
+                if (m_layoutTreeView.SelectedNode != null)
+                {
+                    m_layoutTreeView.SelectedNode = null;
+                }
+                return;
+            }
+
+            TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
+            TreeNode target = SelectTreeNodeRecursively(treeRoot, n);
+            if (target != m_layoutTreeView.SelectedNode)
+            {
+                m_layoutTreeView.SelectedNode = target;
+            }
+        }
+
+        public TreeNode SelectTreeNodeRecursively(TreeNode treeNode, Node n)
+        {
+            if (treeNode == null)
+                return null;
+
+            Node sceneNode = treeNode.Tag as Node;
+            if (sceneNode == n)
+                return treeNode;
+
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                TreeNode target = SelectTreeNodeRecursively(tn, n);
+                if (target != null)
+                    return target;
+            }
+
+            return null;
+        }
 
         private string GenerateNodeLabel(Node sceneNode)
         {
@@ -87,8 +122,7 @@ namespace ui_designer_shell.Controls
             if (sceneNode == null)
                 return;
 
-            if (SelectionChange != null)
-                SelectionChange(sceneNode);
+            ShellNotifier.Instance.SelectSceneNode(sceneNode, this);
         }
     }
 }

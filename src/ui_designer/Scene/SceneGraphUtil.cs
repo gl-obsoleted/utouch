@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,27 @@ namespace ui_designer
 
             foreach (Node child in node.Children)
                 UnifyParents(child);
+        }
+
+        /// <summary>
+        /// 找到该位置所在的节点
+        /// </summary>
+        public static Node Pick(Node node, Point location)
+        {
+            if (!node.GetBounds().Contains(location))
+                return null;
+
+            location.X -= node.Position.X;
+            location.Y -= node.Position.Y;
+            foreach (Node child in node.Children)
+            {
+                Node ret = Pick(child, location);
+                if (ret != null)
+                    return ret;
+            }
+            location.X += node.Position.X;
+            location.Y += node.Position.Y;
+            return node;
         }
     }
 }

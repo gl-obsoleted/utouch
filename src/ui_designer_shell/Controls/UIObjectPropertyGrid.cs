@@ -24,7 +24,7 @@ namespace ui_designer_shell.Controls
             InitializeComponent();
         }
 
-        public void OnLayoutTreeSelectionChange(Node n)
+        public void OnSelectSceneNode(Node n, object sender)
         {
             m_propertyGrid.SelectedObject = n;
         }

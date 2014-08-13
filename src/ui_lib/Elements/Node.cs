@@ -57,6 +57,19 @@ namespace ui_lib.Elements
             return new Rectangle(Position, Size);
         }
 
+        public Rectangle GetWorldBounds()
+        {
+            Point loc = Position;
+            Node p = Parent;
+            while (p != null)
+            {
+                loc.X += p.Position.X;
+                loc.Y += p.Position.Y;
+                p = p.Parent;
+            }
+            return new Rectangle(loc, Size);
+        }
+
         public void UnifyParentOfChildren()
         {
             foreach (Node n in m_children)

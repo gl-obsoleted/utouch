@@ -36,10 +36,12 @@ namespace ui_designer_shell
                 return false;
 
             // connect the layout tree and the property grid
-            m_uiLayoutTree.SelectionChange += m_uiPropertyGrid.OnLayoutTreeSelectionChange;
             m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
             m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
-            
+
+            ShellNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
+            ShellNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
+            ShellNotifier.Instance.SelectNode += m_glCtrl.OnSelectSceneNode;
             return true;
         }
 

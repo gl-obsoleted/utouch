@@ -80,6 +80,11 @@ namespace ui_designer
             m_renderSys.Render(m_root, rc, rs);
         }
 
+        public Node Pick(Point location)
+        {
+            return SceneGraphUtil.Pick(m_root, location);
+        }
+
         private RootNode m_root = new RootNode();
         private RenderSystem m_renderSys = new RenderSystem();
         private ArchiveSystem m_archiveSys = new ArchiveSystem();
