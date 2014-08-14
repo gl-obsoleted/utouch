@@ -20,6 +20,7 @@ namespace ui_lib
             string content = string.Format(format, args);
             string fulltime = DateTime.Now.ToString("HH-mm-ss ");
             Session.LogFile.WriteLine(fulltime + content);
+            System.Diagnostics.Debug.WriteLine(fulltime + content);
         }
 
         public static void LogExceptionDetail(Exception e)

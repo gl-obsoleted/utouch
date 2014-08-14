@@ -24,10 +24,11 @@ namespace ui_designer_shell
 
     public delegate void SelectNodeHandler(Node n, object sender);
     public delegate void MoveNodeHandler(object sender, MoveNodeEventArgs args);
+    public delegate void RefreshSceneHandler();
 
-    public class SceneActionNotifier
+    public class SceneEdEventNotifier
     {
-        public static SceneActionNotifier Instance = new SceneActionNotifier();
+        public static SceneEdEventNotifier Instance = new SceneEdEventNotifier();
 
         public void Emit_SelectNode(Node n, object sender)
         {
@@ -45,7 +46,16 @@ namespace ui_designer_shell
             }
         }
 
+        public void Emit_RefreshScene()
+        {
+            if (RefreshScene != null)
+            {
+                RefreshScene();
+            }
+        }
+
         public event SelectNodeHandler SelectNode;
         public event MoveNodeHandler MoveNode;
+        public event RefreshSceneHandler RefreshScene;
     }
 }

@@ -11,6 +11,7 @@ using ui_designer;
 using ui_lib;
 using ui_lib.Base;
 using ui_lib.Elements;
+using ui_designer_shell;
 
 namespace ui_designer_shell
 {
@@ -39,9 +40,15 @@ namespace ui_designer_shell
             m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
             m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
 
-            SceneActionNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
-            SceneActionNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
-            SceneActionNotifier.Instance.SelectNode += m_glCtrl.OnSelectSceneNode;
+            SceneEdEventNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
+            SceneEdEventNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
+            SceneEdEventNotifier.Instance.SelectNode += (n, s) => { m_glCtrl.Refresh(); };
+
+            SceneEdEventNotifier.Instance.RefreshScene += () => 
+            {
+                m_uiPropertyGrid.GetGridCtrl().RefreshPropertyValues();
+                m_glCtrl.Refresh(); 
+            };
             return true;
         }
 
@@ -98,6 +105,7 @@ namespace ui_designer_shell
 
             m_glCtrl.SetScene(m_scene);
             m_uiLayoutTree.SetScene(m_scene);
+            SceneEd.Instance.ResetScene(m_scene);
             return true;
         }
 
@@ -125,6 +133,16 @@ namespace ui_designer_shell
         private void m_menuDelete_Click(object sender, EventArgs e)
         {
             Session.Message("Delete");
+        }
+
+        private void m_menuUndo_Click(object sender, EventArgs e)
+        {
+            SceneEd.Instance.Undo();
+        }
+
+        private void m_menuRedo_Click(object sender, EventArgs e)
+        {
+            SceneEd.Instance.Redo();
         }
     }
 }

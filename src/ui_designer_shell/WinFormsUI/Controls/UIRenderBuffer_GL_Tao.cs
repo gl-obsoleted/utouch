@@ -44,13 +44,6 @@ namespace ui_designer_shell.Controls
             return renderer;
         }
 
-        Node m_selectedSceneNode;
-        public void OnSelectSceneNode(Node n, object sender)
-        {
-            m_selectedSceneNode = n;
-            glControl.Invalidate();
-        }
-
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
         {
             glControl.InitializeContexts();
@@ -101,9 +94,9 @@ namespace ui_designer_shell.Controls
             //Gl.glColor3f(1.0f, 0.0f, 0.0f);
             //Gl.glColor4fv(c);
 
-            if (m_selectedSceneNode != null)
+            foreach (Node n in SceneEd.Instance.Selection)
             {
-                Rectangle rect = m_selectedSceneNode.GetWorldBounds();
+                Rectangle rect = n.GetWorldBounds();
                 rect.Inflate(5, 5);
 
                 Color c = renderer.DrawColor;
@@ -111,7 +104,7 @@ namespace ui_designer_shell.Controls
                 renderer.DrawLinedRect(rect);
                 renderer.RenderText(m_renderContext.m_font, 
                     new Point(rect.Left, rect.Top - 15),
-                    m_selectedSceneNode.Name + " [" + m_selectedSceneNode.GetType().Name + "]");
+                    n.Name + " [" + n.GetType().Name + "]");
                 renderer.DrawColor = c;
             }
 
@@ -130,7 +123,7 @@ namespace ui_designer_shell.Controls
                 btn = 1;
             }
             canvas.Input_MouseButton(btn, true);
-
+            SceneEd.Instance.MouseDown(e);
             glControl.Invalidate();
         }
 
@@ -146,10 +139,7 @@ namespace ui_designer_shell.Controls
                 btn = 1;
             }
             canvas.Input_MouseButton(btn, false);
-
-            Node n = m_scene.Pick(new Point(prevX, prevY));
-            SceneActionNotifier.Instance.Emit_SelectNode(n, this);
-
+            SceneEd.Instance.MouseUp(e);
             glControl.Invalidate();
         }
 
@@ -160,6 +150,7 @@ namespace ui_designer_shell.Controls
             canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
             prevX = e.X;
             prevY = e.Y;
+            SceneEd.Instance.MouseMove(e);
             glControl.Invalidate();
         }
 

@@ -37,6 +37,11 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.panelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +50,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuResForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +62,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
-            this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -76,9 +79,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.panelsToolStripMenuItem,
             this.addToolStripMenuItem,
-            this.actionsToolStripMenuItem,
             this.testFramesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -147,6 +150,46 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.m_menuUndo,
+            this.m_menuRedo,
+            this.toolStripSeparator4,
+            this.m_menuDelete});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // m_menuUndo
+            // 
+            this.m_menuUndo.Name = "m_menuUndo";
+            this.m_menuUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuUndo.Text = "&Undo";
+            this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
+            // 
+            // m_menuRedo
+            // 
+            this.m_menuRedo.Name = "m_menuRedo";
+            this.m_menuRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuRedo.Text = "&Redo";
+            this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            // 
+            // m_menuDelete
+            // 
+            this.m_menuDelete.Name = "m_menuDelete";
+            this.m_menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Text = "&Delete";
+            this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
+            // 
             // panelsToolStripMenuItem
             // 
             this.panelsToolStripMenuItem.Name = "panelsToolStripMenuItem";
@@ -200,14 +243,6 @@
             this.checkboxToolStripMenuItem.Name = "checkboxToolStripMenuItem";
             this.checkboxToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.checkboxToolStripMenuItem.Text = "Checkbox";
-            // 
-            // actionsToolStripMenuItem
-            // 
-            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.m_menuDelete});
-            this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
-            this.actionsToolStripMenuItem.Text = "&Actions";
             // 
             // testFramesToolStripMenuItem
             // 
@@ -328,14 +363,6 @@
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
             // 
-            // m_menuDelete
-            // 
-            this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
-            this.m_menuDelete.Text = "删除(&D)";
-            this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -384,7 +411,6 @@
         private System.Windows.Forms.ToolStripMenuItem buttonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem panelsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem m_menuNew;
@@ -399,6 +425,10 @@
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
         private System.Windows.Forms.ToolStripMenuItem m_menuResForm;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem m_menuUndo;
+        private System.Windows.Forms.ToolStripMenuItem m_menuRedo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem m_menuDelete;
     }
 }

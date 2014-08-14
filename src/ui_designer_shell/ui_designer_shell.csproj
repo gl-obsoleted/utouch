@@ -72,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\AppConsts.cs" />
+    <Compile Include="SceneEd\Action\Action.cs" />
+    <Compile Include="SceneEd\Action\Action_Move.cs" />
+    <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="Scene\Archive\Archive.cs" />
     <Compile Include="Scene\Archive\ArchiveUtil.cs" />
     <Compile Include="Scene\Archive\Archive_Json.cs" />
@@ -120,7 +123,7 @@
     </Compile>
     <Compile Include="Scene\DesginerScene.cs" />
     <Compile Include="Scene\SceneGraphUtil.cs" />
-    <Compile Include="Scene\SceneActionNotifier.cs" />
+    <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </EmbeddedResource>
