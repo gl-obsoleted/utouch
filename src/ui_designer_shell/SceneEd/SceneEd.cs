@@ -60,7 +60,7 @@ namespace ui_designer_shell
                 if (m_dragAction != null)
                 {
                     m_dragAction.EndUpdatePosition(e.Location - (Size)(m_beginDragPos));
-                    AddAction(m_dragAction);
+                    AddUndoableAction(m_dragAction);
                     m_dragAction = null;
                 }
                 else 
@@ -78,9 +78,10 @@ namespace ui_designer_shell
             SceneEdEventNotifier.Instance.Emit_RefreshScene();
         }
 
-        public void AddAction(Action a)
+        public void AddUndoableAction(Action a)
         {
             m_actionHistory.Add(a);
+            m_redoQueue.Clear();    // 当正在 undo/redo 过程中时，如果有了新的操作，那些没有做的 redo 全部丢弃
         }
 
         public void Undo()

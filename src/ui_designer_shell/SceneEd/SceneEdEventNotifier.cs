@@ -8,22 +8,7 @@ using ui_lib.Elements;
 
 namespace ui_designer_shell
 {
-    public class MoveNodeEventArgs : EventArgs
-    {
-        public MoveNodeEventArgs(Node target, Point oldP, Point newP)
-        {
-            m_target = target;
-            m_oldPos = oldP;
-            m_newPos = newP;
-        }
-
-        Node m_target;
-        Point m_oldPos;
-        Point m_newPos;
-    }
-
     public delegate void SelectNodeHandler(Node n, object sender);
-    public delegate void MoveNodeHandler(object sender, MoveNodeEventArgs args);
     public delegate void RefreshSceneHandler();
 
     public class SceneEdEventNotifier
@@ -38,14 +23,6 @@ namespace ui_designer_shell
             }
         }
 
-        public void Emit_MoveNode(object sender, MoveNodeEventArgs args)
-        {
-            if (MoveNode != null)
-            {
-                MoveNode(sender, args);
-            }
-        }
-
         public void Emit_RefreshScene()
         {
             if (RefreshScene != null)
@@ -55,7 +32,6 @@ namespace ui_designer_shell
         }
 
         public event SelectNodeHandler SelectNode;
-        public event MoveNodeHandler MoveNode;
         public event RefreshSceneHandler RefreshScene;
     }
 }
