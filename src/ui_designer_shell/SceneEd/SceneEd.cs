@@ -14,6 +14,8 @@ namespace ui_designer_shell
     {
         public static SceneEd Instance = new SceneEd();
 
+        public bool IsHoldingCtrl { get; set; }
+
         public List<Node> Selection { get { return m_selection; } }
 
         public void ResetScene(DesginerScene scene)
@@ -68,7 +70,10 @@ namespace ui_designer_shell
                     Node n = m_scene.Pick(e.Location);
                     SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
 
-                    m_selection.Clear();
+                    if (!IsHoldingCtrl)
+                    {
+                        m_selection.Clear();
+                    }
                     if (n != null)
                     {
                         m_selection.Add(n);
