@@ -19,7 +19,7 @@ namespace ui_designer_shell.Controls
             InitializeComponent();
 
             m_layoutTreeView.Nodes.Clear();
-            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(ShellConstants.UILayoutTree_RootName, "<unspecified>");
+            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(AppConsts.UILayoutTree_RootName, "<unspecified>");
         }
 
         public void SetScene(DesginerScene scene)
@@ -30,7 +30,7 @@ namespace ui_designer_shell.Controls
 
         public void PopulateLayout()
         {
-            string rootKey = ShellConstants.UILayoutTree_RootName;
+            string rootKey = AppConsts.UILayoutTree_RootName;
             if (!m_layoutTreeView.Nodes.ContainsKey(rootKey))
                 return;
 
@@ -68,7 +68,7 @@ namespace ui_designer_shell.Controls
 
         public void OnSelectSceneNode(Node n, object sender)
         {
-            string rootKey = ShellConstants.UILayoutTree_RootName;
+            string rootKey = AppConsts.UILayoutTree_RootName;
             if (n == null || !m_layoutTreeView.Nodes.ContainsKey(rootKey))
             {
                 if (m_layoutTreeView.SelectedNode != null)

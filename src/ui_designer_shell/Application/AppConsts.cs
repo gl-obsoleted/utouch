@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ui_lib.Base;
 
 namespace ui_designer
 {
@@ -14,5 +15,8 @@ namespace ui_designer
 
         public const string ConfigFileDefault = "cfg_default.json";
         public const string ConfigFileUser = "cfg_user.json";
+
+        public static readonly string UILayoutTree_RootName = RootNodeConstants.Default_Name;
+        public static readonly string LogFilename = "ui_designer.log";
     }
 }

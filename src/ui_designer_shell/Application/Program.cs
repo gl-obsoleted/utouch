@@ -48,7 +48,7 @@ namespace ui_designer_shell
                 return;
             }
 
-            using (Session.LogFile = new StreamWriter(Path.Combine(Session.SessionFolder, ShellConstants.LogFilename)))
+            using (Session.LogFile = new StreamWriter(Path.Combine(Session.SessionFolder, AppConsts.LogFilename)))
             {
                 Session.Log("Log started. '{0}'", Session.GetLogFilePath());
 

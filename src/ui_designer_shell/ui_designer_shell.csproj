@@ -46,6 +46,10 @@
     <Reference Include="Gwen.UnitTest">
       <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.UnitTest.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -67,59 +71,69 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\UIRenderBuffer_GL_Tao.cs">
+    <Compile Include="Application\AppConsts.cs" />
+    <Compile Include="Scene\Archive\Archive.cs" />
+    <Compile Include="Scene\Archive\ArchiveUtil.cs" />
+    <Compile Include="Scene\Archive\Archive_Json.cs" />
+    <Compile Include="Application\ConfigVars.cs" />
+    <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UIRenderBuffer_GL_Tao.Designer.cs">
+    <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.Designer.cs">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </Compile>
-    <Compile Include="GwenUnitTestForm.cs">
+    <Compile Include="WinFormsUI\GwenUnitTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GwenUnitTestForm.Designer.cs">
+    <Compile Include="WinFormsUI\GwenUnitTestForm.Designer.cs">
       <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="WinFormsUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="WinFormsUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Application\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controls\UILayoutTree.cs">
+    <Compile Include="WinFormsUI\Controls\UILayoutTree.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UILayoutTree.Designer.cs">
+    <Compile Include="WinFormsUI\Controls\UILayoutTree.Designer.cs">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UIObjectPropertyGrid.cs">
+    <Compile Include="WinFormsUI\Controls\UIObjectPropertyGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UIObjectPropertyGrid.Designer.cs">
+    <Compile Include="WinFormsUI\Controls\UIObjectPropertyGrid.Designer.cs">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="ResForm.cs">
+    <Compile Include="Scene\Render\GwenRenderContext.cs" />
+    <Compile Include="Scene\Render\GwenRenderDevice.cs" />
+    <Compile Include="Scene\Render\GwenTextureProvider.cs" />
+    <Compile Include="Scene\Render\Render.cs" />
+    <Compile Include="WinFormsUI\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ResForm.Designer.cs">
+    <Compile Include="WinFormsUI\ResForm.Designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShellConstants.cs" />
-    <Compile Include="SceneActionNotifier.cs" />
-    <EmbeddedResource Include="Controls\UILayoutTree.resx">
+    <Compile Include="Scene\DesginerScene.cs" />
+    <Compile Include="Scene\SceneGraphUtil.cs" />
+    <Compile Include="Scene\SceneActionNotifier.cs" />
+    <EmbeddedResource Include="WinFormsUI\Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UIObjectPropertyGrid.resx">
+    <EmbeddedResource Include="WinFormsUI\Controls\UIObjectPropertyGrid.resx">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UIRenderBuffer_GL_Tao.resx">
+    <EmbeddedResource Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.resx">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GwenUnitTestForm.resx">
+    <EmbeddedResource Include="WinFormsUI\GwenUnitTestForm.resx">
       <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="WinFormsUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -131,10 +145,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ResForm.resx">
+    <EmbeddedResource Include="WinFormsUI\ResForm.resx">
       <DependentUpon>ResForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,13 +161,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ui_designer\ui_designer.csproj">
-      <Project>{3aa0be89-52da-4a8d-8c42-2df2828d1f0a}</Project>
-      <Name>ui_designer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ui_lib\ui_lib.csproj">
       <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
       <Name>ui_lib</Name>
