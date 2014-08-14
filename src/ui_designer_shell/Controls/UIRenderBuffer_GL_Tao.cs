@@ -109,8 +109,9 @@ namespace ui_designer_shell.Controls
                 Color c = renderer.DrawColor;
                 renderer.DrawColor = Color.Red;
                 renderer.DrawLinedRect(rect);
-
-                renderer.RenderText(m_renderContext.m_font, new Point(rect.Left, rect.Top - 15), m_selectedSceneNode.Name);
+                renderer.RenderText(m_renderContext.m_font, 
+                    new Point(rect.Left, rect.Top - 15),
+                    m_selectedSceneNode.Name + " [" + m_selectedSceneNode.GetType().Name + "]");
                 renderer.DrawColor = c;
             }
 
@@ -147,7 +148,7 @@ namespace ui_designer_shell.Controls
             canvas.Input_MouseButton(btn, false);
 
             Node n = m_scene.Pick(new Point(prevX, prevY));
-            ShellNotifier.Instance.SelectSceneNode(n, this);
+            SceneActionNotifier.Instance.Emit_SelectNode(n, this);
 
             glControl.Invalidate();
         }

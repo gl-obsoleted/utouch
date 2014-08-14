@@ -122,7 +122,7 @@ namespace ui_designer_shell.Controls
             if (sceneNode == null)
                 return;
 
-            ShellNotifier.Instance.SelectSceneNode(sceneNode, this);
+            SceneActionNotifier.Instance.Emit_SelectNode(sceneNode, this);
         }
     }
 }

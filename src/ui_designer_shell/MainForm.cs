@@ -39,9 +39,9 @@ namespace ui_designer_shell
             m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
             m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
 
-            ShellNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
-            ShellNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
-            ShellNotifier.Instance.SelectNode += m_glCtrl.OnSelectSceneNode;
+            SceneActionNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
+            SceneActionNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
+            SceneActionNotifier.Instance.SelectNode += m_glCtrl.OnSelectSceneNode;
             return true;
         }
 

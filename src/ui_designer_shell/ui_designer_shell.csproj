@@ -106,7 +106,7 @@
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShellConstants.cs" />
-    <Compile Include="ShellNotifier.cs" />
+    <Compile Include="SceneActionNotifier.cs" />
     <EmbeddedResource Include="Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </EmbeddedResource>
