@@ -109,6 +109,8 @@ namespace ui_designer_shell.Controls
                 Color c = renderer.DrawColor;
                 renderer.DrawColor = Color.Red;
                 renderer.DrawLinedRect(rect);
+
+                renderer.RenderText(m_renderContext.m_font, new Point(rect.Left, rect.Top - 15), m_selectedSceneNode.Name);
                 renderer.DrawColor = c;
             }
 
