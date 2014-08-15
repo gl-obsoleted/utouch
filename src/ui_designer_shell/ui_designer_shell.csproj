@@ -74,11 +74,19 @@
     <Compile Include="Application\AppConsts.cs" />
     <Compile Include="SceneEd\Action\Action.cs" />
     <Compile Include="SceneEd\Action\Action_Move.cs" />
+    <Compile Include="SceneEd\OperationHistory.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
+    <Compile Include="SceneEd\SceneEd_Dragging.cs" />
     <Compile Include="Scene\Archive\Archive.cs" />
     <Compile Include="Scene\Archive\ArchiveUtil.cs" />
     <Compile Include="Scene\Archive\Archive_Json.cs" />
     <Compile Include="Application\ConfigVars.cs" />
+    <Compile Include="WinFormsUI\Controls\UIControlList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Controls\UIControlList.Designer.cs">
+      <DependentUpon>UIControlList.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +132,9 @@
     <Compile Include="Scene\DesginerScene.cs" />
     <Compile Include="Scene\SceneGraphUtil.cs" />
     <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
+    <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
+      <DependentUpon>UIControlList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinFormsUI\Controls\UILayoutTree.resx">
       <DependentUpon>UILayoutTree.cs</DependentUpon>
     </EmbeddedResource>

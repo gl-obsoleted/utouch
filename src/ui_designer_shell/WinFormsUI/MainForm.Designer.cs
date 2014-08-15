@@ -60,8 +60,10 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.pageControl = new System.Windows.Forms.TabPage();
             this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
+            this.uiControlList1 = new ui_designer_shell.WinFormsUI.Controls.UIControlList();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -73,6 +75,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.pageControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -292,6 +295,7 @@
             // 
             this.m_tabControl.Controls.Add(this.pageProject);
             this.m_tabControl.Controls.Add(this.pageLayout);
+            this.m_tabControl.Controls.Add(this.pageControl);
             this.m_tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_tabControl.Location = new System.Drawing.Point(0, 0);
             this.m_tabControl.Name = "m_tabControl";
@@ -347,6 +351,17 @@
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
             // 
+            // pageControl
+            // 
+            this.pageControl.Controls.Add(this.uiControlList1);
+            this.pageControl.Location = new System.Drawing.Point(4, 22);
+            this.pageControl.Name = "pageControl";
+            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
+            this.pageControl.Size = new System.Drawing.Size(143, 489);
+            this.pageControl.TabIndex = 2;
+            this.pageControl.Text = "Control";
+            this.pageControl.UseVisualStyleBackColor = true;
+            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -362,6 +377,14 @@
             this.m_uiPropertyGrid.Name = "m_uiPropertyGrid";
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
+            // 
+            // uiControlList1
+            // 
+            this.uiControlList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiControlList1.Location = new System.Drawing.Point(3, 3);
+            this.uiControlList1.Name = "uiControlList1";
+            this.uiControlList1.Size = new System.Drawing.Size(137, 483);
+            this.uiControlList1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -389,6 +412,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.pageControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +454,8 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuRedo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem m_menuDelete;
+        private System.Windows.Forms.TabPage pageControl;
+        private WinFormsUI.Controls.UIControlList uiControlList1;
     }
 }
 

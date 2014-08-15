@@ -10,7 +10,7 @@ using ui_lib.Elements;
 
 namespace ui_designer_shell
 {
-    public class SceneEd
+    public partial class SceneEd
     {
         public static SceneEd Instance = new SceneEd();
 
@@ -21,7 +21,7 @@ namespace ui_designer_shell
         public void ResetScene(DesginerScene scene)
         {
             m_scene = scene;
-            m_actionHistory.Clear();
+            m_operHistory.Clear();
         }
 
         bool m_isLeftDown = false;
@@ -62,7 +62,7 @@ namespace ui_designer_shell
                 if (m_dragAction != null)
                 {
                     m_dragAction.EndUpdatePosition(e.Location - (Size)(m_beginDragPos));
-                    AddUndoableAction(m_dragAction);
+                    m_operHistory.PushAction(m_dragAction);
                     m_dragAction = null;
                 }
                 else 
@@ -83,49 +83,20 @@ namespace ui_designer_shell
             SceneEdEventNotifier.Instance.Emit_RefreshScene();
         }
 
-        public void AddUndoableAction(Action a)
-        {
-            m_actionHistory.Add(a);
-            m_redoQueue.Clear();    // 当正在 undo/redo 过程中时，如果有了新的操作，那些没有做的 redo 全部丢弃
-        }
-
         public void Undo()
         {
-            if (m_actionHistory.Count == 0)
-                return;
-
-            int last = m_actionHistory.Count - 1;
-            Action act = m_actionHistory.ElementAt(last);
-            if (act != null)
-            {
-                act.Undo();
-            }
-
-            m_actionHistory.RemoveAt(last);
-            m_redoQueue.Add(act);
+            m_operHistory.Undo();
             SceneEdEventNotifier.Instance.Emit_RefreshScene();
         }
 
         public void Redo()
         {
-            if (m_redoQueue.Count == 0)
-                return;
-
-            int last = m_redoQueue.Count - 1;
-            Action act = m_redoQueue.ElementAt(last);
-            if (act != null)
-            {
-                act.Redo();
-            }
-
-            m_redoQueue.RemoveAt(last);
-            m_actionHistory.Add(act);
+            m_operHistory.Redo();
             SceneEdEventNotifier.Instance.Emit_RefreshScene();
         }
 
         private DesginerScene m_scene;
         private List<Node> m_selection = new List<Node>();
-        private List<Action> m_actionHistory = new List<Action>();
-        private List<Action> m_redoQueue = new List<Action>();
+        private OperationHistory m_operHistory = new OperationHistory();
     }
 }

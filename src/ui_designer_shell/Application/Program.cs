@@ -60,6 +60,8 @@ namespace ui_designer_shell
 
                 ConfigUserPref.Instance.Init();
 
+                TypeRegistry.Init();
+
                 try
                 {
                     MainForm mainForm = new MainForm();

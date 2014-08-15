@@ -57,7 +57,7 @@ namespace ui_lib.Elements
             return new Rectangle(Position, Size);
         }
 
-        public Rectangle GetWorldBounds()
+        public Point GetWorldPosition()
         {
             Point loc = Position;
             Node p = Parent;
@@ -67,7 +67,12 @@ namespace ui_lib.Elements
                 loc.Y += p.Position.Y;
                 p = p.Parent;
             }
-            return new Rectangle(loc, Size);
+            return loc;
+        }
+
+        public Rectangle GetWorldBounds()
+        {
+            return new Rectangle(GetWorldPosition(), Size);
         }
 
         public void UnifyParentOfChildren()
