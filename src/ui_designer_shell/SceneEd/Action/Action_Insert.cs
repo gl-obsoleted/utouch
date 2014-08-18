@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,13 @@ namespace ui_designer_shell
     {
         private Node m_targetNode;
         private Node m_insertedNode;
+        private Point m_targetPoint;
 
-        public Action_Insert(Node targetNode, Node insertedNode)
+        public Action_Insert(Node targetNode, Node insertedNode, Point targetPoint)
         {
             m_targetNode = targetNode;
             m_insertedNode = insertedNode;
+            m_targetPoint = targetPoint;
         }
 
         public override void Undo()
@@ -25,6 +28,7 @@ namespace ui_designer_shell
 
         public override void Redo()
         {
+            m_insertedNode.SetPositionClamped(m_targetPoint);
             m_targetNode.Attach(m_insertedNode);
         }
     }

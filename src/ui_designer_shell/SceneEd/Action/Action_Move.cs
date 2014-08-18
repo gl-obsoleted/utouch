@@ -21,18 +21,6 @@ namespace ui_designer_shell
             }
         }
 
-        public static int Clamp(int x, int min, int max)
-        {
-            return x < min ? min : (x > max ? max : x);
-        }
-
-        public static Point Clamp(Point pt, Rectangle rect)
-        {
-            return new Point(
-                Clamp(pt.X, rect.Left, rect.Right),
-                Clamp(pt.Y, rect.Top, rect.Bottom));
-        }
-
         public void UpdatePosition(Point offset)
         {
             for (int i = 0; i < m_selection.Length; ++i)
@@ -43,7 +31,7 @@ namespace ui_designer_shell
 
                 Node p = m_selection[i].Parent;
                 if (p != null)
-                    loc = Clamp(loc, new Rectangle(0, 0,
+                    loc = ui_lib.Base.Math.Clamp(loc, new Rectangle(0, 0,
                         p.Size.Width - m_selection[i].Size.Width,
                         p.Size.Height - m_selection[i].Size.Height));
 

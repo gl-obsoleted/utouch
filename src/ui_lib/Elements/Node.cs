@@ -37,6 +37,24 @@ namespace ui_lib.Elements
             Margin = 3;
         }
 
+        public void SetPositionClamped(Point pos)
+        {
+            Position = pos;
+            if (Parent != null)
+            {
+                NodeSGUtil.ClampBounds(this);
+            }
+        }
+
+        public void SetSizeClamped(Size size)
+        {
+            Size = size;
+            if (Parent != null)
+            {
+                NodeSGUtil.ClampBounds(this);
+            }
+        }
+
         public void Attach(Node n)
         {
             if (!m_children.Contains(n))
@@ -44,6 +62,7 @@ namespace ui_lib.Elements
                 n.Name = NodeNameUtil.GenerateUniqueChildName(this, n);
                 m_children.Add(n);
                 n.m_parent = this;
+                NodeSGUtil.ClampBounds(n);
             }
         }
 
@@ -95,6 +114,5 @@ namespace ui_lib.Elements
 
         protected Node m_parent;
         protected List<Node> m_children = new List<Node>();
-
     }
 }

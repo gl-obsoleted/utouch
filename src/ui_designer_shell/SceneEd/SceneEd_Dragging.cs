@@ -38,10 +38,10 @@ namespace ui_designer_shell
                     Node n = Activator.CreateInstance(t) as Node;
                     if (n != null)
                     {
-                        n.Position = m_draggingTargetPoint - (Size)(m_possibleTargetNode.GetWorldPosition());
+                        n.SetPositionClamped(m_draggingTargetPoint - (Size)(m_possibleTargetNode.GetWorldPosition()));
                         m_possibleTargetNode.Attach(n);
 
-                        Action act = new Action_Insert(m_possibleTargetNode, n);
+                        Action act = new Action_Insert(m_possibleTargetNode, n, m_draggingTargetPoint);
                         SceneEd.Instance.OperHistory.PushAction(act);
                         SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                     }
