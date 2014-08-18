@@ -11,7 +11,8 @@ namespace ui_lib.Elements
     {
         public ImageNode() : base()
         {
-
+            // 给一个合理的默认值
+            ResLocation = "uires://testres/uiatlas:tongyi.png";
         }
 
         [Category("Image")]

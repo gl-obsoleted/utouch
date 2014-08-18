@@ -13,6 +13,8 @@ namespace ui_lib.Elements
         public TextNode() : base()
         {
             Text = "<not_set_yet>";
+            Color = Color.OrangeRed;
+            Size = new Size(100, 30);
         }
 
         [Category("Text")]
