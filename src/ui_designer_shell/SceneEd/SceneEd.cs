@@ -18,6 +18,8 @@ namespace ui_designer_shell
 
         public List<Node> Selection { get { return m_selection; } }
 
+        public OperationHistory OperHistory { get { return m_operHistory; } }
+
         public void ResetScene(DesginerScene scene)
         {
             m_scene = scene;
@@ -41,7 +43,7 @@ namespace ui_designer_shell
                     m_dragAction = new Action_Move(m_selection);
                 }
             }
-            SceneEdEventNotifier.Instance.Emit_RefreshScene();
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
         public void MouseMove(MouseEventArgs e)
@@ -49,8 +51,8 @@ namespace ui_designer_shell
             if (m_isLeftDown && m_dragAction != null)
             {
                 m_dragAction.UpdatePosition(e.Location - (Size)(m_beginDragPos));
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
             }
-            SceneEdEventNotifier.Instance.Emit_RefreshScene();
         }
 
         public void MouseUp(MouseEventArgs e)
@@ -68,31 +70,37 @@ namespace ui_designer_shell
                 else 
                 {
                     Node n = m_scene.Pick(e.Location);
-                    SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
-
-                    if (!IsHoldingCtrl)
-                    {
-                        m_selection.Clear();
-                    }
-                    if (n != null)
-                    {
-                        m_selection.Add(n);
-                    }
+                    Select(n);
                 }
             }
-            SceneEdEventNotifier.Instance.Emit_RefreshScene();
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
         public void Undo()
         {
             m_operHistory.Undo();
-            SceneEdEventNotifier.Instance.Emit_RefreshScene();
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
         public void Redo()
         {
             m_operHistory.Redo();
-            SceneEdEventNotifier.Instance.Emit_RefreshScene();
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+        }
+
+        public void Select(Node n)
+        {
+            if (!IsHoldingCtrl)
+            {
+                m_selection.Clear();
+            }
+            if (n != null)
+            {
+                m_selection.Add(n);
+            }
+
+            SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
         }
 
         private DesginerScene m_scene;

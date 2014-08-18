@@ -8,8 +8,17 @@ using ui_lib.Elements;
 
 namespace ui_designer_shell
 {
+    [Flags]
+    public enum RefreshSceneOpt
+    {
+        Refresh_Rendering = 1,
+        Refresh_Layout = 2,
+        Refresh_Properties = 4,
+        Refresh_All = Refresh_Rendering | Refresh_Layout | Refresh_Properties,
+    }
+
     public delegate void SelectNodeHandler(Node n, object sender);
-    public delegate void RefreshSceneHandler();
+    public delegate void RefreshSceneHandler(RefreshSceneOpt opts);
 
     public class SceneEdEventNotifier
     {
@@ -23,11 +32,11 @@ namespace ui_designer_shell
             }
         }
 
-        public void Emit_RefreshScene()
+        public void Emit_RefreshScene(RefreshSceneOpt opts)
         {
             if (RefreshScene != null)
             {
-                RefreshScene();
+                RefreshScene(opts);
             }
         }
 

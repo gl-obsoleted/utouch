@@ -42,12 +42,23 @@ namespace ui_designer_shell
 
             SceneEdEventNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
             SceneEdEventNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
-            SceneEdEventNotifier.Instance.SelectNode += (n, s) => { m_glCtrl.Refresh(); };
 
-            SceneEdEventNotifier.Instance.RefreshScene += () => 
+            SceneEdEventNotifier.Instance.RefreshScene += (opts) => 
             {
-                m_uiPropertyGrid.GetGridCtrl().RefreshPropertyValues();
-                m_glCtrl.Refresh(); 
+                if (opts.HasFlag(RefreshSceneOpt.Refresh_Layout))
+                {
+                    m_uiLayoutTree.PopulateLayout();
+                }
+                if (opts.HasFlag(RefreshSceneOpt.Refresh_Properties))
+                {
+                    m_uiPropertyGrid.GetGridCtrl().RefreshPropertyValues();
+                }
+
+                // Rendering 排在后面是为了反映前两者的变化的结果
+                if (opts.HasFlag(RefreshSceneOpt.Refresh_Rendering))
+                {
+                    m_glCtrl.Refresh();
+                }
             };
             return true;
         }

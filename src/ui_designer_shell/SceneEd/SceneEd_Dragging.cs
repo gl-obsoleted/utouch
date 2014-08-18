@@ -22,7 +22,7 @@ namespace ui_designer_shell
             if (picked != m_possibleTargetNode)
             {
                 m_possibleTargetNode = picked;
-                SceneEdEventNotifier.Instance.Emit_RefreshScene();
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
             }
         }
 
@@ -41,7 +41,9 @@ namespace ui_designer_shell
                         n.Position = m_draggingTargetPoint - (Size)(m_possibleTargetNode.GetWorldPosition());
                         m_possibleTargetNode.Attach(n);
 
-                        SceneEdEventNotifier.Instance.Emit_RefreshScene();
+                        Action act = new Action_Insert(m_possibleTargetNode, n);
+                        SceneEd.Instance.OperHistory.PushAction(act);
+                        SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                     }
                 }
             }

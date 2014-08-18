@@ -39,9 +39,21 @@ namespace ui_lib.Elements
 
         public void Attach(Node n)
         {
-            n.Name = NodeNameUtil.GenerateUniqueChildName(this, n);
-            m_children.Add(n);
-            n.m_parent = this;
+            if (!m_children.Contains(n))
+            {
+                n.Name = NodeNameUtil.GenerateUniqueChildName(this, n);
+                m_children.Add(n);
+                n.m_parent = this;
+            }
+        }
+
+        public void Detach(Node n)
+        {
+            if (m_children.Contains(n))
+            {
+                m_children.Remove(n);
+                n.m_parent = null;
+            }
         }
 
         public void TraverseChildren(OnIteration callback) 
