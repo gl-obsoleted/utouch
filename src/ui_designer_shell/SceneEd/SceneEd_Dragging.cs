@@ -11,11 +11,19 @@ namespace ui_designer_shell
 {
     public partial class SceneEd
     {
+        public Node PossibleDraggingTarget { get { return m_possibleTargetNode; } }
+
         public void DragUpdated(int curX, int curY)
         {
             m_draggingTargetPoint.X = curX;
             m_draggingTargetPoint.Y = curY;
-            m_possibleTargetNode = m_scene.Pick(m_draggingTargetPoint);
+
+            Node picked = m_scene.Pick(m_draggingTargetPoint);
+            if (picked != m_possibleTargetNode)
+            {
+                m_possibleTargetNode = picked;
+                SceneEdEventNotifier.Instance.Emit_RefreshScene();
+            }
         }
 
         public void DragDroppped(int curX, int curY, string draggingInfo)

@@ -87,27 +87,11 @@ namespace ui_designer_shell.Controls
             canvas.RenderCanvas();
 
             renderer.Begin();
+
             if (m_scene != null)
                 m_scene.Render(m_renderContext, m_renderDevice);
 
-            //float[] c = new float[4];
-            //Gl.glGetFloatv(Gl.GL_CURRENT_COLOR, c);
-            //Gl.glColor3f(1.0f, 0.0f, 0.0f);
-            //Gl.glColor4fv(c);
-
-            foreach (Node n in SceneEd.Instance.Selection)
-            {
-                Rectangle rect = n.GetWorldBounds();
-                rect.Inflate(5, 5);
-
-                Color c = renderer.DrawColor;
-                renderer.DrawColor = Color.Red;
-                renderer.DrawLinedRect(rect);
-                renderer.RenderText(m_renderContext.m_font, 
-                    new Point(rect.Left, rect.Top - 15),
-                    n.Name + " [" + n.GetType().Name + "]");
-                renderer.DrawColor = c;
-            }
+            OverlayRendering.Render(renderer, m_renderContext);
 
             renderer.End();
         }

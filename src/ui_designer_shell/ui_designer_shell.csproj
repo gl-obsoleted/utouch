@@ -123,6 +123,7 @@
     <Compile Include="Scene\Render\GwenRenderDevice.cs" />
     <Compile Include="Scene\Render\GwenTextureProvider.cs" />
     <Compile Include="Scene\Render\Render.cs" />
+    <Compile Include="WinFormsUI\OverlayRendering\OverlayRendering.cs" />
     <Compile Include="WinFormsUI\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
