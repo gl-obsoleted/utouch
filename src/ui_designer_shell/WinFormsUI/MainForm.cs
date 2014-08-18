@@ -143,7 +143,7 @@ namespace ui_designer_shell
 
         private void m_menuDelete_Click(object sender, EventArgs e)
         {
-            Session.Message("Delete");
+            SceneEd.Instance.DeleteSelected();
         }
 
         private void m_menuUndo_Click(object sender, EventArgs e)

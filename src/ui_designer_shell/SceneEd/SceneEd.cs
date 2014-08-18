@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ui_designer;
+using ui_lib;
 using ui_lib.Elements;
 
 namespace ui_designer_shell
@@ -101,6 +102,32 @@ namespace ui_designer_shell
 
             SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
+        }
+
+        public void DeleteSelected()
+        {
+            if (SelectedRoot())
+            {
+                Session.Message("无法删除根节点。");                
+            }
+            else
+            {
+                m_operHistory.PushAction(new Action_Delete(Selection));
+                m_selection.Clear();
+
+                SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+            }
+        }
+
+        public bool SelectedRoot()
+        {
+            foreach (Node n in Selection)
+            {
+                if (n.Parent == null)
+                    return true;
+            }
+            return false;
         }
 
         private DesginerScene m_scene;

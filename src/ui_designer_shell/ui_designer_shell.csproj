@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Application\AppConsts.cs" />
     <Compile Include="SceneEd\Action\Action.cs" />
+    <Compile Include="SceneEd\Action\Action_Delete.cs" />
     <Compile Include="SceneEd\Action\Action_Insert.cs" />
     <Compile Include="SceneEd\Action\Action_Move.cs" />
     <Compile Include="SceneEd\OperationHistory.cs" />
