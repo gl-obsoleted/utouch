@@ -161,9 +161,12 @@ namespace ui_designer_shell
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Point pt = PointToScreen(m_resForm.Location);
-            ConfigUserPref.Instance.SetValue("forms.res_form", "location", Utilities.PointToString(pt));
-            ConfigUserPref.Instance.SetValue("forms.res_form", "size", Utilities.SizeToString(m_resForm.Size));
+            if (m_resForm != null)
+            {
+                Point pt = PointToScreen(m_resForm.Location);
+                ConfigUserPref.Instance.SetValue("forms.res_form", "location", Utilities.PointToString(pt));
+                ConfigUserPref.Instance.SetValue("forms.res_form", "size", Utilities.SizeToString(m_resForm.Size));
+            }
         }
 
         private void m_menuDelete_Click(object sender, EventArgs e)
