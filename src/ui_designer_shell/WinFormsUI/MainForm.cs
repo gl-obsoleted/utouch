@@ -143,9 +143,9 @@ namespace ui_designer_shell
                 ImageNode sel = SceneEd.Instance.Selection.First() as ImageNode;
                 if (sel != null)
                 {
-                    string newLoc = Utilities.ComposeResourceURL(atlasFileName, imageName);
-                    Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.ResLocation, newLoc);
-                    sel.ResLocation = newLoc;
+                    string newLoc = Utilities.ComposeResURL(atlasFileName, imageName);
+                    Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.Res, newLoc);
+                    sel.Res = newLoc;
                     SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
                 }
                 else

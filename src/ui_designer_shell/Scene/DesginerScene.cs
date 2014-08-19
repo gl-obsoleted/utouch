@@ -21,13 +21,13 @@ namespace ui_designer
         public DesginerScene()
         {
             ImageNode m_child = new ImageNode();
-            m_child.ResLocation = "uires://testres/uiatlas:4880yuanbao.png";
+            m_child.Res = "uires://testres/uiatlas:4880yuanbao.png";
             m_child.Position = new Point(50, 50);
             m_child.Size = new Size(50, 50);
             m_root.Attach(m_child);
 
             ImageNode m_child2 = new ImageNode();
-            m_child2.ResLocation = "uires://testres/uiatlas:+.png";
+            m_child2.Res = "uires://testres/uiatlas:+.png";
             m_child2.Position = new Point(150, 50);
             m_child2.Size = new Size(50, 50);
             m_root.Attach(m_child2);

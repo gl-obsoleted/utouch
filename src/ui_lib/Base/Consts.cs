@@ -18,6 +18,8 @@ namespace ui_lib.Base
 
         public const string ResourceProtocol = "uires://";
         public const char ResourceDelimeter = ':';
+
+        public const string DefaultAtlasFile = "testres/uiatlas";
     }
 
     public class ResolutionLut

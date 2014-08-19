@@ -39,7 +39,7 @@ namespace ui_lib.Base
             return new Size(int.Parse(coords[0]), int.Parse(coords[1]));
         }
 
-        public static string ComposeResourceURL(string atlasFileName, string atlasTileName)
+        public static string ComposeResURL(string atlasFileName, string atlasTileName)
         {
             return string.Format("{0}{1}:{2}", Constants.ResourceProtocol, atlasFileName, atlasTileName);
         }

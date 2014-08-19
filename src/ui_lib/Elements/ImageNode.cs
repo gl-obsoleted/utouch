@@ -9,14 +9,15 @@ namespace ui_lib.Elements
 {
     public class ImageNode : Node
     {
-        public ImageNode() : base()
+        public ImageNode()
+            : base()
         {
             // 给一个合理的默认值
-            ResLocation = "uires://testres/uiatlas:tongyi.png";
+            Res = "uires://testres/uiatlas:tongyi.png";
         }
 
         [Category("Image")]
         [Description("资源名")]
-        public string ResLocation { get; set; }
+        public string Res { get; set; }
     }
 }
