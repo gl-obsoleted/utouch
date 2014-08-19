@@ -80,7 +80,7 @@ namespace ui_designer_shell
 
         private DesginerScene m_scene;
 
-        private ResForm m_resForm = new ResForm();
+        private ResForm m_resForm;
 
         private void m_menuSave_Click(object sender, EventArgs e)
         {
@@ -122,6 +122,8 @@ namespace ui_designer_shell
 
         private void m_menuResForm_Click(object sender, EventArgs e)
         {
+            m_resForm = new ResForm();
+            m_resForm.ApplyImage += m_resForm_ApplyImage;
             m_resForm.Show(this);
 
             string loc = ConfigUserPref.Instance.GetValue("forms.res_form", "location");
@@ -131,6 +133,29 @@ namespace ui_designer_shell
                 Point pt = Utilities.StringToPoint(loc);
                 Size sz = Utilities.StringToSize(size);
                 m_resForm.SetDesktopBounds(pt.X, pt.Y, sz.Width, sz.Height);
+            }
+        }
+
+        void m_resForm_ApplyImage(string atlasFileName, string imageName)
+        {
+            if (SceneEd.Instance.Selection.Count == 1)
+            {
+                ImageNode sel = SceneEd.Instance.Selection.First() as ImageNode;
+                if (sel != null)
+                {
+                    string newLoc = Utilities.ComposeResourceURL(atlasFileName, imageName);
+                    Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.ResLocation, newLoc);
+                    sel.ResLocation = newLoc;
+                    SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
+                }
+                else
+                {
+                    Session.Message("现在暂不支持设置到非 ImageNode 节点.");
+                }
+            }
+            else
+            {
+                Session.Message("请选中单个的 ImageNode 节点后再试 (现有 {0} 个节点被选中).", SceneEd.Instance.Selection.Count);
             }
         }
 

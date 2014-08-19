@@ -35,6 +35,8 @@ namespace ui_lib
             return m_resLut.TryGetValue(name, out res) ? res : null;
         }
 
+        public Dictionary<string, ImageResource> ResLut { get { return m_resLut; } }
+
         private string m_resFilePath;
         private Dictionary<string, ImageResource> m_resLut = new Dictionary<string, ImageResource>();
     }
@@ -99,6 +101,8 @@ namespace ui_lib
 
             return group.FindResource(resName);
         }
+
+        public Dictionary<string, ImageResourceGroup> ResGroups { get { return m_resGroupsLut; } }
 
         private Dictionary<string, ImageResourceGroup> m_resGroupsLut = 
             new Dictionary<string, ImageResourceGroup>();
