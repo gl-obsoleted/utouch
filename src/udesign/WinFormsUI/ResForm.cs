@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_designer;
-using ui_lib;
-using ui_lib.Base;
+using udesign;
+using ulib;
+using ulib.Base;
 
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public delegate void ApplyImageHandler(string atlasFileName, string imageName);
 

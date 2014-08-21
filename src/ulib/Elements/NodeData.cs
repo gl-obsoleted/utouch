@@ -5,9 +5,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using ui_lib.Base;
+using ulib.Base;
 
-namespace ui_lib.Elements
+namespace ulib.Elements
 {
     /// <summary>
     /// 这里单独列出 Node 类中的数据定义

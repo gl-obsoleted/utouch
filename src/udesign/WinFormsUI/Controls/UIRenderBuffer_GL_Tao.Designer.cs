@@ -1,4 +1,4 @@
-﻿namespace ui_designer_shell.Controls
+﻿namespace udesign.Controls
 {
     partial class UIRenderBuffer_GL_Tao
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using ui_lib.Elements;
+using ulib.Elements;
 
-namespace ui_lib
+namespace ulib
 {
     /// <summary>
     /// 渲染上下文

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_lib.Elements;
+using ulib.Elements;
 
-namespace ui_designer_shell.Controls
+namespace udesign.Controls
 {
     public delegate void OnPropertyValueChanged();
     public delegate bool ValidateNewNodeName(Node ndoe, string newName);

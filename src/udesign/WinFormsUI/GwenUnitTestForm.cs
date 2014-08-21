@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public partial class GwenUnitTestForm : Form
     {

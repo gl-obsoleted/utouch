@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ui_lib.Base;
+using ulib.Base;
 
-namespace ui_lib.Elements
+namespace ulib.Elements
 {
     public class NodeNameUtil
     {

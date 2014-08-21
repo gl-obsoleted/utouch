@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace ui_lib.Base
+namespace ulib.Base
 {
     public class Constants
     {

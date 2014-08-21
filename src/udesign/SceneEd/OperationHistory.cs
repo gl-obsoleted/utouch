@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public class OperationHistory
     {

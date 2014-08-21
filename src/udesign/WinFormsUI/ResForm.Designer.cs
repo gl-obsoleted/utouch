@@ -1,4 +1,4 @@
-﻿namespace ui_designer_shell
+﻿namespace udesign
 {
     partial class ResForm
     {

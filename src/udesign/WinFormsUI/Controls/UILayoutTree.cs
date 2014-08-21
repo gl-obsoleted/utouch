@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_designer;
-using ui_lib.Elements;
-using ui_lib;
+using udesign;
+using ulib.Elements;
+using ulib;
 
-namespace ui_designer_shell.Controls
+namespace udesign.Controls
 {
     public partial class UILayoutTree : UserControl
     {

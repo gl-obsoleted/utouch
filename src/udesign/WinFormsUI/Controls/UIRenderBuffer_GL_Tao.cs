@@ -8,11 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
-using ui_designer;
-using ui_lib;
-using ui_lib.Elements;
+using udesign;
+using ulib;
+using ulib.Elements;
 
-namespace ui_designer_shell.Controls
+namespace udesign.Controls
 {
     public partial class UIRenderBuffer_GL_Tao : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace ui_designer_shell.WinFormsUI.Controls
+﻿namespace udesign.WinFormsUI.Controls
 {
     partial class UIControlList
     {

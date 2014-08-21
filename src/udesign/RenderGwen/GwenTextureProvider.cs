@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib;
-using ui_lib.Base;
+using ulib;
+using ulib.Base;
 
-namespace ui_designer.Render
+namespace udesign.Render
 {
     public class TextureRenderInfo
     {

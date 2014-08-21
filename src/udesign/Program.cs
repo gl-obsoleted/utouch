@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_designer;
-using ui_lib;
+using udesign;
+using ulib;
 
-namespace ui_designer_shell
+namespace udesign
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace ui_designer_shell
+﻿namespace udesign
 {
     partial class MainForm
     {
@@ -61,9 +61,9 @@
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pageControl = new System.Windows.Forms.TabPage();
-            this.m_uiLayoutTree = new ui_designer_shell.Controls.UILayoutTree();
-            this.m_uiPropertyGrid = new ui_designer_shell.Controls.UIObjectPropertyGrid();
-            this.uiControlList1 = new ui_designer_shell.WinFormsUI.Controls.UIControlList();
+            this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
+            this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
+            this.uiControlList1 = new udesign.WinFormsUI.Controls.UIControlList();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -444,8 +444,8 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage pageLayout;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private ui_designer_shell.Controls.UILayoutTree m_uiLayoutTree;
-        private ui_designer_shell.Controls.UIObjectPropertyGrid m_uiPropertyGrid;
+        private udesign.Controls.UILayoutTree m_uiLayoutTree;
+        private udesign.Controls.UIObjectPropertyGrid m_uiPropertyGrid;
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
         private System.Windows.Forms.ToolStripMenuItem m_menuResForm;

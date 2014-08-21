@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib;
-using ui_lib.Elements;
+using ulib;
+using ulib.Elements;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public partial class SceneEd
     {

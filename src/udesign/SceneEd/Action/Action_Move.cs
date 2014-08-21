@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib;
-using ui_lib.Elements;
+using ulib;
+using ulib.Elements;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public class Action_Move : Action
     {
@@ -31,7 +31,7 @@ namespace ui_designer_shell
 
                 Node p = m_selection[i].Parent;
                 if (p != null)
-                    loc = ui_lib.Base.Math.Clamp(loc, new Rectangle(0, 0,
+                    loc = ulib.Base.Math.Clamp(loc, new Rectangle(0, 0,
                         p.Size.Width - m_selection[i].Size.Width,
                         p.Size.Height - m_selection[i].Size.Height));
 

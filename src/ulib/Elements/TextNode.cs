@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace ui_lib.Elements
+namespace ulib.Elements
 {
     public class TextNode : Node
     {

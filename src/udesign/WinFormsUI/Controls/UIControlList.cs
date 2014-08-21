@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ui_designer_shell.WinFormsUI.Controls
+namespace udesign.WinFormsUI.Controls
 {
     public partial class UIControlList : UserControl
     {

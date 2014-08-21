@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 
-namespace ui_lib.Base
+namespace ulib.Base
 {
     public class Math
     {

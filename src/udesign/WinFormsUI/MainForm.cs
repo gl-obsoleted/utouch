@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_designer;
-using ui_lib;
-using ui_lib.Base;
-using ui_lib.Elements;
-using ui_designer_shell;
+using udesign;
+using ulib;
+using ulib.Base;
+using ulib.Elements;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public partial class MainForm : Form
     {

@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using ui_lib.Elements;
+using ulib.Elements;
 
-namespace ui_lib
+namespace ulib
 {
     public abstract class JsonCreationConverter<T> : JsonConverter
     {

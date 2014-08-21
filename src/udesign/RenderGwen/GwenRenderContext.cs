@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib;
+using ulib;
 
-namespace ui_designer
+namespace udesign
 {
     public class GwenRenderContext : RenderContext
     {

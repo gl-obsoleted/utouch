@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ui_lib.Base;
-using ui_lib.Elements;
+using ulib.Base;
+using ulib.Elements;
 
-namespace ui_lib
+namespace ulib
 {
     public enum ArchiveType
     {

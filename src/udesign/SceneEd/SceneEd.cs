@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ui_designer;
-using ui_lib;
-using ui_lib.Elements;
+using udesign;
+using ulib;
+using ulib.Elements;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public partial class SceneEd
     {
@@ -124,7 +124,6 @@ namespace ui_designer_shell
             return false;
         }
 
-        private Scene m_scene;
         private List<Node> m_selection = new List<Node>();
         private OperationHistory m_operHistory = new OperationHistory();
     }

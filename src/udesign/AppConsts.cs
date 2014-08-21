@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib.Base;
+using ulib.Base;
 
-namespace ui_designer
+namespace udesign
 {
     public class AppConsts
     {

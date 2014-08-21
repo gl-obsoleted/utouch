@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_lib.Elements;
+using ulib.Elements;
 
-namespace ui_designer_shell
+namespace udesign
 {
     public class Action_Delete : Action
     {

@@ -5,11 +5,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ui_designer.Render;
-using ui_lib;
-using ui_lib.Elements;
+using udesign.Render;
+using ulib;
+using ulib.Elements;
 
-namespace ui_designer
+namespace udesign
 {
     public class GwenRenderDevice : RenderDevice
     {
