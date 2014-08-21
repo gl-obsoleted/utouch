@@ -28,7 +28,7 @@ namespace udesign
             // 系统设置读取失败，是一个致命错误，缺乏正确的参数可能导致其他系统都无法正常工作，此时程序应直接退出
             // 而下面的用户设置读取失败，则只是一个普通错误，只是意味着用户对默认值的修改没能生效而已，程序仍能正常工作
 
-            if (!LoadTypicalObject(AppConsts.ConfigFileDefault, Instance))
+            if (!LoadTypicalObject(Properties.Settings.Default.ConfigFileDefault, Instance))
                 return false;
 
             // 对用户设置读取的额外说明
@@ -38,13 +38,13 @@ namespace udesign
             // 也就是说，要么就正常地读取完整的信息，要么就全部丢弃所有的用户设置
 
             ConfigTypical dummy = new ConfigTypical();
-            if (!LoadTypicalObject(AppConsts.ConfigFileUser, dummy))
+            if (!LoadTypicalObject(Properties.Settings.Default.ConfigFileUser, dummy))
             {
-                Session.Log("加载用户设置文件('{0}')失败，但不影响正常使用。", AppConsts.ConfigFileUser);
+                Session.Log("加载用户设置文件('{0}')失败，但不影响正常使用。", Properties.Settings.Default.ConfigFileUser);
             }
             else
             {
-                LoadTypicalObject(AppConsts.ConfigFileUser, Instance);
+                LoadTypicalObject(Properties.Settings.Default.ConfigFileUser, Instance);
             }
 
             return true;
@@ -76,7 +76,7 @@ namespace udesign
         /// </summary>
         public void Init()
         {
-            JObject loaded = JsonUtil.LoadJObject(AppConsts.UserPrefFilePath);
+            JObject loaded = JsonUtil.LoadJObject(Properties.Settings.Default.UserPrefFilePath);
             if (loaded != null)
             {
                 m_jsonObject = loaded;
@@ -93,7 +93,7 @@ namespace udesign
             {
                 try
                 {
-                    File.WriteAllText(AppConsts.UserPrefFilePath, m_jsonObject.ToString());
+                    File.WriteAllText(Properties.Settings.Default.UserPrefFilePath, m_jsonObject.ToString());
                 }
                 catch (Exception e)
                 {

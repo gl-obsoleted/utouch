@@ -73,7 +73,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConsts.cs" />
     <Compile Include="SceneEd\Action\Action.cs" />
     <Compile Include="SceneEd\Action\Action_Delete.cs" />
     <Compile Include="SceneEd\Action\Action_Insert.cs" />

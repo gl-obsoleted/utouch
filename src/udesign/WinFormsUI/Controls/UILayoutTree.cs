@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using udesign;
 using ulib.Elements;
 using ulib;
+using ulib.Base;
 
 namespace udesign.Controls
 {
@@ -20,12 +21,12 @@ namespace udesign.Controls
             InitializeComponent();
 
             m_layoutTreeView.Nodes.Clear();
-            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(AppConsts.UILayoutTree_RootName, "<unspecified>");
+            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(RootNodeConstants.Default_Name, "<unspecified>");
         }
 
         public void PopulateLayout()
         {
-            string rootKey = AppConsts.UILayoutTree_RootName;
+            string rootKey = RootNodeConstants.Default_Name;
             if (!m_layoutTreeView.Nodes.ContainsKey(rootKey))
                 return;
 
@@ -63,7 +64,7 @@ namespace udesign.Controls
 
         public void OnSelectSceneNode(Node n, object sender)
         {
-            string rootKey = AppConsts.UILayoutTree_RootName;
+            string rootKey = RootNodeConstants.Default_Name;
             if (n == null || !m_layoutTreeView.Nodes.ContainsKey(rootKey))
             {
                 if (m_layoutTreeView.SelectedNode != null)

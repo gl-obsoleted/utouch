@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="udesign.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TempFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">temp</Value>
+    </Setting>
+    <Setting Name="UserPrefFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">temp/user_pref.json</Value>
+    </Setting>
+    <Setting Name="ConfigFileDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cfg_default.json</Value>
+    </Setting>
+    <Setting Name="ConfigFileUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cfg_user.json</Value>
+    </Setting>
+    <Setting Name="LogFilename" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ui_designer.log</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

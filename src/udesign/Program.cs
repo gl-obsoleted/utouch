@@ -34,7 +34,7 @@ namespace udesign
             DateTime dt = DateTime.Now;
             string date = dt.ToString("yyyy-MM-dd");
             string fulltime = date + dt.ToString("-HH-mm-ss");
-            string sessionFolder = Path.Combine(AppConsts.TempFolderName, date, fulltime);
+            string sessionFolder = Path.Combine(Properties.Settings.Default.TempFolderName, date, fulltime);
             try
             {
                 if (!Directory.Exists(sessionFolder))
@@ -48,7 +48,7 @@ namespace udesign
                 return;
             }
 
-            using (Session.LogFile = new StreamWriter(Path.Combine(Session.SessionFolder, AppConsts.LogFilename)))
+            using (Session.LogFile = new StreamWriter(Path.Combine(Session.SessionFolder, Properties.Settings.Default.LogFilename)))
             {
                 Session.Log("Log started. '{0}'", Session.GetLogFilePath());
 
