@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ui_designer_shell.Properties {
+namespace udesign.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

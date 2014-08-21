@@ -1,7 +1,5 @@
 *.suo
 *.user
-/src/ui_designer_shell/bin
-/src/ui_designer_shell/obj
 /src/packages_local/GwenCS-2014-07-29/Gwen/bin
 /src/packages_local/GwenCS-2014-07-29/Gwen/obj
 /src/packages_local/GwenCS-2014-07-29/Gwen.Renderer.OpenTK/bin
@@ -20,10 +18,10 @@
 /src/packages_local/GwenCS-2014-07-29/Gwen.UnitTest/obj
 /src/packages
 
-/src/ui_lib/bin
-/src/ui_lib/obj
-/src/ui_designer/bin
-/src/ui_designer/obj
+/src/ulib/bin
+/src/ulib/obj
+/src/udesign/bin
+/src/udesign/obj
 /bin
 /temp
 /cfg_user.json
