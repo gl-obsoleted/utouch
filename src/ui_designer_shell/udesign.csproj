@@ -120,9 +120,9 @@
     <Compile Include="WinFormsUI\Controls\UIObjectPropertyGrid.Designer.cs">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Render_Gwen\GwenRenderContext.cs" />
-    <Compile Include="Render_Gwen\GwenRenderDevice.cs" />
-    <Compile Include="Render_Gwen\GwenTextureProvider.cs" />
+    <Compile Include="RenderGwen\GwenRenderContext.cs" />
+    <Compile Include="RenderGwen\GwenRenderDevice.cs" />
+    <Compile Include="RenderGwen\GwenTextureProvider.cs" />
     <Compile Include="WinFormsUI\OverlayRendering\OverlayRendering.cs" />
     <Compile Include="WinFormsUI\ResForm.cs">
       <SubType>Form</SubType>
@@ -173,12 +173,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ui_lib\ui_lib.csproj">
-      <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
-      <Name>ui_lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
