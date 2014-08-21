@@ -110,6 +110,12 @@ namespace ui_designer_shell
 
             NodeNameUtil.ResetIDAllocLut();
 
+            foreach (string resFile in ConfigTypical.Instance.ReourceImages)
+            {
+                if (!ResourceManager.Instance.LoadFile(resFile))
+                    return false;
+            }
+
             m_scene = new DesginerScene();
             if (!m_scene.Init())
                 return false;

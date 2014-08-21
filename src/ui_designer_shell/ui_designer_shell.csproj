@@ -81,9 +81,6 @@
     <Compile Include="SceneEd\OperationHistory.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEd_Dragging.cs" />
-    <Compile Include="Scene\Archive\Archive.cs" />
-    <Compile Include="Scene\Archive\ArchiveUtil.cs" />
-    <Compile Include="Scene\Archive\Archive_Json.cs" />
     <Compile Include="Application\ConfigVars.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
       <SubType>UserControl</SubType>
@@ -123,10 +120,9 @@
     <Compile Include="WinFormsUI\Controls\UIObjectPropertyGrid.Designer.cs">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Render\GwenRenderContext.cs" />
-    <Compile Include="Scene\Render\GwenRenderDevice.cs" />
-    <Compile Include="Scene\Render\GwenTextureProvider.cs" />
-    <Compile Include="Scene\Render\Render.cs" />
+    <Compile Include="Render_Gwen\GwenRenderContext.cs" />
+    <Compile Include="Render_Gwen\GwenRenderDevice.cs" />
+    <Compile Include="Render_Gwen\GwenTextureProvider.cs" />
     <Compile Include="WinFormsUI\OverlayRendering\OverlayRendering.cs" />
     <Compile Include="WinFormsUI\ResForm.cs">
       <SubType>Form</SubType>
@@ -134,8 +130,6 @@
     <Compile Include="WinFormsUI\ResForm.Designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scene\DesginerScene.cs" />
-    <Compile Include="Scene\SceneGraphUtil.cs" />
     <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>

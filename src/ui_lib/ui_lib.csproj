@@ -55,7 +55,13 @@
     <Compile Include="Elements\NodeSGUtil.cs" />
     <Compile Include="Elements\TextNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Archive.cs" />
+    <Compile Include="Services\ArchiveUtil.cs" />
+    <Compile Include="Services\Archive_Json.cs" />
+    <Compile Include="Services\Render.cs" />
     <Compile Include="Services\ResourceManager.cs" />
+    <Compile Include="Services\Scene.cs" />
+    <Compile Include="Services\SceneUtil.cs" />
     <Compile Include="Services\Session.cs" />
     <Compile Include="Services\TypeRegistry.cs" />
     <Compile Include="Elements\RootNode.cs" />

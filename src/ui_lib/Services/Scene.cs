@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ui_lib;
 using ui_lib.Base;
 using ui_lib.Elements;
-using ui_lib.Elements;
 
-namespace ui_designer
+namespace ui_lib
 {
-    public partial class DesginerScene : IDisposable
+    public class DesginerScene : IDisposable
     {
         /// <summary>
         /// 只读属性
@@ -42,11 +40,6 @@ namespace ui_designer
 
         public bool Init()
         {
-            foreach (string resFile in ConfigTypical.Instance.ReourceImages)
-            {
-                if (!ResourceManager.Instance.LoadFile(resFile))
-                    return false;
-            }
             return true;
         }
 
