@@ -9,14 +9,16 @@ using ui_lib.Elements;
 
 namespace ui_lib
 {
-    public class DesginerScene : IDisposable
+    public class Scene : IDisposable
     {
+        public static Scene Instance;
+
         /// <summary>
         /// 只读属性
         /// </summary>
         public RootNode Root { get { return m_root; } }
 
-        public DesginerScene()
+        public Scene()
         {
             ImageNode m_child = new ImageNode();
             m_child.Res = "uires://testres/uiatlas:4880yuanbao.png";

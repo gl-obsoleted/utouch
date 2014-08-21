@@ -18,7 +18,7 @@ namespace ui_designer_shell
             m_draggingTargetPoint.X = curX;
             m_draggingTargetPoint.Y = curY;
 
-            Node picked = m_scene.Pick(m_draggingTargetPoint);
+            Node picked = Scene.Instance.Pick(m_draggingTargetPoint);
             if (picked != m_possibleTargetNode)
             {
                 m_possibleTargetNode = picked;

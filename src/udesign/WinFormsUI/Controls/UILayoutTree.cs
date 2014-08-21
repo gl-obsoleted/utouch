@@ -23,12 +23,6 @@ namespace ui_designer_shell.Controls
             m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(AppConsts.UILayoutTree_RootName, "<unspecified>");
         }
 
-        public void SetScene(DesginerScene scene)
-        {
-            m_scene = scene;
-            PopulateLayout();
-        }
-
         public void PopulateLayout()
         {
             string rootKey = AppConsts.UILayoutTree_RootName;
@@ -36,9 +30,9 @@ namespace ui_designer_shell.Controls
                 return;
 
             TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
-            treeRoot.Name = m_scene.Root.Name;
-            treeRoot.Text = GenerateNodeLabel(m_scene.Root);
-            treeRoot.Tag = m_scene.Root;
+            treeRoot.Name = Scene.Instance.Root.Name;
+            treeRoot.Text = GenerateNodeLabel(Scene.Instance.Root);
+            treeRoot.Tag = Scene.Instance.Root;
 
             PopulateNodeRecursively(treeRoot);
 
@@ -110,8 +104,6 @@ namespace ui_designer_shell.Controls
         {
             return string.Format("{0} - [{1}]", sceneNode.Name, sceneNode.GetType().Name);
         }
-
-        private DesginerScene m_scene;
 
         private void m_layoutTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {

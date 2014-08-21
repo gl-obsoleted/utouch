@@ -78,13 +78,11 @@ namespace ui_designer_shell
             m_testButton = new Gwen.Control.Button(m_glCtrl.GetCanvas());
         }
 
-        private DesginerScene m_scene;
-
         private ResForm m_resForm;
 
         private void m_menuSave_Click(object sender, EventArgs e)
         {
-            m_scene.Save(@"testdata\test.json");
+            Scene.Instance.Save(@"testdata\test.json");
         }
 
         private void m_menuOpen_Click(object sender, EventArgs e)
@@ -93,9 +91,9 @@ namespace ui_designer_shell
             if (!ResetScene())
                 return;
 
-            m_scene.Load(@"testdata\test.json");
+            Scene.Instance.Load(@"testdata\test.json");
+            m_glCtrl.Refresh();
             m_uiLayoutTree.PopulateLayout();
-            m_glCtrl.Invalidate(true);
         }
 
         private void m_menuNew_Click(object sender, EventArgs e)
@@ -105,10 +103,8 @@ namespace ui_designer_shell
 
         private bool ResetScene()
         {
-            if (m_scene != null)
-                m_scene.Dispose();
-
-            NodeNameUtil.ResetIDAllocLut();
+            if (!Bootstrap.Instance.Reset())
+                return false;
 
             foreach (string resFile in ConfigTypical.Instance.ReourceImages)
             {
@@ -116,13 +112,9 @@ namespace ui_designer_shell
                     return false;
             }
 
-            m_scene = new DesginerScene();
-            if (!m_scene.Init())
-                return false;
-
-            m_glCtrl.SetScene(m_scene);
-            m_uiLayoutTree.SetScene(m_scene);
-            SceneEd.Instance.ResetScene(m_scene);
+            m_glCtrl.Refresh();
+            m_uiLayoutTree.PopulateLayout();
+            SceneEd.Instance.OperHistory.Clear();
             return true;
         }
 

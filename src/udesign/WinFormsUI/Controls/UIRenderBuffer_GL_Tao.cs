@@ -16,7 +16,6 @@ namespace ui_designer_shell.Controls
 {
     public partial class UIRenderBuffer_GL_Tao : UserControl
     {
-        private DesginerScene m_scene;
         private GwenRenderContext m_renderContext;
         private GwenRenderDevice m_renderDevice;
 
@@ -27,12 +26,6 @@ namespace ui_designer_shell.Controls
         public UIRenderBuffer_GL_Tao()
         {
             InitializeComponent();
-        }
-
-        public void SetScene(DesginerScene scene)
-        {
-            m_scene = scene;
-            glControl.Invalidate();
         }
 
         public Canvas GetCanvas()
@@ -88,8 +81,8 @@ namespace ui_designer_shell.Controls
 
             renderer.Begin();
 
-            if (m_scene != null)
-                m_scene.Render(m_renderContext, m_renderDevice);
+            if (Scene.Instance != null)
+                Scene.Instance.Render(m_renderContext, m_renderDevice);
 
             OverlayRendering.Render(renderer, m_renderContext);
 

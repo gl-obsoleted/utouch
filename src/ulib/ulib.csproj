@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseDef.cs" />
     <Compile Include="Base\BaseUtil.cs" />
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\ImageNode.cs" />
     <Compile Include="Elements\Node.cs" />

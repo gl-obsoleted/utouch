@@ -21,12 +21,6 @@ namespace ui_designer_shell
 
         public OperationHistory OperHistory { get { return m_operHistory; } }
 
-        public void ResetScene(DesginerScene scene)
-        {
-            m_scene = scene;
-            m_operHistory.Clear();
-        }
-
         bool m_isLeftDown = false;
         Point m_beginDragPos = new Point(0, 0);
         Action_Move m_dragAction;
@@ -36,7 +30,7 @@ namespace ui_designer_shell
             {
                 m_isLeftDown = true;
 
-                Node n = m_scene.Pick(e.Location);
+                Node n = Scene.Instance.Pick(e.Location);
                 if (m_selection.Contains(n))
                 {
                     // 到这里是拖拽
@@ -70,7 +64,7 @@ namespace ui_designer_shell
                 }
                 else 
                 {
-                    Node n = m_scene.Pick(e.Location);
+                    Node n = Scene.Instance.Pick(e.Location);
                     Select(n);
                 }
             }
@@ -130,7 +124,7 @@ namespace ui_designer_shell
             return false;
         }
 
-        private DesginerScene m_scene;
+        private Scene m_scene;
         private List<Node> m_selection = new List<Node>();
         private OperationHistory m_operHistory = new OperationHistory();
     }
