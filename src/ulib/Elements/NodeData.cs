@@ -55,7 +55,7 @@ namespace ulib.Elements
         #region 序列化属性（正常地序列化存取，属性界面只读或不可见）
 
         [ReadOnly(true)]
-        public string __type_info__ { get { return GetType().AssemblyQualifiedName; } }
+        public string __type_info__ { get { return GetType().Name; } }
 
         [Browsable(false)]
         public List<Node> Children { get { return m_children; } }

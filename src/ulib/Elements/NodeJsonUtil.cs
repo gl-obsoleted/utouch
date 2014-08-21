@@ -17,8 +17,8 @@ namespace ulib.Elements
         /// </summary>
         public static Type GetNodeType(JObject jsonObject)
         {
-            string typeFullName = (string)jsonObject["__type_info__"];
-            return Type.GetType(typeFullName);
+            string typeName = (string)jsonObject["__type_info__"];
+            return TypeRegistry.Instance.QueryType(typeName);
         }
 
         public static Node CreateNode(JObject jsonObject)

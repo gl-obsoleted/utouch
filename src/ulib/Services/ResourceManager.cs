@@ -49,6 +49,11 @@ namespace ulib
 
         }
 
+        public void Clear()
+        {
+            m_resGroupsLut.Clear();
+        }
+
         public bool LoadFile(string resFile)
         {
             string indexFile = resFile + Constants.ResIndexFilePostfix;

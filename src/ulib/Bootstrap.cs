@@ -33,6 +33,7 @@ namespace ulib
             if (Scene.Instance != null)
                 Scene.Instance.Dispose();
 
+            ResourceManager.Instance.Clear();
             foreach (string resFile in bp.ReourceImages)
             {
                 if (!ResourceManager.Instance.LoadFile(resFile))
