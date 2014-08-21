@@ -11,11 +11,36 @@ namespace ulib
     public class Session
     {
         public static string SessionFolder;
-
         public static TextWriter LogFile;
+
+        public static bool Init(string sessionFolder, string logFilename)
+        {
+            if (!Directory.Exists(sessionFolder))
+                return false;
+
+            try
+            {
+                LogFile = new StreamWriter(Path.Combine(sessionFolder, logFilename));
+                SessionFolder = sessionFolder;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static void Deinit()
+        {
+            LogFile.Close();
+        }
 
         public static void Log(string format, params object[] args) 
         {
+            if (LogFile == null)
+                return;
+
             string content = string.Format(format, args);
             string fulltime = DateTime.Now.ToString("HH-mm-ss ");
             Session.LogFile.WriteLine(fulltime + content);

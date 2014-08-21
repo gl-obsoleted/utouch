@@ -41,8 +41,6 @@ namespace udesign
             {
                 if (!Directory.Exists(sessionFolder))
                     Directory.CreateDirectory(sessionFolder);
-
-                Session.SessionFolder = sessionFolder;
             }
             catch (Exception e)
             {
@@ -50,7 +48,7 @@ namespace udesign
                 return;
             }
 
-            using (Session.LogFile = new StreamWriter(Path.Combine(Session.SessionFolder, Properties.Settings.Default.LogFilename)))
+            Session.Init(sessionFolder, Properties.Settings.Default.LogFilename);
             {
                 Session.Log("Log started. '{0}'", Session.GetLogFilePath());
 
@@ -90,6 +88,7 @@ namespace udesign
 
                 ConfigUserPref.Instance.Save();
             }
+            Session.Deinit();
         }
     }
 }
