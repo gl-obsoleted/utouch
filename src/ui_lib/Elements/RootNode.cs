@@ -5,7 +5,7 @@ using System.Text;
 using ui_lib.Base;
 using ui_lib.Elements;
 
-namespace ui_lib.Widgets
+namespace ui_lib.Elements
 {
     public class RootNode : Node
     {

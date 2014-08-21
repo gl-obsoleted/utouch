@@ -9,7 +9,6 @@ namespace ui_designer_shell
 {
     public class Action_Delete : Action
     {
-        private Node m_parent;
         private Node[] m_parents;
         private Node[] m_deleted;
 

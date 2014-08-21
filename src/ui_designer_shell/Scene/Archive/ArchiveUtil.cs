@@ -18,7 +18,7 @@ namespace ui_designer
     {
         public static bool RegisterCreator(ArchiveType type, Type t)
         {
-            if (!Utilities.Implements(t, typeof(IArchive)))
+            if (!BaseUtil.Implements(t, typeof(IArchive)))
                 return false;
 
             // 这个类型已注册，如果一定要注册请先注销老的

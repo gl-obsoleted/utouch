@@ -6,7 +6,7 @@ using System.Text;
 using ui_lib.Base;
 using ui_lib.Elements;
 
-namespace ui_lib.Controls
+namespace ui_lib.Elements
 {
     public class Button : Node
     {
@@ -18,8 +18,8 @@ namespace ui_lib.Controls
             {
                 Size = ir.Size;
             }
-            Res_Normal = Utilities.ComposeResURL(Constants.DefaultAtlasFile, "anniu2changtai.png");
-            Res_Pressed = Utilities.ComposeResURL(Constants.DefaultAtlasFile, "anniu2hui.png");
+            Res_Normal = BaseUtil.ComposeResURL(Constants.DefaultAtlasFile, "anniu2changtai.png");
+            Res_Pressed = BaseUtil.ComposeResURL(Constants.DefaultAtlasFile, "anniu2hui.png");
         }
 
         [Category("Button")]

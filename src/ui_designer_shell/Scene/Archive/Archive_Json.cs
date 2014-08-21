@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ui_lib.Elements;
-using ui_lib.Widgets;
+using ui_lib.Elements;
 
 namespace ui_designer
 {

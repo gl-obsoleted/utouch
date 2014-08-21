@@ -44,14 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Consts.cs" />
-    <Compile Include="Base\Enums.cs" />
-    <Compile Include="Base\JsonUtil.cs" />
-    <Compile Include="Base\Math.cs" />
-    <Compile Include="Base\ResUtil.cs" />
-    <Compile Include="Base\Structs.cs" />
-    <Compile Include="Base\Utilities.cs" />
-    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Base\BaseDef.cs" />
+    <Compile Include="Base\BaseUtil.cs" />
+    <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\ImageNode.cs" />
     <Compile Include="Elements\Node.cs" />
     <Compile Include="Elements\NodeData.cs" />
@@ -60,14 +55,15 @@
     <Compile Include="Elements\NodeSGUtil.cs" />
     <Compile Include="Elements\TextNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceManager.cs" />
-    <Compile Include="Session.cs" />
-    <Compile Include="TypeRegistry.cs" />
-    <Compile Include="Widgets\RootNode.cs" />
+    <Compile Include="Services\ResourceManager.cs" />
+    <Compile Include="Services\Session.cs" />
+    <Compile Include="Services\TypeRegistry.cs" />
+    <Compile Include="Elements\RootNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -130,8 +130,8 @@ namespace ui_designer_shell
             string size = ConfigUserPref.Instance.GetValue("forms.res_form", "size");
             if (loc.Length != 0 && size.Length != 0)
             {
-                Point pt = Utilities.StringToPoint(loc);
-                Size sz = Utilities.StringToSize(size);
+                Point pt = BaseUtil.StringToPoint(loc);
+                Size sz = BaseUtil.StringToSize(size);
                 m_resForm.SetDesktopBounds(pt.X, pt.Y, sz.Width, sz.Height);
             }
         }
@@ -143,7 +143,7 @@ namespace ui_designer_shell
                 ImageNode sel = SceneEd.Instance.Selection.First() as ImageNode;
                 if (sel != null)
                 {
-                    string newLoc = Utilities.ComposeResURL(atlasFileName, imageName);
+                    string newLoc = BaseUtil.ComposeResURL(atlasFileName, imageName);
                     Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.Res, newLoc);
                     sel.Res = newLoc;
                     SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
@@ -164,8 +164,8 @@ namespace ui_designer_shell
             if (m_resForm != null)
             {
                 Point pt = PointToScreen(m_resForm.Location);
-                ConfigUserPref.Instance.SetValue("forms.res_form", "location", Utilities.PointToString(pt));
-                ConfigUserPref.Instance.SetValue("forms.res_form", "size", Utilities.SizeToString(m_resForm.Size));
+                ConfigUserPref.Instance.SetValue("forms.res_form", "location", BaseUtil.PointToString(pt));
+                ConfigUserPref.Instance.SetValue("forms.res_form", "size", BaseUtil.SizeToString(m_resForm.Size));
             }
         }
 

@@ -12,11 +12,10 @@ namespace ui_lib.Base
 
         public const int INVALID_ID = -1;
 
+        public const string ResProtocol = "uires://";
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";
-
-        public const string ResourceProtocol = "uires://";
-        public const char ResourceDelimeter = ':';
+        public const char ResDelimeter = ':';
 
         public const string DefaultAtlasFile = "testres/uiatlas";
     }
@@ -36,5 +35,38 @@ namespace ui_lib.Base
         public static readonly Size Default_Size = new Size { Width = 300, Height = 300 };
         public static readonly Resolution Default_Resolution = Resolution.RT_800x600;
         public static readonly string Default_Name = "Root";
+    }
+
+    public enum AlignHori
+    {
+        Left,
+        Center,
+        Right,
+    }
+
+    public enum AlignVert
+    {
+        Top,
+        Middle,
+        Bottom,
+    }
+
+    public enum Resolution
+    {
+        RT_800x600,
+        RT_1024x768,
+        RT_Customized,
+    }
+
+    public class Color4b
+    {
+        public byte r, g, b, a;
+    }
+
+    public class Font
+    {
+        public string Name { get; set; }
+        public int Size { get; set; }
+        public Color4b Color { get; set; }
     }
 }
