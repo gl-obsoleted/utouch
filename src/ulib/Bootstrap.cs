@@ -22,6 +22,7 @@ namespace ulib
     /// 
     /// Bootstrap 充当了启动脚本的作用，以最典型的方式启动这些服务。
     /// 
+    /// Init() 函数被设计为可重复调用，效果相当于重置
     /// </summary>
     public class Bootstrap
     {

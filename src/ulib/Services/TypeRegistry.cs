@@ -9,25 +9,27 @@ namespace ulib
 {
     public class TypeRegistry
     {
-        public static void Init()
+        public static TypeRegistry Instance = new TypeRegistry();
+
+        public TypeRegistry()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
             foreach (Type t in asm.GetTypes())
             {
                 if (t.IsSubclassOf(typeof(Node)) || t == typeof(Node))
                 {
-                    s_typeRegistry[t.Name] = t;
+                    m_typeRegistry[t.Name] = t;
                 }
             }
         }
 
-        public static Type QueryType(string name)
+        public Type QueryType(string name)
         {
             Type t;
-            s_typeRegistry.TryGetValue(name, out t);
+            m_typeRegistry.TryGetValue(name, out t);
             return t;
         }
 
-        static Dictionary<string, Type> s_typeRegistry = new Dictionary<string,Type>();
+        private Dictionary<string, Type> m_typeRegistry = new Dictionary<string,Type>();
     }
 }

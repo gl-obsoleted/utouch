@@ -49,7 +49,7 @@ namespace udesign.Controls
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
 
             renderer = new Gwen.Renderer.Tao();
-            skin = new Gwen.Skin.TexturedBase(renderer, Path.Combine("media", "DefaultSkin.png"));
+            skin = new Gwen.Skin.TexturedBase(renderer, Properties.Settings.Default.GwenMediaFile);
             canvas = new Canvas(skin);
             canvas.SetSize(glControl.Width, glControl.Height);
             canvas.ShouldDrawBackground = true;

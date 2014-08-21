@@ -20,24 +20,6 @@ namespace ulib
 
         public Scene()
         {
-            ImageNode m_child = new ImageNode();
-            m_child.Res = "uires://testres/uiatlas:4880yuanbao.png";
-            m_child.Position = new Point(50, 50);
-            m_child.Size = new Size(50, 50);
-            m_root.Attach(m_child);
-
-            ImageNode m_child2 = new ImageNode();
-            m_child2.Res = "uires://testres/uiatlas:+.png";
-            m_child2.Position = new Point(150, 50);
-            m_child2.Size = new Size(50, 50);
-            m_root.Attach(m_child2);
-
-            TextNode m_child3 = new TextNode();
-            m_child3.Text = "hello world";
-            m_child3.Color = Color.Purple;
-            m_child3.Position = new Point(50, 120);
-            m_child3.Size = new Size(100, 30);
-            m_root.Attach(m_child3);
         }
 
         public bool Init()

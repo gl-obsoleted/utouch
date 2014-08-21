@@ -32,7 +32,7 @@ namespace udesign
 
             if (m_possibleTargetNode != null)
             {
-                Type t = TypeRegistry.QueryType(draggingInfo);
+                Type t = TypeRegistry.Instance.QueryType(draggingInfo);
                 if (t != null)
                 {
                     Node n = Activator.CreateInstance(t) as Node;

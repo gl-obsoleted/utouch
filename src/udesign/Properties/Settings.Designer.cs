@@ -67,5 +67,23 @@ namespace udesign.Properties {
                 return ((string)(this["LogFilename"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("media/DefaultSkin.png")]
+        public string GwenMediaFile {
+            get {
+                return ((string)(this["GwenMediaFile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BuildTestScene {
+            get {
+                return ((bool)(this["BuildTestScene"]));
+            }
+        }
     }
 }

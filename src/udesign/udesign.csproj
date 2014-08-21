@@ -81,6 +81,7 @@
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEd_Dragging.cs" />
     <Compile Include="ConfigVars.cs" />
+    <Compile Include="TestSnippets\TestScene.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
       <SubType>UserControl</SubType>
     </Compile>

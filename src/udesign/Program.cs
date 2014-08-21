@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using udesign;
 using ulib;
+using ulib.Elements;
 
 namespace udesign
 {
@@ -60,8 +62,6 @@ namespace udesign
 
                 ConfigUserPref.Instance.Init();
 
-                TypeRegistry.Init();
-
                 try
                 {
                     MainForm mainForm = new MainForm();
@@ -69,6 +69,15 @@ namespace udesign
                     {
                         MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
                         return;
+                    }
+
+                    if (Properties.Settings.Default.BuildTestScene)
+                    {
+                        Node n = TestScene.Build();
+                        n.Position = new Point(-100, 100); // would see the clamping
+                        Scene.Instance.Root.Size = new Size(500, 500);
+                        Scene.Instance.Root.Attach(n);
+                        SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                     }
 
                     Application.Run(mainForm);
