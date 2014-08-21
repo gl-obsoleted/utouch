@@ -6,6 +6,12 @@ using ulib.Elements;
 
 namespace ulib
 {
+    public class BootParams
+    {
+        public List<string> ReourceImages;
+        public string ScenePath;
+    }
+
     /// <summary>
     /// 
     /// Bootstrap 类是 ulib 库对外的入口点
@@ -21,23 +27,23 @@ namespace ulib
     {
         public static Bootstrap Instance = new Bootstrap();
 
-        public bool Init()
-        {
-            if (!Reset())
-                return false;
-
-            return true;
-        }
-
-        public bool Reset()
+        public bool Init(BootParams bp)
         {
             if (Scene.Instance != null)
                 Scene.Instance.Dispose();
+
+            foreach (string resFile in bp.ReourceImages)
+            {
+                if (!ResourceManager.Instance.LoadFile(resFile))
+                    return false;
+            }
 
             NodeNameUtil.ResetIDAllocLut();
 
             Scene.Instance = new Scene();
             if (!Scene.Instance.Init())
+                return false;
+            if (bp.ScenePath.Length != 0 && !Scene.Instance.Load(bp.ScenePath))
                 return false;
 
             return true;

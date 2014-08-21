@@ -32,7 +32,7 @@ namespace udesign
 
         public bool Init()
         {
-            if (!ResetScene())
+            if (!ResetScene(""))
                 return false;
 
             // connect the layout tree and the property grid
@@ -87,29 +87,23 @@ namespace udesign
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             // 这里重置前，应先提示用户保存
-            if (!ResetScene())
-                return;
-
-            Scene.Instance.Load(@"testdata\test.json");
-            m_glCtrl.Refresh();
-            m_uiLayoutTree.PopulateLayout();
+            if (!ResetScene(@"testdata\test.json"))
+                Session.Message("打开文件失败。");
         }
 
         private void m_menuNew_Click(object sender, EventArgs e)
         {
-            ResetScene();
+            ResetScene("");
         }
 
-        private bool ResetScene()
+        private bool ResetScene(string sceneName)
         {
-            if (!Bootstrap.Instance.Reset())
+            BootParams bp = new BootParams { 
+                ReourceImages = ConfigTypical.Instance.ReourceImages,
+                ScenePath = sceneName 
+            };
+            if (!Bootstrap.Instance.Init(bp))
                 return false;
-
-            foreach (string resFile in ConfigTypical.Instance.ReourceImages)
-            {
-                if (!ResourceManager.Instance.LoadFile(resFile))
-                    return false;
-            }
 
             m_glCtrl.Refresh();
             m_uiLayoutTree.PopulateLayout();
