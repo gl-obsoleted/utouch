@@ -24,8 +24,8 @@ namespace udesign
                 return false;
             }
 
-            string rootPath = Application.StartupPath.Substring(0, Application.StartupPath.Length - startupFolder.Length - 1);
-            Directory.SetCurrentDirectory(rootPath);
+            m_rootPath = Application.StartupPath.Substring(0, Application.StartupPath.Length - startupFolder.Length - 1);
+            Directory.SetCurrentDirectory(m_rootPath);
             return true;
         }
 
