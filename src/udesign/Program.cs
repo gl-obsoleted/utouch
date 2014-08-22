@@ -19,50 +19,15 @@ namespace udesign
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            string startupFolder = Path.GetFileName(Application.StartupPath);
-            if (!string.Equals(startupFolder, "bin", StringComparison.OrdinalIgnoreCase))
+            using (UDesignApp app = new UDesignApp())
             {
-                string exeName = Path.GetFileName(Application.ExecutablePath);
-                MessageBox.Show(string.Format("可执行文件 '{0}' 应该在 'bin' 目录里。\n不正常的版本，按 'OK' 退出程序。", exeName));
-                return;
-            }
-
-            string rootPath = Application.StartupPath.Substring(0, Application.StartupPath.Length - startupFolder.Length - 1);
-            Directory.SetCurrentDirectory(rootPath);
-
-            DateTime dt = DateTime.Now;
-            string date = dt.ToString("yyyy-MM-dd");
-            string fulltime = date + dt.ToString("-HH-mm-ss");
-            string sessionFolder = Path.Combine(Properties.Settings.Default.TempFolderName, date, fulltime);
-            try
-            {
-                if (!Directory.Exists(sessionFolder))
-                    Directory.CreateDirectory(sessionFolder);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format("临时目录('{0}')初始化失败。 \n\n'{1}'\n\n按 'OK' 退出程序。", sessionFolder, e.Message));
-                return;
-            }
-
-            Session.Init(sessionFolder, Properties.Settings.Default.LogFilename);
-            {
-                Session.Log("Log started. '{0}'", Session.GetLogFilePath());
-
-                if (!ConfigTypical.Instance.LoadTypical())
-                {
-                    MessageBox.Show(string.Format("配置文件初始化失败。 \n\n按 'OK' 退出程序。"));
+                if (!app.InitEnv())
                     return;
-                }
+                if (!app.InitSession())
+                    return;
 
-                ConfigUserPref.Instance.Init();
-
-                try
+                using (MainForm mainForm = new MainForm())
                 {
-                    MainForm mainForm = new MainForm();
                     if (!mainForm.Init())
                     {
                         MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
@@ -70,25 +35,20 @@ namespace udesign
                     }
 
                     if (Properties.Settings.Default.BuildTestScene)
+                        TestScene.Run();
+
+                    // 正常的运行阶段
+                    try
                     {
-                        Node n = TestScene.Build();
-                        n.Position = new Point(-100, 100); // would see the clamping
-                        Scene.Instance.Root.Size = new Size(500, 500);
-                        Scene.Instance.Root.Attach(n);
-                        SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+                        Application.Run(mainForm);
                     }
-
-                    Application.Run(mainForm);
+                    catch (Exception e)
+                    {
+                        Session.LogExceptionDetail(e);
+                        MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
+                    }
                 }
-                catch (Exception e)
-                {
-                    Session.LogExceptionDetail(e);
-                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
-                }
-
-                ConfigUserPref.Instance.Save();
             }
-            Session.Deinit();
         }
     }
 }

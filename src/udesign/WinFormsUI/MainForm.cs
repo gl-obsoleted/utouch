@@ -98,6 +98,9 @@ namespace udesign
 
         private bool ResetScene(string sceneName)
         {
+            SceneEd.Instance.Selection.Clear();
+            SceneEd.Instance.OperHistory.Clear();
+
             BootParams bp = new BootParams { 
                 ReourceImages = ConfigTypical.Instance.ReourceImages,
                 ScenePath = sceneName 
@@ -107,7 +110,6 @@ namespace udesign
 
             m_glCtrl.Refresh();
             m_uiLayoutTree.PopulateLayout();
-            SceneEd.Instance.OperHistory.Clear();
             return true;
         }
 

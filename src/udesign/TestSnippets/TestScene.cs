@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ulib;
 using ulib.Elements;
 
 namespace udesign
@@ -35,6 +36,15 @@ namespace udesign
             root.Attach(m_child3);
 
             return root;
+        }
+
+        public static void Run()
+        {
+            Node n = TestScene.Build();
+            n.Position = new Point(-100, 100); // would see the clamping
+            Scene.Instance.Root.Size = new Size(500, 500);
+            Scene.Instance.Root.Attach(n);
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
     }
 }
