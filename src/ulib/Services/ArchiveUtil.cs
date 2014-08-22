@@ -9,7 +9,7 @@ namespace ulib
     public class ArchiveConstants
     {
         public static string[] FilePostfixes = new string[] {
-            ".json",
+            Constants.LayoutPostfix,
         };
     }
 
@@ -26,6 +26,11 @@ namespace ulib
 
             s_creatorRegistry[type] = t;
             return true;
+        }
+
+        public static void ClearCreators()
+        {
+            s_creatorRegistry.Clear();
         }
 
         public static IArchive CreateArchive(ArchiveType type)

@@ -43,11 +43,18 @@ namespace ulib
         {
             ArchiveType at = ArchiveUtil.FindCompatibleArchiveType(targetLocation);
             if (at == ArchiveType.None)
+            {
+                Session.Log("No compatible archive found.");
                 return null;
+            }
 
+            Session.Log("Creating archive '{0}'", at);
             IArchive arc = ArchiveUtil.CreateArchive(at);
             if (arc == null)
+            {
+                Session.Log("CreateArchive() failed.");
                 return null;
+            }
 
             return arc.LoadFrom(targetLocation);
         }

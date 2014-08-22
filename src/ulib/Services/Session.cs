@@ -8,10 +8,14 @@ using System.Windows.Forms;
 
 namespace ulib
 {
+    public delegate void OutputHandler(string msg);
+
     public class Session
     {
         public static string SessionFolder;
         public static TextWriter LogFile;
+
+        public static event OutputHandler OutputLog;
 
         public static bool Init(string sessionFolder, string logFilename)
         {
@@ -20,7 +24,7 @@ namespace ulib
 
             try
             {
-                LogFile = new StreamWriter(Path.Combine(sessionFolder, logFilename));
+                LogFile = new StreamWriter(Path.Combine(sessionFolder, logFilename), false, Encoding.UTF8);
                 SessionFolder = sessionFolder;
             }
             catch (Exception)
@@ -38,13 +42,16 @@ namespace ulib
 
         public static void Log(string format, params object[] args) 
         {
-            if (LogFile == null)
-                return;
-
-            string content = string.Format(format, args);
             string fulltime = DateTime.Now.ToString("HH-mm-ss ");
-            Session.LogFile.WriteLine(fulltime + content);
-            System.Diagnostics.Debug.WriteLine(fulltime + content);
+            string content = fulltime + string.Format(format, args);
+            if (LogFile != null)
+                LogFile.WriteLine(content);
+            System.Diagnostics.Debug.WriteLine(content);
+
+            if (OutputLog != null)
+            {
+                OutputLog(content);
+            }
         }
 
         public static void LogExceptionDetail(Exception e)

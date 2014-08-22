@@ -33,15 +33,24 @@ namespace ulib
             if (Scene.Instance != null)
                 Scene.Instance.Dispose();
 
+            // 请理性工作
             ResourceManager.Instance.Clear();
+            ArchiveUtil.ClearCreators();
+            NodeNameUtil.ResetIDAllocLut();
+
+                 
+            // 初始化工厂
+            ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
+
+            // 初始化资源系统
             foreach (string resFile in bp.ReourceImages)
             {
                 if (!ResourceManager.Instance.LoadFile(resFile))
                     return false;
             }
+            Session.Log("Resource initialized.");
 
-            NodeNameUtil.ResetIDAllocLut();
-
+            // 初始化场景
             Scene.Instance = new Scene();
             if (!Scene.Instance.Init())
                 return false;

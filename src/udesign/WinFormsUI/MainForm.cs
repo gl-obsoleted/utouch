@@ -26,8 +26,6 @@ namespace udesign
 
             // for debugging purpose only
             m_tabControl.SelectedIndex = 1;
-
-            ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
         }
 
         public bool Init()
@@ -81,13 +79,13 @@ namespace udesign
 
         private void m_menuSave_Click(object sender, EventArgs e)
         {
-            Scene.Instance.Save(@"testdata\test.json");
+            Scene.Instance.Save(@"testdata\test" + Constants.LayoutPostfix);
         }
 
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             // 这里重置前，应先提示用户保存
-            if (!ResetScene(@"testdata\test.json"))
+            if (!ResetScene(@"testdata\test" + Constants.LayoutPostfix))
                 Session.Message("打开文件失败。");
         }
 

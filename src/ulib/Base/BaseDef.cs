@@ -12,6 +12,8 @@ namespace ulib.Base
 
         public const int INVALID_ID = -1;
 
+        public const string LayoutPostfix = ".ui_layout";
+
         public const string ResProtocol = "uires://";
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";

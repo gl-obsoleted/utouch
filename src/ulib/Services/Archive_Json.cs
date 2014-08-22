@@ -85,7 +85,10 @@ namespace ulib
                     se.Converters.Add(new NodeConverter());
                     object obj = jsonObject.ToObject(NodeJsonUtil.GetNodeType(jsonObject), se);
                     if (!(obj is Node))
+                    {
+                        Session.Log("Invalid json object.");
                         return null;
+                    }
 
                     // 手动恢复每个 node 的 m_parent 字段
                     Node root = obj as Node;
@@ -95,9 +98,9 @@ namespace ulib
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.Message);
+                Session.Log(e.Message);
+                return null;
             }
-            return null;
         }
 
         public bool SaveTo(Node node, string targetLocation)

@@ -37,7 +37,7 @@ namespace ulib
             Node loaded = m_archiveSys.Load(targetLocation);
             if (loaded == null || !(loaded is RootNode))
             {
-                System.Diagnostics.Debug.WriteLine("[err] Loading failed.");
+                Session.Message("Loading Scene '{0}' failed.", targetLocation);
                 return false;
             }
 
