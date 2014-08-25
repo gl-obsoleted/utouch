@@ -37,6 +37,7 @@ namespace ulib
 
         public static void Deinit()
         {
+            OutputLog = null;
             LogFile.Close();
         }
 
