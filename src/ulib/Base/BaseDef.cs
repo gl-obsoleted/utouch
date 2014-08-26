@@ -18,8 +18,6 @@ namespace ulib.Base
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";
         public const char ResDelimeter = ':';
-
-        public const string DefaultAtlasFile = "testres/uiatlas";
     }
 
     public class ResolutionLut

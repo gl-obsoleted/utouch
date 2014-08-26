@@ -60,6 +60,7 @@
     <Compile Include="Services\ArchiveUtil.cs" />
     <Compile Include="Services\Archive_Json.cs" />
     <Compile Include="Services\Render.cs" />
+    <Compile Include="Services\ResourceManagerUtil.cs" />
     <Compile Include="Services\ResourceManager.cs" />
     <Compile Include="Services\Scene.cs" />
     <Compile Include="Services\SceneUtil.cs" />

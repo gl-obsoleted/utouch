@@ -79,10 +79,19 @@ namespace udesign.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool BuildTestScene {
             get {
                 return ((bool)(this["BuildTestScene"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("testres/uiatlas")]
+        public string DefaultResFile {
+            get {
+                return ((string)(this["DefaultResFile"]));
             }
         }
     }

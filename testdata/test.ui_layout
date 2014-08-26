@@ -61,6 +61,22 @@
           "Tag": null,
           "__type_info__": "TextNode",
           "Children": []
+        },
+        {
+          "Res_Normal": "uires://testres/uiatlas:anniu2changtai.png",
+          "Res_Pressed": "uires://testres/uiatlas:anniu2hui.png",
+          "Pressed": false,
+          "BackgroundResLocation": "uires://testres/uiatlas:anniu2changtai.png",
+          "Name": "Button",
+          "Position": "103, 200",
+          "Size": "172, 68",
+          "Visible": true,
+          "AlignH": 1,
+          "AlignV": 1,
+          "Margin": 3,
+          "Tag": null,
+          "__type_info__": "Button",
+          "Children": []
         }
       ]
     }

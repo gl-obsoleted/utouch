@@ -13,13 +13,13 @@ namespace ulib.Elements
         public Button()
             : base()
         {
-            ImageResource ir = ResourceManager.Instance.GetResource(Constants.DefaultAtlasFile, "anniu2changtai.png");
+            ImageResource ir = ResourceManager.Instance.GetDefaultResource("anniu2changtai.png");
             if (ir != null)
             {
                 Size = ir.Size;
             }
-            Res_Normal = BaseUtil.ComposeResURL(Constants.DefaultAtlasFile, "anniu2changtai.png");
-            Res_Pressed = BaseUtil.ComposeResURL(Constants.DefaultAtlasFile, "anniu2hui.png");
+            Res_Normal = ResourceManager.Instance.ComposeDefaultResURL("anniu2changtai.png");
+            Res_Pressed = ResourceManager.Instance.ComposeDefaultResURL("anniu2hui.png");
         }
 
         [Category("Button")]

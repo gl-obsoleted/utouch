@@ -8,6 +8,7 @@ namespace ulib
 {
     public class BootParams
     {
+        public string DefaultReourceImage;
         public List<string> ReourceImages;
         public string ScenePath;
     }
@@ -30,25 +31,37 @@ namespace ulib
 
         public bool Init(BootParams bp)
         {
+            // 请理性工作
             if (Scene.Instance != null)
                 Scene.Instance.Dispose();
+            if (ResourceManager.Instance != null)
+                ResourceManager.Instance.Clear();
 
-            // 请理性工作
-            ResourceManager.Instance.Clear();
             ArchiveUtil.ClearCreators();
             NodeNameUtil.ResetIDAllocLut();
 
-                 
             // 初始化工厂
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
 
             // 初始化资源系统
-            foreach (string resFile in bp.ReourceImages)
+            if (bp.DefaultReourceImage.Length == 0 ||
+                !ResourceManager.Instance.LoadDefault(bp.DefaultReourceImage))
             {
-                if (!ResourceManager.Instance.LoadFile(resFile))
-                    return false;
+                Session.Log("加载默认资源 ('{0}') 失败.", bp.DefaultReourceImage);
+                return false;
             }
-            Session.Log("Resource initialized.");
+            if (bp.ReourceImages != null)
+            {
+                foreach (string resFile in bp.ReourceImages)
+                {
+                    if (!ResourceManager.Instance.LoadFile(resFile))
+                    {
+                        Session.Log("加载资源 ('{0}') 失败.", bp.DefaultReourceImage);
+                        return false;
+                    }
+                }
+            }
+            Session.Log("资源系统初始化成功.");
 
             // 初始化场景
             Scene.Instance = new Scene();
@@ -56,6 +69,7 @@ namespace ulib
                 return false;
             if (bp.ScenePath.Length != 0 && !Scene.Instance.Load(bp.ScenePath))
                 return false;
+            Session.Log("场景初始化成功.");
 
             return true;
         }

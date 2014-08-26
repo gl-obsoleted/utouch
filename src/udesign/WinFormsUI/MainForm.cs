@@ -99,7 +99,8 @@ namespace udesign
             SceneEd.Instance.Selection.Clear();
             SceneEd.Instance.OperHistory.Clear();
 
-            BootParams bp = new BootParams { 
+            BootParams bp = new BootParams {
+                DefaultReourceImage = Properties.Settings.Default.DefaultResFile,
                 ReourceImages = ConfigTypical.Instance.ReourceImages,
                 ScenePath = sceneName 
             };
