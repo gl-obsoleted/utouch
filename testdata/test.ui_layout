@@ -48,7 +48,7 @@
           "Children": []
         },
         {
-          "Text": "hello world",
+          "Text": "hello 世界",
           "Color": "Purple",
           "Font": null,
           "Name": "TextNode",
