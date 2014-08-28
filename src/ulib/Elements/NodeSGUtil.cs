@@ -62,5 +62,20 @@ namespace ulib.Elements
                 ClampBounds(child);
             }
         }
+
+        public static bool HasLockedLayoutParent(Node n)
+        {
+            while (n != null)
+            {
+                if (n.Parent != null && n.Parent.LockChildrenLayoutRecursively)
+                {
+                    return true;
+                }
+
+                n = n.Parent;
+            }
+
+            return false;
+        }
     }
 }

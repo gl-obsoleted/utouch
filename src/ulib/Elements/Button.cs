@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using ulib.Base;
@@ -20,6 +21,16 @@ namespace ulib.Elements
             }
             Res_Normal = ResourceManager.Instance.ComposeDefaultResURL("anniu2changtai.png");
             Res_Pressed = ResourceManager.Instance.ComposeDefaultResURL("anniu2hui.png");
+
+            LockChildrenLayoutRecursively = true;
+
+            TextNode tn = new TextNode();
+            tn.Text = "Button";
+            tn.TextColor = Color.White;
+            tn.Dock = DockType.Center;
+            tn.AlignH = AlignHori.Center;
+            tn.AlignV = AlignVert.Middle;
+            Attach(tn);
         }
 
         [Category("Button")]

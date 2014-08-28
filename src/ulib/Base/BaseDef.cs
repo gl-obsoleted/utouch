@@ -51,6 +51,16 @@ namespace ulib.Base
         Bottom,
     }
 
+    public enum DockType
+    {
+        None,
+        Left,
+        Right,
+        Top,
+        Bottom,
+        Center,
+    }
+
     public enum Resolution
     {
         RT_800x600,

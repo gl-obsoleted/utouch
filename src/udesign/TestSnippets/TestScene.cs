@@ -30,7 +30,7 @@ namespace udesign
 
             TextNode m_child3 = new TextNode();
             m_child3.Text = "hello world";
-            m_child3.Color = Color.Purple;
+            m_child3.TextColor = Color.Purple;
             m_child3.Position = new Point(50, 120);
             m_child3.Size = new Size(100, 30);
             root.Attach(m_child3);

@@ -31,6 +31,8 @@ namespace ulib.Elements
             Position = new Point(0, 0);
             Size = new Size(100, 100);
             Visible = true;
+            LockChildrenLayoutRecursively = false;
+            Dock = DockType.None;
             AlignH = AlignHori.Center;
             AlignV = AlignVert.Middle;
             Margin = 3;
@@ -84,17 +86,18 @@ namespace ulib.Elements
 
         public Rectangle GetBounds()
         {
-            return new Rectangle(Position, Size);
+            return new Rectangle(GetDockedPos(), Size);
         }
 
         public Point GetWorldPosition()
         {
-            Point loc = Position;
+            Point loc = GetDockedPos();
             Node p = Parent;
             while (p != null)
             {
-                loc.X += p.Position.X;
-                loc.Y += p.Position.Y;
+                Point parentLoc = p.GetDockedPos();
+                loc.X += parentLoc.X;
+                loc.Y += parentLoc.Y;
                 p = p.Parent;
             }
             return loc;
@@ -109,6 +112,40 @@ namespace ulib.Elements
         {
             foreach (Node n in m_children)
                 n.m_parent = this;
+        }
+
+
+        public Point GetDockedPos()
+        {
+            if (Parent == null)
+                return Position;
+
+            Point dockedPos = Position;
+            switch (Dock)
+            {
+                case Base.DockType.Left:
+                    dockedPos.X = 0;
+                    break;
+                case Base.DockType.Right:
+                    dockedPos.X = Parent.Size.Width - Size.Width;
+                    break;
+                case Base.DockType.Top:
+                    dockedPos.Y = 0;
+                    break;
+                case Base.DockType.Bottom:
+                    dockedPos.Y = Parent.Size.Height - Size.Height;
+                    break;
+                case Base.DockType.Center:
+                    dockedPos.X = Parent.Size.Width / 2 - Size.Width / 2;
+                    dockedPos.Y = Parent.Size.Height / 2 - Size.Height / 2;
+                    break;
+
+                case Base.DockType.None:
+                default:
+                    break;
+            }
+
+            return dockedPos;
         }
 
         protected Node m_parent;

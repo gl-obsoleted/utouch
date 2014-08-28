@@ -18,11 +18,23 @@ namespace udesign
                 rect.Inflate(5, 5);
 
                 Color c = renderer.DrawColor;
-                renderer.DrawColor = Color.Red;
+                if (NodeSGUtil.HasLockedLayoutParent(n))
+                {
+                    renderer.DrawColor = Color.Red;
+                }
+                else
+                {
+                    renderer.DrawColor = Color.RosyBrown;
+                }
+
                 renderer.DrawLinedRect(rect);
-                renderer.RenderText(ctx.m_font,
-                    new Point(rect.Left, rect.Top - 18),
-                    n.Name + " [" + n.GetType().Name + "]");
+                renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 18), n.Name + " [" + n.GetType().Name + "]");
+                
+                if (NodeSGUtil.HasLockedLayoutParent(n))
+                {
+                    renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 36), "(不可拖动)");
+                }
+                
                 renderer.DrawColor = c;
             }
 

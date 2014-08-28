@@ -33,9 +33,16 @@ namespace udesign
                 Node n = Scene.Instance.Pick(e.Location);
                 if (m_selection.Contains(n))
                 {
-                    // 到这里是拖拽
-                    m_beginDragPos = e.Location;
-                    m_dragAction = new Action_Move(m_selection);
+                    if (SelectionContainsLockedNode())
+                    {
+                        Session.Log("选中的对象中，包含有锁定的节点，请检查其父节点的 LockChildrenLayoutRecursively 属性");
+                    }
+                    else
+                    {
+                        // 到这里触发拖拽
+                        m_beginDragPos = e.Location;
+                        m_dragAction = new Action_Move(m_selection);
+                    }
                 }
             }
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
@@ -124,7 +131,6 @@ namespace udesign
             return false;
         }
 
-        private List<Node> m_selection = new List<Node>();
         private OperationHistory m_operHistory = new OperationHistory();
     }
 }

@@ -28,16 +28,17 @@ namespace ulib
             if (!node.GetBounds().Contains(location))
                 return null;
 
-            location.X -= node.Position.X;
-            location.Y -= node.Position.Y;
+            Point dockedPos = node.GetDockedPos();
+            location.X -= dockedPos.X;
+            location.Y -= dockedPos.Y;
             foreach (Node child in node.Children)
             {
                 Node ret = Pick(child, location);
                 if (ret != null)
                     return ret;
             }
-            location.X += node.Position.X;
-            location.Y += node.Position.Y;
+            location.X += dockedPos.X;
+            location.Y += dockedPos.Y;
             return node;
         }
     }
