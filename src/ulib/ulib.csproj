@@ -48,6 +48,7 @@
     <Compile Include="Base\BaseUtil.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Elements\Button.cs" />
+    <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Elements\ImageNode.cs" />
     <Compile Include="Elements\Node.cs" />
     <Compile Include="Elements\NodeData.cs" />

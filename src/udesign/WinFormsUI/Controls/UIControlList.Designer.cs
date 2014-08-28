@@ -34,6 +34,7 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("ImageNode");
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("TextNode");
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Button");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("CheckBox");
             this.m_controlList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
@@ -51,11 +52,13 @@
             listViewItem2.Group = listViewGroup1;
             listViewItem3.Group = listViewGroup1;
             listViewItem4.Group = listViewGroup2;
+            listViewItem5.Group = listViewGroup2;
             this.m_controlList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3,
-            listViewItem4});
+            listViewItem4,
+            listViewItem5});
             this.m_controlList.Location = new System.Drawing.Point(0, 0);
             this.m_controlList.MultiSelect = false;
             this.m_controlList.Name = "m_controlList";

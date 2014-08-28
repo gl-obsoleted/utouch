@@ -31,6 +31,10 @@ namespace udesign
             {
                 RenderButton(node as Button, grc);
             }
+            else if (node is CheckBox)
+            {
+                RenderCheckBox(node as CheckBox, grc);
+            }
             else
             {
                 Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), node.Size);
@@ -40,16 +44,7 @@ namespace udesign
 
         private void RenderImageNode(ImageNode imageNode, GwenRenderContext grc)
         {
-            TextureRenderInfo tri = GwenTextureProvider.Instance.GetTextureRenderInfo(grc.m_renderer, imageNode.Res);
-            if (tri != null) // 找不到贴图的话，正常的处理应该用一个显眼的错误图案，这里暂时先忽略，待补充
-            {
-                Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), imageNode.Size);
-                grc.m_renderer.DrawTexturedRect(tri.texture, rect,
-                    tri.u1,
-                    tri.v1,
-                    tri.u2,
-                    tri.v2);
-            }
+            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedTranslate(), imageNode.Size), imageNode.Res);
         }
 
         private void RenderTextNode(TextNode textNode, GwenRenderContext grc)
@@ -81,11 +76,21 @@ namespace udesign
 
         private void RenderButton(Button bt, GwenRenderContext grc)
         {
-            TextureRenderInfo tri = GwenTextureProvider.Instance.GetTextureRenderInfo(grc.m_renderer, bt.BackgroundResLocation);
+            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedTranslate(), bt.Size), bt.Res_Background);
+        }
+
+        private void RenderCheckBox(CheckBox cb, GwenRenderContext grc)
+        {
+            Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), cb.MarkSize);
+            DrawImage(grc, rect, cb.Res_Background);
+            DrawImage(grc, rect, cb.Res_Mark);
+        }
+
+        private void DrawImage(GwenRenderContext grc, Rectangle rect, string url)
+        {
+            TextureRenderInfo tri = GwenTextureProvider.Instance.GetTextureRenderInfo(grc.m_renderer, url);
             if (tri != null) // 找不到贴图的话，正常的处理应该用一个显眼的错误图案，这里暂时先忽略，待补充
             {
-                Rectangle rect = bt.GetBounds();
-                rect.Offset(grc.m_accumTranslate);
                 grc.m_renderer.DrawTexturedRect(tri.texture, rect,
                     tri.u1,
                     tri.v1,

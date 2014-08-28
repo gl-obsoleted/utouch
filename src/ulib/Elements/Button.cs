@@ -12,7 +12,6 @@ namespace ulib.Elements
     public class Button : Node
     {
         public Button()
-            : base()
         {
             ImageResource ir = ResourceManager.Instance.GetDefaultResource("anniu2changtai.png");
             if (ir != null)
@@ -41,7 +40,7 @@ namespace ulib.Elements
 
         public bool Pressed { get { return m_isPressed; } }
         
-        public string BackgroundResLocation { get { return m_isPressed ? Res_Pressed : Res_Normal ; } }
+        public string Res_Background { get { return m_isPressed ? Res_Pressed : Res_Normal ; } }
 
         private bool m_isPressed = false;
     }
