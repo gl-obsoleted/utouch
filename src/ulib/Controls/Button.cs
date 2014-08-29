@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,9 +8,9 @@ using System.Text;
 using ulib.Base;
 using ulib.Elements;
 
-namespace ulib.Elements
+namespace ulib.Controls
 {
-    public class Button : Node
+    public class Button : Control
     {
         public Button()
         {
@@ -20,16 +21,14 @@ namespace ulib.Elements
             }
             Res_Normal = ResourceManager.Instance.ComposeDefaultResURL("anniu2changtai.png");
             Res_Pressed = ResourceManager.Instance.ComposeDefaultResURL("anniu2hui.png");
-
-            LockChildrenLayoutRecursively = true;
-
-            TextNode tn = new TextNode();
-            tn.Text = "Button";
-            tn.TextColor = Color.White;
-            tn.Dock = DockType.Center;
-            tn.AlignH = AlignHori.Center;
-            tn.AlignV = AlignVert.Middle;
-            Attach(tn);
+                                 
+            m_textNode = new TextNode();
+            m_textNode.Text = "Button";
+            m_textNode.TextColor = Color.White;
+            m_textNode.Dock = DockType.Center;
+            m_textNode.AlignH = AlignHori.Center;
+            m_textNode.AlignV = AlignVert.Middle;
+            Attach(m_textNode);
         }
 
         [Category("Button")]
@@ -38,10 +37,14 @@ namespace ulib.Elements
         [Category("Button")]
         public string Res_Pressed { get; set; }
 
+        [Category("Button")]
+        public string ButtonText { get { return m_textNode.Text; } set { m_textNode.Text = value; } }
+
         public bool Pressed { get { return m_isPressed; } }
         
         public string Res_Background { get { return m_isPressed ? Res_Pressed : Res_Normal ; } }
 
         private bool m_isPressed = false;
+        private TextNode m_textNode;
     }
 }

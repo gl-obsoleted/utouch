@@ -35,17 +35,17 @@ namespace udesign
                 {
                     if (SelectionContainsLockedNode())
                     {
-                        Session.Log("选中的对象中，包含有锁定的节点，请检查其父节点的 LockChildrenLayoutRecursively 属性");
+                        Session.Log("Scene.Instance.Pick() 会保证不会有复合节点的子节点被选中，如果到达这里，说明前面的逻辑已失效，忽略选择动作。");
                     }
                     else
                     {
                         // 到这里触发拖拽
                         m_beginDragPos = e.Location;
                         m_dragAction = new Action_Move(m_selection);
+                        SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                     }
                 }
             }
-            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
         public void MouseMove(MouseEventArgs e)
@@ -99,10 +99,10 @@ namespace udesign
             if (n != null)
             {
                 m_selection.Add(n);
-            }
 
-            SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
-            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
+                SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
+            }
         }
 
         public void DeleteSelected()

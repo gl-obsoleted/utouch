@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using ulib.Base;
+using ulib.Elements;
 
-namespace ulib.Elements
+namespace ulib.Controls
 {
-    public class CheckBox : Node
+    public class CheckBox : Control
     {
         public CheckBox()
         {
@@ -27,8 +29,6 @@ namespace ulib.Elements
 
             Size = new Size(150, 50);
             MarkSize = new Size(DEFAULT_MARK_SIZE, DEFAULT_MARK_SIZE);
-
-            LockChildrenLayoutRecursively = true;
         }
 
         [Category("CheckBox")]
@@ -55,6 +55,9 @@ namespace ulib.Elements
                 }
             }
         }
+
+        [Category("CheckBox")]
+        public string DescText { get { return m_text.Text; } set { m_text.Text = value; } }
 
         public bool Toggled { get { return m_toggled; } }
 

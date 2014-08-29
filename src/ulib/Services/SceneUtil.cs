@@ -28,6 +28,10 @@ namespace ulib
             if (!node.GetBounds().Contains(location))
                 return null;
 
+            // 复合节点直接返回，不再检查子节点
+            if (node.LockChildrenLayoutRecursively)
+                return node;
+
             Point dockedPos = node.GetDockedPos();
             location.X -= dockedPos.X;
             location.Y -= dockedPos.Y;

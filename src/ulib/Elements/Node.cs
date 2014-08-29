@@ -18,6 +18,10 @@ namespace ulib.Elements
         [JsonIgnore]
         [Browsable(false)]
         public Node Parent { get { return m_parent; } }
+        [JsonIgnore]
+        [Browsable(false)]
+        [Description("对于复合型控件，这个属性能够避免子节点位置，尺寸 Dock 等被修改")]
+        public virtual bool LockChildrenLayoutRecursively { get; set; }
 
         #endregion
 
@@ -56,7 +60,7 @@ namespace ulib.Elements
             }
         }
 
-        public void Attach(Node n)
+        public virtual void Attach(Node n)
         {
             if (!m_children.Contains(n))
             {

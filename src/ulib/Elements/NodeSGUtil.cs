@@ -63,19 +63,24 @@ namespace ulib.Elements
             }
         }
 
-        public static bool HasLockedLayoutParent(Node n)
+        public static Node FindLockedLayoutParent(Node n)
         {
             while (n != null)
             {
                 if (n.Parent != null && n.Parent.LockChildrenLayoutRecursively)
                 {
-                    return true;
+                    return n.Parent;
                 }
 
                 n = n.Parent;
             }
 
-            return false;
+            return null;
+        }
+
+        public static bool HasLockedLayoutParent(Node n)
+        {
+            return FindLockedLayoutParent(n) != null;
         }
     }
 }

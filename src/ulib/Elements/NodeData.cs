@@ -38,9 +38,6 @@ namespace ulib.Elements
         [Description("是否可见 (影响所有子节点)")]
         public bool Visible { get; set; }
         [Category("Node")]
-        [Description("对于复合型控件，这个属性能够避免子节点位置，尺寸 Dock 等被修改")]
-        public bool LockChildrenLayoutRecursively { get; set; }
-        [Category("Node")]
         [Description("外部 Dock，用于描述与父节点的关系，是节点通用属性")]
         public DockType Dock { get; set; }
         [Category("Node")]
@@ -64,7 +61,7 @@ namespace ulib.Elements
         public string __type_info__ { get { return GetType().Name; } }
 
         [Browsable(false)]
-        public List<Node> Children { get { return m_children; } }
+        public virtual List<Node> Children { get { return m_children; } }
 
         #endregion
     }
