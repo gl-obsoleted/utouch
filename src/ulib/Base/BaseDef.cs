@@ -9,6 +9,7 @@ namespace ulib.Base
     public class Constants
     {
         public static readonly Point ZeroPoint = new Point { X = 0, Y = 0 };
+        public static readonly Rectangle INVALID_RECT = new Rectangle { X = -10000, Y = -10000, Width = 1, Height = 1 };
 
         public const int INVALID_ID = -1;
 
@@ -20,21 +21,30 @@ namespace ulib.Base
         public const char ResDelimeter = ':';
     }
 
-    public class ResolutionLut
+    public class Resolution
     {
-        public static readonly Dictionary<Resolution, Size> Table = new Dictionary<Resolution, Size> {
-            { Resolution.RT_800x600, new Size { Width = 800, Height = 600 } },
-            { Resolution.RT_1024x768, new Size { Width = 1024, Height = 768 } },
-        };
-    }
+        public enum Slot
+        {
+            RT_None,
+            RT_800x600,
+            RT_1024x768,
+        }
 
-    public class RootNodeConstants
-    {
-        public static readonly bool Default_IsFullscreen = false;
-        public static readonly Point Default_Position = new Point { X = 100, Y = 100 };
-        public static readonly Size Default_Size = new Size { Width = 300, Height = 300 };
-        public static readonly Resolution Default_Resolution = Resolution.RT_800x600;
-        public static readonly string Default_Name = "Root";
+        public static readonly Dictionary<Slot, Size> Table = new Dictionary<Slot, Size> {
+            { Slot.RT_None, new Size { Width = 0, Height = 0 } },
+            { Slot.RT_800x600, new Size { Width = 800, Height = 600 } },
+            { Slot.RT_1024x768, new Size { Width = 1024, Height = 768 } },
+        };
+
+        public static readonly Slot DefaultSlot = Slot.RT_1024x768;
+
+        public static Size GetDefaultResolution() 
+        {
+            Size size;
+            bool ret = Resolution.Table.TryGetValue(DefaultSlot, out size);
+            System.Diagnostics.Debug.Assert(ret);
+            return size;
+        }
     }
 
     public enum AlignHori
@@ -59,13 +69,6 @@ namespace ulib.Base
         Top,
         Bottom,
         Center,
-    }
-
-    public enum Resolution
-    {
-        RT_800x600,
-        RT_1024x768,
-        RT_Customized,
     }
 
     public class Color4b

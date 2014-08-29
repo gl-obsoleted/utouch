@@ -53,10 +53,15 @@ namespace ulib.Elements
         [Description("标记 (可任意起，不影响正常逻辑)")]
         public string Tag { get; set; }
 
+        [Category("Node")]
+        [Browsable(false)]
+        public object UserData { get; set; }
+
         #endregion
 
         #region 序列化属性（正常地序列化存取，属性界面只读或不可见）
 
+        [Browsable(false)]
         [ReadOnly(true)]
         public string __type_info__ { get { return GetType().Name; } }
 

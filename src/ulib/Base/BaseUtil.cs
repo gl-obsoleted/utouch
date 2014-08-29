@@ -22,6 +22,11 @@ namespace ulib.Base
                 Clamp(pt.X, rect.Left, rect.Right),
                 Clamp(pt.Y, rect.Top, rect.Bottom));
         }
+
+        public static bool IsInvalid(Rectangle rect)
+        {
+            return rect == Constants.INVALID_RECT;
+        }
     }
 
     public class BaseUtil

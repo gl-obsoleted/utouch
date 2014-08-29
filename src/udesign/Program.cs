@@ -38,6 +38,9 @@ namespace udesign
                         TestScene.Run();
 
                     // 正常的运行阶段
+#if DEBUG
+                    Application.Run(mainForm);
+#else
                     try
                     {
                         Application.Run(mainForm);
@@ -47,6 +50,7 @@ namespace udesign
                         Session.LogExceptionDetail(e);
                         MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
                     }
+#endif
                 }
             }
         }

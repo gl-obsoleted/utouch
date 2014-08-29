@@ -107,8 +107,8 @@ namespace udesign
             if (!Bootstrap.Instance.Init(bp))
                 return false;
 
-            m_glCtrl.Refresh();
-            m_uiLayoutTree.PopulateLayout();
+            SceneEd.Instance.Select(Scene.Instance.Root);
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
             return true;
         }
 

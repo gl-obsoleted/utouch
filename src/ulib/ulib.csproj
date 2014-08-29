@@ -58,6 +58,7 @@
     <Compile Include="Elements\NodeJsonUtil.cs" />
     <Compile Include="Elements\NodeNameUtil.cs" />
     <Compile Include="Elements\NodeSGUtil.cs" />
+    <Compile Include="Elements\RootNodeSettings.cs" />
     <Compile Include="Elements\TextNode.cs" />
     <Compile Include="Elements\TextNodeUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

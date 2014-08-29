@@ -152,6 +152,23 @@ namespace ulib.Elements
             return dockedPos;
         }
 
+        public Rectangle GetChildrenWorldBounds()
+        {
+            Rectangle rect = Constants.INVALID_RECT;
+            foreach (Node child in Children)
+            {
+                if (Base.Math.IsInvalid(rect))
+                {
+                    rect = child.GetWorldBounds();
+                }
+                else
+                {
+                    rect = Rectangle.Union(rect, child.GetWorldBounds());
+                }
+            }
+            return rect;
+        }
+
         protected Node m_parent;
         protected List<Node> m_children = new List<Node>();
     }

@@ -21,16 +21,15 @@ namespace udesign.Controls
             InitializeComponent();
 
             m_layoutTreeView.Nodes.Clear();
-            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(RootNodeConstants.Default_Name, "<unspecified>");
+            m_layoutTreeView.SelectedNode = m_layoutTreeView.Nodes.Add(RootNode.Default_Name, "<unspecified>");
         }
 
         public void PopulateLayout()
         {
-            string rootKey = RootNodeConstants.Default_Name;
-            if (!m_layoutTreeView.Nodes.ContainsKey(rootKey))
+            if (!m_layoutTreeView.Nodes.ContainsKey(RootNode.Default_Name))
                 return;
 
-            TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
+            TreeNode treeRoot = m_layoutTreeView.Nodes[RootNode.Default_Name];
             treeRoot.Name = Scene.Instance.Root.Name;
             treeRoot.Text = GenerateNodeLabel(Scene.Instance.Root);
             treeRoot.Tag = Scene.Instance.Root;
@@ -64,8 +63,7 @@ namespace udesign.Controls
 
         public void OnSelectSceneNode(Node n, object sender)
         {
-            string rootKey = RootNodeConstants.Default_Name;
-            if (n == null || !m_layoutTreeView.Nodes.ContainsKey(rootKey))
+            if (n == null || !m_layoutTreeView.Nodes.ContainsKey(RootNode.Default_Name))
             {
                 if (m_layoutTreeView.SelectedNode != null)
                 {
@@ -74,7 +72,7 @@ namespace udesign.Controls
                 return;
             }
 
-            TreeNode treeRoot = m_layoutTreeView.Nodes[rootKey];
+            TreeNode treeRoot = m_layoutTreeView.Nodes[RootNode.Default_Name];
             TreeNode target = SelectTreeNodeRecursively(treeRoot, n);
             if (target != m_layoutTreeView.SelectedNode)
             {

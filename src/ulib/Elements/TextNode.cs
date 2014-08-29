@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -27,6 +28,8 @@ namespace ulib.Elements
 
         public Base.Font Font { get; set; }
 
+        [JsonIgnore]
+        [Browsable(false)]
         public bool RequestedSizeRefreshing { get; set; }
         protected string m_text;
     }

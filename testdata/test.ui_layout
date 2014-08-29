@@ -1,14 +1,18 @@
 {
-  "IsFullscren": false,
+  "IsFullscren": true,
   "Name": "Root",
-  "Position": "84, 59",
-  "Size": "500, 500",
+  "Position": "0, 0",
+  "Size": "1024, 768",
   "Visible": true,
   "Dock": 0,
   "AlignH": 1,
   "AlignV": 1,
   "Margin": 3,
   "Tag": null,
+  "UserData": {
+    "EditTimeResSlot": 2,
+    "EditTimeResolution": "1024, 768"
+  },
   "__type_info__": "RootNode",
   "Children": [
     {
@@ -21,6 +25,7 @@
       "AlignV": 1,
       "Margin": 3,
       "Tag": null,
+      "UserData": null,
       "__type_info__": "Node",
       "Children": [
         {
@@ -34,6 +39,7 @@
           "AlignV": 1,
           "Margin": 3,
           "Tag": null,
+          "UserData": null,
           "__type_info__": "ImageNode",
           "Children": []
         },
@@ -48,6 +54,7 @@
           "AlignV": 1,
           "Margin": 3,
           "Tag": null,
+          "UserData": null,
           "__type_info__": "ImageNode",
           "Children": []
         },
@@ -55,7 +62,6 @@
           "Text": "hello 世界",
           "TextColor": "White",
           "Font": null,
-          "RequestedSizeRefreshing": false,
           "Name": "TextNode",
           "Position": "83, 174",
           "Size": "100, 30",
@@ -65,6 +71,7 @@
           "AlignV": 1,
           "Margin": 3,
           "Tag": null,
+          "UserData": null,
           "__type_info__": "TextNode",
           "Children": []
         },
@@ -83,6 +90,7 @@
           "AlignV": 1,
           "Margin": 3,
           "Tag": null,
+          "UserData": null,
           "__type_info__": "Button"
         }
       ]
@@ -91,7 +99,6 @@
       "Text": "ta",
       "TextColor": "White",
       "Font": null,
-      "RequestedSizeRefreshing": false,
       "Name": "Label",
       "Position": "168, 381",
       "Size": "100, 30",
@@ -101,7 +108,40 @@
       "AlignV": 1,
       "Margin": 3,
       "Tag": null,
+      "UserData": null,
       "__type_info__": "Label",
+      "Children": []
+    },
+    {
+      "Text": "测试标签",
+      "TextColor": "SeaGreen",
+      "Font": null,
+      "Name": "Label<1>",
+      "Position": "72, 400",
+      "Size": "100, 30",
+      "Visible": true,
+      "Dock": 0,
+      "AlignH": 1,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "UserData": null,
+      "__type_info__": "Label",
+      "Children": []
+    },
+    {
+      "Res": "uires://testres/uiatlas:tongyi.png",
+      "Name": "Image",
+      "Position": "341, 368",
+      "Size": "100, 100",
+      "Visible": true,
+      "Dock": 0,
+      "AlignH": 1,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "UserData": null,
+      "__type_info__": "Image",
       "Children": []
     }
   ]
