@@ -37,17 +37,33 @@ namespace ulib
             Node loaded = m_archiveSys.Load(targetLocation);
             if (loaded == null || !(loaded is RootNode))
             {
-                Session.Message("Loading Scene '{0}' failed.", targetLocation);
+                Session.Log("Scene.Load 加载失败. '{0}'", targetLocation);
                 return false;
             }
 
+            m_currentFilePath = targetLocation;
             m_root = loaded as RootNode;
             return true;
         }
 
+        public bool Save()
+        {
+            if (string.IsNullOrEmpty(m_currentFilePath))
+            {
+                Session.Log("保存文件时 m_currentFilePath 无效，且未传入有效的路径。");
+                return false;
+            }
+
+            return m_archiveSys.Save(m_root, m_currentFilePath);
+        }
+
         public bool Save(string targetLocation)
         {
-            return m_archiveSys.Save(m_root, targetLocation);
+            if (!m_archiveSys.Save(m_root, targetLocation))
+                return false;
+
+            m_currentFilePath = targetLocation;
+            return true;
         }
 
         public void Render(RenderContext rc, RenderDevice rs)
@@ -60,6 +76,9 @@ namespace ulib
             return SceneGraphUtil.Pick(m_root, location);
         }
 
+        public string CurrentFilePath { get { return m_currentFilePath; } }
+
+        private string m_currentFilePath;
         private RootNode m_root = new RootNode();
         private RenderSystem m_renderSys = new RenderSystem();
         private ArchiveSystem m_archiveSys = new ArchiveSystem();

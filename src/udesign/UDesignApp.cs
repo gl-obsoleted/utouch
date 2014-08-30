@@ -11,6 +11,8 @@ namespace udesign
 {
     public class UDesignApp : IDisposable
     {
+        public static UDesignApp Instance;  // 注意这个实例的生命期在 Main() 中控制
+
         public bool InitEnv()
         {
             Application.EnableVisualStyles();
@@ -70,6 +72,8 @@ namespace udesign
 
             Session.Deinit();
         }
+
+        public string RootPath { get { return m_rootPath; } }
 
         private string m_rootPath;
     }

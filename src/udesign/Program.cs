@@ -19,11 +19,11 @@ namespace udesign
         [STAThread]
         static void Main()
         {
-            using (UDesignApp app = new UDesignApp())
+            using (UDesignApp.Instance = new UDesignApp())
             {
-                if (!app.InitEnv())
+                if (!UDesignApp.Instance.InitEnv())
                     return;
-                if (!app.InitSession())
+                if (!UDesignApp.Instance.InitSession())
                     return;
 
                 using (MainForm mainForm = new MainForm())

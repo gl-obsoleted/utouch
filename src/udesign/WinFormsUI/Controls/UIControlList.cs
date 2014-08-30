@@ -16,7 +16,7 @@ namespace udesign.WinFormsUI.Controls
         {
             InitializeComponent();
 
-            m_icons.Images.Add(Image.FromFile("media/appbar.folder.png"));
+            m_icons.Images.Add(Properties.Resources.appbar_folder);
             m_icons.ImageSize = new Size(48, 48);
 
             m_controlList.View = View.LargeIcon;

@@ -94,5 +94,14 @@ namespace udesign.Properties {
                 return ((string)(this["DefaultResFile"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("udesign")]
+        public string AppName {
+            get {
+                return ((string)(this["AppName"]));
+            }
+        }
     }
 }

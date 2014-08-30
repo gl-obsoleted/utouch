@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using ulib.Base;
 
 namespace ulib
 {
@@ -86,7 +87,14 @@ namespace ulib
         {
             string msg = string.Format(format, args);
             Log("=MESSAGE SHOWN=: ", msg);
-            return MessageBox.Show(msg);
+            return MessageBox.Show(msg, Constants.LibName);
+        }
+
+        public static bool Confirm(string format, params object[] args)
+        {
+            string msg = string.Format(format, args);
+            Log("=MESSAGE SHOWN=: ", msg);
+            return MessageBox.Show(msg, Constants.LibName, MessageBoxButtons.OKCancel) == DialogResult.OK;
         }
 
         static int ExceptionCounter = 0;

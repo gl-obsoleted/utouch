@@ -19,6 +19,8 @@ namespace ulib.Base
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";
         public const char ResDelimeter = ':';
+
+        public static readonly string LibName = "ulib";
     }
 
     public class Resolution

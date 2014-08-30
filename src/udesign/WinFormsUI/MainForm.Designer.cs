@@ -33,26 +33,19 @@
             this.m_menuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.buttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuResForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.m_menuOpenTestLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.m_tabControl = new System.Windows.Forms.TabControl();
@@ -60,10 +53,12 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.pageControl = new System.Windows.Forms.TabPage();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
-            this.uiControlList1 = new udesign.WinFormsUI.Controls.UIControlList();
+            this.pageControl = new System.Windows.Forms.TabPage();
+            this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -83,8 +78,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.panelsToolStripMenuItem,
-            this.addToolStripMenuItem,
             this.testFramesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -98,6 +91,7 @@
             this.m_menuNew,
             this.m_menuOpen,
             this.m_menuSave,
+            this.m_menuSaveAs,
             this.toolStripSeparator1,
             this.saveToolStripMenuItem,
             this.toolStripSeparator2,
@@ -110,7 +104,7 @@
             // 
             this.m_menuNew.Name = "m_menuNew";
             this.m_menuNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.m_menuNew.Size = new System.Drawing.Size(155, 22);
+            this.m_menuNew.Size = new System.Drawing.Size(164, 22);
             this.m_menuNew.Text = "&New";
             this.m_menuNew.Click += new System.EventHandler(this.m_menuNew_Click);
             // 
@@ -118,39 +112,34 @@
             // 
             this.m_menuOpen.Name = "m_menuOpen";
             this.m_menuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.m_menuOpen.Size = new System.Drawing.Size(155, 22);
-            this.m_menuOpen.Text = "&Open";
+            this.m_menuOpen.Size = new System.Drawing.Size(164, 22);
+            this.m_menuOpen.Text = "&Open...";
             this.m_menuOpen.Click += new System.EventHandler(this.m_menuOpen_Click);
             // 
             // m_menuSave
             // 
             this.m_menuSave.Name = "m_menuSave";
             this.m_menuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.m_menuSave.Size = new System.Drawing.Size(155, 22);
+            this.m_menuSave.Size = new System.Drawing.Size(164, 22);
             this.m_menuSave.Text = "&Save";
             this.m_menuSave.Click += new System.EventHandler(this.m_menuSave_Click);
+            // 
+            // m_menuSaveAs
+            // 
+            this.m_menuSaveAs.Name = "m_menuSaveAs";
+            this.m_menuSaveAs.Size = new System.Drawing.Size(164, 22);
+            this.m_menuSaveAs.Text = "Save &As...";
+            this.m_menuSaveAs.Click += new System.EventHandler(this.m_menuSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.saveToolStripMenuItem.Text = "&Publish";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // editToolStripMenuItem
@@ -193,82 +182,42 @@
             this.m_menuDelete.Text = "&Delete";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
-            // panelsToolStripMenuItem
-            // 
-            this.panelsToolStripMenuItem.Name = "panelsToolStripMenuItem";
-            this.panelsToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
-            this.panelsToolStripMenuItem.Text = "&Panels";
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nodeToolStripMenuItem,
-            this.imageToolStripMenuItem,
-            this.textToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.buttonToolStripMenuItem,
-            this.checkboxToolStripMenuItem});
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
-            this.addToolStripMenuItem.Text = "&Objects";
-            // 
-            // nodeToolStripMenuItem
-            // 
-            this.nodeToolStripMenuItem.Name = "nodeToolStripMenuItem";
-            this.nodeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.nodeToolStripMenuItem.Text = "Node";
-            // 
-            // imageToolStripMenuItem
-            // 
-            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.imageToolStripMenuItem.Text = "Image";
-            // 
-            // textToolStripMenuItem
-            // 
-            this.textToolStripMenuItem.Name = "textToolStripMenuItem";
-            this.textToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.textToolStripMenuItem.Text = "Text";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(130, 6);
-            // 
-            // buttonToolStripMenuItem
-            // 
-            this.buttonToolStripMenuItem.Name = "buttonToolStripMenuItem";
-            this.buttonToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.buttonToolStripMenuItem.Text = "Button";
-            // 
-            // checkboxToolStripMenuItem
-            // 
-            this.checkboxToolStripMenuItem.Name = "checkboxToolStripMenuItem";
-            this.checkboxToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.checkboxToolStripMenuItem.Text = "Checkbox";
-            // 
             // testFramesToolStripMenuItem
             // 
             this.testFramesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemGwenUnitTest,
-            this.m_menuResForm});
+            this.m_menuResForm,
+            this.toolStripSeparator5,
+            this.m_menuOpenTestLayout});
             this.testFramesToolStripMenuItem.Name = "testFramesToolStripMenuItem";
-            this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
-            this.testFramesToolStripMenuItem.Text = "TestFrames";
+            this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.testFramesToolStripMenuItem.Text = "&Test";
             // 
             // menuItemGwenUnitTest
             // 
             this.menuItemGwenUnitTest.Name = "menuItemGwenUnitTest";
-            this.menuItemGwenUnitTest.Size = new System.Drawing.Size(159, 22);
+            this.menuItemGwenUnitTest.Size = new System.Drawing.Size(264, 22);
             this.menuItemGwenUnitTest.Text = "Gwen UnitTest";
             this.menuItemGwenUnitTest.Click += new System.EventHandler(this.menuItemGwenUnitTest_Click);
             // 
             // m_menuResForm
             // 
             this.m_menuResForm.Name = "m_menuResForm";
-            this.m_menuResForm.Size = new System.Drawing.Size(159, 22);
+            this.m_menuResForm.Size = new System.Drawing.Size(264, 22);
             this.m_menuResForm.Text = "ResForm";
             this.m_menuResForm.Click += new System.EventHandler(this.m_menuResForm_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(261, 6);
+            // 
+            // m_menuOpenTestLayout
+            // 
+            this.m_menuOpenTestLayout.Name = "m_menuOpenTestLayout";
+            this.m_menuOpenTestLayout.Size = new System.Drawing.Size(264, 22);
+            this.m_menuOpenTestLayout.Text = "Open Test Layout (test.ui_layout)";
+            this.m_menuOpenTestLayout.Click += new System.EventHandler(this.m_menuOpenTestLayout_Click);
             // 
             // statusStrip1
             // 
@@ -351,17 +300,6 @@
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
             // 
-            // pageControl
-            // 
-            this.pageControl.Controls.Add(this.uiControlList1);
-            this.pageControl.Location = new System.Drawing.Point(4, 22);
-            this.pageControl.Name = "pageControl";
-            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
-            this.pageControl.Size = new System.Drawing.Size(143, 489);
-            this.pageControl.TabIndex = 2;
-            this.pageControl.Text = "Control";
-            this.pageControl.UseVisualStyleBackColor = true;
-            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -378,13 +316,37 @@
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
             // 
-            // uiControlList1
+            // pageControl
             // 
-            this.uiControlList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiControlList1.Location = new System.Drawing.Point(3, 3);
-            this.uiControlList1.Name = "uiControlList1";
-            this.uiControlList1.Size = new System.Drawing.Size(137, 483);
-            this.uiControlList1.TabIndex = 0;
+            this.pageControl.Controls.Add(this.uiControlList2);
+            this.pageControl.Location = new System.Drawing.Point(4, 22);
+            this.pageControl.Name = "pageControl";
+            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
+            this.pageControl.Size = new System.Drawing.Size(143, 489);
+            this.pageControl.TabIndex = 2;
+            this.pageControl.Text = "Control";
+            this.pageControl.UseVisualStyleBackColor = true;
+            // 
+            // uiControlList2
+            // 
+            this.uiControlList2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiControlList2.Location = new System.Drawing.Point(3, 3);
+            this.uiControlList2.Name = "uiControlList2";
+            this.uiControlList2.Size = new System.Drawing.Size(137, 483);
+            this.uiControlList2.TabIndex = 0;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Enabled = false;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.saveToolStripMenuItem.Text = "&Publish (暂未实现)";
             // 
             // MainForm
             // 
@@ -424,17 +386,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem m_menuOpen;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nodeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem buttonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkboxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem panelsToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem m_menuNew;
@@ -456,6 +408,12 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuDelete;
         private System.Windows.Forms.TabPage pageControl;
         private WinFormsUI.Controls.UIControlList uiControlList1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem m_menuOpenTestLayout;
+        private System.Windows.Forms.ToolStripMenuItem m_menuSaveAs;
+        private WinFormsUI.Controls.UIControlList uiControlList2;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
