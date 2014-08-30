@@ -99,10 +99,13 @@ namespace udesign
             if (n != null)
             {
                 m_selection.Add(n);
-
                 SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
-                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
             }
+            else
+            {
+                SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
+            }
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
         }
 
         public void DeleteSelected()
