@@ -49,8 +49,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.m_tabControl = new System.Windows.Forms.TabControl();
-            this.pageProject = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
@@ -64,7 +62,6 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.m_tabControl.SuspendLayout();
-            this.pageProject.SuspendLayout();
             this.pageLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -242,7 +239,6 @@
             // 
             // m_tabControl
             // 
-            this.m_tabControl.Controls.Add(this.pageProject);
             this.m_tabControl.Controls.Add(this.pageLayout);
             this.m_tabControl.Controls.Add(this.pageControl);
             this.m_tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -251,25 +247,6 @@
             this.m_tabControl.SelectedIndex = 0;
             this.m_tabControl.Size = new System.Drawing.Size(151, 515);
             this.m_tabControl.TabIndex = 0;
-            // 
-            // pageProject
-            // 
-            this.pageProject.Controls.Add(this.treeView1);
-            this.pageProject.Location = new System.Drawing.Point(4, 22);
-            this.pageProject.Name = "pageProject";
-            this.pageProject.Padding = new System.Windows.Forms.Padding(3);
-            this.pageProject.Size = new System.Drawing.Size(143, 489);
-            this.pageProject.TabIndex = 0;
-            this.pageProject.Text = "Project";
-            this.pageProject.UseVisualStyleBackColor = true;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(137, 483);
-            this.treeView1.TabIndex = 0;
             // 
             // pageLayout
             // 
@@ -368,7 +345,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.m_tabControl.ResumeLayout(false);
-            this.pageProject.ResumeLayout(false);
             this.pageLayout.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -392,8 +368,6 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuNew;
         private System.Windows.Forms.ToolStripMenuItem m_menuSave;
         private System.Windows.Forms.TabControl m_tabControl;
-        private System.Windows.Forms.TabPage pageProject;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage pageLayout;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private udesign.Controls.UILayoutTree m_uiLayoutTree;

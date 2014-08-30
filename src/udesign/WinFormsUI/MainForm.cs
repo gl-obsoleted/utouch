@@ -24,9 +24,6 @@ namespace udesign
             m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
             m_glCtrl.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
-
-            // for debugging purpose only
-            m_tabControl.SelectedIndex = 1;
         }
 
         public bool Init()

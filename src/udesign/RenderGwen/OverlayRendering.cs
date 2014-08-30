@@ -15,25 +15,22 @@ namespace udesign
             foreach (Node n in SceneEd.Instance.Selection)
             {
                 Rectangle rect = n.GetWorldBounds();
-                rect.Inflate(5, 5);
 
                 Color c = renderer.DrawColor;
-                if (NodeSGUtil.HasLockedLayoutParent(n))
-                {
-                    renderer.DrawColor = Color.Red;
-                }
-                else
-                {
-                    renderer.DrawColor = Color.RosyBrown;
-                }
 
-                renderer.DrawLinedRect(rect);
-                renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 18), n.Name + " [" + n.GetType().Name + "]");
-                
-                if (NodeSGUtil.HasLockedLayoutParent(n))
-                {
-                    renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 36), "(不可拖动)");
-                }
+                renderer.DrawColor = Color.ForestGreen;
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, 5, 5));
+                renderer.DrawColor = Color.LimeGreen;
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, 4, 4));
+                renderer.DrawColor = Color.LightGreen;
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, 3, 3));
+                renderer.DrawColor = Color.PaleGreen;
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, 2, 2));
+                renderer.DrawColor = Color.Honeydew;
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, 1, 1));
+
+                renderer.DrawColor = Color.White;
+                renderer.RenderText(ctx.m_font, new Point(rect.Left - 1, rect.Top - 25 - 1), n.Name + " [" + n.GetType().Name + "]");
                 
                 renderer.DrawColor = c;
             }
