@@ -13,19 +13,16 @@ using ulib.Base;
 
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
+using System.Drawing.Imaging;
 
 namespace udesign
 {
-    public delegate void ApplyImageHandler(string atlasFileName, string imageName);
-
     public partial class ResForm : Form
     {
         public ResForm()
         {
             InitializeComponent();
         }
-
-        public event ApplyImageHandler ApplyImage;
 
         private void ResForm_VisibleChanged(object sender, EventArgs e)
         {
@@ -42,6 +39,13 @@ namespace udesign
 
         private void AddResGroup(string name, ImageResourceGroup group)
         {
+            Image img = LoadResourceImageFile(group.ResFilePath);
+            if (img == null)
+            {
+                Session.Log("加载资源文件 '{0}' 失败。", group.ResFilePath);
+                return;
+            }
+
             ItemContainer ic = new ItemContainer();
             ic.MultiLine = true;
             ic.TitleText = name;
@@ -50,7 +54,7 @@ namespace udesign
             {
                 MetroTileItem tile = new MetroTileItem(res.Key, res.Key);
                 tile.TitleText = res.Key;
-                //tile.Image = 
+                tile.Image = GetAtlasThumbnail(img, res.Value, tile.TileSize);
                 tile.DoubleClick += Tile_DoubleClicked;
                 ic.SubItems.Add(tile);
             }
@@ -67,10 +71,45 @@ namespace udesign
                 {
                     string newLoc = BaseUtil.ComposeResURL(ic.Name, ti.Name);
                     Clipboard.SetText(newLoc);
-                    //if (ApplyImage != null)
-                    //    ApplyImage(ic.Name, ti.Name);
                 }
             }
+        }
+
+        bool GetThumbnailImageAbort()
+        {
+            return true;
+        }
+
+        private Image LoadResourceImageFile(string resPath)
+        {
+            string imageFile = resPath + Constants.ResImageFilePostfix;
+            Image img = Image.FromFile(imageFile);
+            return img;
+        }
+
+        private Image GetAtlasThumbnail(Image sourceImage, ImageResource ir, Size targetClampSize)
+        {
+            // 创建 atlas 预览小图
+            Bitmap bmp32bppArgb = new Bitmap(ir.Size.Width, ir.Size.Height, PixelFormat.Format32bppArgb);
+            using (var g = Graphics.FromImage(bmp32bppArgb))
+            {
+                g.DrawImage(sourceImage,
+                    new Rectangle(0, 0, ir.Size.Width, ir.Size.Height),
+                    new Rectangle(ir.Position.X, ir.Position.Y, ir.Size.Width, ir.Size.Height), GraphicsUnit.Pixel);
+            }
+
+            // 判断是否需要缩放
+            float widthScale = (float)targetClampSize.Width / (float)bmp32bppArgb.Width;
+            float heightScale = (float)targetClampSize.Height / (float)bmp32bppArgb.Height;
+            if (widthScale >= 1.0f && heightScale >= 1.0f)
+                return bmp32bppArgb;
+
+            // 缩放
+            float downScale = System.Math.Min(widthScale, heightScale);
+            float scaledWidth = System.Math.Max((float)bmp32bppArgb.Width * downScale, 1.0f);
+            float scaledHeight = System.Math.Max((float)bmp32bppArgb.Height * downScale, 1.0f);
+            IntPtr ip = System.IntPtr.Zero;
+            return bmp32bppArgb.GetThumbnailImage((int)scaledWidth, (int)scaledHeight, GetThumbnailImageAbort, ip);
         }
     }
 }
