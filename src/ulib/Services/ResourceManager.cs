@@ -115,6 +115,7 @@ namespace ulib
             return m_defaultResGroup.FindResource(resName);
         }
 
+        public ImageResourceGroup DefaultResGroup { get { return m_defaultResGroup; } }
         private ImageResourceGroup m_defaultResGroup;
     }
 }

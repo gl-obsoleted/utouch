@@ -32,24 +32,29 @@ namespace udesign
             if (Visible)
             {
                 m_metroTilePanel.Items.Clear();
+                AddResGroup(ResourceManager.Instance.DefaultResGroup.ResFilePath, ResourceManager.Instance.DefaultResGroup);
                 foreach (var pair in ResourceManager.Instance.ResGroups)
                 {
-                    ItemContainer ic = new ItemContainer();
-                    ic.MultiLine = true;
-                    ic.TitleText = pair.Key;
-                    ic.Name = pair.Key;
-                    ImageResourceGroup rg = pair.Value;
-                    foreach (var res in rg.ResLut)
-                    {
-                        MetroTileItem tile = new MetroTileItem(res.Key, res.Key);
-                        tile.TitleText = res.Key;
-                        //tile.Image = 
-                        tile.DoubleClick += Tile_DoubleClicked;
-                        ic.SubItems.Add(tile);
-                    }
-                    m_metroTilePanel.Items.Add(ic);
+                    AddResGroup(pair.Key, pair.Value);
                 }
             }
+        }
+
+        private void AddResGroup(string name, ImageResourceGroup group)
+        {
+            ItemContainer ic = new ItemContainer();
+            ic.MultiLine = true;
+            ic.TitleText = name;
+            ic.Name = name;
+            foreach (var res in group.ResLut)
+            {
+                MetroTileItem tile = new MetroTileItem(res.Key, res.Key);
+                tile.TitleText = res.Key;
+                //tile.Image = 
+                tile.DoubleClick += Tile_DoubleClicked;
+                ic.SubItems.Add(tile);
+            }
+            m_metroTilePanel.Items.Add(ic);
         }
 
         private void Tile_DoubleClicked(object sender, EventArgs e)
