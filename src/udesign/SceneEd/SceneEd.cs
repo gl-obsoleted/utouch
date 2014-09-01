@@ -33,7 +33,11 @@ namespace udesign
                 Node n = Scene.Instance.Pick(e.Location);
                 if (m_selection.Contains(n))
                 {
-                    if (SelectionContainsLockedNode())
+                    if (SelectionContainsFullscreenRootNode())
+                    {
+                        Session.Log("全屏根节点不可拖拽。");
+                    }
+                    else if (SelectionContainsLockedNode())
                     {
                         Session.Log("Scene.Instance.Pick() 会保证不会有复合节点的子节点被选中，如果到达这里，说明前面的逻辑已失效，忽略选择动作。");
                     }
