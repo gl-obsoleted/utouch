@@ -147,7 +147,6 @@ namespace udesign
         private void m_menuResForm_Click(object sender, EventArgs e)
         {
             m_resForm = new ResForm();
-            m_resForm.ApplyImage += m_resForm_ApplyImage;
             m_resForm.Show(this);
 
             string loc = ConfigUserPref.Instance.GetValue("forms.res_form", "location");
@@ -160,28 +159,28 @@ namespace udesign
             }
         }
 
-        void m_resForm_ApplyImage(string atlasFileName, string imageName)
-        {
-            if (SceneEd.Instance.Selection.Count == 1)
-            {
-                ImageNode sel = SceneEd.Instance.Selection.First() as ImageNode;
-                if (sel != null)
-                {
-                    string newLoc = BaseUtil.ComposeResURL(atlasFileName, imageName);
-                    Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.Res, newLoc);
-                    sel.Res = newLoc;
-                    SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
-                }
-                else
-                {
-                    Session.Message("现在暂不支持设置到非 ImageNode 节点.");
-                }
-            }
-            else
-            {
-                Session.Message("请选中单个的 ImageNode 节点后再试 (现有 {0} 个节点被选中).", SceneEd.Instance.Selection.Count);
-            }
-        }
+        //void m_resForm_ApplyImage(string atlasFileName, string imageName)
+        //{
+        //    if (SceneEd.Instance.Selection.Count == 1)
+        //    {
+        //        ImageNode sel = SceneEd.Instance.Selection.First() as ImageNode;
+        //        if (sel != null)
+        //        {
+        //            string newLoc = BaseUtil.ComposeResURL(atlasFileName, imageName);
+        //            Session.Log("ImageNode '{0}' URL changed. (old: {1}, new: {2})", sel.Name, sel.Res, newLoc);
+        //            sel.Res = newLoc;
+        //            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
+        //        }
+        //        else
+        //        {
+        //            Session.Message("现在暂不支持设置到非 ImageNode 节点.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Session.Message("请选中单个的 ImageNode 节点后再试 (现有 {0} 个节点被选中).", SceneEd.Instance.Selection.Count);
+        //    }
+        //}
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -59,16 +59,16 @@ namespace udesign
 
         private void Tile_DoubleClicked(object sender, EventArgs e)
         {
-            if (ApplyImage != null)
+            MetroTileItem ti = sender as MetroTileItem;
+            if (ti != null && ti.Parent != null)
             {
-                MetroTileItem ti = sender as MetroTileItem;
-                if (ti != null && ti.Parent != null)
+                ItemContainer ic = ti.Parent as ItemContainer;
+                if (ic != null)
                 {
-                    ItemContainer ic = ti.Parent as ItemContainer;
-                    if (ic != null)
-                    {
-                        ApplyImage(ic.Name, ti.Name);
-                    }
+                    string newLoc = BaseUtil.ComposeResURL(ic.Name, ti.Name);
+                    Clipboard.SetText(newLoc);
+                    //if (ApplyImage != null)
+                    //    ApplyImage(ic.Name, ti.Name);
                 }
             }
         }
