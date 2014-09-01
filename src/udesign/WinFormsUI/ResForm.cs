@@ -54,8 +54,10 @@ namespace udesign
             {
                 MetroTileItem tile = new MetroTileItem(res.Key, res.Key);
                 tile.TitleText = res.Key;
+                tile.Text = res.Key.ToLower();
                 tile.Image = GetAtlasThumbnail(img, res.Value, tile.TileSize);
                 tile.DoubleClick += Tile_DoubleClicked;
+                tile.ContainerControl = ic;
                 ic.SubItems.Add(tile);
             }
             m_metroTilePanel.Items.Add(ic);
@@ -110,6 +112,45 @@ namespace udesign
             float scaledHeight = System.Math.Max((float)bmp32bppArgb.Height * downScale, 1.0f);
             IntPtr ip = System.IntPtr.Zero;
             return bmp32bppArgb.GetThumbnailImage((int)scaledWidth, (int)scaledHeight, GetThumbnailImageAbort, ip);
+        }
+
+        Size m_hidden = new Size(0, 0);
+        Size m_show = new Size(180, 90);
+        private void m_searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = m_searchBox.Text.ToLower();   // force lowering to make case-insensitive comparing faster
+
+            foreach (var item in m_metroTilePanel.Items)
+            {
+                ItemContainer ic = item as ItemContainer;
+                if (ic != null)
+                {
+                    foreach (var tile in ic.SubItems)
+                    {
+                        MetroTileItem mt = tile as MetroTileItem;
+                        if (mt != null)
+                        {
+                            if (text.Length == 0)
+                            {
+                                mt.TileSize = m_show;
+                            }
+                            else
+                            {
+                                if (mt.Text.Contains(text))
+                                {
+                                    mt.TileSize = m_show;
+                                }
+                                else
+                                {
+                                    mt.TileSize = m_hidden;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            m_metroTilePanel.Refresh();
         }
     }
 }

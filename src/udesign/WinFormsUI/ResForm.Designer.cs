@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.m_searchBox = new System.Windows.Forms.TextBox();
             this.m_metroTilePanel = new DevComponents.DotNetBar.Metro.MetroTilePanel();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.metroTileItem1 = new DevComponents.DotNetBar.Metro.MetroTileItem();
@@ -41,8 +43,6 @@
             this.metroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.m_searchBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,6 +70,31 @@
             this.splitContainer1.Size = new System.Drawing.Size(866, 703);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.49003F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.50997F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.tableLayoutPanel1.Controls.Add(this.m_searchBox, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(866, 32);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // m_searchBox
+            // 
+            this.m_searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_searchBox.Location = new System.Drawing.Point(3, 3);
+            this.m_searchBox.Name = "m_searchBox";
+            this.m_searchBox.Size = new System.Drawing.Size(544, 21);
+            this.m_searchBox.TabIndex = 1;
+            this.m_searchBox.TextChanged += new System.EventHandler(this.m_searchBox_TextChanged);
             // 
             // m_metroTilePanel
             // 
@@ -217,30 +242,6 @@
             // 
             // 
             this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.49003F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.50997F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.tableLayoutPanel1.Controls.Add(this.m_searchBox, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(866, 32);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // m_searchBox
-            // 
-            this.m_searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_searchBox.Location = new System.Drawing.Point(3, 3);
-            this.m_searchBox.Name = "m_searchBox";
-            this.m_searchBox.Size = new System.Drawing.Size(545, 21);
-            this.m_searchBox.TabIndex = 1;
             // 
             // ResForm
             // 
