@@ -43,6 +43,8 @@
             this.metroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.m_btOK = new System.Windows.Forms.Button();
+            this.m_btCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,23 +69,25 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.m_metroTilePanel);
-            this.splitContainer1.Size = new System.Drawing.Size(866, 703);
+            this.splitContainer1.Size = new System.Drawing.Size(918, 745);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.49003F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.50997F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.m_searchBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_btOK, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_btCancel, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(866, 32);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(918, 32);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // m_searchBox
@@ -92,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_searchBox.Location = new System.Drawing.Point(3, 3);
             this.m_searchBox.Name = "m_searchBox";
-            this.m_searchBox.Size = new System.Drawing.Size(544, 21);
+            this.m_searchBox.Size = new System.Drawing.Size(712, 21);
             this.m_searchBox.TabIndex = 1;
             this.m_searchBox.TextChanged += new System.EventHandler(this.m_searchBox_TextChanged);
             // 
@@ -110,7 +114,7 @@
             this.itemContainer2});
             this.m_metroTilePanel.Location = new System.Drawing.Point(0, 0);
             this.m_metroTilePanel.Name = "m_metroTilePanel";
-            this.m_metroTilePanel.Size = new System.Drawing.Size(866, 667);
+            this.m_metroTilePanel.Size = new System.Drawing.Size(918, 709);
             this.m_metroTilePanel.TabIndex = 0;
             this.m_metroTilePanel.Text = "metroTilePanel1";
             // 
@@ -243,14 +247,37 @@
             // 
             this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // m_btOK
+            // 
+            this.m_btOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.m_btOK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btOK.Location = new System.Drawing.Point(721, 3);
+            this.m_btOK.Name = "m_btOK";
+            this.m_btOK.Size = new System.Drawing.Size(94, 26);
+            this.m_btOK.TabIndex = 2;
+            this.m_btOK.Text = "OK";
+            this.m_btOK.UseVisualStyleBackColor = true;
+            // 
+            // m_btCancel
+            // 
+            this.m_btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.m_btCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btCancel.Location = new System.Drawing.Point(821, 3);
+            this.m_btCancel.Name = "m_btCancel";
+            this.m_btCancel.Size = new System.Drawing.Size(94, 26);
+            this.m_btCancel.TabIndex = 3;
+            this.m_btCancel.Text = "Cancel";
+            this.m_btCancel.UseVisualStyleBackColor = true;
+            // 
             // ResForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 703);
+            this.ClientSize = new System.Drawing.Size(918, 745);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ResForm";
             this.Text = "ResForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResForm_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.ResForm_VisibleChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -279,5 +306,7 @@
         private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox m_searchBox;
+        private System.Windows.Forms.Button m_btOK;
+        private System.Windows.Forms.Button m_btCancel;
     }
 }

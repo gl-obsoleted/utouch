@@ -102,6 +102,7 @@
     <Compile Include="WinFormsUI\GwenUnitTestForm.Designer.cs">
       <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsUI\ImageResourceEditor.cs" />
     <Compile Include="WinFormsUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

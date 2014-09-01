@@ -89,7 +89,8 @@ namespace udesign
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_testButton = new Gwen.Control.Button(m_glCtrl.GetCanvas());
-            m_testButton.SetPosition(0, 780);
+            m_testButton.SetPosition(0, 0);
+            m_testButton.SetSize(1, 1);
         }
 
         private ResForm m_resForm;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ulib.Elements;
+using DevComponents.DotNetBar;
 
 namespace udesign.Controls
 {
@@ -22,6 +23,12 @@ namespace udesign.Controls
         public UIObjectPropertyGrid()
         {
             InitializeComponent();
+
+            // Property setting applies to property name: TrackBarDynamic
+            PropertySettings propertySetting = new PropertySettings("Res");
+            // Assign our custom property value editor
+            propertySetting.UITypeEditor = new ImageResourceEditor();
+            m_propertyGrid.PropertySettings.Add(propertySetting);
         }
 
         public void OnSelectSceneNode(Node n, object sender)

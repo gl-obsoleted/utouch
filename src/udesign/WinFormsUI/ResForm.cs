@@ -22,6 +22,7 @@ namespace udesign
         public ResForm()
         {
             InitializeComponent();
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
         private void ResForm_VisibleChanged(object sender, EventArgs e)
@@ -56,11 +57,25 @@ namespace udesign
                 tile.TitleText = res.Key;
                 tile.Text = res.Key.ToLower();
                 tile.Image = GetAtlasThumbnail(img, res.Value, tile.TileSize);
+                tile.Click += Tile_Clicked;
                 tile.DoubleClick += Tile_DoubleClicked;
                 tile.ContainerControl = ic;
                 ic.SubItems.Add(tile);
             }
             m_metroTilePanel.Items.Add(ic);
+        }
+
+        private void Tile_Clicked(object sender, EventArgs e)
+        {
+            MetroTileItem ti = sender as MetroTileItem;
+            if (ti != null && ti.Parent != null)
+            {
+                ItemContainer ic = ti.Parent as ItemContainer;
+                if (ic != null)
+                {
+                    m_selectedResourceURL = BaseUtil.ComposeResURL(ic.Name, ti.Name);
+                }
+            }
         }
 
         private void Tile_DoubleClicked(object sender, EventArgs e)
@@ -71,11 +86,15 @@ namespace udesign
                 ItemContainer ic = ti.Parent as ItemContainer;
                 if (ic != null)
                 {
-                    string newLoc = BaseUtil.ComposeResURL(ic.Name, ti.Name);
-                    Clipboard.SetText(newLoc);
+                    m_selectedResourceURL = BaseUtil.ComposeResURL(ic.Name, ti.Name);
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                    Close();
                 }
             }
         }
+
+        public string SelectedResourceURL { get { return m_selectedResourceURL; } }
+        private string m_selectedResourceURL;
 
         bool GetThumbnailImageAbort()
         {
@@ -151,6 +170,15 @@ namespace udesign
             }
 
             m_metroTilePanel.Refresh();
+        }
+
+        private void ResForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (string.IsNullOrEmpty(SelectedResourceURL) && DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                Session.Message("请先选中一个图片，或点击 Cancel 撤销本次操作。");
+                e.Cancel = true;
+            }
         }
     }
 }
