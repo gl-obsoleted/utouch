@@ -57,7 +57,23 @@ namespace udesign
             if (!ResetScene(""))
                 return false;
 
+            AddWelcomeString("1. 这是一个欢迎页面");
+            AddWelcomeString("2. 本页面包含一个根节点和若干 Label (均可鼠标选中和移动)");
+            AddWelcomeString("3. sample_layouts 目录中有一些范例文件，可通过 “File | Open” 打开");
+
             return true;
+        }
+
+        Point m_welcomePos = new Point(50, 30);
+        private void AddWelcomeString(string text)
+        {
+            ulib.Controls.Label welcomeText = new ulib.Controls.Label();
+            welcomeText.Text = text;
+            welcomeText.TextColor = Color.White;
+            welcomeText.Position = m_welcomePos;
+            m_welcomePos = m_welcomePos + new Size(0, 30);
+            welcomeText.RequestedSizeRefreshing = true;
+            Scene.Instance.Root.Attach(welcomeText);
         }
 
         private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
@@ -101,7 +117,7 @@ namespace udesign
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog diag = new OpenFileDialog();
-            diag.InitialDirectory = Path.Combine(UDesignApp.Instance.RootPath, @"testdata\");
+            diag.InitialDirectory = Path.Combine(UDesignApp.Instance.RootPath, Properties.Settings.Default.InitialOpenFileDir);
             diag.Filter = "ui layout files (*.ui_layout)|*.ui_layout|All files (*.*)|*.*";
             if (diag.ShowDialog(this) == DialogResult.OK)
             {

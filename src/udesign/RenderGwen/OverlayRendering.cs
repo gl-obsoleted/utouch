@@ -15,23 +15,10 @@ namespace udesign
             foreach (Node n in SceneEd.Instance.Selection)
             {
                 Rectangle rect = n.GetWorldBounds();
-
                 Color c = renderer.DrawColor;
-
-                renderer.DrawColor = Color.ForestGreen;
-                renderer.DrawLinedRect(Rectangle.Inflate(rect, 5, 5));
-                renderer.DrawColor = Color.LimeGreen;
-                renderer.DrawLinedRect(Rectangle.Inflate(rect, 4, 4));
-                renderer.DrawColor = Color.LightGreen;
-                renderer.DrawLinedRect(Rectangle.Inflate(rect, 3, 3));
-                renderer.DrawColor = Color.PaleGreen;
-                renderer.DrawLinedRect(Rectangle.Inflate(rect, 2, 2));
-                renderer.DrawColor = Color.Honeydew;
-                renderer.DrawLinedRect(Rectangle.Inflate(rect, 1, 1));
-
+                RenderSelectionBox(renderer, rect);
                 renderer.DrawColor = Color.White;
-                renderer.RenderText(ctx.m_font, new Point(rect.Left - 1, rect.Top - 25 - 1), n.Name + " [" + n.GetType().Name + "]");
-                
+                renderer.RenderText(ctx.m_font, new Point(rect.Right + 5, rect.Top), n.Name + " [" + n.GetType().Name + "]");
                 renderer.DrawColor = c;
             }
 
@@ -48,6 +35,16 @@ namespace udesign
                     new Point(rect.Left, rect.Top - 18),
                     "[目标节点] " + dragTarget.Name);
                 renderer.DrawColor = c;
+            }
+        }
+
+        static Color[] m_gradArray = { Color.Honeydew, Color.PaleGreen, Color.LightGreen, Color.LimeGreen, Color.ForestGreen };
+        static void RenderSelectionBox(Gwen.Renderer.Tao renderer, Rectangle rect)
+        {
+            for (int i = 0; i < m_gradArray.Length; i++)
+            {
+                renderer.DrawColor = m_gradArray[i];
+                renderer.DrawLinedRect(Rectangle.Inflate(rect, i + 1, i + 1));
             }
         }
     }

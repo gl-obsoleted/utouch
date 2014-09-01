@@ -6,7 +6,7 @@ using ulib.Elements;
 
 namespace ulib.Controls
 {
-    class Label : TextNode
+    public class Label : TextNode
     {
         public Label()
         {
