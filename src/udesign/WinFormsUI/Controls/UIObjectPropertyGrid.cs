@@ -20,15 +20,18 @@ namespace udesign.Controls
         public event OnPropertyValueChanged PropertyValueChanged;
         public event ValidateNewNodeName ValidateNodeName;
 
+        string[] m_resProperties = { "Res", "Res_Normal", "Res_Pressed", "Res_On", "Res_Off", "Res_Background" };
+
         public UIObjectPropertyGrid()
         {
             InitializeComponent();
 
-            // Property setting applies to property name: TrackBarDynamic
-            PropertySettings propertySetting = new PropertySettings("Res");
-            // Assign our custom property value editor
-            propertySetting.UITypeEditor = new ImageResourceEditor();
-            m_propertyGrid.PropertySettings.Add(propertySetting);
+            foreach (var prop in m_resProperties)
+            {
+                PropertySettings propertySetting = new PropertySettings(prop);
+                propertySetting.UITypeEditor = new ImageResourceEditor();
+                m_propertyGrid.PropertySettings.Add(propertySetting);
+            }
         }
 
         public void OnSelectSceneNode(Node n, object sender)
