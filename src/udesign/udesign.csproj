@@ -73,10 +73,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RenderGwen\GwenUtil.cs" />
     <Compile Include="SceneEd\Action\Action.cs" />
     <Compile Include="SceneEd\Action\Action_Delete.cs" />
     <Compile Include="SceneEd\Action\Action_Insert.cs" />
     <Compile Include="SceneEd\Action\Action_Move.cs" />
+    <Compile Include="SceneEd\Action\Action_Resize.cs" />
     <Compile Include="SceneEd\OperationHistory.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEd_Dragging.cs" />

@@ -107,6 +107,18 @@ namespace ulib.Elements
             return loc;
         }
 
+        public Point WorldToLocal(Point pt)
+        {
+            Point origin = GetWorldPosition();
+            return new Point(pt.X - origin.X, pt.Y - origin.Y);
+        }
+
+        public Point LocalToWorld(Point pt)
+        {
+            Point origin = GetWorldPosition();
+            return new Point(pt.X + origin.X, pt.Y + origin.Y);
+        }
+
         public Rectangle GetWorldBounds()
         {
             return new Rectangle(GetWorldPosition(), Size);

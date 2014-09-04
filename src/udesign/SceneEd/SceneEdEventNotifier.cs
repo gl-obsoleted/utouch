@@ -34,6 +34,7 @@ namespace udesign
 
         public void Emit_RefreshScene(RefreshSceneOpt opts)
         {
+            SceneEd.Instance.SelectionContainer.RefreshSelection();
             if (RefreshScene != null)
             {
                 RefreshScene(opts);

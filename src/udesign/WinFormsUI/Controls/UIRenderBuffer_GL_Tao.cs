@@ -60,7 +60,7 @@ namespace udesign.Controls
             m_renderContext = new GwenRenderContext(canvas, renderer);
             m_renderDevice = new GwenRenderDevice();
 
-            SceneEd.Instance.SelectionContainer.Init(canvas);
+            SceneEd.Instance.InitSelectionContainer(canvas);
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -103,8 +103,10 @@ namespace udesign.Controls
             {
                 btn = 1;
             }
-            canvas.Input_MouseButton(btn, true);
-            SceneEd.Instance.MouseDown(e);
+            if (!canvas.Input_MouseButton(btn, true))
+            {
+                SceneEd.Instance.MouseDown(e);
+            }
             glControl.Invalidate();
         }
 
@@ -119,8 +121,10 @@ namespace udesign.Controls
             {
                 btn = 1;
             }
-            canvas.Input_MouseButton(btn, false);
-            SceneEd.Instance.MouseUp(e);
+            if (!canvas.Input_MouseButton(btn, false))
+            {
+                SceneEd.Instance.MouseUp(e);
+            }
             glControl.Invalidate();
         }
 
@@ -128,10 +132,14 @@ namespace udesign.Controls
         int prevY = -1;
         private void glControl_MouseMove(object sender, MouseEventArgs e)
         {
-            canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
+            bool handled = canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
             prevX = e.X;
             prevY = e.Y;
-            SceneEd.Instance.MouseMove(e);
+
+            if (!handled)
+            {
+                SceneEd.Instance.MouseMove(e);
+            }
             glControl.Invalidate();
         }
 

@@ -36,6 +36,8 @@ namespace udesign
                     "[目标节点] " + dragTarget.Name);
                 renderer.DrawColor = c;
             }
+
+            m_selectionContainer.Render(renderer);
         }
 
         Color[] m_gradArray = { Color.Honeydew, Color.PaleGreen, Color.LightGreen, Color.LimeGreen, Color.ForestGreen };

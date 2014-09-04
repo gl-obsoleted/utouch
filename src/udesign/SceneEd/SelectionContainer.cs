@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Gwen.ControlInternal;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,26 +9,99 @@ using ulib.Elements;
 
 namespace udesign
 {
+    public class ResizeBox : Gwen.Control.ResizableControl
+    {
+        public ResizeBox(Gwen.Control.Canvas canvas)
+            : base(canvas)
+        {
+            // 这个设置仅仅让 ResizeBox 本身对鼠标透明，这样用户可以移动下面的控件， 而不影响下面的 10 个 resizer 响应鼠标消息
+            MouseInputEnabled = false;
+        }
+
+        public Resizer GetInternalResizer(int i)
+        {
+            return GetResizer(i);
+        }
+
+        public void RenderBound(Gwen.Renderer.Tao renderer)
+        {
+            Color c = renderer.DrawColor;
+            renderer.DrawColor = Color.White;
+            GwenUtil.RenderWorldBound(renderer, this, false);
+
+            for (int i = 0; i < 10; i++)
+            {
+                Resizer r = GetResizer(i);
+                if (r == null)
+                    continue;
+
+                GwenUtil.RenderWorldBound(renderer, r, r.IsHovered);
+            }
+
+            renderer.DrawColor = c;
+        }
+
+        public bool IsHoveringResizers()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Resizer r = GetResizer(i);
+                if (r != null && r.IsHovered)
+                    return true;
+            }
+
+            return false;
+        }
+    }
+
     public class SelectionContainer
     {
         public List<Node> Selection { get { return m_selection; } }
 
+        public ResizeBox Resizer { get { return m_resizeCtrl; } }
+
         public void Init(Gwen.Control.Canvas canvas)
         {
-            m_resizeCtrl = new Gwen.Control.ResizableControl(canvas);
-            m_resizeCtrl.SetPosition(50, 50);
-            m_resizeCtrl.SetSize(50, 50);
+            m_resizeCtrl = new ResizeBox(canvas);
+            m_resizeCtrl.Hide();
+
+            OnSelectionChanged();
+        }
+
+        public void Render(Gwen.Renderer.Tao renderer)
+        {
+            if (m_resizeCtrl != null && m_resizeCtrl.IsVisible)
+                m_resizeCtrl.RenderBound(renderer);
+        }
+
+        public void OnSelectionChanged()
+        {
+            if (m_resizeCtrl != null)
+            {
+                // 为了简化问题，目前仅支持单个控件的缩放
+                if (m_selection.Count == 1)
+                {
+                    m_resizeCtrl.Show();
+                    RefreshSelection();
+                }
+                else
+                {
+                    m_resizeCtrl.Hide();
+                }
+            }
         }
 
         public void ClearSelection()
         {
             m_selection.Clear();
 
+            OnSelectionChanged();
+
             SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
-        public bool SelectedRoot()
+        public bool HasSelectedRoot()
         {
             foreach (Node n in Selection)
             {
@@ -57,8 +132,35 @@ namespace udesign
             return true;
         }
 
+        public void RefreshSelection()
+        {
+            if (m_resizeCtrl != null)
+            {
+                Rectangle rect = GetSelectionWorldBounds();
+                m_resizeCtrl.SetPosition(rect.Left, rect.Top);
+                m_resizeCtrl.SetSize(rect.Width, rect.Height);
+            }
+        }
+
+        private Rectangle GetSelectionWorldBounds()
+        {
+            Rectangle rect = Rectangle.Empty;
+            foreach (var n in m_selection)
+            {
+                if (rect.IsEmpty)
+                {
+                    rect = n.GetWorldBounds();
+                }
+                else
+                {
+                    rect = Rectangle.Union(rect, n.GetWorldBounds());
+                }
+            }
+            return rect;
+        }
+
         private List<Node> m_selection = new List<Node>();
 
-        private Gwen.Control.ResizableControl m_resizeCtrl;
+        private ResizeBox m_resizeCtrl;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gwen.ControlInternal;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -42,9 +43,13 @@ namespace udesign
 
         public void MouseMove(MouseEventArgs e)
         {
-            if (m_isLeftDown && m_dragAction != null)
+            if (m_isLeftDown)
             {
-                m_dragAction.UpdatePosition(e.Location - (Size)(m_beginDragPos));
+                if (m_dragAction != null)
+                {
+                    m_dragAction.UpdatePosition(e.Location - (Size)(m_beginDragPos));
+                }
+
                 SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
             }
         }
@@ -98,12 +103,13 @@ namespace udesign
                 SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
             }
 
+            m_selectionContainer.OnSelectionChanged();
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
         }
 
         public void DeleteSelected()
         {
-            if (m_selectionContainer.SelectedRoot())
+            if (m_selectionContainer.HasSelectedRoot())
             {
                 Session.Message("无法删除根节点。");                
             }
@@ -116,5 +122,48 @@ namespace udesign
 
         private OperationHistory m_operHistory = new OperationHistory();
         private SelectionContainer m_selectionContainer = new SelectionContainer();
+
+        internal void InitSelectionContainer(Gwen.Control.Canvas canvas)
+        {
+            m_selectionContainer.Init(canvas);
+            m_selectionContainer.Resizer.Resized += Resizer_Resized;
+            for (int i = 0; i < 10; i++)
+            {
+                Resizer r = m_selectionContainer.Resizer.GetInternalResizer(i);
+                if (r == null)
+                    continue;
+
+                r.BeginDrag += Resizer_Begin;
+                r.EndDrag += Resizer_End;
+            }
+        }
+
+        Action_Resize m_resizeAction;
+
+        void Resizer_Begin(Gwen.Control.Base sender, EventArgs arguments)
+        {
+            if (m_selectionContainer.Resizer.IsHoveringResizers() && m_selectionContainer.Selection.Count == 1)
+            {
+                m_resizeAction = new Action_Resize(m_selectionContainer.Selection[0]);
+            }
+        }
+
+        void Resizer_End(Gwen.Control.Base sender, EventArgs arguments)
+        {
+            if (m_resizeAction != null)
+            {
+                m_resizeAction.EndResizing(m_selectionContainer.Resizer.Bounds);
+                m_operHistory.PushAction(m_resizeAction);
+                m_resizeAction = null;
+            }
+        }
+
+        void Resizer_Resized(Gwen.Control.Base sender, EventArgs arguments)
+        {
+            if (m_resizeAction != null)
+            {
+                m_resizeAction.UpdateResizing(m_selectionContainer.Resizer.Bounds);
+            }
+        }
     }
 }
