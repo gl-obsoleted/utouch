@@ -24,7 +24,12 @@ namespace Gwen.ControlInternal
         /// <summary>
         /// Event invoked when the control position has been changed.
         /// </summary>
-		public event GwenEventHandler<EventArgs> Dragged;
+        public event GwenEventHandler<EventArgs> Dragged;
+
+        //gl_begin
+        public event GwenEventHandler<EventArgs> BeginDrag;
+        public event GwenEventHandler<EventArgs> EndDrag;
+        //gl_end
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragger"/> class.
@@ -51,12 +56,22 @@ namespace Gwen.ControlInternal
                 m_Held = true;
                 m_HoldPos = m_Target.CanvasPosToLocal(new Point(x, y));
                 InputHandler.MouseFocus = this;
+
+                //gl_begin
+                if (BeginDrag != null)
+                    BeginDrag.Invoke(this, EventArgs.Empty);
+                //gl_end
             }
             else
             {
                 m_Held = false;
 
                 InputHandler.MouseFocus = null;
+
+                //gl_begin
+                if (EndDrag != null)
+                    EndDrag.Invoke(this, EventArgs.Empty);
+                //gl_end
             }
         }
 
