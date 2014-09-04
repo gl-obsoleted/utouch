@@ -59,6 +59,8 @@ namespace udesign.Controls
 
             m_renderContext = new GwenRenderContext(canvas, renderer);
             m_renderDevice = new GwenRenderDevice();
+
+            SceneEd.Instance.SelectionContainer.Init(canvas);
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -84,7 +86,8 @@ namespace udesign.Controls
             if (Scene.Instance != null)
                 Scene.Instance.Render(m_renderContext, m_renderDevice);
 
-            OverlayRendering.Render(renderer, m_renderContext);
+            if (SceneEd.Instance != null)
+                SceneEd.Instance.Render(renderer, m_renderContext);
 
             renderer.End();
         }
@@ -223,6 +226,7 @@ namespace udesign.Controls
             //TODO[GL]: 这个对象的 Dispose 内会抛空引用异常，待查
             try
             {
+                m_renderContext.m_font.Dispose();
                 canvas.Dispose();
                 skin.Dispose();
                 renderer.Dispose();

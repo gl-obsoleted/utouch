@@ -8,11 +8,11 @@ using ulib.Elements;
 
 namespace udesign
 {
-    public class OverlayRendering
+    public partial class SceneEd
     {
-        public static void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
         {
-            foreach (Node n in SceneEd.Instance.Selection)
+            foreach (Node n in m_selectionContainer.Selection)
             {
                 Rectangle rect = n.GetWorldBounds();
                 Color c = renderer.DrawColor;
@@ -22,7 +22,7 @@ namespace udesign
                 renderer.DrawColor = c;
             }
 
-            Node dragTarget = SceneEd.Instance.PossibleDraggingTarget;
+            Node dragTarget = PossibleDraggingTarget;
             if (dragTarget != null)
             {
                 Rectangle rect = dragTarget.GetWorldBounds();
@@ -38,8 +38,8 @@ namespace udesign
             }
         }
 
-        static Color[] m_gradArray = { Color.Honeydew, Color.PaleGreen, Color.LightGreen, Color.LimeGreen, Color.ForestGreen };
-        static void RenderSelectionBox(Gwen.Renderer.Tao renderer, Rectangle rect)
+        Color[] m_gradArray = { Color.Honeydew, Color.PaleGreen, Color.LightGreen, Color.LimeGreen, Color.ForestGreen };
+        void RenderSelectionBox(Gwen.Renderer.Tao renderer, Rectangle rect)
         {
             for (int i = 0; i < m_gradArray.Length; i++)
             {

@@ -29,6 +29,9 @@ namespace udesign.Controls
             if (!m_layoutTreeView.Nodes.ContainsKey(RootNode.Default_Name))
                 return;
 
+            if (Scene.Instance == null)
+                return;
+
             TreeNode treeRoot = m_layoutTreeView.Nodes[RootNode.Default_Name];
             treeRoot.Name = Scene.Instance.Root.Name;
             treeRoot.Text = GenerateNodeLabel(Scene.Instance.Root);

@@ -17,9 +17,8 @@ namespace udesign
 
         public bool IsHoldingCtrl { get; set; }
 
-        public List<Node> Selection { get { return m_selection; } }
-
         public OperationHistory OperHistory { get { return m_operHistory; } }
+        public SelectionContainer SelectionContainer { get { return m_selectionContainer; } }
 
         bool m_isLeftDown = false;
         Point m_beginDragPos = new Point(0, 0);
@@ -31,23 +30,12 @@ namespace udesign
                 m_isLeftDown = true;
 
                 Node n = Scene.Instance.Pick(e.Location);
-                if (m_selection.Contains(n))
+                if (m_selectionContainer.Selection.Contains(n) && m_selectionContainer.IsSelectionDraggable())
                 {
-                    if (SelectionContainsFullscreenRootNode())
-                    {
-                        Session.Log("全屏根节点不可拖拽。");
-                    }
-                    else if (SelectionContainsLockedNode())
-                    {
-                        Session.Log("Scene.Instance.Pick() 会保证不会有复合节点的子节点被选中，如果到达这里，说明前面的逻辑已失效，忽略选择动作。");
-                    }
-                    else
-                    {
-                        // 到这里触发拖拽
-                        m_beginDragPos = e.Location;
-                        m_dragAction = new Action_Move(m_selection);
-                        SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
-                    }
+                    // 到这里触发拖拽
+                    m_beginDragPos = e.Location;
+                    m_dragAction = new Action_Move(m_selectionContainer.Selection);
+                    SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                 }
             }
         }
@@ -98,46 +86,35 @@ namespace udesign
         {
             if (!IsHoldingCtrl)
             {
-                m_selection.Clear();
+                m_selectionContainer.Selection.Clear();
             }
             if (n != null)
             {
-                m_selection.Add(n);
+                m_selectionContainer.Selection.Add(n);
                 SceneEdEventNotifier.Instance.Emit_SelectNode(n, this);
             }
             else
             {
                 SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
             }
+
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
         }
 
         public void DeleteSelected()
         {
-            if (SelectedRoot())
+            if (m_selectionContainer.SelectedRoot())
             {
                 Session.Message("无法删除根节点。");                
             }
             else
             {
-                m_operHistory.PushAction(new Action_Delete(Selection));
-                m_selection.Clear();
-
-                SceneEdEventNotifier.Instance.Emit_SelectNode(null, this);
-                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+                m_operHistory.PushAction(new Action_Delete(m_selectionContainer.Selection));
+                m_selectionContainer.ClearSelection();
             }
-        }
-
-        public bool SelectedRoot()
-        {
-            foreach (Node n in Selection)
-            {
-                if (n.Parent == null)
-                    return true;
-            }
-            return false;
         }
 
         private OperationHistory m_operHistory = new OperationHistory();
+        private SelectionContainer m_selectionContainer = new SelectionContainer();
     }
 }

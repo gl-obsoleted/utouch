@@ -381,7 +381,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem m_menuDelete;
         private System.Windows.Forms.TabPage pageControl;
-        private WinFormsUI.Controls.UIControlList uiControlList1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem m_menuOpenTestLayout;
         private System.Windows.Forms.ToolStripMenuItem m_menuSaveAs;

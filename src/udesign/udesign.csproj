@@ -81,7 +81,7 @@
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEd_Dragging.cs" />
     <Compile Include="ConfigVars.cs" />
-    <Compile Include="SceneEd\SceneEd_Selection.cs" />
+    <Compile Include="SceneEd\SelectionContainer.cs" />
     <Compile Include="TestSnippets\TestScene.cs" />
     <Compile Include="UDesignApp.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
@@ -126,7 +126,7 @@
     <Compile Include="RenderGwen\GwenRenderContext.cs" />
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
     <Compile Include="RenderGwen\GwenTextureProvider.cs" />
-    <Compile Include="RenderGwen\OverlayRendering.cs" />
+    <Compile Include="SceneEd\SceneEd_Rendering.cs" />
     <Compile Include="WinFormsUI\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
