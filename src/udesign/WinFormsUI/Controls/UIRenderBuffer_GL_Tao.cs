@@ -262,13 +262,13 @@ namespace udesign.Controls
                 string dragInfo = e.Data.GetData(DataFormats.Text).ToString();
                 Session.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, e.X, e.Y);
                 Point clientPos = glControl.PointToClient(new Point(e.X, e.Y));
-                SceneEd.Instance.DragDroppped(clientPos.X, clientPos.Y, dragInfo);
+                SceneEd.Instance.DragAndDrop.NotifyDroppped(clientPos.X, clientPos.Y, dragInfo);
             }
         }
 
         private void glControl_DragLeave(object sender, EventArgs e)
         {
-            SceneEd.Instance.DragLeft();
+            SceneEd.Instance.DragAndDrop.NotifyLeft();
         }
 
         private void glControl_DragOver(object sender, DragEventArgs e)
@@ -276,7 +276,7 @@ namespace udesign.Controls
             if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
             {
                 Point clientPos = glControl.PointToClient(new Point(e.X, e.Y));
-                SceneEd.Instance.DragUpdated(clientPos.X, clientPos.Y);
+                SceneEd.Instance.DragAndDrop.NotifyUpdated(clientPos.X, clientPos.Y);
             }
         }
     }

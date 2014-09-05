@@ -79,11 +79,11 @@
     <Compile Include="SceneEd\Action\Action_Insert.cs" />
     <Compile Include="SceneEd\Action\Action_Move.cs" />
     <Compile Include="SceneEd\Action\Action_Resize.cs" />
+    <Compile Include="SceneEd\Components\DragAndDropReceiver.cs" />
     <Compile Include="SceneEd\Components\OperationHistory.cs" />
     <Compile Include="SceneEd\Components\SelectionList_Render.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEdConstants.cs" />
-    <Compile Include="SceneEd\SceneEd_Dragging.cs" />
     <Compile Include="ConfigVars.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />
     <Compile Include="TestSnippets\TestScene.cs" />

@@ -20,10 +20,11 @@ namespace udesign
 
         public OperationHistory OperHistory { get { return m_operHistory; } }
         public SelectionList Selection { get { return m_selectionList; } }
+        public DragAndDropReceiver DragAndDrop { get { return m_dragAndDropReceiver; } }
 
         public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
         {
-            Node dragTarget = PossibleDraggingTarget;
+            Node dragTarget = m_dragAndDropReceiver.PossibleTarget;
             if (dragTarget != null)
             {
                 Rectangle rect = dragTarget.GetWorldBounds();
@@ -58,6 +59,10 @@ namespace udesign
                     m_dragAction = new Action_Move(m_selectionList.Selection);
                     SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                 }
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+
             }
         }
 
@@ -142,6 +147,7 @@ namespace udesign
 
         private OperationHistory m_operHistory = new OperationHistory();
         private SelectionList m_selectionList = new SelectionList();
+        private DragAndDropReceiver m_dragAndDropReceiver = new DragAndDropReceiver();
 
         internal void InitSelectionContainer(Gwen.Control.Canvas canvas)
         {
