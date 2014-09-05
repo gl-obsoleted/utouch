@@ -9,19 +9,28 @@ namespace udesign
 {
     public static class GwenUtil
     {
-        public static void RenderWorldBound(Gwen.Renderer.Tao renderer, Gwen.Control.Base ctrl, bool filled)
+        public static Rectangle GetWorldBound(Gwen.Control.Base ctrl)
         {
             if (ctrl.Parent != null)
             {
-                Rectangle rect = new Rectangle(ctrl.Parent.LocalPosToCanvas(new Point(ctrl.X, ctrl.Y)), new Size(ctrl.Width, ctrl.Height));
-                if (filled)
-                {
-                    renderer.DrawFilledRect(rect);
-                }
-                else
-                {
-                    renderer.DrawLinedRect(rect);
-                }
+                return new Rectangle(ctrl.Parent.LocalPosToCanvas(new Point(ctrl.X, ctrl.Y)), new Size(ctrl.Width, ctrl.Height));
+            }
+            else
+            {
+                return ctrl.Bounds;
+            }
+        }
+
+        public static void RenderWorldBound(Gwen.Renderer.Tao renderer, Gwen.Control.Base ctrl, bool filled)
+        {
+            Rectangle rect = GetWorldBound(ctrl);
+            if (filled)
+            {
+                renderer.DrawFilledRect(rect);
+            }
+            else
+            {
+                renderer.DrawLinedRect(rect);
             }
         }
     }

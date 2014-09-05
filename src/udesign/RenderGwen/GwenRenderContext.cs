@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,6 @@ namespace udesign
         public Gwen.Control.Canvas m_canvas;
         public Gwen.Renderer.Tao m_renderer;
         public Gwen.Font m_font;
+        public Point m_currentMousePos;
     }
 }

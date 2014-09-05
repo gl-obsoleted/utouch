@@ -81,6 +81,9 @@ namespace udesign.Controls
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
             canvas.RenderCanvas();
 
+            m_renderContext.m_currentMousePos.X = prevX;
+            m_renderContext.m_currentMousePos.Y = prevY;
+
             renderer.Begin();
 
             if (Scene.Instance != null)

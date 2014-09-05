@@ -54,7 +54,7 @@ namespace udesign
         }
     }
 
-    public class SelectionContainer
+    public partial class SelectionList
     {
         public List<Node> Selection { get { return m_selection; } }
 
@@ -68,10 +68,10 @@ namespace udesign
             OnSelectionChanged();
         }
 
-        public void Render(Gwen.Renderer.Tao renderer)
+        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
         {
-            if (m_resizeCtrl != null && m_resizeCtrl.IsVisible)
-                m_resizeCtrl.RenderBound(renderer);
+            // 把渲染细节移动到以 _Render 为后缀的一份单独的代码文件
+            RenderInternal(renderer, ctx);
         }
 
         public void OnSelectionChanged()

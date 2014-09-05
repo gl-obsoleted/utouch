@@ -32,6 +32,9 @@ namespace ulib.Elements
         [Description("尺寸")]
         public Size Size { get; set; }
         [Category("Node")]
+        [Description("逻辑尺寸（默认为零，当小于等于 Size 时认为二者相同，当逻辑尺寸 X 或 Y 大于可视尺寸 Size 时，对应维度转为可滑动）")]
+        public Size LogicalSize { get; set; }
+        [Category("Node")]
         [Description("是否可见 (影响所有子节点)")]
         public bool Visible { get; set; }
         [Category("Node")]
@@ -62,15 +65,23 @@ namespace ulib.Elements
         #endregion
 
 
-        #region 公开的逻辑属性，如果不希望被序列化，可放到这里并加上 [JsonIgnore]
-        
+        #region 公开的逻辑属性，如果不希望被序列化，可放到这里并加上 [JsonIgnore]；如果不需要在编辑器里看到，可加上 [Browsable(false)]
+
         [JsonIgnore]
         [Browsable(false)]
         public Node Parent { get { return m_parent; } }
+        /// <summary>
+        /// 对于复合型控件，这个属性能够避免子节点位置，尺寸 Dock 等被修改
+        /// </summary>
         [JsonIgnore]
         [Browsable(false)]
-        [Description("对于复合型控件，这个属性能够避免子节点位置，尺寸 Dock 等被修改")]
         public virtual bool LockChildrenLayoutRecursively { get; set; }
+        /// <summary>
+        /// 正常情况下为 0，当这个节点可卷动时，这个值则表现为当前卷动的偏移量
+        /// </summary>
+        [JsonIgnore]
+        [Browsable(false)]
+        public virtual Point CurrentScrollOffset { get; set; }  
 
         #endregion
 
@@ -228,6 +239,21 @@ namespace ulib.Elements
                 }
             }
             return rect;
+        }
+
+        public bool IsScrollable()
+        {
+            return IsScrollableH() && IsScrollableV();
+        }
+
+        public bool IsScrollableH()
+        {
+            return LogicalSize.Width > Size.Width;
+        }
+
+        public bool IsScrollableV()
+        {
+            return LogicalSize.Height > Size.Height;
         }
 
         protected Node m_parent;

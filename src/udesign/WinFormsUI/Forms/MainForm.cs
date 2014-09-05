@@ -57,9 +57,12 @@ namespace udesign
             if (!ResetScene(""))
                 return false;
 
+            // 下面的逻辑仅在欢迎界面被执行
             AddWelcomeString("1. 这是一个欢迎页面");
             AddWelcomeString("2. 本页面包含一个根节点和若干 Label (均可鼠标选中和移动)");
             AddWelcomeString("3. sample_layouts 目录中有一些范例文件，可通过 “File | Open” 打开");
+
+            Scene.Instance.Root.LogicalSize = new Size(1000, 1000); // 测试方便
 
             return true;
         }
@@ -142,7 +145,7 @@ namespace udesign
 
         private bool ResetScene(string sceneName)
         {
-            SceneEd.Instance.SelectionContainer.ClearSelection();
+            SceneEd.Instance.Selection.ClearSelection();
             SceneEd.Instance.OperHistory.Clear();
 
             BootParams bp = new BootParams {

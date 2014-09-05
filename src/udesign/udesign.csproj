@@ -79,11 +79,13 @@
     <Compile Include="SceneEd\Action\Action_Insert.cs" />
     <Compile Include="SceneEd\Action\Action_Move.cs" />
     <Compile Include="SceneEd\Action\Action_Resize.cs" />
-    <Compile Include="SceneEd\OperationHistory.cs" />
+    <Compile Include="SceneEd\Components\OperationHistory.cs" />
+    <Compile Include="SceneEd\Components\SelectionList_Render.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
+    <Compile Include="SceneEd\SceneEdConstants.cs" />
     <Compile Include="SceneEd\SceneEd_Dragging.cs" />
     <Compile Include="ConfigVars.cs" />
-    <Compile Include="SceneEd\SelectionContainer.cs" />
+    <Compile Include="SceneEd\Components\SelectionList.cs" />
     <Compile Include="TestSnippets\TestScene.cs" />
     <Compile Include="UDesignApp.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
@@ -115,7 +117,6 @@
     <Compile Include="RenderGwen\GwenRenderContext.cs" />
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
     <Compile Include="RenderGwen\GwenTextureProvider.cs" />
-    <Compile Include="SceneEd\SceneEd_Rendering.cs" />
     <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
     <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.cs">
       <SubType>Form</SubType>
