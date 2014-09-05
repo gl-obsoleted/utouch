@@ -24,27 +24,11 @@ namespace udesign
 
         public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
         {
-            Node dragTarget = m_dragAndDropReceiver.PossibleTarget;
-            if (dragTarget != null)
-            {
-                Rectangle rect = dragTarget.GetWorldBounds();
-                rect.Inflate(5, 5);
-
-                Color c = renderer.DrawColor;
-                renderer.DrawColor = Color.HotPink;
-                renderer.DrawLinedRect(rect);
-                renderer.RenderText(ctx.m_font,
-                    new Point(rect.Left, rect.Top - 18),
-                    "[目标节点] " + dragTarget.Name);
-                renderer.DrawColor = c;
-            }
-
+            m_dragAndDropReceiver.Render(renderer, ctx);
             m_selectionList.Render(renderer, ctx);
         }
 
         bool m_isLeftDown = false;
-        Point m_beginDragPos = new Point(0, 0);
-        Action_Move m_dragAction;
         public void MouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -55,14 +39,8 @@ namespace udesign
                 if (m_selectionList.Selection.Contains(n) && m_selectionList.IsSelectionDraggable())
                 {
                     // 到这里触发拖拽
-                    m_beginDragPos = e.Location;
-                    m_dragAction = new Action_Move(m_selectionList.Selection);
-                    SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+                    DragLeft_Begin(e.Location);
                 }
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-
             }
         }
 
@@ -70,12 +48,7 @@ namespace udesign
         {
             if (m_isLeftDown)
             {
-                if (m_dragAction != null)
-                {
-                    m_dragAction.UpdatePosition(e.Location - (Size)(m_beginDragPos));
-                }
-
-                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
+                DragLeft_Updated(e.Location);
             }
         }
 
@@ -85,11 +58,9 @@ namespace udesign
             {
                 m_isLeftDown = false;
 
-                if (m_dragAction != null)
+                if (IsDraggingLeft())
                 {
-                    m_dragAction.EndUpdatePosition(e.Location - (Size)(m_beginDragPos));
-                    m_operHistory.PushAction(m_dragAction);
-                    m_dragAction = null;
+                    DragLeft_End(e.Location);
                 }
                 else 
                 {
@@ -161,34 +132,6 @@ namespace udesign
 
                 r.BeginDrag += Resizer_Begin;
                 r.EndDrag += Resizer_End;
-            }
-        }
-
-        Action_Resize m_resizeAction;
-
-        void Resizer_Begin(Gwen.Control.Base sender, EventArgs arguments)
-        {
-            if (m_selectionList.Resizer.IsHoveringResizers() && m_selectionList.Selection.Count == 1)
-            {
-                m_resizeAction = new Action_Resize(m_selectionList.Selection[0]);
-            }
-        }
-
-        void Resizer_End(Gwen.Control.Base sender, EventArgs arguments)
-        {
-            if (m_resizeAction != null)
-            {
-                m_resizeAction.EndResizing(m_selectionList.Resizer.Bounds);
-                m_operHistory.PushAction(m_resizeAction);
-                m_resizeAction = null;
-            }
-        }
-
-        void Resizer_Resized(Gwen.Control.Base sender, EventArgs arguments)
-        {
-            if (m_resizeAction != null)
-            {
-                m_resizeAction.UpdateResizing(m_selectionList.Resizer.Bounds);
             }
         }
     }

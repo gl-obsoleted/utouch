@@ -86,6 +86,9 @@
     <Compile Include="SceneEd\SceneEdConstants.cs" />
     <Compile Include="ConfigVars.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />
+    <Compile Include="SceneEd\SceneEd_DragLeft.cs" />
+    <Compile Include="SceneEd\SceneEd_Resizing.cs" />
+    <Compile Include="SceneEd\SceneEd_DragRight.cs" />
     <Compile Include="TestSnippets\TestScene.cs" />
     <Compile Include="UDesignApp.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">

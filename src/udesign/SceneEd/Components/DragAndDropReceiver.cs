@@ -11,11 +11,6 @@ namespace udesign
 {
     public class DragAndDropReceiver
     {
-        public Node PossibleTarget { get { return m_targetNode; } }
-
-        private Point m_targetPoint = new Point();
-        private Node m_targetNode;
-
         public void NotifyUpdated(int curX, int curY)
         {
             m_targetPoint.X = curX;
@@ -60,5 +55,23 @@ namespace udesign
             m_targetPoint.Y = 0;
             m_targetNode = null;
         }
+
+        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        {
+            if (m_targetNode != null)
+            {
+                Rectangle rect = m_targetNode.GetWorldBounds();
+                rect.Inflate(5, 5);
+
+                Color c = renderer.DrawColor;
+                renderer.DrawColor = Color.HotPink;
+                renderer.DrawLinedRect(rect);
+                renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 18), "[目标节点] " + m_targetNode.Name);
+                renderer.DrawColor = c;
+            }
+        }
+
+        private Point m_targetPoint = new Point();
+        private Node m_targetNode;
     }
 }
