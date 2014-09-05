@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ulib.Elements;
 using DevComponents.DotNetBar;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
 
 namespace udesign.Controls
 {
@@ -65,6 +67,48 @@ namespace udesign.Controls
         private void m_propertyGrid_ProvidePropertyValueList(object sender, DevComponents.DotNetBar.PropertyValueListEventArgs e)
         {
 
+        }
+    }
+
+    public class ImageResourceEditor : System.Drawing.Design.UITypeEditor
+    {
+        public ImageResourceEditor()
+        {
+        }
+
+        // Indicates whether the UITypeEditor provides a form-based (modal) dialog,  
+        // drop down dialog, or no UI outside of the properties window. 
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.Modal;
+        }
+
+        // Displays the UI for value selection. 
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        {
+            // Return the value if the value is not of type Int32, Double and Single. 
+            if (value.GetType() != typeof(string))
+                return value;
+
+            // Uses the IWindowsFormsEditorService to display a  
+            // drop-down UI in the Properties window.
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
+            {
+                ResForm form = new ResForm();
+                if (edSvc.ShowDialog(form) == System.Windows.Forms.DialogResult.OK)
+                {
+                    return form.SelectedResourceURL;
+                }
+            }
+            return value;
+        }
+
+        // Indicates whether the UITypeEditor supports painting a  
+        // representation of a property's value. 
+        public override bool GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext context)
+        {
+            return true;
         }
     }
 }

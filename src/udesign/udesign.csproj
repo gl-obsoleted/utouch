@@ -98,19 +98,6 @@
     <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.Designer.cs">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsUI\GwenUnitTestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsUI\GwenUnitTestForm.Designer.cs">
-      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WinFormsUI\ImageResourceEditor.cs" />
-    <Compile Include="WinFormsUI\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsUI\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinFormsUI\Controls\UILayoutTree.cs">
@@ -129,13 +116,25 @@
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
     <Compile Include="RenderGwen\GwenTextureProvider.cs" />
     <Compile Include="SceneEd\SceneEd_Rendering.cs" />
-    <Compile Include="WinFormsUI\ResForm.cs">
+    <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
+    <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\ResForm.Designer.cs">
+    <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.Designer.cs">
+      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsUI\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Forms\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsUI\Forms\ResForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Forms\ResForm.designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,12 +147,6 @@
     <EmbeddedResource Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.resx">
       <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\GwenUnitTestForm.resx">
-      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,7 +157,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WinFormsUI\ResForm.resx">
+    <EmbeddedResource Include="WinFormsUI\Forms\GwenUnitTestForm.resx">
+      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsUI\Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsUI\Forms\ResForm.resx">
       <DependentUpon>ResForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -190,6 +189,7 @@
   <ItemGroup>
     <None Include="Resources\appbar.folder.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
