@@ -13,6 +13,55 @@ namespace ulib.Elements
 
     public partial class Node
     {
+        #region 所有的序列化存取字段
+
+        /// 这里用到的 Attribute 的含义：
+        ///     [Category("")]      是指该属性在 AdvPropertyGrid 内所属的分类
+        ///     [Description("")]   是指该属性在 AdvPropertyGrid 内选中时的描述
+        ///     [JsonIgnore]        是指该属性不存储到文件里（暗含的意思是，在读取并重建对象后，这个字段是需要被恢复的）
+        ///     [Browsable(false)]  是指该属性不显示在属性编辑的列表中，即 AdvPropertyGrid 控件里
+        ///     [ReadOnly(true)]    是指该属性为只读属性，不可编辑
+
+        [Category("Node")]
+        [Description("名字 (可指定，但需要在当前路径下唯一)")]
+        public string Name { get; set; }
+        [Category("Node")]
+        [Description("相对父节点的位置 (影响所有子节点)")]
+        public Point Position { get; set; }
+        [Category("Node")]
+        [Description("尺寸")]
+        public Size Size { get; set; }
+        [Category("Node")]
+        [Description("是否可见 (影响所有子节点)")]
+        public bool Visible { get; set; }
+        [Category("Node")]
+        [Description("外部 Dock，用于描述与父节点的关系，是节点通用属性")]
+        public DockType Dock { get; set; }
+        [Category("Node")]
+        [Description("水平方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
+        public AlignHori AlignH { get; set; }
+        [Category("Node")]
+        [Description("垂直方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
+        public AlignVert AlignV { get; set; }
+        [Category("Node")]
+        [Description("外部间距")]
+        public int Margin { get; set; }
+        [Category("Node")]
+        [Description("标记 (可任意起，不影响正常逻辑)")]
+        public string Tag { get; set; }
+
+        // 以下为编辑器内不可见的字段，这些字段不出现在编辑器里，所以不需要 Category 和 Description
+        [Browsable(false)]
+        public object UserData { get; set; }
+        [Browsable(false)]
+        [ReadOnly(true)]
+        public string __type_info__ { get { return GetType().Name; } }
+        [Browsable(false)]
+        public virtual List<Node> Children { get { return m_children; } }
+
+        #endregion
+
+
         #region 公开的逻辑属性，如果不希望被序列化，可放到这里并加上 [JsonIgnore]
         
         [JsonIgnore]
