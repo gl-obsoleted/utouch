@@ -28,25 +28,32 @@ namespace udesign
             m_selectionList.Render(renderer, ctx);
         }
 
-        bool m_isLeftDown = false;
         public void MouseDown(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            Node picked = Scene.Instance.Pick(e.Location);
+            switch (e.Button)
             {
-                m_isLeftDown = true;
+                case MouseButtons.Left:
+                    if (m_selectionList.Selection.Contains(picked) && m_selectionList.IsSelectionDraggable())
+                    {
+                        // 到这里触发拖拽
+                        DragLeft_Begin(e.Location);
+                    }
+                    break;
+                case MouseButtons.Right:
+                    if (picked.IsScrollable())
+                    {
 
-                Node n = Scene.Instance.Pick(e.Location);
-                if (m_selectionList.Selection.Contains(n) && m_selectionList.IsSelectionDraggable())
-                {
-                    // 到这里触发拖拽
-                    DragLeft_Begin(e.Location);
-                }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
         public void MouseMove(MouseEventArgs e)
         {
-            if (m_isLeftDown)
+            if (IsDraggingLeft())
             {
                 DragLeft_Updated(e.Location);
             }
@@ -54,19 +61,23 @@ namespace udesign
 
         public void MouseUp(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                m_isLeftDown = false;
-
-                if (IsDraggingLeft())
-                {
-                    DragLeft_End(e.Location);
-                }
-                else 
-                {
-                    Node n = Scene.Instance.Pick(e.Location);
-                    Select(n);
-                }
+                case MouseButtons.Left:
+                    if (IsDraggingLeft())
+                    {
+                        DragLeft_End(e.Location);
+                    }
+                    else
+                    {
+                        Node n = Scene.Instance.Pick(e.Location);
+                        Select(n);
+                    }
+                    break;
+                case MouseButtons.Right:
+                    break;
+                default:
+                    break;
             }
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
