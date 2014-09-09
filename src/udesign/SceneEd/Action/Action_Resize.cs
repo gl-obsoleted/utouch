@@ -19,21 +19,26 @@ namespace udesign
 
         public void UpdateResizing(Rectangle bounds)
         {
-            Rectangle childrenBounds = m_selection.GetChildrenWorldBounds();
-            if (childrenBounds == Constants.INVALID_RECT)
-            {
-                m_selection.Position = m_selection.Parent != null ? m_selection.Parent.WorldToLocal(bounds.Location) : bounds.Location;
-                m_selection.Size = bounds.Size;
-            }
-            else
-            {
-                int left = System.Math.Min(bounds.Left, childrenBounds.Left);
-                int right = System.Math.Max(bounds.Right, childrenBounds.Right);
-                int top = System.Math.Min(bounds.Top, childrenBounds.Top);
-                int bottom = System.Math.Max(bounds.Bottom, childrenBounds.Bottom);
-                m_selection.Position = new Point(left, top);
-                m_selection.Size = new Size(right - left, bottom - top);
-            }
+            // 当任意节点都支持自动转换为滑动面板之后，让父节点在缩放时保证其包围盒能包含所有子节点已经意义不大。
+            // 所以下面的 clamping 代码已被注释掉。
+            //Rectangle childrenBounds = m_selection.GetChildrenWorldBounds();
+            //if (childrenBounds == Constants.INVALID_RECT)
+            //{
+            //    m_selection.Position = m_selection.Parent != null ? m_selection.Parent.WorldToLocal(bounds.Location) : bounds.Location;
+            //    m_selection.Size = bounds.Size;
+            //}
+            //else
+            //{
+            //    int left = System.Math.Min(bounds.Left, childrenBounds.Left);
+            //    int right = System.Math.Max(bounds.Right, childrenBounds.Right);
+            //    int top = System.Math.Min(bounds.Top, childrenBounds.Top);
+            //    int bottom = System.Math.Max(bounds.Bottom, childrenBounds.Bottom);
+            //    m_selection.Position = new Point(left, top);
+            //    m_selection.Size = new Size(right - left, bottom - top);
+            //}
+
+            m_selection.Position = m_selection.Parent != null ? m_selection.Parent.WorldToLocal(bounds.Location, true) : bounds.Location;
+            m_selection.Size = bounds.Size;
         }
 
         public void EndResizing(Rectangle bounds)

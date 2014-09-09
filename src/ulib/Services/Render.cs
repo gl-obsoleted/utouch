@@ -21,6 +21,12 @@ namespace ulib
             m_localPosDocked.Y = 0;
         }
 
+        // 在渲染指定节点时，通常需要同时考虑累计变换和本地 docking 和本地 scrolling 的影响
+        public Point GetAccumulatedDockedScrolledTranslate()
+        {
+            return m_accumTranslate + (Size)m_localPosDocked + (Size)m_localPosScrolled;
+        }
+
         // 在渲染指定节点时，通常需要同时考虑累计变换和本地 docking 的影响
         public Point GetAccumulatedDockedTranslate()
         {
@@ -31,8 +37,10 @@ namespace ulib
         public Point m_accumTranslate = new Point(0, 0);
 
         // 考虑了 docking 的影响后，该控件相对父节点的位置
-        // renderer 在渲染的时候，应该酌情使用这个值或 Position 属性
         public Point m_localPosDocked = new Point(0, 0);
+
+        // 考虑了 scrolling 的影响后，该控件相对父节点的位置
+        public Point m_localPosScrolled = new Point(0, 0);
     }
 
     /// <summary>
@@ -42,6 +50,9 @@ namespace ulib
     public interface RenderDevice
     {
         void RenderNode(Node node, RenderContext rc);
+
+        Rectangle GetCurrentClip(RenderContext rc);
+        void SetCurrentClip(RenderContext rc, Rectangle clip);
     }
 
     public class RenderSystem
@@ -62,20 +73,38 @@ namespace ulib
 
             // 两个说明：
             //  1) m_localPosDocked 并非一个累积量，因此不需在使用完之后重置
-            //  2) m_accumTranslate 只需计算一次，结果可供整个 Children 列表共享使用
+            //  2) m_localPosScrolled 并非一个累积量，因此不需在使用完之后重置
+            //  3) m_accumTranslate 只需计算一次，结果可供整个 Children 列表共享使用
             //
-            // 上面这两点决定了 m_localPosDocked 作用于当前节点
-            // 而 m_localPosDocked 作用于当前节点的 Children 列表
+            // 上面这三点决定了 m_localPosDocked 和 m_localPosScrolled 作用于当前节点
+            // 而 m_accumTranslate 作用于当前节点的 Children 列表
 
             Point localPosDocked = n.GetDockedPos();
             rc.m_localPosDocked = localPosDocked;
+
+            Point localScrolled = Point.Empty - (Size)n.CurrentScrollOffset;
+            rc.m_localPosScrolled = localScrolled;
+
             rs.RenderNode(n, rc);
 
-            rc.m_accumTranslate.X += localPosDocked.X;
-            rc.m_accumTranslate.Y += localPosDocked.Y;
+            rc.m_accumTranslate.X += (localPosDocked.X + localScrolled.X);
+            rc.m_accumTranslate.Y += (localPosDocked.Y + localScrolled.Y);
+
+            Rectangle oldClip = rs.GetCurrentClip(rc);
+            if (n.HasScrolled)
+            {
+                rs.SetCurrentClip(rc, n.GetWorldBounds());
+            }
+
             n.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs); });
-            rc.m_accumTranslate.X -= localPosDocked.X;
-            rc.m_accumTranslate.Y -= localPosDocked.Y;
+            
+            if (n.HasScrolled)
+            {
+                rs.SetCurrentClip(rc, oldClip);
+            }
+
+            rc.m_accumTranslate.X -= (localPosDocked.X + localScrolled.X);
+            rc.m_accumTranslate.Y -= (localPosDocked.Y + localScrolled.Y);
         }
     }
 }

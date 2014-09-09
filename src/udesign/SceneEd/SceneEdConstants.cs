@@ -10,6 +10,7 @@ namespace udesign
     public class SceneEdConstants
     {
         public static readonly Color SelectionDescTextColor = Color.Wheat;
+        public static readonly Color SelectionHighlightColor = Color.SandyBrown;
         public static readonly Color[] SelectionBoxGradientColors = { Color.Honeydew, Color.PaleGreen, Color.LightGreen, Color.LimeGreen, Color.ForestGreen };
 
         public static readonly int TextLineInterval = 5;

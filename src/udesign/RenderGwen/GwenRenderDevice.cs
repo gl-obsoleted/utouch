@@ -20,6 +20,7 @@ namespace udesign
             if (grc == null)
                 return;
 
+            Rectangle worldBounds = node.GetWorldBounds();
             if (node is ImageNode)
             {
                 RenderImageNode(node as ImageNode, grc);
@@ -38,14 +39,40 @@ namespace udesign
             }
             else
             {
-                Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), node.Size);
-                grc.m_renderer.DrawLinedRect(rect);
+                // defualt method for rendering an unknown node
+                grc.m_renderer.DrawLinedRect(worldBounds);
+            }
+        }
+
+        public Rectangle GetCurrentClip(RenderContext rc)
+        {
+            GwenRenderContext grc = rc as GwenRenderContext;
+            if (grc == null)
+                return ulib.Base.Constants.INVALID_RECT;
+
+            return grc.m_renderer.ClipRegion;
+        }
+
+        public void SetCurrentClip(RenderContext rc, Rectangle clip)
+        {
+            GwenRenderContext grc = rc as GwenRenderContext;
+            if (grc == null)
+                return;
+
+            grc.m_renderer.ClipRegion = clip;
+            if (grc.m_renderer.ClipRegion != ulib.Base.Constants.INVALID_RECT)
+            {
+                grc.m_renderer.StartClip();
+            }
+            else
+            {
+                grc.m_renderer.EndClip();
             }
         }
 
         private void RenderImageNode(ImageNode imageNode, GwenRenderContext grc)
         {
-            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedTranslate(), imageNode.Size), imageNode.Res);
+            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), imageNode.Size), imageNode.Res);
         }
 
         private void RenderTextNode(TextNode textNode, GwenRenderContext grc)
@@ -61,7 +88,7 @@ namespace udesign
                 textNode.RequestedSizeRefreshing = false;
             }
 
-            Point loc = grc.GetAccumulatedDockedTranslate();
+            Point loc = grc.GetAccumulatedDockedScrolledTranslate();
 
             // 理论上这里我们不应当每帧对每段 Text 都调用 MeasureText()
             // 不过考察 Gwen.Renderer.Tao.MeasureText() 后我们发现 
@@ -77,12 +104,12 @@ namespace udesign
 
         private void RenderButton(Button bt, GwenRenderContext grc)
         {
-            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedTranslate(), bt.Size), bt.Res_Background);
+            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), bt.Size), bt.Res_Background);
         }
 
         private void RenderCheckBox(CheckBox cb, GwenRenderContext grc)
         {
-            Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), cb.MarkSize);
+            Rectangle rect = new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), cb.MarkSize);
             DrawImage(grc, rect, cb.Res_Background);
             DrawImage(grc, rect, cb.Res_Mark);
         }

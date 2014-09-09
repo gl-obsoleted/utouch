@@ -86,7 +86,7 @@ namespace udesign
 
                 renderer.DrawColor = SceneEdConstants.SlideBarBackground;
                 renderer.DrawFilledRect(new Rectangle(rect.X, rect.Bottom, rect.Width, thickness));
-                renderer.DrawColor = SceneEdConstants.SlideBarForeground;
+                renderer.DrawColor = IsScrolling ? SceneEdConstants.SelectionHighlightColor : SceneEdConstants.SlideBarForeground;
                 renderer.DrawFilledRect(new Rectangle(rect.X + slideOffset, rect.Bottom, slideWidth, thickness));
             }
             if (hoveringNode.IsScrollableV())
@@ -97,7 +97,7 @@ namespace udesign
 
                 renderer.DrawColor = SceneEdConstants.SlideBarBackground;
                 renderer.DrawFilledRect(new Rectangle(rect.Right, rect.Top, thickness, rect.Height));
-                renderer.DrawColor = SceneEdConstants.SlideBarForeground;
+                renderer.DrawColor = IsScrolling ? SceneEdConstants.SelectionHighlightColor : SceneEdConstants.SlideBarForeground;
                 renderer.DrawFilledRect(new Rectangle(rect.Right, rect.Top + slideOffset, thickness, slideHeight));
             }
         }

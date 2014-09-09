@@ -35,12 +35,26 @@ namespace ulib
             Point dockedPos = node.GetDockedPos();
             location.X -= dockedPos.X;
             location.Y -= dockedPos.Y;
+
+            if (node.HasScrolled)
+            {
+                location.X += node.CurrentScrollOffset.X;
+                location.Y += node.CurrentScrollOffset.Y;
+            }
+
             foreach (Node child in node.Children)
             {
                 Node ret = Pick(child, location);
                 if (ret != null)
                     return ret;
             }
+
+            if (!node.CurrentScrollOffset.IsEmpty)
+            {
+                location.X -= node.CurrentScrollOffset.X;
+                location.Y -= node.CurrentScrollOffset.Y;
+            }
+
             location.X += dockedPos.X;
             location.Y += dockedPos.Y;
             return node;

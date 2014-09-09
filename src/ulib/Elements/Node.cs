@@ -81,7 +81,10 @@ namespace ulib.Elements
         /// </summary>
         [JsonIgnore]
         [Browsable(false)]
-        public virtual Point CurrentScrollOffset { get; set; }  
+        public virtual Point CurrentScrollOffset { get; set; }
+        [JsonIgnore]
+        [Browsable(false)]
+        public virtual bool HasScrolled { get { return !CurrentScrollOffset.IsEmpty; } }
 
         #endregion
 
@@ -167,6 +170,12 @@ namespace ulib.Elements
             Node p = Parent;
             while (p != null)
             {
+                if (p.HasScrolled)
+                {
+                    loc.X -= p.CurrentScrollOffset.X;
+                    loc.Y -= p.CurrentScrollOffset.Y;
+                }
+
                 Point parentLoc = p.GetDockedPos();
                 loc.X += parentLoc.X;
                 loc.Y += parentLoc.Y;
@@ -175,16 +184,28 @@ namespace ulib.Elements
             return loc;
         }
 
-        public Point WorldToLocal(Point pt)
+        public Point WorldToLocal(Point pt, bool logical)
         {
-            Point origin = GetWorldPosition();
-            return new Point(pt.X - origin.X, pt.Y - origin.Y);
+            Point ret = pt;
+            ret -= (Size)GetWorldPosition();
+
+            if (logical)
+            {
+                ret += (Size)CurrentScrollOffset;
+            }
+            return ret;
         }
 
-        public Point LocalToWorld(Point pt)
+        public Point LocalToWorld(Point pt, bool logical)
         {
-            Point origin = GetWorldPosition();
-            return new Point(pt.X + origin.X, pt.Y + origin.Y);
+            Point ret = pt;
+            ret += (Size)GetWorldPosition();
+
+            if (logical)
+            {
+                ret -= (Size)CurrentScrollOffset;
+            }
+            return ret;
         }
 
         public Rectangle GetWorldBounds()
