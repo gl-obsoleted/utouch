@@ -14,14 +14,14 @@ namespace udesign
 
         public bool IsDraggingLeft() { return m_dragAction != null; }
 
-        public void DragLeft_Begin(Point location)
+        public void DragLeft_BeginMoving(Point location)
         {
             m_beginDragPos = location;
             m_dragAction = new Action_Move(m_selectionList.Selection);
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
-        public void DragLeft_Updated(Point location)
+        public void DragLeft_UpdateMoving(Point location)
         {
             if (m_dragAction != null)
             {
@@ -31,7 +31,7 @@ namespace udesign
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
         }
 
-        public void DragLeft_End(Point location)
+        public void DragLeft_EndMoving(Point location)
         {
             m_dragAction.EndUpdatePosition(location - (Size)(m_beginDragPos));
             m_operHistory.PushAction(m_dragAction);

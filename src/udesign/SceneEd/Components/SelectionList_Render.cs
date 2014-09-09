@@ -26,7 +26,7 @@ namespace udesign
                 Color c = renderer.DrawColor;
                 RenderSelectionBox(renderer, rect);
 
-                if (rect.Contains(ctx.m_currentMousePos))
+                if (rect.Contains(ctx.m_currentMousePos) || IsScrolling)
                 {
                     RenderHoveringSelectedNode(renderer, ctx, n);
                 }
@@ -81,8 +81,8 @@ namespace udesign
             if (hoveringNode.IsScrollableH())
             {
                 float range = (float)(hoveringNode.LogicalSize.Width - hoveringNode.Size.Width);
-                int slideOffset = (int)((float)rect.Width * (float)hoveringNode.CurrentScrollOffset.X / range);
                 int slideWidth = (int)((float)rect.Width * (float)(hoveringNode.Size.Width) / (float)(hoveringNode.LogicalSize.Width));
+                int slideOffset = (int)((float)(rect.Width - slideWidth) * (float)hoveringNode.CurrentScrollOffset.X / range);
 
                 renderer.DrawColor = SceneEdConstants.SlideBarBackground;
                 renderer.DrawFilledRect(new Rectangle(rect.X, rect.Bottom, rect.Width, thickness));
@@ -92,8 +92,8 @@ namespace udesign
             if (hoveringNode.IsScrollableV())
             {
                 float range = (float)(hoveringNode.LogicalSize.Height - hoveringNode.Size.Height);
-                int slideOffset = (int)((float)rect.Height * (float)hoveringNode.CurrentScrollOffset.Y / range);
                 int slideHeight = (int)((float)rect.Height * (float)(hoveringNode.Size.Height) / (float)(hoveringNode.LogicalSize.Height));
+                int slideOffset = (int)((float)(rect.Height - slideHeight) * (float)hoveringNode.CurrentScrollOffset.Y / range);
 
                 renderer.DrawColor = SceneEdConstants.SlideBarBackground;
                 renderer.DrawFilledRect(new Rectangle(rect.Right, rect.Top, thickness, rect.Height));

@@ -60,8 +60,15 @@ namespace udesign
 
         public ResizeBox Resizer { get { return m_resizeCtrl; } }
 
+        /// <summary>
+        /// 是否正在操作滑动面板（为了一致性考虑，（作为例外），滑动操作时，即使鼠标在外部，仍渲染选中对象）
+        /// </summary>
+        public bool IsScrolling { get; set; }
+
         public void Init(Gwen.Control.Canvas canvas)
         {
+            IsScrolling = false;
+
             m_resizeCtrl = new ResizeBox(canvas);
             m_resizeCtrl.Hide();
 

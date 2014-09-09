@@ -120,6 +120,14 @@ namespace ulib.Elements
             }
         }
 
+        public void SetScrollOffsetClamped(Point offset)
+        {
+            Point newOffset = new Point();
+            newOffset.X = ulib.Base.Math.Clamp(offset.X, 0, LogicalSize.Width - Size.Width);
+            newOffset.Y = ulib.Base.Math.Clamp(offset.Y, 0, LogicalSize.Height - Size.Height);
+            CurrentScrollOffset = newOffset;
+        }
+
         public virtual void Attach(Node n)
         {
             if (!m_children.Contains(n))

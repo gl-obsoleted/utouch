@@ -30,20 +30,19 @@ namespace udesign
 
         public void MouseDown(MouseEventArgs e)
         {
-            Node picked = Scene.Instance.Pick(e.Location);
+            Node pickedNode = Scene.Instance.Pick(e.Location);
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    if (m_selectionList.Selection.Contains(picked) && m_selectionList.IsSelectionDraggable())
+                    if (m_selectionList.Selection.Contains(pickedNode) && m_selectionList.IsSelectionDraggable())
                     {
-                        // 到这里触发拖拽
-                        DragLeft_Begin(e.Location);
+                        DragLeft_BeginMoving(e.Location);
                     }
                     break;
                 case MouseButtons.Right:
-                    if (picked.IsScrollable())
+                    if (m_selectionList.Selection.Contains(pickedNode) && m_selectionList.Selection.Count == 1 && pickedNode.IsScrollable())
                     {
-
+                        DragRight_BeginScrolling(e.Location);
                     }
                     break;
                 default:
@@ -55,7 +54,11 @@ namespace udesign
         {
             if (IsDraggingLeft())
             {
-                DragLeft_Updated(e.Location);
+                DragLeft_UpdateMoving(e.Location);
+            }
+            else if (IsDragRightScrolling())
+            {
+                DragRight_UpdateScrolling(e.Location);
             }
         }
 
@@ -66,7 +69,7 @@ namespace udesign
                 case MouseButtons.Left:
                     if (IsDraggingLeft())
                     {
-                        DragLeft_End(e.Location);
+                        DragLeft_EndMoving(e.Location);
                     }
                     else
                     {
@@ -75,6 +78,10 @@ namespace udesign
                     }
                     break;
                 case MouseButtons.Right:
+                    if (IsDragRightScrolling())
+                    {
+                        DragRight_EndScrolling(e.Location);
+                    }
                     break;
                 default:
                     break;
