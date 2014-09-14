@@ -91,14 +91,14 @@ namespace ulib
             rc.m_accumTranslate.Y += (localPosDocked.Y + localScrolled.Y);
 
             Rectangle oldClip = rs.GetCurrentClip(rc);
-            if (n.HasScrolled)
+            if (n.IsScrollable())
             {
                 rs.SetCurrentClip(rc, n.GetWorldBounds());
             }
 
             n.TraverseChildren((Node child) => { RenderNodeRecursively(child, rc, rs); });
-            
-            if (n.HasScrolled)
+
+            if (n.IsScrollable())
             {
                 rs.SetCurrentClip(rc, oldClip);
             }
