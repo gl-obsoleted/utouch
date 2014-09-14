@@ -10,56 +10,6 @@ using ulib.Elements;
 
 namespace ulib
 {
-    public abstract class JsonCreationConverter<T> : JsonConverter
-    {
-        /// <summary>
-        /// Create an instance of objectType, based properties in the JSON object
-        /// </summary>
-        /// <param name="objectType">type of object expected</param>
-        /// <param name="jObject">
-        /// contents of JSON object that will be deserialized
-        /// </param>
-        /// <returns></returns>
-        protected abstract T Create(Type objectType, JObject jObject);
-
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(T).IsAssignableFrom(objectType);
-        }
-
-        public override object ReadJson(JsonReader reader,
-                                        Type objectType,
-                                         object existingValue,
-                                         JsonSerializer serializer)
-        {
-            // Load JObject from stream
-            JObject jObject = JObject.Load(reader);
-
-            // Create target object based on JObject
-            T target = Create(objectType, jObject);
-
-            // Populate the object properties
-            serializer.Populate(jObject.CreateReader(), target);
-
-            return target;
-        }
-
-        public override void WriteJson(JsonWriter writer,
-                                       object value,
-                                       JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class NodeConverter : JsonCreationConverter<Node>
-    {
-        protected override Node Create(Type objectType, JObject jObject)
-        {
-            return NodeJsonUtil.CreateNode(jObject); 
-        }
-    }
-
     public class Archive_Json : IArchive
     {
         public ArchiveType GetArcType()
@@ -81,19 +31,7 @@ namespace ulib
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
                     JObject jsonObject = (JObject)JToken.ReadFrom(reader);
-                    JsonSerializer se = JsonSerializer.CreateDefault();
-                    se.Converters.Add(new NodeConverter());
-                    object obj = jsonObject.ToObject(NodeJsonUtil.GetNodeType(jsonObject), se);
-                    if (!(obj is Node))
-                    {
-                        Session.Log("Invalid json object.");
-                        return null;
-                    }
-
-                    // 手动恢复每个 node 的 m_parent 字段
-                    Node root = obj as Node;
-                    SceneGraphUtil.UnifyParents(root);
-                    return root;
+                    return NodeJsonUtil.JObjectToNode(jsonObject);
                 }
             }
             catch (Exception e)
@@ -105,13 +43,23 @@ namespace ulib
 
         public bool SaveTo(Node node, string targetLocation)
         {
-            JObject obj = (JObject)JToken.FromObject(node);
-            //System.Diagnostics.Debug.Write(m_object.ToString());
+            string text = NodeJsonUtil.NodeToString(node);
+            if (text.Length == 0)
+                return false;
 
-            using (StreamWriter file = File.CreateText(targetLocation))
+            try
             {
-                file.Write(obj.ToString());
+                using (StreamWriter file = File.CreateText(targetLocation))
+                {
+                    file.Write(text);
+                }
             }
+            catch (System.Exception ex)
+            {
+                Session.LogExceptionDetail(ex);
+                return false;
+            }
+
             return true;
         }
     }

@@ -82,6 +82,7 @@
     <Compile Include="SceneEd\Action\Action_Scroll.cs" />
     <Compile Include="SceneEd\Components\DragAndDropReceiver.cs" />
     <Compile Include="SceneEd\Components\OperationHistory.cs" />
+    <Compile Include="SceneEd\Components\SceneClipboard.cs" />
     <Compile Include="SceneEd\Components\SelectionList_Render.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\SceneEdConstants.cs" />

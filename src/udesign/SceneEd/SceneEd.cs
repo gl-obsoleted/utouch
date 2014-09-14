@@ -18,9 +18,12 @@ namespace udesign
 
         public bool IsHoldingCtrl { get; set; }
 
-        public OperationHistory OperHistory { get { return m_operHistory; } }
         public SelectionList Selection { get { return m_selectionList; } }
+        public bool HasSelection { get { return Selection.Selection.Count != 0; } }
+
+        public OperationHistory OperHistory { get { return m_operHistory; } }
         public DragAndDropReceiver DragAndDrop { get { return m_dragAndDropReceiver; } }
+        public SceneClipboard Clipboard { get { return m_clipboard; } }
 
         public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
         {
@@ -121,6 +124,22 @@ namespace udesign
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
         }
 
+        public void Select(List<Node> nodes)
+        {
+            if (nodes.Count == 0)
+                return;
+
+            m_selectionList.Selection.Clear();
+            foreach (var item in nodes)
+            {
+                m_selectionList.Selection.Add(item);
+                SceneEdEventNotifier.Instance.Emit_SelectNode(item, this);
+            }
+
+            m_selectionList.OnSelectionChanged();
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering);
+        }
+
         public void DeleteSelected()
         {
             if (m_selectionList.HasSelectedRoot())
@@ -137,6 +156,7 @@ namespace udesign
         private OperationHistory m_operHistory = new OperationHistory();
         private SelectionList m_selectionList = new SelectionList();
         private DragAndDropReceiver m_dragAndDropReceiver = new DragAndDropReceiver();
+        private SceneClipboard m_clipboard = new SceneClipboard();
 
         internal void InitSelectionContainer(Gwen.Control.Canvas canvas)
         {

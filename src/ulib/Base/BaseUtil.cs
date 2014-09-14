@@ -67,27 +67,6 @@ namespace ulib.Base
         }
     }
 
-    public class JsonUtil
-    {
-        public static JObject LoadJObject(string filepath)
-        {
-            try
-            {
-                // read JSON directly from a file
-                using (StreamReader file = File.OpenText(filepath))
-                using (JsonTextReader reader = new JsonTextReader(file))
-                {
-                    return (JObject)JToken.ReadFrom(reader);
-                }
-            }
-            catch (Exception e)
-            {
-                Session.LogExceptionDetail(e);
-                return null;
-            }
-        }
-    }
-
     public class ResUtil
     {
         public static bool ExtractTextureInfo(string url, out string filePath, out string tileName)

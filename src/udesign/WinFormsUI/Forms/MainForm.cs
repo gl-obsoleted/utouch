@@ -34,24 +34,7 @@ namespace udesign
 
             SceneEdEventNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
             SceneEdEventNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
-
-            SceneEdEventNotifier.Instance.RefreshScene += (opts) => 
-            {
-                if (opts.HasFlag(RefreshSceneOpt.Refresh_Layout))
-                {
-                    m_uiLayoutTree.PopulateLayout();
-                }
-                if (opts.HasFlag(RefreshSceneOpt.Refresh_Properties))
-                {
-                    m_uiPropertyGrid.GetGridCtrl().RefreshPropertyValues();
-                }
-
-                // Rendering 排在后面是为了反映前两者的变化的结果
-                if (opts.HasFlag(RefreshSceneOpt.Refresh_Rendering))
-                {
-                    m_glCtrl.Refresh();
-                }
-            };
+            SceneEdEventNotifier.Instance.RefreshScene += OnSceneRefreshed;
 
             // 这个操作需要发生在前面这些响应函数注册的操作后面，否则某些必要的消息（如场景被刷新）是无法被送达的
             if (!ResetScene(""))
@@ -65,6 +48,33 @@ namespace udesign
             Scene.Instance.Root.LogicalSize = new Size(1000, 1000); // 测试方便
 
             return true;
+        }
+
+        private void OnSceneRefreshed(RefreshSceneOpt opts)
+        {
+            if (opts.HasFlag(RefreshSceneOpt.Refresh_MainMenu))
+            {
+                m_menuCut.Enabled = SceneEd.Instance.HasSelection;
+                m_menuCopy.Enabled = SceneEd.Instance.HasSelection;
+                m_menuClone.Enabled = SceneEd.Instance.HasSelection;
+                m_menuDelete.Enabled = SceneEd.Instance.HasSelection;
+            }
+
+            if (opts.HasFlag(RefreshSceneOpt.Refresh_Layout))
+            {
+                m_uiLayoutTree.PopulateLayout();
+            }
+
+            if (opts.HasFlag(RefreshSceneOpt.Refresh_Properties))
+            {
+                m_uiPropertyGrid.GetGridCtrl().RefreshPropertyValues();
+            }
+
+            // Rendering 排在后面是为了反映前两者的变化的结果
+            if (opts.HasFlag(RefreshSceneOpt.Refresh_Rendering))
+            {
+                m_glCtrl.Refresh();
+            }
         }
 
         Point m_welcomePos = new Point(50, 30);
@@ -236,6 +246,34 @@ namespace udesign
         private void UpdateFormTitle()
         {
             Text = Properties.Settings.Default.AppName + " - " + Scene.Instance.CurrentFilePath;
+        }
+
+        private void m_menuCut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_menuCopy_Click(object sender, EventArgs e)
+        {
+            if (SceneEd.Instance.HasSelection)
+            {
+                SceneEd.Instance.Clipboard.SetClippedContent(SceneEd.Instance.Selection.Selection);
+            }
+        }
+
+        private void m_menuPaste_Click(object sender, EventArgs e)
+        {
+            if (SceneEd.Instance.HasSelection)
+            {
+                List<Node> newlyCreated = SceneEd.Instance.Clipboard.AttachTo(SceneEd.Instance.Selection.Selection[0]);
+                SceneEd.Instance.Select(newlyCreated);
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+            }
+        }
+
+        private void m_menuClone_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

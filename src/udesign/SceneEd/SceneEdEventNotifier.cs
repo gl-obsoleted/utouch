@@ -14,7 +14,8 @@ namespace udesign
         Refresh_Rendering = 1,
         Refresh_Layout = 2,
         Refresh_Properties = 4,
-        Refresh_All = Refresh_Rendering | Refresh_Layout | Refresh_Properties,
+        Refresh_MainMenu = 8,
+        Refresh_All = Refresh_Rendering | Refresh_Layout | Refresh_Properties | Refresh_MainMenu,
     }
 
     public delegate void SelectNodeHandler(Node n, object sender);

@@ -35,11 +35,18 @@
             this.m_menuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.m_menuCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.m_menuClone = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +62,6 @@
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
             this.pageControl = new System.Windows.Forms.TabPage();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -101,7 +106,7 @@
             // 
             this.m_menuNew.Name = "m_menuNew";
             this.m_menuNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.m_menuNew.Size = new System.Drawing.Size(164, 22);
+            this.m_menuNew.Size = new System.Drawing.Size(205, 22);
             this.m_menuNew.Text = "&New";
             this.m_menuNew.Click += new System.EventHandler(this.m_menuNew_Click);
             // 
@@ -109,7 +114,7 @@
             // 
             this.m_menuOpen.Name = "m_menuOpen";
             this.m_menuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.m_menuOpen.Size = new System.Drawing.Size(164, 22);
+            this.m_menuOpen.Size = new System.Drawing.Size(205, 22);
             this.m_menuOpen.Text = "&Open...";
             this.m_menuOpen.Click += new System.EventHandler(this.m_menuOpen_Click);
             // 
@@ -117,26 +122,39 @@
             // 
             this.m_menuSave.Name = "m_menuSave";
             this.m_menuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.m_menuSave.Size = new System.Drawing.Size(164, 22);
+            this.m_menuSave.Size = new System.Drawing.Size(205, 22);
             this.m_menuSave.Text = "&Save";
             this.m_menuSave.Click += new System.EventHandler(this.m_menuSave_Click);
             // 
             // m_menuSaveAs
             // 
             this.m_menuSaveAs.Name = "m_menuSaveAs";
-            this.m_menuSaveAs.Size = new System.Drawing.Size(164, 22);
+            this.m_menuSaveAs.Size = new System.Drawing.Size(205, 22);
             this.m_menuSaveAs.Text = "Save &As...";
             this.m_menuSaveAs.Click += new System.EventHandler(this.m_menuSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(202, 6);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Enabled = false;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.saveToolStripMenuItem.Text = "&Publish (暂未实现)";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(202, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // editToolStripMenuItem
@@ -145,6 +163,11 @@
             this.m_menuUndo,
             this.m_menuRedo,
             this.toolStripSeparator4,
+            this.m_menuCut,
+            this.m_menuCopy,
+            this.m_menuPaste,
+            this.toolStripSeparator3,
+            this.m_menuClone,
             this.m_menuDelete});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
@@ -154,7 +177,7 @@
             // 
             this.m_menuUndo.Name = "m_menuUndo";
             this.m_menuUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuUndo.Size = new System.Drawing.Size(162, 22);
             this.m_menuUndo.Text = "&Undo";
             this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
             // 
@@ -162,21 +185,58 @@
             // 
             this.m_menuRedo.Name = "m_menuRedo";
             this.m_menuRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuRedo.Size = new System.Drawing.Size(162, 22);
             this.m_menuRedo.Text = "&Redo";
             this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(159, 6);
+            // 
+            // m_menuCut
+            // 
+            this.m_menuCut.Name = "m_menuCut";
+            this.m_menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.m_menuCut.Size = new System.Drawing.Size(162, 22);
+            this.m_menuCut.Text = "Cu&t";
+            this.m_menuCut.Click += new System.EventHandler(this.m_menuCut_Click);
+            // 
+            // m_menuCopy
+            // 
+            this.m_menuCopy.Name = "m_menuCopy";
+            this.m_menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.m_menuCopy.Size = new System.Drawing.Size(162, 22);
+            this.m_menuCopy.Text = "&Copy";
+            this.m_menuCopy.Click += new System.EventHandler(this.m_menuCopy_Click);
+            // 
+            // m_menuPaste
+            // 
+            this.m_menuPaste.Name = "m_menuPaste";
+            this.m_menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.m_menuPaste.Size = new System.Drawing.Size(162, 22);
+            this.m_menuPaste.Text = "&Paste";
+            this.m_menuPaste.Click += new System.EventHandler(this.m_menuPaste_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
+            // 
+            // m_menuClone
+            // 
+            this.m_menuClone.Name = "m_menuClone";
+            this.m_menuClone.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.m_menuClone.Size = new System.Drawing.Size(162, 22);
+            this.m_menuClone.Text = "克隆(&L)";
+            this.m_menuClone.Click += new System.EventHandler(this.m_menuClone_Click);
             // 
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
             this.m_menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
-            this.m_menuDelete.Text = "&Delete";
+            this.m_menuDelete.Size = new System.Drawing.Size(162, 22);
+            this.m_menuDelete.Text = "删除(&D)";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
             // testFramesToolStripMenuItem
@@ -312,19 +372,6 @@
             this.uiControlList2.Size = new System.Drawing.Size(137, 483);
             this.uiControlList2.TabIndex = 0;
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Enabled = false;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.saveToolStripMenuItem.Text = "&Publish (暂未实现)";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -387,6 +434,11 @@
         private WinFormsUI.Controls.UIControlList uiControlList2;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem m_menuCut;
+        private System.Windows.Forms.ToolStripMenuItem m_menuCopy;
+        private System.Windows.Forms.ToolStripMenuItem m_menuPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem m_menuClone;
     }
 }
 
