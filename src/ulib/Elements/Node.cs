@@ -272,7 +272,7 @@ namespace ulib.Elements
 
         public bool IsScrollable()
         {
-            return IsScrollableH() && IsScrollableV();
+            return IsScrollableH() || IsScrollableV();
         }
 
         public bool IsScrollableH()
