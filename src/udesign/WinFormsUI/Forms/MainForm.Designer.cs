@@ -224,7 +224,6 @@
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.m_menuDelete.Size = new System.Drawing.Size(162, 22);
             this.m_menuDelete.Text = "删除(&D)";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);

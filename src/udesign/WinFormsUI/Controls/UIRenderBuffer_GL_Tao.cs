@@ -164,6 +164,12 @@ namespace udesign.Controls
                 SceneEd.Instance.IsHoldingCtrl = false;
             }
 
+            if (e.KeyCode == Keys.Delete)
+            {
+                SceneEd.Instance.DeleteSelected();
+                return;
+            }
+
             canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), false);
             glControl.Invalidate();
         }
