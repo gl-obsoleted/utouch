@@ -46,7 +46,6 @@
             this.m_menuCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.m_menuClone = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +166,6 @@
             this.m_menuCopy,
             this.m_menuPaste,
             this.toolStripSeparator3,
-            this.m_menuClone,
             this.m_menuDelete});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
@@ -222,14 +220,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
-            // 
-            // m_menuClone
-            // 
-            this.m_menuClone.Name = "m_menuClone";
-            this.m_menuClone.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.m_menuClone.Size = new System.Drawing.Size(162, 22);
-            this.m_menuClone.Text = "克隆(&L)";
-            this.m_menuClone.Click += new System.EventHandler(this.m_menuClone_Click);
             // 
             // m_menuDelete
             // 
@@ -438,7 +428,6 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuCopy;
         private System.Windows.Forms.ToolStripMenuItem m_menuPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem m_menuClone;
     }
 }
 

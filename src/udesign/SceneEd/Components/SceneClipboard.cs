@@ -10,7 +10,7 @@ namespace udesign
 {
     public class SceneClipboard
     {
-        public bool SetClippedContent(List<Node> nodes)
+        public bool SetClippedContent(List<Node> nodes, bool isCutting)
         {
             // 确保节点列表有效
             if (nodes.Count == 0)
@@ -27,8 +27,6 @@ namespace udesign
                 }
             }
 
-            m_clippedContent = new List<string>();
-            m_clippedNodes = new List<Node>();
             foreach (Node n in nodes)
             {
                 string str = NodeJsonUtil.NodeToString(n);
@@ -41,6 +39,7 @@ namespace udesign
                 m_clippedNodes.Add(n);
             }
 
+            m_isCutting = isCutting;
             return true;
         }
 
@@ -75,10 +74,26 @@ namespace udesign
                 newlyCreated.Add(n);
             }
 
+            if (m_isCutting)
+            {
+                foreach (var node in m_clippedNodes)
+                {
+                    if (node.Parent != null)
+                    {
+                        node.Parent.Detach(node);
+                    }
+                }
+            }
+
+            m_clippedNodes.Clear();
+            m_clippedContent.Clear();
             return newlyCreated;
         }
 
-        private List<Node> m_clippedNodes;
-        private List<string> m_clippedContent;
+        public bool IsInUse { get { return m_clippedContent.Count != 0 && m_clippedNodes.Count != 0; } }
+
+        private List<Node> m_clippedNodes = new List<Node>();
+        private List<string> m_clippedContent = new List<string>();
+        bool m_isCutting = false;
     }
 }

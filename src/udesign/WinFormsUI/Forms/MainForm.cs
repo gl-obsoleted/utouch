@@ -56,7 +56,7 @@ namespace udesign
             {
                 m_menuCut.Enabled = SceneEd.Instance.HasSelection;
                 m_menuCopy.Enabled = SceneEd.Instance.HasSelection;
-                m_menuClone.Enabled = SceneEd.Instance.HasSelection;
+                m_menuPaste.Enabled = SceneEd.Instance.Clipboard.IsInUse;
                 m_menuDelete.Enabled = SceneEd.Instance.HasSelection;
             }
 
@@ -250,30 +250,17 @@ namespace udesign
 
         private void m_menuCut_Click(object sender, EventArgs e)
         {
-
+            SceneEd.Instance.Cut();
         }
 
         private void m_menuCopy_Click(object sender, EventArgs e)
         {
-            if (SceneEd.Instance.HasSelection)
-            {
-                SceneEd.Instance.Clipboard.SetClippedContent(SceneEd.Instance.Selection.Selection);
-            }
+            SceneEd.Instance.Copy();
         }
 
         private void m_menuPaste_Click(object sender, EventArgs e)
         {
-            if (SceneEd.Instance.HasSelection)
-            {
-                List<Node> newlyCreated = SceneEd.Instance.Clipboard.AttachTo(SceneEd.Instance.Selection.Selection[0]);
-                SceneEd.Instance.Select(newlyCreated);
-                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
-            }
-        }
-
-        private void m_menuClone_Click(object sender, EventArgs e)
-        {
-
+            SceneEd.Instance.Paste();
         }
     }
 }

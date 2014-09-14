@@ -172,5 +172,31 @@ namespace udesign
                 r.EndDrag += Resizer_End;
             }
         }
+
+        public void Cut()
+        {
+            if (HasSelection)
+            {
+                Clipboard.SetClippedContent(m_selectionList.Selection, true);
+            }
+        }
+
+        public void Copy()
+        {
+            if (HasSelection)
+            {
+                Clipboard.SetClippedContent(m_selectionList.Selection, false);
+            }
+        }
+
+        public void Paste()
+        {
+            if (HasSelection && Clipboard.IsInUse)
+            {
+                List<Node> newlyCreated = SceneEd.Instance.Clipboard.AttachTo(SceneEd.Instance.Selection.Selection[0]);
+                SceneEd.Instance.Select(newlyCreated);
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+            }
+        }
     }
 }
