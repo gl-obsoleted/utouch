@@ -29,7 +29,11 @@ namespace udesign
         public bool Init()
         {
             // connect the layout tree and the property grid
-            m_uiPropertyGrid.PropertyValueChanged += () => { m_glCtrl.Refresh(); };
+            m_uiPropertyGrid.PropertyValueChanged += () =>
+            {
+                m_uiLayoutTree.PopulateLayout(); 
+                m_glCtrl.Refresh(); 
+            };
             m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
 
             SceneEdEventNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
