@@ -12,6 +12,8 @@ namespace udesign
     {
         public bool SetClippedContent(List<Node> nodes, bool isCutting)
         {
+            ClearClippedContent();
+
             // 确保节点列表有效
             if (nodes.Count == 0)
                 return false;
@@ -85,8 +87,6 @@ namespace udesign
                 }
             }
 
-            m_clippedNodes.Clear();
-            m_clippedContent.Clear();
             return newlyCreated;
         }
 
@@ -95,5 +95,11 @@ namespace udesign
         private List<Node> m_clippedNodes = new List<Node>();
         private List<string> m_clippedContent = new List<string>();
         bool m_isCutting = false;
+
+        private void ClearClippedContent()
+        {
+            m_clippedNodes.Clear();
+            m_clippedContent.Clear();
+        }
     }
 }

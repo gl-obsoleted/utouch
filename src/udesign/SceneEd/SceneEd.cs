@@ -16,8 +16,6 @@ namespace udesign
     {
         public static SceneEd Instance = new SceneEd();
 
-        public bool IsHoldingCtrl { get; set; }
-
         public SelectionList Selection { get { return m_selectionList; } }
         public bool HasSelection { get { return Selection.Selection.Count != 0; } }
 
@@ -106,7 +104,7 @@ namespace udesign
 
         public void Select(Node n)
         {
-            if (!IsHoldingCtrl)
+            if (!HasModifierKeyDown(Keys.Control))
             {
                 m_selectionList.Selection.Clear();
             }
