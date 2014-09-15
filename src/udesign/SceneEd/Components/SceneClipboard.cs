@@ -41,14 +41,21 @@ namespace udesign
                 m_clippedNodes.Add(n);
             }
 
+            ResetOffset();
             m_isCutting = isCutting;
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
             return true;
         }
 
         public List<Node> AttachTo(Node targetParent)
         {
+            List<Node> newlyCreated = new List<Node>();
+
+            if (m_clippedNodes.Count == 0)
+                return newlyCreated;
+
             Node actualParent = targetParent;
-            if (m_clippedNodes.Contains(targetParent))
+            if (m_clippedNodes.Contains(targetParent) || m_clippedNodes[0].Parent == targetParent.Parent)
             {
                 actualParent = targetParent.Parent;
             }
@@ -56,24 +63,28 @@ namespace udesign
             if (actualParent == null)
             {
                 Session.Message("SceneClipboard.AttachTo() 时发现目标父节点无效，操作失败。");
-                return new List<Node>();
+                return newlyCreated;
             }
 
-            List<Node> newlyCreated = new List<Node>();
-
+            List<Node> tmpList = new List<Node>();
             foreach (string str in m_clippedContent)
             {
                 Node n = NodeJsonUtil.StringToNode(str);
                 if (n == null)
                 {
                     Session.Message("SceneClipboard.AttachTo() 时发现无效节点，操作失败。");
-                    return new List<Node>();
+                    return newlyCreated;
                 }
 
-                n.Position = n.Position + new System.Drawing.Size(15, 15);
+                n.Position = n.Position + new System.Drawing.Size(m_offset, m_offset);
 
-                actualParent.Attach(n);
-                newlyCreated.Add(n);
+                tmpList.Add(n);
+            }
+
+            foreach (var node in tmpList)
+            {
+                actualParent.Attach(node);
+                newlyCreated.Add(node);
             }
 
             if (m_isCutting)
@@ -87,6 +98,7 @@ namespace udesign
                 }
             }
 
+            IncrementOffset();
             return newlyCreated;
         }
 
@@ -101,5 +113,17 @@ namespace udesign
             m_clippedNodes.Clear();
             m_clippedContent.Clear();
         }
+
+        private void IncrementOffset()
+        {
+            m_offset += 15;
+        }
+
+        private void ResetOffset()
+        {
+            m_offset = 15;
+        }
+
+        int m_offset = 15;
     }
 }
