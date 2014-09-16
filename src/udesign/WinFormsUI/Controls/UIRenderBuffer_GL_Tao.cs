@@ -148,8 +148,6 @@ namespace udesign.Controls
 
         private void glControl_KeyDown(object sender, KeyEventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
-
             canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), true);
             glControl.Invalidate();
         }
