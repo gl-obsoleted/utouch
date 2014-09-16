@@ -31,7 +31,7 @@ namespace udesign
 
                 Node p = m_selection[i].Parent;
                 if (p != null)
-                    loc = ulib.Base.Math.Clamp(loc, new Rectangle(0, 0,
+                    loc = ulib.Base.MathUtil.Clamp(loc, new Rectangle(0, 0,
                         (p.IsScrollableH() ? p.LogicalSize.Width : p.Size.Width) - m_selection[i].Size.Width,
                         (p.IsScrollableV() ? p.LogicalSize.Height : p.Size.Height) - m_selection[i].Size.Height));
 

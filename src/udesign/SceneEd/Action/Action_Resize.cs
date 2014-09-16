@@ -42,7 +42,7 @@ namespace udesign
 
             // Resize 时做出了一些限制 - 缩放时不可以超出当前父节点的边界
             if (m_selection.Parent != null)
-                newBounds = ulib.Base.Math.Clamp(bounds, m_selection.Parent.GetWorldBounds());
+                newBounds = ulib.Base.MathUtil.Clamp(bounds, m_selection.Parent.GetWorldBounds());
 
             // Resize 可能会影响到控件的位置，这里处理
             m_selection.Position = newBounds.Location;

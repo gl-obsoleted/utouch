@@ -9,7 +9,7 @@ using System.IO;
 
 namespace ulib.Base
 {
-    public class Math
+    public class MathUtil
     {
         public static int Clamp(int x, int min, int max)
         {
