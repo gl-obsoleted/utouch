@@ -116,14 +116,16 @@ namespace udesign
 
         private void IncrementOffset()
         {
-            m_offset += 15;
+            m_offset += OffsetUnit;
         }
 
         private void ResetOffset()
         {
-            m_offset = 15;
+            m_offset = OffsetUnit;
         }
 
-        int m_offset = 15;
+        int m_offset = OffsetUnit;
+
+        private const int OffsetUnit = 25;
     }
 }

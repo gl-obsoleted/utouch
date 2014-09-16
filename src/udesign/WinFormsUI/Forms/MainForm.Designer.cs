@@ -57,9 +57,9 @@
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.pageControl = new System.Windows.Forms.TabPage();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
-            this.pageControl = new System.Windows.Forms.TabPage();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -174,58 +174,53 @@
             // m_menuUndo
             // 
             this.m_menuUndo.Name = "m_menuUndo";
-            this.m_menuUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.m_menuUndo.Size = new System.Drawing.Size(162, 22);
+            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
             this.m_menuUndo.Text = "&Undo";
             this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
             // 
             // m_menuRedo
             // 
             this.m_menuRedo.Name = "m_menuRedo";
-            this.m_menuRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.m_menuRedo.Size = new System.Drawing.Size(162, 22);
+            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
             this.m_menuRedo.Text = "&Redo";
             this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // m_menuCut
             // 
             this.m_menuCut.Name = "m_menuCut";
-            this.m_menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.m_menuCut.Size = new System.Drawing.Size(162, 22);
+            this.m_menuCut.Size = new System.Drawing.Size(152, 22);
             this.m_menuCut.Text = "Cu&t";
             this.m_menuCut.Click += new System.EventHandler(this.m_menuCut_Click);
             // 
             // m_menuCopy
             // 
             this.m_menuCopy.Name = "m_menuCopy";
-            this.m_menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.m_menuCopy.Size = new System.Drawing.Size(162, 22);
+            this.m_menuCopy.Size = new System.Drawing.Size(152, 22);
             this.m_menuCopy.Text = "&Copy";
             this.m_menuCopy.Click += new System.EventHandler(this.m_menuCopy_Click);
             // 
             // m_menuPaste
             // 
             this.m_menuPaste.Name = "m_menuPaste";
-            this.m_menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.m_menuPaste.Size = new System.Drawing.Size(162, 22);
+            this.m_menuPaste.Size = new System.Drawing.Size(152, 22);
             this.m_menuPaste.Text = "&Paste";
             this.m_menuPaste.Click += new System.EventHandler(this.m_menuPaste_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.Size = new System.Drawing.Size(162, 22);
-            this.m_menuDelete.Text = "删除(&D)";
+            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Text = "&Delete";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
             // testFramesToolStripMenuItem
@@ -326,6 +321,17 @@
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
             // 
+            // pageControl
+            // 
+            this.pageControl.Controls.Add(this.uiControlList2);
+            this.pageControl.Location = new System.Drawing.Point(4, 22);
+            this.pageControl.Name = "pageControl";
+            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
+            this.pageControl.Size = new System.Drawing.Size(143, 489);
+            this.pageControl.TabIndex = 2;
+            this.pageControl.Text = "Control";
+            this.pageControl.UseVisualStyleBackColor = true;
+            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -341,17 +347,6 @@
             this.m_uiPropertyGrid.Name = "m_uiPropertyGrid";
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
-            // 
-            // pageControl
-            // 
-            this.pageControl.Controls.Add(this.uiControlList2);
-            this.pageControl.Location = new System.Drawing.Point(4, 22);
-            this.pageControl.Name = "pageControl";
-            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
-            this.pageControl.Size = new System.Drawing.Size(143, 489);
-            this.pageControl.TabIndex = 2;
-            this.pageControl.Text = "Control";
-            this.pageControl.UseVisualStyleBackColor = true;
             // 
             // uiControlList2
             // 

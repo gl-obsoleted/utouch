@@ -88,6 +88,7 @@
     <Compile Include="SceneEd\SceneEdConstants.cs" />
     <Compile Include="ConfigVars.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />
+    <Compile Include="SceneEd\SceneEdShortcutListener.cs" />
     <Compile Include="SceneEd\SceneEd_DragLeft_Moving.cs" />
     <Compile Include="SceneEd\SceneEd_Querying.cs" />
     <Compile Include="SceneEd\SceneEd_Resizing.cs" />

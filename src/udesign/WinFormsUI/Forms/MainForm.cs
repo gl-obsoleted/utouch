@@ -207,30 +207,19 @@ namespace udesign
             }
         }
 
-        public static Control FindFocusedControl(Control control)
-        {
-            var container = control as ContainerControl;
-            while (container != null)
-            {
-                control = container.ActiveControl;
-                container = control as ContainerControl;
-            }
-            return control;
-        }
-
         private void m_menuDelete_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.DeleteSelected();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Delete);
         }
 
         private void m_menuUndo_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.Undo();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.Z);
         }
 
         private void m_menuRedo_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.Redo();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.Y);
         }
 
         private void m_menuOpenTestLayout_Click(object sender, EventArgs e)
@@ -269,17 +258,17 @@ namespace udesign
 
         private void m_menuCut_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.Cut();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.X);
         }
 
         private void m_menuCopy_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.Copy();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.C);
         }
 
         private void m_menuPaste_Click(object sender, EventArgs e)
         {
-            SceneEd.Instance.Paste();
+            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.V);
         }
     }
 }

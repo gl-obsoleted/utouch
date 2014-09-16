@@ -148,17 +148,15 @@ namespace udesign.Controls
 
         private void glControl_KeyDown(object sender, KeyEventArgs e)
         {
+            SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
+
             canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), true);
             glControl.Invalidate();
         }
 
         private void glControl_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
-            {
-                SceneEd.Instance.DeleteSelected();
-                return;
-            }
+            SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
 
             canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), false);
             glControl.Invalidate();
