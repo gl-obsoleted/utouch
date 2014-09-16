@@ -12,7 +12,9 @@ namespace udesign
 
         void Resizer_Begin(Gwen.Control.Base sender, EventArgs arguments)
         {
-            if (m_selectionList.Resizer.IsHoveringResizers() && m_selectionList.Selection.Count == 1)
+            if (m_selectionList.Resizer.IsHoveringResizers() && 
+                m_selectionList.Selection.Count == 1 &&
+                m_selectionList.Selection[0].IsResizable())
             {
                 m_resizeAction = new Action_Resize(m_selectionList.Selection[0]);
             }
@@ -25,6 +27,7 @@ namespace udesign
                 m_resizeAction.EndResizing(m_selectionList.Resizer.Bounds);
                 m_operHistory.PushAction(m_resizeAction);
                 m_resizeAction = null;
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
             }
         }
 
@@ -33,6 +36,7 @@ namespace udesign
             if (m_resizeAction != null)
             {
                 m_resizeAction.UpdateResizing(m_selectionList.Resizer.Bounds);
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
             }
         }
     }

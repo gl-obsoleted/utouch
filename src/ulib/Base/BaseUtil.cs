@@ -23,6 +23,13 @@ namespace ulib.Base
                 Clamp(pt.Y, rect.Top, rect.Bottom));
         }
 
+        public static Rectangle Clamp(Rectangle clampee, Rectangle clamper)
+        {
+            return new Rectangle(
+                Clamp(clampee.Location, clamper),
+                (Size)(Clamp(clampee.Location + clampee.Size, clamper) - (Size)clampee.Location));
+        }
+
         public static bool IsInvalid(Rectangle rect)
         {
             return rect == Constants.INVALID_RECT;

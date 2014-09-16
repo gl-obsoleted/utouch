@@ -331,5 +331,10 @@ namespace ulib.Elements
                 CurrentScrollOffset = Point.Empty;
             }
         }
+
+        public virtual bool IsResizable()
+        {
+            return true;
+        }
     }
 }

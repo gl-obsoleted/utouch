@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ulib;
 using ulib.Base;
 using ulib.Elements;
 
@@ -37,8 +38,20 @@ namespace udesign
             //    m_selection.Size = new Size(right - left, bottom - top);
             //}
 
-            m_selection.Position = m_selection.Parent != null ? m_selection.Parent.WorldToLocal(bounds.Location, true) : bounds.Location;
-            m_selection.Size = bounds.Size;
+            Rectangle newBounds = bounds;
+
+            // Resize 时做出了一些限制 - 缩放时不可以超出当前父节点的边界
+            if (m_selection.Parent != null)
+                newBounds = ulib.Base.Math.Clamp(bounds, m_selection.Parent.GetWorldBounds());
+
+            Session.Log("{0}, {1}", newBounds.X, newBounds.Width);
+
+            // Resize 可能会影响到控件的位置，这里处理
+            m_selection.Position = newBounds.Location;
+            if (m_selection.Parent != null)
+                m_selection.Position = m_selection.Parent.WorldToLocal(newBounds.Location, true);
+
+            m_selection.Size = newBounds.Size;
         }
 
         public void EndResizing(Rectangle bounds)

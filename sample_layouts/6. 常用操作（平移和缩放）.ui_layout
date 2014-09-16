@@ -188,6 +188,42 @@
       "UserData": null,
       "__type_info__": "Label",
       "Children": []
+    },
+    {
+      "Text": "3. 当缩放的尺寸无法覆盖所有子节点的时候，自动激活逻辑尺寸，转为滑动面板",
+      "TextColor": "White",
+      "Font": null,
+      "Name": "Label<4>",
+      "Position": "120, 241",
+      "Size": "714, 30",
+      "LogicalSize": "0, 0",
+      "Visible": true,
+      "Dock": 0,
+      "AlignH": 0,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "UserData": null,
+      "__type_info__": "Label",
+      "Children": []
+    },
+    {
+      "Text": "4. 缩放时会受到父节点的尺寸限制",
+      "TextColor": "White",
+      "Font": null,
+      "Name": "Label<1>",
+      "Position": "121, 281",
+      "Size": "714, 30",
+      "LogicalSize": "0, 0",
+      "Visible": true,
+      "Dock": 0,
+      "AlignH": 0,
+      "AlignV": 1,
+      "Margin": 3,
+      "Tag": null,
+      "UserData": null,
+      "__type_info__": "Label",
+      "Children": []
     }
   ]
 }
