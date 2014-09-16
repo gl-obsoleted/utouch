@@ -323,7 +323,7 @@ namespace ulib.Elements
                         newOffset.X = LogicalSize.Width - Size.Width;
                     if (newOffset.Y > LogicalSize.Height - Size.Height)
                         newOffset.Y = LogicalSize.Height - Size.Height;
-                    CurrentScrollOffset = newOffset;
+                    SetScrollOffsetClamped(newOffset);
                 }
             }
             else

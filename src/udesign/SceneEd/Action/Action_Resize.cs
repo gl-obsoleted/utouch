@@ -44,8 +44,6 @@ namespace udesign
             if (m_selection.Parent != null)
                 newBounds = ulib.Base.Math.Clamp(bounds, m_selection.Parent.GetWorldBounds());
 
-            Session.Log("{0}, {1}", newBounds.X, newBounds.Width);
-
             // Resize 可能会影响到控件的位置，这里处理
             m_selection.Position = newBounds.Location;
             if (m_selection.Parent != null)
