@@ -30,7 +30,7 @@ namespace ulib.Elements
         public Point Position { get; set; }
         [Category("Node")]
         [Description("尺寸")]
-        public Size Size { get; set; }
+        public Size Size { get { return m_size; } set { InternalSetSize(value); } }
         [Category("Node")]
         [Description("逻辑尺寸（默认为零，当小于等于 Size 时认为二者相同，当逻辑尺寸 X 或 Y 大于可视尺寸 Size 时，对应维度转为可滑动）")]
         public Size LogicalSize { get; set; }
@@ -287,5 +287,49 @@ namespace ulib.Elements
 
         protected Node m_parent;
         protected List<Node> m_children = new List<Node>();
+
+        protected Size m_size;
+
+        protected void InternalSetSize(Size newSize)
+        {
+            m_size = newSize;
+            
+            Rectangle childrenBounds = GetChildrenWorldBounds();
+            Point currentTranslate = GetWorldPosition();
+            Size minimumSize = new Size(childrenBounds.Right - currentTranslate.X, childrenBounds.Bottom - currentTranslate.Y);
+
+            Size newLogicalSize = LogicalSize;
+            if (newSize.Width < minimumSize.Width && LogicalSize.Width < minimumSize.Width)
+            {
+                newLogicalSize.Width = minimumSize.Width;
+            }
+            if (newSize.Height < minimumSize.Height && LogicalSize.Height < minimumSize.Height)
+            {
+                newLogicalSize.Height = minimumSize.Height;
+            }
+            LogicalSize = newLogicalSize;
+
+            RefitScrollOffset();
+        }
+
+        protected void RefitScrollOffset()
+        {
+            if (IsScrollable())
+            {
+                if (!CurrentScrollOffset.IsEmpty)
+                {
+                    Point newOffset = CurrentScrollOffset;
+                    if (newOffset.X > LogicalSize.Width - Size.Width)
+                        newOffset.X = LogicalSize.Width - Size.Width;
+                    if (newOffset.Y > LogicalSize.Height - Size.Height)
+                        newOffset.Y = LogicalSize.Height - Size.Height;
+                    CurrentScrollOffset = newOffset;
+                }
+            }
+            else
+            {
+                CurrentScrollOffset = Point.Empty;
+            }
+        }
     }
 }
