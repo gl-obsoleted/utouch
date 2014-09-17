@@ -72,7 +72,14 @@ namespace udesign
             m_resizeCtrl = new ResizeBox(canvas);
             m_resizeCtrl.Hide();
 
+            SceneEdEventNotifier.Instance.RefreshScene += OnSceneRefreshed;
+
             OnSelectionChanged();
+        }
+
+        void OnSceneRefreshed(RefreshSceneOpt opts)
+        {
+            RefreshSelection();
         }
 
         public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)

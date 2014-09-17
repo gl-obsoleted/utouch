@@ -6,33 +6,35 @@ using System.Threading.Tasks;
 
 namespace udesign
 {
-    public class OperationHistory
+    public class ActionQueue
     {
+        public static ActionQueue Instance = new ActionQueue();
+
         public void PushAction(Action a)
         {
-            m_actionHistory.Add(a);
+            m_undoQueue.Add(a);
             m_redoQueue.Clear();    // 当正在 undo/redo 过程中时，如果有了新的操作，那些没有做的 redo 全部丢弃
         }
 
-        public void Clear()
+        public void ClearActions()
         {
-            m_actionHistory.Clear();
+            m_undoQueue.Clear();
             m_redoQueue.Clear();
         }
 
         public void Undo()
         {
-            if (m_actionHistory.Count == 0)
+            if (m_undoQueue.Count == 0)
                 return;
 
-            int last = m_actionHistory.Count - 1;
-            Action act = m_actionHistory.ElementAt(last);
+            int last = m_undoQueue.Count - 1;
+            Action act = m_undoQueue.ElementAt(last);
             if (act != null)
             {
                 act.Undo();
             }
 
-            m_actionHistory.RemoveAt(last);
+            m_undoQueue.RemoveAt(last);
             m_redoQueue.Add(act);
         }
 
@@ -49,10 +51,10 @@ namespace udesign
             }
 
             m_redoQueue.RemoveAt(last);
-            m_actionHistory.Add(act);
+            m_undoQueue.Add(act);
         }
 
-        private List<Action> m_actionHistory = new List<Action>();
+        private List<Action> m_undoQueue = new List<Action>();
         private List<Action> m_redoQueue = new List<Action>();
     }
 }

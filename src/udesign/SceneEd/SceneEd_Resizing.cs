@@ -25,7 +25,7 @@ namespace udesign
             if (m_resizeAction != null)
             {
                 m_resizeAction.EndResizing(m_selectionList.Resizer.Bounds);
-                m_operHistory.PushAction(m_resizeAction);
+                ActionQueue.Instance.PushAction(m_resizeAction);
                 m_resizeAction = null;
                 SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_Rendering | RefreshSceneOpt.Refresh_Properties);
             }

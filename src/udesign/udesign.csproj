@@ -77,18 +77,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RenderGwen\GwenUtil.cs" />
-    <Compile Include="SceneEd\Action\Action.cs" />
-    <Compile Include="SceneEd\Action\Action_Delete.cs" />
-    <Compile Include="SceneEd\Action\Action_Insert.cs" />
-    <Compile Include="SceneEd\Action\Action_Move.cs" />
-    <Compile Include="SceneEd\Action\Action_Resize.cs" />
-    <Compile Include="SceneEd\Action\Action_Scroll.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action.cs" />
+    <Compile Include="SceneEd\_Base\ActionQueue.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_Delete.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_Insert.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_Move.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_Resize.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_Scroll.cs" />
     <Compile Include="SceneEd\Components\DragAndDropReceiver.cs" />
-    <Compile Include="SceneEd\Components\OperationHistory.cs" />
     <Compile Include="SceneEd\Components\SceneClipboard.cs" />
     <Compile Include="SceneEd\Components\SelectionList_Render.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
-    <Compile Include="SceneEd\SceneEdConstants.cs" />
+    <Compile Include="SceneEd\_Base\SceneEdConstants.cs" />
     <Compile Include="ConfigVars.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />
     <Compile Include="SceneEd\SceneEdShortcutListener.cs" />
@@ -127,7 +127,7 @@
     <Compile Include="RenderGwen\GwenRenderContext.cs" />
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
     <Compile Include="RenderGwen\GwenTextureProvider.cs" />
-    <Compile Include="SceneEd\SceneEdEventNotifier.cs" />
+    <Compile Include="SceneEd\_Base\SceneEdEventNotifier.cs" />
     <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +190,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_Docs\SceneEd 内部依赖关系.dgml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ulib\ulib.csproj">

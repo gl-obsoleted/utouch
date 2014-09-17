@@ -39,7 +39,7 @@ namespace udesign
                 m_selectionList.IsScrolling = false;
                 Point scrollOffset = m_beginDragRightScrollingPos - (Size)location;
                 m_scrollAction.EndScrollOffset(scrollOffset);
-                m_operHistory.PushAction(m_scrollAction);
+                ActionQueue.Instance.PushAction(m_scrollAction);
                 m_scrollAction = null;
             }
         }

@@ -40,7 +40,7 @@ namespace udesign
                         m_targetNode.Attach(n);
 
                         Action act = new Action_Insert(m_targetNode, n, m_targetPoint);
-                        SceneEd.Instance.OperHistory.PushAction(act);
+                        ActionQueue.Instance.PushAction(act);
                         SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
                     }
                 }

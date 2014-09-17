@@ -19,7 +19,7 @@ namespace udesign
         public SelectionList Selection { get { return m_selectionList; } }
         public bool HasSelection { get { return Selection.Selection.Count != 0; } }
 
-        public OperationHistory OperHistory { get { return m_operHistory; } }
+        public ActionQueue OperHistory { get { return m_operHistory; } }
         public DragAndDropReceiver DragAndDrop { get { return m_dragAndDropReceiver; } }
         public SceneClipboard Clipboard { get { return m_clipboard; } }
 
@@ -90,18 +90,6 @@ namespace udesign
             SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
 
-        public void Undo()
-        {
-            m_operHistory.Undo();
-            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
-        }
-
-        public void Redo()
-        {
-            m_operHistory.Redo();
-            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
-        }
-
         public void Select(Node n)
         {
             if (!HasModifierKeyDown(Keys.Control))
@@ -146,12 +134,12 @@ namespace udesign
             }
             else
             {
-                m_operHistory.PushAction(new Action_Delete(m_selectionList.Selection));
+                ActionQueue.Instance.PushAction(new Action_Delete(m_selectionList.Selection));
                 m_selectionList.ClearSelection();
             }
         }
 
-        private OperationHistory m_operHistory = new OperationHistory();
+        private ActionQueue m_operHistory = new ActionQueue();
         private SelectionList m_selectionList = new SelectionList();
         private DragAndDropReceiver m_dragAndDropReceiver = new DragAndDropReceiver();
         private SceneClipboard m_clipboard = new SceneClipboard();

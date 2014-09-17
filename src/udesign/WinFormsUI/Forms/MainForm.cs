@@ -164,7 +164,7 @@ namespace udesign
         private bool ResetScene(string sceneName)
         {
             SceneEd.Instance.Selection.ClearSelection();
-            SceneEd.Instance.OperHistory.Clear();
+            ActionQueue.Instance.ClearActions();
 
             BootParams bp = new BootParams {
                 DefaultReourceImage = Properties.Settings.Default.DefaultResFile,

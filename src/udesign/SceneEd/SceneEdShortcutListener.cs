@@ -14,11 +14,11 @@ namespace udesign
             switch (shortcutKey)
             {
                 case Keys.Control | Keys.Z:
-                    SceneEd.Instance.Undo();
+                    ActionQueue.Instance.Undo();
                     break;
 
                 case Keys.Control | Keys.Y:
-                    SceneEd.Instance.Redo();
+                    ActionQueue.Instance.Redo();
                     break;
 
                 case Keys.Control | Keys.X:
@@ -40,6 +40,8 @@ namespace udesign
                 default:
                     break;
             }
+
+            SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
         }
     }
 }

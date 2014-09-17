@@ -34,7 +34,7 @@ namespace udesign
         public void DragLeft_EndMoving(Point location)
         {
             m_dragAction.EndUpdatePosition(location - (Size)(m_beginDragPos));
-            m_operHistory.PushAction(m_dragAction);
+            ActionQueue.Instance.PushAction(m_dragAction);
             m_dragAction = null;
         }
     }
