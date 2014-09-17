@@ -88,6 +88,7 @@
     <Compile Include="SceneEd\Components\SceneClipboard.cs" />
     <Compile Include="SceneEd\Components\SelectionList_Render.cs" />
     <Compile Include="SceneEd\SceneEd.cs" />
+    <Compile Include="SceneEd\_Base\Actions\Action_PropertyChange.cs" />
     <Compile Include="SceneEd\_Base\SceneEdConstants.cs" />
     <Compile Include="ConfigVars.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />

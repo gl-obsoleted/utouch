@@ -122,5 +122,25 @@ namespace ulib.Elements
                 return null;
             }
         }
+
+        public static bool PopulateExistingNodeWithString(Node targetNode, string str)
+        {
+            try
+            {
+                JObject jobj = (JObject)JToken.Parse(str);
+                if (jobj == null)
+                    return false;
+
+                JsonSerializer se = JsonSerializer.CreateDefault();
+                se.Converters.Add(new NodeConverter());
+                se.Populate(jobj.CreateReader(), targetNode);
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                Session.LogExceptionDetail(ex);
+                return false;
+            }
+        }
     }
 }

@@ -44,12 +44,25 @@ namespace udesign.Controls
             return m_propertyGrid;
         }
 
+        Action_PropertyChange m_actChangeProperty;
         private void m_propertyGrid_PropertyValueChanging(object sender, DevComponents.DotNetBar.PropertyValueChangingEventArgs e)
         {
+            Node n = m_propertyGrid.SelectedObject as Node;
+            if (n == null)
+                return;
+
+            m_actChangeProperty = new Action_PropertyChange(n);
         }
 
         private void m_propertyGrid_PropertyValueChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (m_actChangeProperty != null)
+            {
+                m_actChangeProperty.ChangeCommitted();
+                ActionQueue.Instance.PushAction(m_actChangeProperty);
+                m_actChangeProperty = null;
+            }
+
             if (PropertyValueChanged != null)
                 PropertyValueChanged();
         }
