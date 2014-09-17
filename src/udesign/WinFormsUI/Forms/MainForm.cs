@@ -34,8 +34,6 @@ namespace udesign
                 m_uiLayoutTree.PopulateLayout(); 
                 m_glCtrl.Refresh(); 
             };
-            m_uiPropertyGrid.ValidateNodeName += (node, newName) => { return !NodeNameUtil.HasNameCollisionWithSiblings(node, newName); };
-
 
             SceneEd.Instance.HasModifierKeyDown = (keyCode) => { return (ModifierKeys & keyCode) != 0; };
 

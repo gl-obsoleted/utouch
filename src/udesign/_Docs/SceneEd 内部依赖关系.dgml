@@ -2,6 +2,7 @@
 <DirectedGraph DataVirtualized="True" GraphDirection="BottomToTop" Layout="Sugiyama" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
     <Node Id="(@1 @2 Type=SceneEdConstants)" Category="CodeSchema_Class" Bounds="302.99,0,166.353333333333,25" CodeSchemaProperty_IsPublic="True" CommonLabel="SceneEdConstants" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Icon="CodeSchema_Class" Label="SceneEdConstants" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///G:/git/ui_solution/src/udesign/SceneEd/_Base/SceneEdConstants.cs StartLineNumber=9 StartCharacterOffset=4 EndLineNumber=9 EndCharacterOffset=4)" />
+    <Node Id="24bc15c0-be57-4a00-b8e8-7b5cdb0d5bbb1" Category="CodeSchema_Class" Bounds="409.665987825501,45.9902273978942,0,0" Label="New Node" UseManualLocation="True" />
     <Node Id="@10" Category="CodeSchema_Class" Bounds="284.626666666667,165,203.08,25" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="SceneEdShortcutListener" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Icon="CodeSchema_Class" Label="SceneEdShortcutListener" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///G:/git/ui_solution/src/udesign/SceneEd/SceneEdShortcutListener.cs StartLineNumber=9 StartCharacterOffset=4 EndLineNumber=9 EndCharacterOffset=4)" />
     <Node Id="@11" Category="CodeSchema_Class" Bounds="319.758333333333,55,132.816666666667,25" CodeSchemaProperty_IsPublic="True" CommonLabel="SelectionList" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Icon="CodeSchema_Class" Label="SelectionList" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///G:/git/ui_solution/src/udesign/SceneEd/Components/SelectionList.cs StartLineNumber=56 StartCharacterOffset=4 EndLineNumber=56 EndCharacterOffset=4)" />
     <Node Id="@12" Category="CodeSchema_Method" Bounds="129.886888477423,-410.418347580651,100.87467168,25.8355354933333" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="PushAction" UseManualLocation="True" />
@@ -38,6 +39,7 @@
       <Category Ref="CodeSchema_FieldRead" />
     </Link>
     <Link Source="@11" Target="(@1 @2 Type=SceneEdConstants)" Category="CodeSchema_FieldRead" Bounds="386.166656494141,34,0,21" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="11" />
+    <Link Source="@11" Target="24bc15c0-be57-4a00-b8e8-7b5cdb0d5bbb1" Category="Contains" />
     <Link Source="@11" Target="@13" Category="CodeSchema_Calls" IsSourceVirtualized="True" Weight="1" />
     <Link Source="@11" Target="@16" Category="CodeSchema_Calls" IsSourceVirtualized="True" Weight="1" />
     <Link Source="@11" Target="@25" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="3" />
@@ -337,8 +339,11 @@
     </Style>
   </Styles>
   <Paths>
+    <Path Id="e2de1e50-94f1-4ccd-9f49-41ad0f71d980.OutputPath" Value="G:\git\ui_solution\bin\udesign.exe" />
     <Path Id="e2de1e50-94f1-4ccd-9f49-41ad0f71d980.OutputPathUri" Value="file:///G:/git/ui_solution/bin/udesign.exe" />
+    <Path Id="f0872212-c4f0-46ff-87d8-65a77d708d57.OutputPath" Value="G:\git\ui_solution\src\ulib\bin\Debug\ulib.dll" />
     <Path Id="f0872212-c4f0-46ff-87d8-65a77d708d57.OutputPathUri" Value="file:///G:/git/ui_solution/src/ulib/bin/Debug/ulib.dll" />
+    <Path Id="FxReferenceAssemblies" Value="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework" />
     <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
   </Paths>
 </DirectedGraph>

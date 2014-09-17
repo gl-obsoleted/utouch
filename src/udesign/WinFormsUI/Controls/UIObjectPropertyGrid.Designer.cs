@@ -43,9 +43,9 @@
             this.m_propertyGrid.Size = new System.Drawing.Size(332, 408);
             this.m_propertyGrid.TabIndex = 0;
             this.m_propertyGrid.Text = "advPropertyGrid1";
-            this.m_propertyGrid.ProvidePropertyValueList += new DevComponents.DotNetBar.PropertyValueListEventHandler(this.m_propertyGrid_ProvidePropertyValueList);
             this.m_propertyGrid.PropertyValueChanged += new System.ComponentModel.PropertyChangedEventHandler(this.m_propertyGrid_PropertyValueChanged);
             this.m_propertyGrid.PropertyValueChanging += new DevComponents.DotNetBar.PropertyValueChangingEventHandler(this.m_propertyGrid_PropertyValueChanging);
+            this.m_propertyGrid.ValidatePropertyValue += new DevComponents.DotNetBar.ValidatePropertyValueEventHandler(this.m_propertyGrid_ValidatePropertyValue);
             // 
             // Position
             // 
