@@ -23,10 +23,10 @@ namespace udesign
         public DragAndDropReceiver DragAndDrop { get { return m_dragAndDropReceiver; } }
         public SceneClipboard Clipboard { get { return m_clipboard; } }
 
-        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        public void Render(GwenRenderContext ctx)
         {
-            m_dragAndDropReceiver.Render(renderer, ctx);
-            m_selectionList.Render(renderer, ctx);
+            m_dragAndDropReceiver.Render(ctx);
+            m_selectionList.Render(ctx);
         }
 
         public void MouseDown(MouseEventArgs e)

@@ -40,7 +40,7 @@ namespace udesign
             else
             {
                 // defualt method for rendering an unknown node
-                grc.m_renderer.DrawLinedRect(worldBounds);
+                grc.Renderer.DrawLinedRect(worldBounds);
             }
         }
 
@@ -50,7 +50,7 @@ namespace udesign
             if (grc == null)
                 return ulib.Base.Constants.INVALID_RECT;
 
-            return grc.m_renderer.ClipRegion;
+            return grc.Renderer.ClipRegion;
         }
 
         public void SetCurrentClip(RenderContext rc, Rectangle clip)
@@ -59,14 +59,14 @@ namespace udesign
             if (grc == null)
                 return;
 
-            grc.m_renderer.ClipRegion = clip;
-            if (grc.m_renderer.ClipRegion != ulib.Base.Constants.INVALID_RECT)
+            grc.Renderer.ClipRegion = clip;
+            if (grc.Renderer.ClipRegion != ulib.Base.Constants.INVALID_RECT)
             {
-                grc.m_renderer.StartClip();
+                grc.Renderer.StartClip();
             }
             else
             {
-                grc.m_renderer.EndClip();
+                grc.Renderer.EndClip();
             }
         }
 
@@ -78,7 +78,7 @@ namespace udesign
         private void RenderTextNode(TextNode textNode, GwenRenderContext grc)
         {
             // 当需要的时候，先更新 TextNode 的尺寸
-            Point textSize = grc.m_renderer.MeasureText(grc.m_font, textNode.Text);
+            Point textSize = grc.Renderer.MeasureText(grc.Font, textNode.Text);
             if (textNode.RequestedSizeRefreshing)
             {
                 textNode.Size = new Size(
@@ -96,10 +96,10 @@ namespace udesign
             Point internalOffset = TextNodeUtil.CalculateInternalTextOffset(textNode, textSize);
             loc.Offset(internalOffset);
 
-            Color c = grc.m_renderer.DrawColor;
-            grc.m_renderer.DrawColor = textNode.TextColor;
-            grc.m_renderer.RenderText(grc.m_font, loc, textNode.Text);
-            grc.m_renderer.DrawColor = c;
+            Color c = grc.Renderer.DrawColor;
+            grc.Renderer.DrawColor = textNode.TextColor;
+            grc.Renderer.RenderText(grc.Font, loc, textNode.Text);
+            grc.Renderer.DrawColor = c;
         }
 
         private void RenderButton(Button bt, GwenRenderContext grc)
@@ -116,10 +116,10 @@ namespace udesign
 
         private void DrawImage(GwenRenderContext grc, Rectangle rect, string url)
         {
-            TextureRenderInfo tri = GwenTextureProvider.Instance.GetTextureRenderInfo(grc.m_renderer, url);
+            TextureRenderInfo tri = GwenTextureProvider.Instance.GetTextureRenderInfo(grc.Renderer, url);
             if (tri != null) // 找不到贴图的话，正常的处理应该用一个显眼的错误图案，这里暂时先忽略，待补充
             {
-                grc.m_renderer.DrawTexturedRect(tri.texture, rect,
+                grc.Renderer.DrawTexturedRect(tri.texture, rect,
                     tri.u1,
                     tri.v1,
                     tri.u2,

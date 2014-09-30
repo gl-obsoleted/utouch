@@ -58,6 +58,7 @@
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pageControl = new System.Windows.Forms.TabPage();
+            this.m_menuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
@@ -174,52 +175,52 @@
             // m_menuUndo
             // 
             this.m_menuUndo.Name = "m_menuUndo";
-            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuUndo.Size = new System.Drawing.Size(113, 22);
             this.m_menuUndo.Text = "&Undo";
             this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
             // 
             // m_menuRedo
             // 
             this.m_menuRedo.Name = "m_menuRedo";
-            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuRedo.Size = new System.Drawing.Size(113, 22);
             this.m_menuRedo.Text = "&Redo";
             this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(110, 6);
             // 
             // m_menuCut
             // 
             this.m_menuCut.Name = "m_menuCut";
-            this.m_menuCut.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCut.Size = new System.Drawing.Size(113, 22);
             this.m_menuCut.Text = "Cu&t";
             this.m_menuCut.Click += new System.EventHandler(this.m_menuCut_Click);
             // 
             // m_menuCopy
             // 
             this.m_menuCopy.Name = "m_menuCopy";
-            this.m_menuCopy.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCopy.Size = new System.Drawing.Size(113, 22);
             this.m_menuCopy.Text = "&Copy";
             this.m_menuCopy.Click += new System.EventHandler(this.m_menuCopy_Click);
             // 
             // m_menuPaste
             // 
             this.m_menuPaste.Name = "m_menuPaste";
-            this.m_menuPaste.Size = new System.Drawing.Size(152, 22);
+            this.m_menuPaste.Size = new System.Drawing.Size(113, 22);
             this.m_menuPaste.Text = "&Paste";
             this.m_menuPaste.Click += new System.EventHandler(this.m_menuPaste_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(110, 6);
             // 
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Size = new System.Drawing.Size(113, 22);
             this.m_menuDelete.Text = "&Delete";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
@@ -229,7 +230,8 @@
             this.menuItemGwenUnitTest,
             this.m_menuResForm,
             this.toolStripSeparator5,
-            this.m_menuOpenTestLayout});
+            this.m_menuOpenTestLayout,
+            this.m_menuPreview});
             this.testFramesToolStripMenuItem.Name = "testFramesToolStripMenuItem";
             this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.testFramesToolStripMenuItem.Text = "&Test";
@@ -332,6 +334,14 @@
             this.pageControl.Text = "Control";
             this.pageControl.UseVisualStyleBackColor = true;
             // 
+            // m_menuPreview
+            // 
+            this.m_menuPreview.Name = "m_menuPreview";
+            this.m_menuPreview.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.m_menuPreview.Size = new System.Drawing.Size(264, 22);
+            this.m_menuPreview.Text = "&Preview";
+            this.m_menuPreview.Click += new System.EventHandler(this.m_menuPreview_Click);
+            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,6 +432,7 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuCopy;
         private System.Windows.Forms.ToolStripMenuItem m_menuPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem m_menuPreview;
     }
 }
 

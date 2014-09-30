@@ -129,6 +129,12 @@
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
     <Compile Include="RenderGwen\GwenTextureProvider.cs" />
     <Compile Include="SceneEd\_Base\SceneEdEventNotifier.cs" />
+    <Compile Include="WinFormsUI\Forms\PreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Forms\PreviewForm.Designer.cs">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinFormsUI\Forms\PreviewForm.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinFormsUI\Forms\GwenUnitTestForm.resx">
       <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </EmbeddedResource>

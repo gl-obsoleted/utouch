@@ -23,6 +23,7 @@ namespace udesign
 
             m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
             m_glCtrl.Dock = DockStyle.Fill;
+
             this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
         }
 
@@ -36,7 +37,6 @@ namespace udesign
             };
 
             SceneEd.Instance.HasModifierKeyDown = (keyCode) => { return (ModifierKeys & keyCode) != 0; };
-
 
             SceneEdEventNotifier.Instance.SelectNode += m_uiLayoutTree.OnSelectSceneNode;
             SceneEdEventNotifier.Instance.SelectNode += m_uiPropertyGrid.OnSelectSceneNode;
@@ -172,6 +172,9 @@ namespace udesign
             if (!Bootstrap.Instance.Init(bp))
                 return false;
 
+            m_glCtrl.SetScene(Scene.Instance);
+            m_glCtrl.SetSceneEd(SceneEd.Instance);
+
             // 不管是 Load 还是 Reset 成功，均需要刷新窗体的标题栏
             UpdateFormTitle();
 
@@ -267,6 +270,12 @@ namespace udesign
         private void m_menuPaste_Click(object sender, EventArgs e)
         {
             SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.V);
+        }
+
+        private void m_menuPreview_Click(object sender, EventArgs e)
+        {
+            PreviewForm f = new PreviewForm(Scene.Instance, SceneEd.Instance);
+            f.Show();
         }
     }
 }

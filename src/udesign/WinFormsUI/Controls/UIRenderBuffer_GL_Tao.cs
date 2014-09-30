@@ -19,23 +19,36 @@ namespace udesign.Controls
         private GwenRenderContext m_renderContext;
         private GwenRenderDevice m_renderDevice;
 
-        private Gwen.Control.Canvas canvas;
-        private Gwen.Renderer.Tao renderer;
-        private Gwen.Skin.Base skin;
+        private Gwen.Control.Canvas m_canvas;
+        private Gwen.Renderer.Tao m_renderer;
+        private Gwen.Skin.Base m_skin;
+
+        private Scene m_scene;
+        private SceneEd m_sceneEd;
 
         public UIRenderBuffer_GL_Tao()
         {
             InitializeComponent();
         }
 
+        public void SetScene(Scene scn)
+        {
+            m_scene = scn;
+        }
+
+        public void SetSceneEd(SceneEd scnEd)
+        {
+            m_sceneEd = scnEd;
+        }
+
         public Canvas GetCanvas()
         {
-            return canvas;
+            return m_canvas;
         }
 
         public Gwen.Renderer.Tao GetRenderer()
         {
-            return renderer;
+            return m_renderer;
         }
 
         private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
@@ -48,19 +61,19 @@ namespace udesign.Controls
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
 
-            renderer = new Gwen.Renderer.Tao();
-            skin = new Gwen.Skin.TexturedBase(renderer, Properties.Settings.Default.GwenMediaFile);
-            canvas = new Canvas(skin);
-            canvas.SetSize(glControl.Width, glControl.Height);
-            canvas.ShouldDrawBackground = true;
-            canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
-            canvas.KeyboardInputEnabled = true;
-            canvas.MouseInputEnabled = true;
+            m_renderer = new Gwen.Renderer.Tao();
+            m_skin = new Gwen.Skin.TexturedBase(m_renderer, Properties.Settings.Default.GwenMediaFile);
+            m_canvas = new Canvas(m_skin);
+            m_canvas.SetSize(glControl.Width, glControl.Height);
+            m_canvas.ShouldDrawBackground = true;
+            m_canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
+            m_canvas.KeyboardInputEnabled = true;
+            m_canvas.MouseInputEnabled = true;
 
-            m_renderContext = new GwenRenderContext(canvas, renderer);
+            m_renderContext = new GwenRenderContext(m_canvas, m_renderer);
             m_renderDevice = new GwenRenderDevice();
 
-            SceneEd.Instance.InitSelectionContainer(canvas);
+            SceneEd.Instance.InitSelectionContainer(m_canvas);
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -72,27 +85,26 @@ namespace udesign.Controls
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
 
-            if (canvas != null)
-                canvas.SetSize(glControl.Width, glControl.Height);
+            if (m_canvas != null)
+                m_canvas.SetSize(glControl.Width, glControl.Height);
         }
 
         private void glControl_Paint(object sender, PaintEventArgs e)
         {
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
-            canvas.RenderCanvas();
+            m_canvas.RenderCanvas();
 
-            m_renderContext.m_currentMousePos.X = prevX;
-            m_renderContext.m_currentMousePos.Y = prevY;
+            m_renderContext.CurrentMousePos = new Point(prevX, prevY);
 
-            renderer.Begin();
+            m_renderer.Begin();
 
-            if (Scene.Instance != null)
-                Scene.Instance.Render(m_renderContext, m_renderDevice);
+            if (m_scene != null)
+                m_scene.Render(m_renderContext, m_renderDevice);
 
-            if (SceneEd.Instance != null)
-                SceneEd.Instance.Render(renderer, m_renderContext);
+            if (m_sceneEd != null)
+                m_sceneEd.Render(m_renderContext);
 
-            renderer.End();
+            m_renderer.End();
         }
 
         private void glControl_MouseDown(object sender, MouseEventArgs e)
@@ -106,7 +118,7 @@ namespace udesign.Controls
             {
                 btn = 1;
             }
-            if (!canvas.Input_MouseButton(btn, true))
+            if (!m_canvas.Input_MouseButton(btn, true))
             {
                 SceneEd.Instance.MouseDown(e);
             }
@@ -124,7 +136,7 @@ namespace udesign.Controls
             {
                 btn = 1;
             }
-            if (!canvas.Input_MouseButton(btn, false))
+            if (!m_canvas.Input_MouseButton(btn, false))
             {
                 SceneEd.Instance.MouseUp(e);
             }
@@ -135,7 +147,7 @@ namespace udesign.Controls
         int prevY = -1;
         private void glControl_MouseMove(object sender, MouseEventArgs e)
         {
-            bool handled = canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
+            bool handled = m_canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
             prevX = e.X;
             prevY = e.Y;
 
@@ -148,7 +160,7 @@ namespace udesign.Controls
 
         private void glControl_KeyDown(object sender, KeyEventArgs e)
         {
-            canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), true);
+            m_canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), true);
             glControl.Invalidate();
         }
 
@@ -156,7 +168,7 @@ namespace udesign.Controls
         {
             SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
 
-            canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), false);
+            m_canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), false);
             glControl.Invalidate();
         }
 
@@ -220,7 +232,7 @@ namespace udesign.Controls
 
         private void glControl_KeyPress(object sender, KeyPressEventArgs e)
         {
-            canvas.Input_Character(e.KeyChar);
+            m_canvas.Input_Character(e.KeyChar);
             glControl.Invalidate();
         }
 
@@ -229,10 +241,10 @@ namespace udesign.Controls
             //TODO[GL]: 这个对象的 Dispose 内会抛空引用异常，待查
             try
             {
-                m_renderContext.m_font.Dispose();
-                canvas.Dispose();
-                skin.Dispose();
-                renderer.Dispose();
+                m_renderContext.Font.Dispose();
+                m_canvas.Dispose();
+                m_skin.Dispose();
+                m_renderer.Dispose();
             }
             catch (NullReferenceException)
             {

@@ -56,18 +56,18 @@ namespace udesign
             m_targetNode = null;
         }
 
-        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        public void Render(GwenRenderContext ctx)
         {
             if (m_targetNode != null)
             {
                 Rectangle rect = m_targetNode.GetWorldBounds();
                 rect.Inflate(5, 5);
 
-                Color c = renderer.DrawColor;
-                renderer.DrawColor = Color.HotPink;
-                renderer.DrawLinedRect(rect);
-                renderer.RenderText(ctx.m_font, new Point(rect.Left, rect.Top - 18), "[目标节点] " + m_targetNode.Name);
-                renderer.DrawColor = c;
+                Color c = ctx.Renderer.DrawColor;
+                ctx.Renderer.DrawColor = Color.HotPink;
+                ctx.Renderer.DrawLinedRect(rect);
+                ctx.Renderer.RenderText(ctx.Font, new Point(rect.Left, rect.Top - 18), "[目标节点] " + m_targetNode.Name);
+                ctx.Renderer.DrawColor = c;
             }
         }
 

@@ -10,28 +10,28 @@ namespace udesign
 {
     public partial class SelectionList
     {
-        private void RenderInternal(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        private void RenderInternal(GwenRenderContext ctx)
         {
             if (m_resizeCtrl != null && m_resizeCtrl.IsVisible)
             {
-                if (GwenUtil.GetWorldBound(m_resizeCtrl).Contains(ctx.m_currentMousePos))
+                if (GwenUtil.GetWorldBound(m_resizeCtrl).Contains(ctx.CurrentMousePos))
                 {
-                    m_resizeCtrl.RenderBound(renderer);
+                    m_resizeCtrl.RenderBound(ctx.Renderer);
                 }
             }
 
             foreach (Node n in m_selection)
             {
                 Rectangle rect = n.GetWorldBounds();
-                Color c = renderer.DrawColor;
-                RenderSelectionBox(renderer, rect);
+                Color c = ctx.Renderer.DrawColor;
+                RenderSelectionBox(ctx.Renderer, rect);
 
-                if (rect.Contains(ctx.m_currentMousePos) || IsScrolling)
+                if (rect.Contains(ctx.CurrentMousePos) || IsScrolling)
                 {
-                    RenderHoveringSelectedNode(renderer, ctx, n);
+                    RenderHoveringSelectedNode(ctx.Renderer, ctx, n);
                 }
 
-                renderer.DrawColor = c;
+                ctx.Renderer.DrawColor = c;
             }
         }
 
@@ -52,8 +52,8 @@ namespace udesign
 
             {
                 string title = string.Format("{0} [{1}]", hoveringNode.Name, hoveringNode.GetType().Name);
-                Point titleSize = renderer.MeasureText(ctx.m_font, title);
-                Point widthTextSize = renderer.MeasureText(ctx.m_font, rect.Width.ToString());
+                Point titleSize = renderer.MeasureText(ctx.Font, title);
+                Point widthTextSize = renderer.MeasureText(ctx.Font, rect.Width.ToString());
 
                 int occupiedHeight = titleSize.Y + widthTextSize.Y + interval * 2;
                 int titleX = rect.X + rect.Width / 2 - titleSize.X / 2;
@@ -61,18 +61,18 @@ namespace udesign
                 int widthTextX = rect.X + rect.Width / 2 - widthTextSize.X / 2;
                 int widthTextY = rect.Top < occupiedHeight ? rect.Top + interval : rect.Top - interval - widthTextSize.Y;
                 
-                renderer.RenderText(ctx.m_font, new Point(titleX, titleY), title);
-                renderer.RenderText(ctx.m_font, new Point(widthTextX, widthTextY), rect.Width.ToString());
+                renderer.RenderText(ctx.Font, new Point(titleX, titleY), title);
+                renderer.RenderText(ctx.Font, new Point(widthTextX, widthTextY), rect.Width.ToString());
                 renderer.DrawFilledRect(new Rectangle(rect.X, widthTextY + widthTextSize.Y / 2, widthTextX - rect.X, 1));
                 renderer.DrawFilledRect(new Rectangle(widthTextX + widthTextSize.X, widthTextY + widthTextSize.Y / 2, widthTextX - rect.X, 1));
             }
 
             {
-                Point heightTextSize = renderer.MeasureText(ctx.m_font, rect.Height.ToString());
+                Point heightTextSize = renderer.MeasureText(ctx.Font, rect.Height.ToString());
                 int heightTextX = rect.Left < heightTextSize.X ? rect.Left : rect.Left - heightTextSize.X;
                 int heightTextY = rect.Top + rect.Height / 2 - heightTextSize.Y / 2;
 
-                renderer.RenderText(ctx.m_font, new Point(heightTextX, heightTextY), rect.Height.ToString());
+                renderer.RenderText(ctx.Font, new Point(heightTextX, heightTextY), rect.Height.ToString());
                 renderer.DrawFilledRect(new Rectangle(rect.X - heightTextSize.X / 2, rect.Top, 1, rect.Height / 2 - heightTextSize.Y / 2));
                 renderer.DrawFilledRect(new Rectangle(rect.X - heightTextSize.X / 2, heightTextY + heightTextSize.Y, 1, rect.Height / 2 - heightTextSize.Y / 2));
             }

@@ -82,10 +82,10 @@ namespace udesign
             RefreshSelection();
         }
 
-        public void Render(Gwen.Renderer.Tao renderer, GwenRenderContext ctx)
+        public void Render(GwenRenderContext ctx)
         {
             // 把渲染细节移动到以 _Render 为后缀的一份单独的代码文件
-            RenderInternal(renderer, ctx);
+            RenderInternal(ctx);
         }
 
         public void OnSelectionChanged()

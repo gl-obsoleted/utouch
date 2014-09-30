@@ -12,14 +12,14 @@ namespace udesign
     {
         public GwenRenderContext(Gwen.Control.Canvas canvas, Gwen.Renderer.Tao renderer)
         {
-            m_canvas = canvas;
-            m_renderer = renderer;
-            m_font = new Gwen.Font(renderer);
+            Canvas = canvas;
+            Renderer = renderer;
+            Font = new Gwen.Font(renderer);
         }
 
-        public Gwen.Control.Canvas m_canvas;
-        public Gwen.Renderer.Tao m_renderer;
-        public Gwen.Font m_font;
-        public Point m_currentMousePos;
+        public Gwen.Control.Canvas Canvas { get; set; }
+        public Gwen.Renderer.Tao Renderer { get; set; }
+        public Gwen.Font Font { get; set; }
+        public Point CurrentMousePos { get; set; }
     }
 }
