@@ -65,5 +65,10 @@ namespace udesign
             stopwatch.Restart();
             lastTime = 0;
         }
+
+        private void m_btRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,20 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewForm));
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.m_resolutionMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.m_btRefresh = new DevComponents.DotNetBar.ButtonX();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_btResAndroid = new DevComponents.DotNetBar.ButtonX();
+            this.m_btResIOS = new DevComponents.DotNetBar.ButtonX();
+            this.m_btResDesktop = new DevComponents.DotNetBar.ButtonX();
+            this.m_resolutionLabel = new DevComponents.DotNetBar.LabelX();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.m_resolutionMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // GwenUnitTestForm
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(784, 562);
+            this.splitContainer1.SplitterDistance = 35;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.m_btRefresh, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_btResAndroid, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_btResIOS, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_btResDesktop, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_resolutionLabel, 4, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 35);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // m_resolutionMenu
+            // 
+            this.m_resolutionMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
+            this.m_resolutionMenu.Name = "contextMenuStrip1";
+            this.m_resolutionMenu.Size = new System.Drawing.Size(98, 26);
+            // 
+            // m_btRefresh
+            // 
+            this.m_btRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.m_btRefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.m_btRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btRefresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.m_btRefresh.Location = new System.Drawing.Point(6, 6);
+            this.m_btRefresh.Margin = new System.Windows.Forms.Padding(6);
+            this.m_btRefresh.Name = "m_btRefresh";
+            this.m_btRefresh.Size = new System.Drawing.Size(108, 23);
+            this.m_btRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.m_btRefresh.TabIndex = 4;
+            this.m_btRefresh.Text = "刷新";
+            this.m_btRefresh.Click += new System.EventHandler(this.m_btRefresh_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.testToolStripMenuItem.Text = "test";
+            // 
+            // m_btResAndroid
+            // 
+            this.m_btResAndroid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.m_btResAndroid.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.m_btResAndroid.ContextMenuStrip = this.m_resolutionMenu;
+            this.m_btResAndroid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btResAndroid.Image = global::udesign.Properties.Resources.os_android;
+            this.m_btResAndroid.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.m_btResAndroid.Location = new System.Drawing.Point(326, 6);
+            this.m_btResAndroid.Margin = new System.Windows.Forms.Padding(6);
+            this.m_btResAndroid.Name = "m_btResAndroid";
+            this.m_btResAndroid.Size = new System.Drawing.Size(88, 23);
+            this.m_btResAndroid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.m_btResAndroid.TabIndex = 3;
+            this.m_btResAndroid.Text = "Android";
+            // 
+            // m_btResIOS
+            // 
+            this.m_btResIOS.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.m_btResIOS.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.m_btResIOS.ContextMenuStrip = this.m_resolutionMenu;
+            this.m_btResIOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btResIOS.Image = global::udesign.Properties.Resources.os_ios;
+            this.m_btResIOS.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.m_btResIOS.Location = new System.Drawing.Point(226, 6);
+            this.m_btResIOS.Margin = new System.Windows.Forms.Padding(6);
+            this.m_btResIOS.Name = "m_btResIOS";
+            this.m_btResIOS.Size = new System.Drawing.Size(88, 23);
+            this.m_btResIOS.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.m_btResIOS.TabIndex = 2;
+            this.m_btResIOS.Text = "iOS";
+            // 
+            // m_btResDesktop
+            // 
+            this.m_btResDesktop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.m_btResDesktop.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.m_btResDesktop.ContextMenuStrip = this.m_resolutionMenu;
+            this.m_btResDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btResDesktop.Image = ((System.Drawing.Image)(resources.GetObject("m_btResDesktop.Image")));
+            this.m_btResDesktop.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.m_btResDesktop.Location = new System.Drawing.Point(126, 6);
+            this.m_btResDesktop.Margin = new System.Windows.Forms.Padding(6);
+            this.m_btResDesktop.Name = "m_btResDesktop";
+            this.m_btResDesktop.Size = new System.Drawing.Size(88, 23);
+            this.m_btResDesktop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.m_btResDesktop.TabIndex = 1;
+            this.m_btResDesktop.Text = "桌面";
+            // 
+            // m_resolutionLabel
+            // 
+            // 
+            // 
+            // 
+            this.m_resolutionLabel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.m_resolutionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_resolutionLabel.Location = new System.Drawing.Point(430, 3);
+            this.m_resolutionLabel.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.m_resolutionLabel.Name = "m_resolutionLabel";
+            this.m_resolutionLabel.Size = new System.Drawing.Size(130, 29);
+            this.m_resolutionLabel.TabIndex = 5;
+            this.m_resolutionLabel.Text = "<default_res>";
+            // 
+            // PreviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Name = "GwenUnitTestForm";
-            this.Text = "GwenUnitTestForm";
+            this.Controls.Add(this.splitContainer1);
+            this.Name = "PreviewForm";
+            this.Text = "预览窗口";
             this.Load += new System.EventHandler(this.GwenUnitTestForm_Load);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.m_resolutionMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevComponents.DotNetBar.ButtonX m_btResAndroid;
+        private DevComponents.DotNetBar.ButtonX m_btResIOS;
+        private DevComponents.DotNetBar.ButtonX m_btResDesktop;
+        private System.Windows.Forms.ContextMenuStrip m_resolutionMenu;
+        private DevComponents.DotNetBar.ButtonX m_btRefresh;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private DevComponents.DotNetBar.LabelX m_resolutionLabel;
     }
 }
