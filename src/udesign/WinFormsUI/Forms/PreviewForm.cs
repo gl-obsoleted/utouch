@@ -70,5 +70,20 @@ namespace udesign
         {
 
         }
+
+        private void m_btResDesktop_Click(object sender, EventArgs e)
+        {
+            CtrlUtil.ShowContextMenu(m_btResDesktop);
+        }
+
+        private void m_btResIOS_Click(object sender, EventArgs e)
+        {
+            CtrlUtil.ShowContextMenu(m_btResIOS);
+        }
+
+        private void m_btResAndroid_Click(object sender, EventArgs e)
+        {
+            CtrlUtil.ShowContextMenu(m_btResAndroid);
+        }
     }
 }

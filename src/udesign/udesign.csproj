@@ -158,6 +158,7 @@
     <Compile Include="WinFormsUI\Forms\ResForm.designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsUtil\CtrlUtil.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>
