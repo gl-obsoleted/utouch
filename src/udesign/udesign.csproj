@@ -35,6 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime.net35">
+      <HintPath>..\packages\MoonSharp.0.5.5\lib\Antlr4.Runtime.net35.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=11.5.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages_local\DotNetBar-11.5\DevComponents.DotNetBar2.dll</HintPath>
@@ -51,6 +54,9 @@
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MoonSharp.Interpreter">
+      <HintPath>..\packages\MoonSharp.0.5.5\lib\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -158,7 +164,8 @@
     <Compile Include="WinFormsUI\Forms\ResForm.designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsUtil\CtrlUtil.cs" />
+    <Compile Include="_1_Core\CtrlUtil.cs" />
+    <Compile Include="_1_Core\LuaRuntime.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>

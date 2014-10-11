@@ -54,6 +54,13 @@ namespace udesign
                 return false;
             }
 
+            LuaRuntime.Instance = new LuaRuntime();
+            if (!LuaRuntime.Instance.Init())
+            {
+                MessageBox.Show(string.Format("Lua 环境初始化失败。 \n\n按 'OK' 退出程序。"));
+                return false;
+            }
+
             if (!ConfigTypical.Instance.LoadTypical())
             {
                 MessageBox.Show(string.Format("配置文件初始化失败。 \n\n按 'OK' 退出程序。"));

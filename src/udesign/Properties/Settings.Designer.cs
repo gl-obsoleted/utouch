@@ -112,5 +112,14 @@ namespace udesign.Properties {
                 return ((string)(this["InitialOpenFileDir"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("scripts/bootstrap.lua")]
+        public string LuaBootstrap {
+            get {
+                return ((string)(this["LuaBootstrap"]));
+            }
+        }
     }
 }

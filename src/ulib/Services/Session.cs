@@ -56,6 +56,16 @@ namespace ulib
             }
         }
 
+        public static void LogException(Exception e, string additionalInfo)
+        {
+            Interlocked.Increment(ref ExceptionCounter);
+
+            Log("===== Exception #{0} Begin =====", ExceptionCounter);
+            Log(e.GetType().Name);
+            Log(e.Message);
+            Log("===== Exception #{0} End   =====", ExceptionCounter);
+        }
+
         public static void LogExceptionDetail(Exception e)
         {
             Interlocked.Increment(ref ExceptionCounter);

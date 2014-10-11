@@ -32,5 +32,8 @@
     <Setting Name="InitialOpenFileDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">sample_layouts</Value>
     </Setting>
+    <Setting Name="LuaBootstrap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">scripts/bootstrap.lua</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
