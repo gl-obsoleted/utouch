@@ -51,6 +51,8 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -59,7 +61,7 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(784, 562);
-            this.splitContainer1.SplitterDistance = 35;
+            this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -83,7 +85,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 35);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 32);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // m_btResCustom
@@ -96,7 +98,7 @@
             this.m_btResCustom.Location = new System.Drawing.Point(426, 6);
             this.m_btResCustom.Margin = new System.Windows.Forms.Padding(6);
             this.m_btResCustom.Name = "m_btResCustom";
-            this.m_btResCustom.Size = new System.Drawing.Size(88, 23);
+            this.m_btResCustom.Size = new System.Drawing.Size(88, 20);
             this.m_btResCustom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.m_btResCustom.TabIndex = 6;
             this.m_btResCustom.Text = "Custom";
@@ -116,7 +118,7 @@
             this.m_btRefresh.Location = new System.Drawing.Point(6, 6);
             this.m_btRefresh.Margin = new System.Windows.Forms.Padding(6);
             this.m_btRefresh.Name = "m_btRefresh";
-            this.m_btRefresh.Size = new System.Drawing.Size(108, 23);
+            this.m_btRefresh.Size = new System.Drawing.Size(108, 20);
             this.m_btRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.m_btRefresh.TabIndex = 4;
             this.m_btRefresh.Text = "刷新";
@@ -133,7 +135,7 @@
             this.m_btResAndroid.Location = new System.Drawing.Point(326, 6);
             this.m_btResAndroid.Margin = new System.Windows.Forms.Padding(6);
             this.m_btResAndroid.Name = "m_btResAndroid";
-            this.m_btResAndroid.Size = new System.Drawing.Size(88, 23);
+            this.m_btResAndroid.Size = new System.Drawing.Size(88, 20);
             this.m_btResAndroid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.m_btResAndroid.TabIndex = 3;
             this.m_btResAndroid.Text = "Android";
@@ -155,7 +157,7 @@
             this.m_btResIOS.Location = new System.Drawing.Point(226, 6);
             this.m_btResIOS.Margin = new System.Windows.Forms.Padding(6);
             this.m_btResIOS.Name = "m_btResIOS";
-            this.m_btResIOS.Size = new System.Drawing.Size(88, 23);
+            this.m_btResIOS.Size = new System.Drawing.Size(88, 20);
             this.m_btResIOS.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.m_btResIOS.TabIndex = 2;
             this.m_btResIOS.Text = "iOS";
@@ -177,7 +179,7 @@
             this.m_btResDesktop.Location = new System.Drawing.Point(126, 6);
             this.m_btResDesktop.Margin = new System.Windows.Forms.Padding(6);
             this.m_btResDesktop.Name = "m_btResDesktop";
-            this.m_btResDesktop.Size = new System.Drawing.Size(88, 23);
+            this.m_btResDesktop.Size = new System.Drawing.Size(88, 20);
             this.m_btResDesktop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.m_btResDesktop.TabIndex = 1;
             this.m_btResDesktop.Text = "桌面";
@@ -198,7 +200,7 @@
             this.m_resolutionLabel.Location = new System.Drawing.Point(530, 3);
             this.m_resolutionLabel.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.m_resolutionLabel.Name = "m_resolutionLabel";
-            this.m_resolutionLabel.Size = new System.Drawing.Size(130, 29);
+            this.m_resolutionLabel.Size = new System.Drawing.Size(130, 26);
             this.m_resolutionLabel.TabIndex = 5;
             this.m_resolutionLabel.Text = "<default_res>";
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,7 +51,8 @@ namespace udesign
                         {
                             tsi.Text = string.Format("{0}x{1} ({2})", resolution.width, resolution.height, resolution.tag);
                         }
-                        tsi.Tag = res;
+                        tsi.Tag = resolution;
+                        tsi.Click += m_resolutionMenuItemClicked;
                         ctrl.ContextMenuStrip.Items.Add(tsi);
                     }
                 }
@@ -144,5 +146,20 @@ namespace udesign
             CtrlUtil.ShowContextMenu(m_btResCustom);
         }
 
+        private void m_resolutionMenuItemClicked(object sender, EventArgs e)
+        {
+            ToolStripMenuItem mi = sender as ToolStripMenuItem;
+            if (mi != null)
+            {
+                Resolution res = mi.Tag as Resolution;
+                m_resolutionLabel.Text = string.Format("{0}x{1}", res.width, res.height);
+
+                Control ctrl = FindButtonByCategory(res.category);
+                m_btResDesktop.Checked = ctrl == m_btResDesktop;
+                m_btResIOS.Checked = ctrl == m_btResIOS;
+                m_btResAndroid.Checked = ctrl == m_btResAndroid;
+                m_btResCustom.Checked = ctrl == m_btResCustom;
+            }            
+        }
     }
 }

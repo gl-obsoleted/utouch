@@ -78,19 +78,25 @@ namespace udesign.Controls
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
         {
+            ResetViewport();
+
+            if (m_canvas != null && (m_canvas.Width != glControl.Width || m_canvas.Height != glControl.Height))
+                m_canvas.SetSize(glControl.Width, glControl.Height);
+        }
+
+        private void ResetViewport()
+        {
             Gl.glClearColor(1f, 0f, 0f, 1f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
             Gl.glOrtho(0, glControl.Width, glControl.Height, 0, -1, 1);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
-
-            if (m_canvas != null)
-                m_canvas.SetSize(glControl.Width, glControl.Height);
         }
 
         private void glControl_Paint(object sender, PaintEventArgs e)
         {
+            ResetViewport();
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
             m_canvas.RenderCanvas();
 
