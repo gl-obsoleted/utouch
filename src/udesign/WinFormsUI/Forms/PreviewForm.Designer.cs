@@ -32,24 +32,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.m_btResCustom = new DevComponents.DotNetBar.ButtonX();
+            this.m_menuResCustom = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.m_btRefresh = new DevComponents.DotNetBar.ButtonX();
             this.m_btResAndroid = new DevComponents.DotNetBar.ButtonX();
-            this.m_menuResDesktop = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.m_btResIOS = new DevComponents.DotNetBar.ButtonX();
-            this.m_btResDesktop = new DevComponents.DotNetBar.ButtonX();
-            this.m_resolutionLabel = new DevComponents.DotNetBar.LabelX();
-            this.m_menuResIOS = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuResAndroid = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_btResIOS = new DevComponents.DotNetBar.ButtonX();
+            this.m_menuResIOS = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.m_btResDesktop = new DevComponents.DotNetBar.ButtonX();
+            this.m_menuResDesktop = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.m_resolutionLabel = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.m_menuResDesktop.SuspendLayout();
-            this.m_menuResIOS.SuspendLayout();
-            this.m_menuResAndroid.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -68,18 +64,20 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.m_btResCustom, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btRefresh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btResAndroid, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btResIOS, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btResDesktop, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.m_resolutionLabel, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_resolutionLabel, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -87,6 +85,27 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 35);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // m_btResCustom
+            // 
+            this.m_btResCustom.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.m_btResCustom.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.m_btResCustom.ContextMenuStrip = this.m_menuResCustom;
+            this.m_btResCustom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_btResCustom.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.m_btResCustom.Location = new System.Drawing.Point(426, 6);
+            this.m_btResCustom.Margin = new System.Windows.Forms.Padding(6);
+            this.m_btResCustom.Name = "m_btResCustom";
+            this.m_btResCustom.Size = new System.Drawing.Size(88, 23);
+            this.m_btResCustom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.m_btResCustom.TabIndex = 6;
+            this.m_btResCustom.Text = "Custom";
+            this.m_btResCustom.Click += new System.EventHandler(this.m_btResCustom_Click);
+            // 
+            // m_menuResCustom
+            // 
+            this.m_menuResCustom.Name = "m_menuResCustom";
+            this.m_menuResCustom.Size = new System.Drawing.Size(61, 4);
             // 
             // m_btRefresh
             // 
@@ -107,7 +126,7 @@
             // 
             this.m_btResAndroid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.m_btResAndroid.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.m_btResAndroid.ContextMenuStrip = this.m_menuResDesktop;
+            this.m_btResAndroid.ContextMenuStrip = this.m_menuResAndroid;
             this.m_btResAndroid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_btResAndroid.Image = global::udesign.Properties.Resources.os_android;
             this.m_btResAndroid.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
@@ -120,24 +139,16 @@
             this.m_btResAndroid.Text = "Android";
             this.m_btResAndroid.Click += new System.EventHandler(this.m_btResAndroid_Click);
             // 
-            // m_menuResDesktop
+            // m_menuResAndroid
             // 
-            this.m_menuResDesktop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testToolStripMenuItem});
-            this.m_menuResDesktop.Name = "contextMenuStrip1";
-            this.m_menuResDesktop.Size = new System.Drawing.Size(98, 26);
-            // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.testToolStripMenuItem.Text = "test";
+            this.m_menuResAndroid.Name = "contextMenuStrip1";
+            this.m_menuResAndroid.Size = new System.Drawing.Size(61, 4);
             // 
             // m_btResIOS
             // 
             this.m_btResIOS.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.m_btResIOS.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.m_btResIOS.ContextMenuStrip = this.m_menuResDesktop;
+            this.m_btResIOS.ContextMenuStrip = this.m_menuResIOS;
             this.m_btResIOS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_btResIOS.Image = global::udesign.Properties.Resources.os_ios;
             this.m_btResIOS.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
@@ -149,6 +160,11 @@
             this.m_btResIOS.TabIndex = 2;
             this.m_btResIOS.Text = "iOS";
             this.m_btResIOS.Click += new System.EventHandler(this.m_btResIOS_Click);
+            // 
+            // m_menuResIOS
+            // 
+            this.m_menuResIOS.Name = "contextMenuStrip1";
+            this.m_menuResIOS.Size = new System.Drawing.Size(61, 4);
             // 
             // m_btResDesktop
             // 
@@ -167,6 +183,11 @@
             this.m_btResDesktop.Text = "桌面";
             this.m_btResDesktop.Click += new System.EventHandler(this.m_btResDesktop_Click);
             // 
+            // m_menuResDesktop
+            // 
+            this.m_menuResDesktop.Name = "contextMenuStrip1";
+            this.m_menuResDesktop.Size = new System.Drawing.Size(61, 4);
+            // 
             // m_resolutionLabel
             // 
             // 
@@ -174,38 +195,12 @@
             // 
             this.m_resolutionLabel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.m_resolutionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_resolutionLabel.Location = new System.Drawing.Point(430, 3);
+            this.m_resolutionLabel.Location = new System.Drawing.Point(530, 3);
             this.m_resolutionLabel.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.m_resolutionLabel.Name = "m_resolutionLabel";
             this.m_resolutionLabel.Size = new System.Drawing.Size(130, 29);
             this.m_resolutionLabel.TabIndex = 5;
             this.m_resolutionLabel.Text = "<default_res>";
-            // 
-            // m_menuResIOS
-            // 
-            this.m_menuResIOS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.m_menuResIOS.Name = "contextMenuStrip1";
-            this.m_menuResIOS.Size = new System.Drawing.Size(98, 26);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(97, 22);
-            this.toolStripMenuItem1.Text = "test";
-            // 
-            // m_menuResAndroid
-            // 
-            this.m_menuResAndroid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.m_menuResAndroid.Name = "contextMenuStrip1";
-            this.m_menuResAndroid.Size = new System.Drawing.Size(98, 26);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(97, 22);
-            this.toolStripMenuItem2.Text = "test";
             // 
             // PreviewForm
             // 
@@ -220,9 +215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.m_menuResDesktop.ResumeLayout(false);
-            this.m_menuResIOS.ResumeLayout(false);
-            this.m_menuResAndroid.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -236,11 +228,10 @@
         private DevComponents.DotNetBar.ButtonX m_btResDesktop;
         private System.Windows.Forms.ContextMenuStrip m_menuResDesktop;
         private DevComponents.DotNetBar.ButtonX m_btRefresh;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
-        private DevComponents.DotNetBar.LabelX m_resolutionLabel;
         private System.Windows.Forms.ContextMenuStrip m_menuResIOS;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip m_menuResAndroid;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private DevComponents.DotNetBar.ButtonX m_btResCustom;
+        private DevComponents.DotNetBar.LabelX m_resolutionLabel;
+        private System.Windows.Forms.ContextMenuStrip m_menuResCustom;
     }
 }

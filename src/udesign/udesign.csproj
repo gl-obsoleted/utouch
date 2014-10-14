@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="_1_Core\CtrlUtil.cs" />
     <Compile Include="_1_Core\LuaRuntime.cs" />
+    <Compile Include="_1_Core\Resolution.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>

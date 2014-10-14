@@ -22,10 +22,63 @@ namespace udesign
             m_glCtrl.Dock = DockStyle.Fill;
             m_glCtrl.SetScene(scn);
             m_glCtrl.SetSceneEd(scnEd);
-            this.Controls.Add(m_glCtrl);
+            this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
 
             ftime = new List<long>();
             stopwatch = new Stopwatch();
+
+            MoonSharp.Interpreter.Table t = LuaRuntime.Instance.BootstrapScript.Globals["Resolutions"] as MoonSharp.Interpreter.Table;
+            foreach (var res in t.Values)
+            {
+                if (res.Type == MoonSharp.Interpreter.DataType.Table)
+                {
+                    Resolution resolution = new Resolution();
+                    resolution.width = Convert.ToInt32(res.Table["w"]);
+                    resolution.height = Convert.ToInt32(res.Table["h"]);
+                    resolution.category = Convert.ToInt32(res.Table["cat"]);
+                    resolution.tag = (string)res.Table["tag"];
+
+                    Control ctrl = FindButtonByCategory(resolution.category);
+                    if (ctrl != null)
+                    {
+                        ToolStripMenuItem tsi = new ToolStripMenuItem();
+                        if (string.IsNullOrEmpty(resolution.tag))
+                        {
+                            tsi.Text = string.Format("{0}x{1}", resolution.width, resolution.height);
+                        }
+                        else 
+                        {
+                            tsi.Text = string.Format("{0}x{1} ({2})", resolution.width, resolution.height, resolution.tag);
+                        }
+                        tsi.Tag = res;
+                        ctrl.ContextMenuStrip.Items.Add(tsi);
+                    }
+                }
+            }
+        }
+
+        private Control FindButtonByCategory(int category)
+        {
+            Func<string, int> fnGetIntGlobal = (gname) => { return Convert.ToInt32(LuaRuntime.Instance.BootstrapScript.Globals[gname]); };
+
+            if (category == fnGetIntGlobal("ResCat_Desktop"))
+            {
+                return m_btResDesktop;
+            }
+            else if (category == fnGetIntGlobal("ResCat_iOS"))
+            {
+                return m_btResIOS;
+            }
+            else if (category == fnGetIntGlobal("ResCat_Andriod"))
+            {
+                return m_btResAndroid;
+            }
+            else if (category == fnGetIntGlobal("ResCat_Custom"))
+            {
+                return m_btResCustom;
+            }
+
+            return null;
         }
 
         private void glControl_Paint(object sender, PaintEventArgs e)
@@ -85,5 +138,11 @@ namespace udesign
         {
             CtrlUtil.ShowContextMenu(m_btResAndroid);
         }
+
+        private void m_btResCustom_Click(object sender, EventArgs e)
+        {
+            CtrlUtil.ShowContextMenu(m_btResCustom);
+        }
+
     }
 }

@@ -33,17 +33,6 @@ namespace udesign
             }
 
             m_bootstrap = script;
-            Table t = BootstrapScript.Globals["Resolutions"] as Table;
-            foreach (var res in t.Values)
-            {
-                if (res.Type == DataType.Table)
-                {
-                    int w = Convert.ToInt32(res.Table["w"]);
-                    int h = Convert.ToInt32(res.Table["h"]);
-                    int cat = Convert.ToInt32(res.Table["cat"]);
-                    string tag = (string)res.Table["tag"];
-                }
-            }
 
             return true;
         }
