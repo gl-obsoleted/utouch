@@ -17,7 +17,7 @@ namespace udesign
         {
             InitializeComponent();
 
-            m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
+            m_glCtrl = new Controls.UITaoRenderBuffer();
             m_glCtrl.Dock = DockStyle.Fill;
             this.Controls.Add(m_glCtrl);
 
@@ -46,7 +46,7 @@ namespace udesign
             }
         }
 
-        private Controls.UIRenderBuffer_GL_Tao m_glCtrl;
+        private Controls.UITaoRenderBuffer m_glCtrl;
         private Gwen.UnitTest.UnitTest test;
         const int fps_frames = 50;
         private readonly List<long> ftime;

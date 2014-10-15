@@ -1,6 +1,6 @@
 ﻿namespace udesign.Controls
 {
-    partial class UIRenderBuffer_GL_Tao
+    partial class UITaoRenderBuffer
     {
         /// <summary> 
         /// Required designer variable.
@@ -62,12 +62,12 @@
             this.glControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseMove);
             this.glControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseUp);
             // 
-            // UIRenderBuffer_GL_Tao
+            // UITaoRenderBuffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.glControl);
-            this.Name = "UIRenderBuffer_GL_Tao";
+            this.Name = "UITaoRenderBuffer";
             this.Load += new System.EventHandler(this.UIRenderBuffer_GL_Tao_Load);
             this.Resize += new System.EventHandler(this.UIRenderBuffer_GL_Tao_Resize);
             this.ResumeLayout(false);

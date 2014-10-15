@@ -19,7 +19,7 @@ namespace udesign
         {
             InitializeComponent();
 
-            m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
+            m_glCtrl = new Controls.UITaoRenderBuffer();
             m_glCtrl.Dock = DockStyle.Fill;
             m_glCtrl.SetScene(scn);
             m_glCtrl.SetSceneEd(scnEd);
@@ -132,7 +132,7 @@ namespace udesign
             }
         }
 
-        private Controls.UIRenderBuffer_GL_Tao m_glCtrl;
+        private Controls.UITaoRenderBuffer m_glCtrl;
         const int fps_frames = 50;
         private readonly List<long> ftime;
         private readonly Stopwatch stopwatch;

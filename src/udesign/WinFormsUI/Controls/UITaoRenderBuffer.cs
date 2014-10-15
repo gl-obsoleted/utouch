@@ -14,7 +14,7 @@ using ulib.Elements;
 
 namespace udesign.Controls
 {
-    public partial class UIRenderBuffer_GL_Tao : UserControl
+    public partial class UITaoRenderBuffer : UserControl
     {
         private GwenRenderContext m_renderContext;
         private GwenRenderDevice m_renderDevice;
@@ -26,7 +26,7 @@ namespace udesign.Controls
         private Scene m_scene;
         private SceneEd m_sceneEd;
 
-        public UIRenderBuffer_GL_Tao()
+        public UITaoRenderBuffer()
         {
             InitializeComponent();
         }

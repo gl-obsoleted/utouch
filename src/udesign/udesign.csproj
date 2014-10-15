@@ -116,11 +116,11 @@
     <Compile Include="WinFormsUI\Controls\UIControlList.Designer.cs">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.cs">
+    <Compile Include="WinFormsUI\Controls\UITaoRenderBuffer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.Designer.cs">
-      <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
+    <Compile Include="WinFormsUI\Controls\UITaoRenderBuffer.Designer.cs">
+      <DependentUpon>UITaoRenderBuffer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,8 +179,8 @@
     <EmbeddedResource Include="WinFormsUI\Controls\UIObjectPropertyGrid.resx">
       <DependentUpon>UIObjectPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\Controls\UIRenderBuffer_GL_Tao.resx">
-      <DependentUpon>UIRenderBuffer_GL_Tao.cs</DependentUpon>
+    <EmbeddedResource Include="WinFormsUI\Controls\UITaoRenderBuffer.resx">
+      <DependentUpon>UITaoRenderBuffer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

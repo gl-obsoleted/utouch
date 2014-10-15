@@ -21,7 +21,7 @@ namespace udesign
         {
             InitializeComponent();
 
-            m_glCtrl = new Controls.UIRenderBuffer_GL_Tao();
+            m_glCtrl = new Controls.UITaoRenderBuffer();
             m_glCtrl.Dock = DockStyle.Fill;
 
             this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
@@ -103,7 +103,7 @@ namespace udesign
 
         private Gwen.Control.Button m_testButton;
 
-        private Controls.UIRenderBuffer_GL_Tao m_glCtrl;
+        private Controls.UITaoRenderBuffer m_glCtrl;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
