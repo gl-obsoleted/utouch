@@ -20,11 +20,7 @@ namespace udesign
         public MainForm()
         {
             InitializeComponent();
-
-            m_glCtrl = new Controls.UITaoRenderBuffer();
-            m_glCtrl.Dock = DockStyle.Fill;
-
-            this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
+            m_glRenderBuffer.InitContext();
         }
 
         public bool Init()
@@ -33,7 +29,7 @@ namespace udesign
             m_uiPropertyGrid.PropertyValueChanged += () =>
             {
                 m_uiLayoutTree.PopulateLayout(); 
-                m_glCtrl.Refresh(); 
+                m_glRenderBuffer.Refresh(); 
             };
 
             SceneEd.Instance.HasModifierKeyDown = (keyCode) => { return (ModifierKeys & keyCode) != 0; };
@@ -79,7 +75,7 @@ namespace udesign
             // Rendering 排在后面是为了反映前两者的变化的结果
             if (opts.HasFlag(RefreshSceneOpt.Refresh_Rendering))
             {
-                m_glCtrl.Refresh();
+                m_glRenderBuffer.Refresh();
             }
         }
 
@@ -95,19 +91,11 @@ namespace udesign
             Scene.Instance.Root.Attach(welcomeText);
         }
 
-        private void menuItemGwenUnitTest_Click(object sender, EventArgs e)
-        {
-            GwenUnitTestForm tf = new GwenUnitTestForm();
-            tf.Show();
-        }
-
         private Gwen.Control.Button m_testButton;
-
-        private Controls.UITaoRenderBuffer m_glCtrl;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            m_testButton = new Gwen.Control.Button(m_glCtrl.GetCanvas());
+            m_testButton = new Gwen.Control.Button(m_glRenderBuffer.GetCanvas());
             m_testButton.SetPosition(0, 0);
             m_testButton.SetSize(1, 1);
         }
@@ -172,8 +160,8 @@ namespace udesign
             if (!Bootstrap.Instance.Init(bp))
                 return false;
 
-            m_glCtrl.SetScene(Scene.Instance);
-            m_glCtrl.SetSceneEd(SceneEd.Instance);
+            m_glRenderBuffer.SetScene(Scene.Instance);
+            m_glRenderBuffer.SetSceneEd(SceneEd.Instance);
 
             // 不管是 Load 还是 Reset 成功，均需要刷新窗体的标题栏
             UpdateFormTitle();

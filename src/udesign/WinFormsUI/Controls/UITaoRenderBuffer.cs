@@ -16,29 +16,26 @@ namespace udesign.Controls
 {
     public partial class UITaoRenderBuffer : UserControl
     {
-        private GwenRenderContext m_renderContext;
-        private GwenRenderDevice m_renderDevice;
+        protected GwenRenderContext m_renderContext;
+        protected GwenRenderDevice m_renderDevice;
 
-        private Gwen.Control.Canvas m_canvas;
-        private Gwen.Renderer.Tao m_renderer;
-        private Gwen.Skin.Base m_skin;
+        protected Gwen.Control.Canvas m_canvas;
+        protected Gwen.Renderer.Tao m_renderer;
+        protected Gwen.Skin.Base m_skin;
 
-        private Scene m_scene;
-        private SceneEd m_sceneEd;
+        protected Scene m_scene;
+
+        protected Tao.Platform.Windows.SimpleOpenGlControl GLCtrl { get { return glControl; } }
 
         public UITaoRenderBuffer()
         {
             InitializeComponent();
+            glControl.InitializeContexts();
         }
 
         public void SetScene(Scene scn)
         {
             m_scene = scn;
-        }
-
-        public void SetSceneEd(SceneEd scnEd)
-        {
-            m_sceneEd = scnEd;
         }
 
         public Canvas GetCanvas()
@@ -51,9 +48,8 @@ namespace udesign.Controls
             return m_renderer;
         }
 
-        private void UIRenderBuffer_GL_Tao_Load(object sender, System.EventArgs e)
+        public void InitContext()
         {
-            glControl.InitializeContexts();
             Gl.glClearColor(1f, 0f, 0f, 1f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
@@ -74,6 +70,8 @@ namespace udesign.Controls
             m_renderDevice = new GwenRenderDevice();
 
             SceneEd.Instance.InitSelectionContainer(m_canvas);
+            glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
+            glControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
@@ -81,7 +79,9 @@ namespace udesign.Controls
             ResetViewport();
 
             if (m_canvas != null && (m_canvas.Width != glControl.Width || m_canvas.Height != glControl.Height))
+            {
                 m_canvas.SetSize(glControl.Width, glControl.Height);
+            }
         }
 
         private void ResetViewport()
@@ -104,65 +104,27 @@ namespace udesign.Controls
 
             m_renderer.Begin();
 
+            PreSceneRender();
+
             if (m_scene != null)
                 m_scene.Render(m_renderContext, m_renderDevice);
 
-            if (m_sceneEd != null)
-                m_sceneEd.Render(m_renderContext);
+            PostSceneRender();
 
             m_renderer.End();
         }
 
-        private void glControl_MouseDown(object sender, MouseEventArgs e)
+        protected int prevX = -1;
+        protected int prevY = -1;
+        private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            int btn = -1;
-            if (e.Button == MouseButtons.Left)
-            {
-                btn = 0;
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                btn = 1;
-            }
-            if (!m_canvas.Input_MouseButton(btn, true))
-            {
-                SceneEd.Instance.MouseDown(e);
-            }
-            glControl.Invalidate();
-        }
-
-        private void glControl_MouseUp(object sender, MouseEventArgs e)
-        {
-            int btn = -1;
-            if (e.Button == MouseButtons.Left)
-            {
-                btn = 0;
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                btn = 1;
-            }
-            if (!m_canvas.Input_MouseButton(btn, false))
-            {
-                SceneEd.Instance.MouseUp(e);
-            }
-            glControl.Invalidate();
-        }
-
-        int prevX = -1;
-        int prevY = -1;
-        private void glControl_MouseMove(object sender, MouseEventArgs e)
-        {
-            bool handled = m_canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
             prevX = e.X;
             prevY = e.Y;
-
-            if (!handled)
-            {
-                SceneEd.Instance.MouseMove(e);
-            }
-            glControl.Invalidate();
+            GLCtrl.Invalidate();
         }
+
+        protected virtual void PreSceneRender() { }
+        protected virtual void PostSceneRender() { }
 
         private void glControl_KeyDown(object sender, KeyEventArgs e)
         {
@@ -254,39 +216,6 @@ namespace udesign.Controls
             }
             catch (NullReferenceException)
             {
-            }
-        }
-
-        private void glControl_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.Text))
-                e.Effect = DragDropEffects.Copy;
-            else
-                e.Effect = DragDropEffects.None;
-        }
-
-        private void glControl_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
-            {
-                string dragInfo = e.Data.GetData(DataFormats.Text).ToString();
-                Session.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, e.X, e.Y);
-                Point clientPos = glControl.PointToClient(new Point(e.X, e.Y));
-                SceneEd.Instance.DragAndDrop.NotifyDroppped(clientPos.X, clientPos.Y, dragInfo);
-            }
-        }
-
-        private void glControl_DragLeave(object sender, EventArgs e)
-        {
-            SceneEd.Instance.DragAndDrop.NotifyLeft();
-        }
-
-        private void glControl_DragOver(object sender, DragEventArgs e)
-        {
-            if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
-            {
-                Point clientPos = glControl.PointToClient(new Point(e.X, e.Y));
-                SceneEd.Instance.DragAndDrop.NotifyUpdated(clientPos.X, clientPos.Y);
             }
         }
     }

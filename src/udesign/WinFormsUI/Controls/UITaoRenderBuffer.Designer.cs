@@ -50,17 +50,9 @@
             this.glControl.Size = new System.Drawing.Size(150, 150);
             this.glControl.StencilBits = ((byte)(0));
             this.glControl.TabIndex = 0;
-            this.glControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.glControl_DragDrop);
-            this.glControl.DragEnter += new System.Windows.Forms.DragEventHandler(this.glControl_DragEnter);
-            this.glControl.DragOver += new System.Windows.Forms.DragEventHandler(this.glControl_DragOver);
-            this.glControl.DragLeave += new System.EventHandler(this.glControl_DragLeave);
-            this.glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
             this.glControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glControl_KeyDown);
             this.glControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.glControl_KeyPress);
             this.glControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.glControl_KeyUp);
-            this.glControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseDown);
-            this.glControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseMove);
-            this.glControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseUp);
             // 
             // UITaoRenderBuffer
             // 
@@ -68,7 +60,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.glControl);
             this.Name = "UITaoRenderBuffer";
-            this.Load += new System.EventHandler(this.UIRenderBuffer_GL_Tao_Load);
             this.Resize += new System.EventHandler(this.UIRenderBuffer_GL_Tao_Resize);
             this.ResumeLayout(false);
 

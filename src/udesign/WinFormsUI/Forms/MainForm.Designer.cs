@@ -48,23 +48,24 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.m_menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.testFramesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGwenUnitTest = new System.Windows.Forms.ToolStripMenuItem();
             this.m_menuResForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.m_menuOpenTestLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pageControl = new System.Windows.Forms.TabPage();
-            this.m_menuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
+            this.m_glRenderBuffer = new udesign.EditorRenderBuffer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.m_tabControl.SuspendLayout();
             this.pageLayout.SuspendLayout();
@@ -227,7 +228,6 @@
             // testFramesToolStripMenuItem
             // 
             this.testFramesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemGwenUnitTest,
             this.m_menuResForm,
             this.toolStripSeparator5,
             this.m_menuOpenTestLayout,
@@ -235,13 +235,6 @@
             this.testFramesToolStripMenuItem.Name = "testFramesToolStripMenuItem";
             this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.testFramesToolStripMenuItem.Text = "&Test";
-            // 
-            // menuItemGwenUnitTest
-            // 
-            this.menuItemGwenUnitTest.Name = "menuItemGwenUnitTest";
-            this.menuItemGwenUnitTest.Size = new System.Drawing.Size(264, 22);
-            this.menuItemGwenUnitTest.Text = "Gwen UnitTest";
-            this.menuItemGwenUnitTest.Click += new System.EventHandler(this.menuItemGwenUnitTest_Click);
             // 
             // m_menuResForm
             // 
@@ -262,6 +255,14 @@
             this.m_menuOpenTestLayout.Text = "Open Test Layout (test.ui_layout)";
             this.m_menuOpenTestLayout.Click += new System.EventHandler(this.m_menuOpenTestLayout_Click);
             // 
+            // m_menuPreview
+            // 
+            this.m_menuPreview.Name = "m_menuPreview";
+            this.m_menuPreview.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.m_menuPreview.Size = new System.Drawing.Size(264, 22);
+            this.m_menuPreview.Text = "&Preview";
+            this.m_menuPreview.Click += new System.EventHandler(this.m_menuPreview_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 540);
@@ -279,6 +280,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.m_tabControl);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.m_glRenderBuffer);
             this.splitContainer1.Size = new System.Drawing.Size(784, 515);
             this.splitContainer1.SplitterDistance = 151;
             this.splitContainer1.TabIndex = 2;
@@ -334,14 +339,6 @@
             this.pageControl.Text = "Control";
             this.pageControl.UseVisualStyleBackColor = true;
             // 
-            // m_menuPreview
-            // 
-            this.m_menuPreview.Name = "m_menuPreview";
-            this.m_menuPreview.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.m_menuPreview.Size = new System.Drawing.Size(264, 22);
-            this.m_menuPreview.Text = "&Preview";
-            this.m_menuPreview.Click += new System.EventHandler(this.m_menuPreview_Click);
-            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -366,6 +363,14 @@
             this.uiControlList2.Size = new System.Drawing.Size(137, 483);
             this.uiControlList2.TabIndex = 0;
             // 
+            // editorRenderBuffer1
+            // 
+            this.m_glRenderBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_glRenderBuffer.Location = new System.Drawing.Point(0, 0);
+            this.m_glRenderBuffer.Name = "m_glRenderBuffer";
+            this.m_glRenderBuffer.Size = new System.Drawing.Size(629, 515);
+            this.m_glRenderBuffer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -383,6 +388,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.m_tabControl.ResumeLayout(false);
@@ -414,7 +420,6 @@
         private udesign.Controls.UILayoutTree m_uiLayoutTree;
         private udesign.Controls.UIObjectPropertyGrid m_uiPropertyGrid;
         private System.Windows.Forms.ToolStripMenuItem testFramesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGwenUnitTest;
         private System.Windows.Forms.ToolStripMenuItem m_menuResForm;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem m_menuUndo;
@@ -433,6 +438,7 @@
         private System.Windows.Forms.ToolStripMenuItem m_menuPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem m_menuPreview;
+        private EditorRenderBuffer m_glRenderBuffer;
     }
 }
 

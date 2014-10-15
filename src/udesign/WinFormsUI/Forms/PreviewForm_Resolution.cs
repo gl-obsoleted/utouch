@@ -29,6 +29,9 @@ namespace udesign
                 m_resolutionLabel.Text += string.Format(" ({0})", m_selectedResolution.tag); ;
             }
 
+            m_renderBuffer.ResWidth = m_selectedResolution.width;
+            m_renderBuffer.ResHeight = m_selectedResolution.height;
+
             // 选中新的分辨率对应的菜单和按钮
             m_selectedResolutionMenuItem = resolutionMenuItem;
             m_selectedResolutionMenuItem.Checked = true;

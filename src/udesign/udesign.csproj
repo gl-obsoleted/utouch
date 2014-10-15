@@ -110,6 +110,9 @@
     <Compile Include="SceneEd\SceneEd_DragRight_Scrolling.cs" />
     <Compile Include="TestSnippets\TestScene.cs" />
     <Compile Include="UDesignApp.cs" />
+    <Compile Include="WinFormsUI\Controls\RenderBuffers\EditorRenderBuffer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,12 +149,6 @@
     <Compile Include="WinFormsUI\Forms\PreviewForm.Designer.cs">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsUI\Forms\GwenUnitTestForm.Designer.cs">
-      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinFormsUI\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +157,9 @@
     </Compile>
     <Compile Include="WinFormsUI\Forms\PreviewForm_Resolution.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Controls\RenderBuffers\PreviewRenderBuffer.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="WinFormsUI\Forms\ResForm.cs">
       <SubType>Form</SubType>
@@ -189,9 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsUI\Forms\PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\Forms\GwenUnitTestForm.resx">
-      <DependentUpon>GwenUnitTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsUI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

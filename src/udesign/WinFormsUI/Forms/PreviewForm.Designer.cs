@@ -42,8 +42,10 @@
             this.m_btResDesktop = new DevComponents.DotNetBar.ButtonX();
             this.m_menuResDesktop = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.m_resolutionLabel = new DevComponents.DotNetBar.LabelX();
+            this.m_renderBuffer = new udesign.PreviewRenderBuffer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.m_renderBuffer);
             this.splitContainer1.Size = new System.Drawing.Size(784, 562);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 0;
@@ -204,6 +210,14 @@
             this.m_resolutionLabel.TabIndex = 5;
             this.m_resolutionLabel.Text = "<default_res>";
             // 
+            // m_renderBuffer
+            // 
+            this.m_renderBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_renderBuffer.Location = new System.Drawing.Point(0, 0);
+            this.m_renderBuffer.Name = "m_renderBuffer";
+            this.m_renderBuffer.Size = new System.Drawing.Size(784, 526);
+            this.m_renderBuffer.TabIndex = 0;
+            // 
             // PreviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -214,6 +228,7 @@
             this.Text = "预览窗口";
             this.Load += new System.EventHandler(this.GwenUnitTestForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -235,5 +250,6 @@
         private DevComponents.DotNetBar.ButtonX m_btResCustom;
         private DevComponents.DotNetBar.LabelX m_resolutionLabel;
         private System.Windows.Forms.ContextMenuStrip m_menuResCustom;
+        private PreviewRenderBuffer m_renderBuffer;
     }
 }

@@ -19,11 +19,9 @@ namespace udesign
         {
             InitializeComponent();
 
-            m_glCtrl = new Controls.UITaoRenderBuffer();
-            m_glCtrl.Dock = DockStyle.Fill;
-            m_glCtrl.SetScene(scn);
-            m_glCtrl.SetSceneEd(scnEd);
-            this.splitContainer1.Panel2.Controls.Add(m_glCtrl);
+            m_renderBuffer.SetScene(scn);
+            m_renderBuffer.InitContext();
+            m_renderBuffer.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
 
             ftime = new List<long>();
             stopwatch = new Stopwatch();
@@ -121,7 +119,7 @@ namespace udesign
 
             if (stopwatch.ElapsedMilliseconds > 1000)
             {
-                Gwen.Renderer.Tao renderer = m_glCtrl.GetRenderer();
+                Gwen.Renderer.Tao renderer = m_renderBuffer.GetRenderer();
 
                 //test.Note = String.Format("String Cache size: {0}", renderer.TextCacheSize);
                 //test.Fps = 1000f * ftime.Count / ftime.Sum();
@@ -132,7 +130,6 @@ namespace udesign
             }
         }
 
-        private Controls.UITaoRenderBuffer m_glCtrl;
         const int fps_frames = 50;
         private readonly List<long> ftime;
         private readonly Stopwatch stopwatch;
@@ -143,7 +140,6 @@ namespace udesign
             // 构造函数内 Canvas 还没初始化，所以挪到这里做
             //test = new Gwen.UnitTest.UnitTest(m_glCtrl.GetCanvas());
 
-            m_glCtrl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
 
             stopwatch.Restart();
             lastTime = 0;
@@ -151,7 +147,7 @@ namespace udesign
 
         private void m_btRefresh_Click(object sender, EventArgs e)
         {
-
+            m_renderBuffer.Refresh();
         }
 
         private void m_btResDesktop_Click(object sender, EventArgs e)
