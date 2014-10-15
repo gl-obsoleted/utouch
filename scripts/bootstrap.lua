@@ -9,7 +9,7 @@ ResCat_Custom   = 3
 Resolutions = {
     -- 桌面
     { w = 800,  h = 600,    cat = ResCat_Desktop },
-    { w = 1024, h = 768,    cat = ResCat_Desktop },
+    { w = 1024, h = 768,    cat = ResCat_Desktop,   default = true },
     { w = 1280, h = 720,    cat = ResCat_Desktop,   tag = "宽屏" },
 
     -- iOS

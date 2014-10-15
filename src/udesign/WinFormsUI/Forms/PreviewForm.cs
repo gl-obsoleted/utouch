@@ -28,6 +28,7 @@ namespace udesign
             ftime = new List<long>();
             stopwatch = new Stopwatch();
 
+            m_defaultResolution = null;
             MoonSharp.Interpreter.Table t = LuaRuntime.Instance.BootstrapScript.Globals["Resolutions"] as MoonSharp.Interpreter.Table;
             foreach (var res in t.Values)
             {
@@ -54,9 +55,36 @@ namespace udesign
                         tsi.Tag = resolution;
                         tsi.Click += m_resolutionMenuItemClicked;
                         ctrl.ContextMenuStrip.Items.Add(tsi);
+
+                        if (Convert.ToBoolean(res.Table["default"]))
+                        {
+                            m_defaultResolution = resolution;
+                            m_defaultResolutionMenuItem = tsi;
+                            m_defaultResolutionButton = ctrl as ButtonX;
+                        }
                     }
                 }
             }
+
+            // 如果没有在脚本中正确地设置默认分辨率，这里选择使用桌面分辨率的第一个作为默认分辨率
+            if (m_defaultResolution == null)
+            {
+                ucore.SysPost.AssertException(m_btResDesktop.ContextMenuStrip.Items.Count > 0, "The context menu of 'Desktop' button is not empty.");
+                ToolStripMenuItem mi = m_btResDesktop.ContextMenuStrip.Items[0] as ToolStripMenuItem;
+                if (mi != null)
+                {
+                    Resolution res = m_btResDesktop.ContextMenuStrip.Items[0].Tag as Resolution;
+                    if (res != null)
+                    {
+                        m_defaultResolution = res;
+                        m_defaultResolutionMenuItem = mi;
+                        m_defaultResolutionButton = m_btResDesktop;
+                    }
+                }
+            }
+
+            ucore.SysPost.AssertException(m_defaultResolution != null, "The default exception is not set properly.");
+            SelectResolution(m_defaultResolution, m_defaultResolutionMenuItem, m_defaultResolutionButton);
         }
 
         private Control FindButtonByCategory(int category)
@@ -152,13 +180,8 @@ namespace udesign
             if (mi != null)
             {
                 Resolution res = mi.Tag as Resolution;
-                m_resolutionLabel.Text = string.Format("{0}x{1}", res.width, res.height);
-
                 Control ctrl = FindButtonByCategory(res.category);
-                m_btResDesktop.Checked = ctrl == m_btResDesktop;
-                m_btResIOS.Checked = ctrl == m_btResIOS;
-                m_btResAndroid.Checked = ctrl == m_btResAndroid;
-                m_btResCustom.Checked = ctrl == m_btResCustom;
+                SelectResolution(res, mi, ctrl as ButtonX);
             }            
         }
     }

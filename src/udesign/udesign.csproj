@@ -158,6 +158,9 @@
     <Compile Include="WinFormsUI\Forms\MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsUI\Forms\PreviewForm_Resolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WinFormsUI\Forms\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +215,10 @@
     <None Include="_Docs\SceneEd 内部依赖关系.dgml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ucore\ucore.csproj">
+      <Project>{3d00ab42-ca20-46c7-86b6-53a78e6ea098}</Project>
+      <Name>ucore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ulib\ulib.csproj">
       <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
       <Name>ulib</Name>

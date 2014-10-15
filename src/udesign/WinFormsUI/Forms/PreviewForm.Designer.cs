@@ -66,14 +66,14 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.m_btResCustom, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btRefresh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.m_btResAndroid, 3, 0);
@@ -200,7 +200,7 @@
             this.m_resolutionLabel.Location = new System.Drawing.Point(530, 3);
             this.m_resolutionLabel.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.m_resolutionLabel.Name = "m_resolutionLabel";
-            this.m_resolutionLabel.Size = new System.Drawing.Size(130, 26);
+            this.m_resolutionLabel.Size = new System.Drawing.Size(244, 26);
             this.m_resolutionLabel.TabIndex = 5;
             this.m_resolutionLabel.Text = "<default_res>";
             // 

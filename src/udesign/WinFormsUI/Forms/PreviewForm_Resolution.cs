@@ -1,0 +1,49 @@
+﻿using DevComponents.DotNetBar;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace udesign
+{
+    partial class PreviewForm 
+    {
+        private void SelectResolution(Resolution resolution, ToolStripMenuItem resolutionMenuItem, ButtonX resolutionButton)
+        {
+            if (resolution == null || resolutionMenuItem == null || resolutionButton == null)
+                throw new ArgumentNullException("resolution", "选择分辨率时传入了无效的参数.");
+
+            // 先 deselect 之前选中的分辨率
+            if (m_selectedResolutionMenuItem != null)
+                m_selectedResolutionMenuItem.Checked = false;
+            if (m_selectedResolutionButton != null)
+                m_selectedResolutionButton.Checked = false;
+
+            m_selectedResolution = resolution;
+            m_resolutionLabel.Text = string.Format("当前分辨率 - {0}: {1}x{2}", m_resolutionCategories[m_selectedResolution.category], m_selectedResolution.width, m_selectedResolution.height);
+
+            if (!string.IsNullOrEmpty(m_selectedResolution.tag))
+            {
+                m_resolutionLabel.Text += string.Format(" ({0})", m_selectedResolution.tag); ;
+            }
+
+            // 选中新的分辨率对应的菜单和按钮
+            m_selectedResolutionMenuItem = resolutionMenuItem;
+            m_selectedResolutionMenuItem.Checked = true;
+            m_selectedResolutionButton = resolutionButton;
+            m_selectedResolutionButton.Checked = true;
+        }
+
+        private string[] m_resolutionCategories = new string[] { "Desktop", "iOS", "Android", "Custom" };
+
+        private Resolution m_defaultResolution;
+        private ToolStripMenuItem m_defaultResolutionMenuItem;
+        private ButtonX m_defaultResolutionButton;
+
+        private Resolution m_selectedResolution;
+        private ToolStripMenuItem m_selectedResolutionMenuItem;
+        private ButtonX m_selectedResolutionButton;
+    }
+}

@@ -22,6 +22,8 @@
 /src/ulib/obj
 /src/udesign/bin
 /src/udesign/obj
+/src/ucore/bin
+/src/ucore/obj
 /bin
 /temp
 /cfg_user.json
