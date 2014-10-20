@@ -26,32 +26,33 @@ namespace udesign
                 if (!UDesignApp.Instance.InitSession())
                     return;
 
-                using (MainForm mainForm = new MainForm())
+#if (!DEBUG)
+                try
                 {
-                    if (!mainForm.Init())
+#endif
+                    using (MainForm mainForm = new MainForm())
                     {
-                        MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
-                        return;
-                    }
+                        if (!mainForm.Init())
+                        {
+                            MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
+                            return;
+                        }
+                        Session.Log("主界面初始化完毕。");
 
-                    if (Properties.Settings.Default.BuildTestScene)
-                        TestScene.Run();
+                        if (Properties.Settings.Default.BuildTestScene)
+                            TestScene.Run();
 
-                    // 正常的运行阶段
-#if DEBUG
-                    Application.Run(mainForm);
-#else
-                    try
-                    {
+                        // 正常的运行阶段
                         Application.Run(mainForm);
                     }
-                    catch (Exception e)
-                    {
-                        Session.LogExceptionDetail(e);
-                        MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
-                    }
-#endif
+#if (!DEBUG)
                 }
+                catch (Exception e)
+                {
+                    Session.LogExceptionDetail(e);
+                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
+                }
+#endif
             }
         }
     }
