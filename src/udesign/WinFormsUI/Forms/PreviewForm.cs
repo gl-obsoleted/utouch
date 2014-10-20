@@ -85,30 +85,6 @@ namespace udesign
             SelectResolution(m_defaultResolution, m_defaultResolutionMenuItem, m_defaultResolutionButton);
         }
 
-        private Control FindButtonByCategory(int category)
-        {
-            Func<string, int> fnGetIntGlobal = (gname) => { return Convert.ToInt32(LuaRuntime.Instance.BootstrapScript.Globals[gname]); };
-
-            if (category == fnGetIntGlobal("ResCat_Desktop"))
-            {
-                return m_btResDesktop;
-            }
-            else if (category == fnGetIntGlobal("ResCat_iOS"))
-            {
-                return m_btResIOS;
-            }
-            else if (category == fnGetIntGlobal("ResCat_Andriod"))
-            {
-                return m_btResAndroid;
-            }
-            else if (category == fnGetIntGlobal("ResCat_Custom"))
-            {
-                return m_btResCustom;
-            }
-
-            return null;
-        }
-
         private void glControl_Paint(object sender, PaintEventArgs e)
         {
             if (ftime.Count == fps_frames)
