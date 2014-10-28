@@ -6,16 +6,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ulib.Base
+namespace ucore
 {
-    public class JsonUtil
+    public class JsonHelpers
     {
-        public static JObject LoadJObject(string filepath)
+        public static JObject ReadTextIntoJObject(string textFile)
         {
             try
             {
                 // read JSON directly from a file
-                using (StreamReader file = File.OpenText(filepath))
+                using (StreamReader file = File.OpenText(textFile))
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
                     return (JObject)JToken.ReadFrom(reader);
@@ -23,10 +23,9 @@ namespace ulib.Base
             }
             catch (Exception e)
             {
-                Session.LogExceptionDetail(e);
+                Logging.PrintException(e);
                 return null;
             }
         }
     }
-
 }

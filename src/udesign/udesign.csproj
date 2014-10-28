@@ -160,11 +160,17 @@
     <Compile Include="WinFormsUI\Controls\RenderBuffers\PreviewRenderBuffer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\Forms\ResForm.cs">
+    <Compile Include="WinFormsUI\资源面板\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\Forms\ResForm.designer.cs">
+    <Compile Include="WinFormsUI\资源面板\ResForm.designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsUI\资源面板\UINineGridSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\资源面板\UINineGridSettings.Designer.cs">
+      <DependentUpon>UINineGridSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="_1_Core\CtrlUtil.cs" />
     <Compile Include="_1_Core\LuaRuntime.cs" />
@@ -192,8 +198,11 @@
     <EmbeddedResource Include="WinFormsUI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\Forms\ResForm.resx">
+    <EmbeddedResource Include="WinFormsUI\资源面板\ResForm.resx">
       <DependentUpon>ResForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsUI\资源面板\UINineGridSettings.resx">
+      <DependentUpon>UINineGridSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="app.config">

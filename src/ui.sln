@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulib", "ulib\ulib.csproj", "{F0872212-C4F0-46FF-87D8-65A77D708D57}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D00AB42-CA20-46C7-86B6-53A78E6EA098} = {3D00AB42-CA20-46C7-86B6-53A78E6EA098}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "udesign", "udesign\udesign.csproj", "{E2DE1E50-94F1-4CCD-9F49-41AD0F71D980}"
 	ProjectSection(ProjectDependencies) = postProject

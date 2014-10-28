@@ -76,7 +76,7 @@ namespace udesign
         /// </summary>
         public void Init()
         {
-            JObject loaded = JsonUtil.LoadJObject(Properties.Settings.Default.UserPrefFilePath);
+            JObject loaded = ucore.JsonHelpers.ReadTextIntoJObject(Properties.Settings.Default.UserPrefFilePath);
             if (loaded != null)
             {
                 m_jsonObject = loaded;

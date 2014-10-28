@@ -1,0 +1,12 @@
+{
+  "300yuanbao.png": {
+    "horiLeft": "46",
+    "horiRight": "56",
+    "vertTop": "46",
+    "vertBottom": "56"
+  },
+  "1980yuanbao.png": {
+    "horiLeft": "46",
+    "horiRight": "56"
+  }
+}

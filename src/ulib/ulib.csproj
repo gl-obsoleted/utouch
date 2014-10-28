@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Base\BaseDef.cs" />
     <Compile Include="Base\BaseUtil.cs" />
-    <Compile Include="Base\JsonUtil.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\CheckBox.cs" />
@@ -82,7 +81,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ucore\ucore.csproj">
+      <Project>{3d00ab42-ca20-46c7-86b6-53a78e6ea098}</Project>
+      <Name>ucore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

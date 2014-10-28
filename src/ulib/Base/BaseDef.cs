@@ -18,6 +18,7 @@ namespace ulib.Base
         public const string ResProtocol = "uires://";
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";
+        public const string ResDescFilePostfix = "_desc.txt";
         public const char ResDelimeter = ':';
 
         public static readonly string LibName = "ulib";

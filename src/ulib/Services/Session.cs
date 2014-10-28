@@ -33,6 +33,8 @@ namespace ulib
                 return false;
             }
 
+            ucore.Logging.Receivers += Log;
+            ucore.Logging.ExceptionReceivers += LogExceptionDetail;
             return true;
         }
 
@@ -63,6 +65,11 @@ namespace ulib
             Log("===== Exception #{0} Begin =====", ExceptionCounter);
             Log(e.GetType().Name);
             Log(e.Message);
+            if (!string.IsNullOrEmpty(additionalInfo))
+            {
+                Log("  Additional Info:");
+                Log("    {0} ", additionalInfo);
+            }
             Log("===== Exception #{0} End   =====", ExceptionCounter);
         }
 

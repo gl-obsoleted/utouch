@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions.cs" />
+    <Compile Include="JsonHelpers.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="SysPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
