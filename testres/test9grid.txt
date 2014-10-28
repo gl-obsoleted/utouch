@@ -1,0 +1,20 @@
+{"frames": {
+
+"NX_PB_frame_outline borde02.png":
+{
+	"frame": {"x":1,"y":1,"w":254,"h":266},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":3,"w":254,"h":266},
+	"sourceSize": {"w":270,"h":270}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "test9grid.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":268},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:35fe5c3a70e4c73b069f11d6ca578f96:dd1b2a62c457615b5a66bbe80128f38e:abaf6ffaf7c5c9d1c3659dee0fa65357$"
+}
+}
