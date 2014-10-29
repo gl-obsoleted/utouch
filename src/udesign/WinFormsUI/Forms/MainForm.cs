@@ -155,7 +155,8 @@ namespace udesign
             BootParams bp = new BootParams {
                 DefaultReourceImage = Properties.Settings.Default.DefaultResFile,
                 ReourceImages = ConfigTypical.Instance.ReourceImages,
-                ScenePath = sceneName 
+                ScenePath = sceneName,
+                DesignTimeResolution = LuaHelpers.GetDefaultResolution()
             };
             if (!Bootstrap.Instance.Init(bp))
                 return false;

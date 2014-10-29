@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ulib.Base;
 
 namespace udesign
 {
     partial class PreviewForm 
     {
-        private void SelectResolution(Resolution resolution, ToolStripMenuItem resolutionMenuItem, ButtonX resolutionButton)
+        private void SelectResolution(ResolutionV2 resolution, ToolStripMenuItem resolutionMenuItem, ButtonX resolutionButton)
         {
             if (resolution == null || resolutionMenuItem == null || resolutionButton == null)
                 throw new ArgumentNullException("resolution", "选择分辨率时传入了无效的参数.");
@@ -41,11 +42,11 @@ namespace udesign
 
         private string[] m_resolutionCategories = new string[] { "Desktop", "iOS", "Android", "Custom" };
 
-        private Resolution m_defaultResolution;
+        private ResolutionV2 m_defaultResolution;
         private ToolStripMenuItem m_defaultResolutionMenuItem;
         private ButtonX m_defaultResolutionButton;
 
-        private Resolution m_selectedResolution;
+        private ResolutionV2 m_selectedResolution;
         private ToolStripMenuItem m_selectedResolutionMenuItem;
         private ButtonX m_selectedResolutionButton;
     }

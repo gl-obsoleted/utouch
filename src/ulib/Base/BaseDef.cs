@@ -49,6 +49,14 @@ namespace ulib.Base
         }
     }
 
+    public class ResolutionV2
+    {
+        public int width;
+        public int height;
+        public int category;
+        public string tag;
+    }
+
     public enum AlignHori
     {
         Left,

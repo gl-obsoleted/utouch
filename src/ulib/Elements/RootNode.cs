@@ -82,8 +82,8 @@ namespace ulib.Elements
         protected bool m_isFullscreen = false;
         protected RootNodeSettings m_settings = new RootNodeSettings();
 
-        public static readonly Point Default_Position = new Point { X = 100, Y = 100 };
-        public static readonly Size Default_Size = new Size { Width = 600, Height = 500 };
+        public static readonly Point Default_Position = new Point { X = 50, Y = 30 };
+        public static readonly Size Default_Size = new Size { Width = 500, Height = 500 };
         public static readonly string Default_Name = "Root";
     }
 }
