@@ -1,0 +1,14 @@
+{
+  "NX_PB_frame_outline borde02.png": {
+    "horiLeft": "122",
+    "horiRight": "132",
+    "vertTop": "128",
+    "vertBottom": "138"
+  },
+  "NX_PB_frame_outline borde03.png": {
+    "horiLeft": "20",
+    "horiRight": "30",
+    "vertTop": "20",
+    "vertBottom": "30"
+  }
+}

@@ -14,7 +14,7 @@ using ulib;
 
 namespace udesign
 {
-    public delegate void BorderChangeHandler(int left, int right, int top, int bottom);
+    public delegate void BorderChangeHandler(int left, int right, int top, int bottom, Size originalTileSize);
 
     public partial class UINineGridSettings : UserControl
     {
@@ -166,7 +166,7 @@ namespace udesign
                 if (h != null)
                 {
                     h(int.Parse(m_9gridHoriLeft.Text), int.Parse(m_9gridHoriRight.Text),
-                        int.Parse(m_9gridVertTop.Text), int.Parse(m_9gridVertBottom.Text));
+                        int.Parse(m_9gridVertTop.Text), int.Parse(m_9gridVertBottom.Text), m_atlasTileSize);
                 }
             }
             catch (Exception)

@@ -209,12 +209,14 @@ namespace udesign
         private int m_borderRight;
         private int m_borderTop;
         private int m_borderBottom;
-        void m_nineGridSettings_BorderChanged(int left, int right, int top, int bottom)
+        private Size m_originalTileSize;
+        void m_nineGridSettings_BorderChanged(int left, int right, int top, int bottom, Size originalTileSize)
         {
             m_borderLeft = left;
             m_borderRight = right;
             m_borderTop = top;
             m_borderBottom = bottom;
+            m_originalTileSize = originalTileSize;
             m_previewImage.Refresh();
         }
 
@@ -225,23 +227,28 @@ namespace udesign
                 return;
                     
             rect.Size = m_previewImage.Image.Size;
+
             using(Pen pen = new Pen(Color.LightGray, 3))
             {
                 if (m_borderLeft != 0)
                 {
-                    e.Graphics.DrawLine(pen, new Point(m_borderLeft, rect.Top), new Point(m_borderLeft, rect.Bottom));
+                    int scaledLeft = (int)((float)m_borderLeft * ((float)rect.Size.Width / (float)m_originalTileSize.Width));
+                    e.Graphics.DrawLine(pen, new Point(scaledLeft, rect.Top), new Point(scaledLeft, rect.Bottom));
                 }
                 if (m_borderRight != 0)
                 {
-                    e.Graphics.DrawLine(pen, new Point(m_borderRight, rect.Top), new Point(m_borderRight, rect.Bottom));
+                    int scaledRight = (int)((float)m_borderRight * ((float)rect.Size.Width / (float)m_originalTileSize.Width));
+                    e.Graphics.DrawLine(pen, new Point(scaledRight, rect.Top), new Point(scaledRight, rect.Bottom));
                 }
                 if (m_borderTop != 0)
                 {
-                    e.Graphics.DrawLine(pen, new Point(rect.Left, m_borderTop), new Point(rect.Right, m_borderTop));
+                    int scaledTop = (int)((float)m_borderTop * ((float)rect.Size.Height / (float)m_originalTileSize.Height));
+                    e.Graphics.DrawLine(pen, new Point(rect.Left, scaledTop), new Point(rect.Right, scaledTop));
                 }
                 if (m_borderBottom != 0)
                 {
-                    e.Graphics.DrawLine(pen, new Point(rect.Left, m_borderBottom), new Point(rect.Right, m_borderBottom));
+                    int scaledBottom = (int)((float)m_borderBottom * ((float)rect.Size.Height / (float)m_originalTileSize.Height));
+                    e.Graphics.DrawLine(pen, new Point(rect.Left, scaledBottom), new Point(rect.Right, scaledBottom));
                 }
             }
         }
