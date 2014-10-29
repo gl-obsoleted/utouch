@@ -1,0 +1,20 @@
+{
+  "IsFullscren": false,
+  "Name": "Root",
+  "Position": "5, 6",
+  "Size": "630, 784",
+  "LogicalSize": "0, 0",
+  "Visible": true,
+  "Dock": 0,
+  "AlignH": 1,
+  "AlignV": 1,
+  "Margin": 3,
+  "Tag": null,
+  "Locked": true,
+  "UserData": {
+    "EditTimeResSlot": 2,
+    "EditTimeResolution": "1024, 768"
+  },
+  "__type_info__": "RootNode",
+  "Children": []
+}

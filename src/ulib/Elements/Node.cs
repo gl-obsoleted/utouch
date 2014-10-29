@@ -52,6 +52,9 @@ namespace ulib.Elements
         [Category("Node")]
         [Description("标记 (可任意起，不影响正常逻辑)")]
         public string Tag { get; set; }
+        [Category("Node")]
+        [Description("是否锁定，锁定的控件无法选中，移动和缩放")]
+        public bool Locked { get; set; }
 
         // 以下为编辑器内不可见的字段，这些字段不出现在编辑器里，所以不需要 Category 和 Description
         [Browsable(false)]
@@ -98,6 +101,7 @@ namespace ulib.Elements
             Position = new Point(0, 0);
             Size = new Size(100, 100);
             Visible = true;
+            Locked = false;
             LockChildrenLayoutRecursively = false;
             Dock = DockType.None;
             AlignH = AlignHori.Center;
@@ -334,7 +338,7 @@ namespace ulib.Elements
 
         public virtual bool IsResizable()
         {
-            return true;
+            return !Locked;
         }
     }
 }

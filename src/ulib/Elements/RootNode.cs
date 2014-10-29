@@ -53,7 +53,7 @@ namespace ulib.Elements
 
         public override bool IsResizable()
         {
-            return !IsFullscren;
+            return !IsFullscren && !Locked;
         }
 
         protected void OnFullscreenChanged()

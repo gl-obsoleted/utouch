@@ -129,6 +129,9 @@ namespace udesign
         {
             foreach (var n in m_selection)
             {
+                if (n.Locked)
+                    return false;
+
                 if (n is RootNode)
                 {
                     RootNode r = n as RootNode;
