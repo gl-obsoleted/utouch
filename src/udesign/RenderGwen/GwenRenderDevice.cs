@@ -78,6 +78,9 @@ namespace udesign
 
         private void RenderTextNode(TextNode textNode, GwenRenderContext grc)
         {
+            if (string.IsNullOrEmpty(textNode.Text))
+                return;
+
             // 当需要的时候，先更新 TextNode 的尺寸
             Point textSize = grc.Renderer.MeasureText(grc.Font, textNode.Text);
             if (textNode.RequestedSizeRefreshing)
