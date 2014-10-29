@@ -126,8 +126,8 @@ namespace ulib.Elements
         public void SetScrollOffsetClamped(Point offset)
         {
             Point newOffset = new Point();
-            newOffset.X = ulib.Base.MathUtil.Clamp(offset.X, 0, LogicalSize.Width - Size.Width);
-            newOffset.Y = ulib.Base.MathUtil.Clamp(offset.Y, 0, LogicalSize.Height - Size.Height);
+            newOffset.X = ucore.EzMath.Clamp(offset.X, 0, LogicalSize.Width - Size.Width);
+            newOffset.Y = ucore.EzMath.Clamp(offset.Y, 0, LogicalSize.Height - Size.Height);
             CurrentScrollOffset = newOffset;
         }
 
@@ -255,10 +255,10 @@ namespace ulib.Elements
 
         public Rectangle GetChildrenWorldBounds()
         {
-            Rectangle rect = Constants.INVALID_RECT;
+            Rectangle rect = ucore.Const.INVALID_RECT;
             foreach (Node child in Children)
             {
-                if (Base.MathUtil.IsInvalid(rect))
+                if (ucore.EzMath.IsInvalid(rect))
                 {
                     rect = child.GetWorldBounds();
                 }

@@ -27,5 +27,13 @@ namespace ucore
                 return null;
             }
         }
+
+        public static int GetIntProperty(JObject obj, string propName)
+        {
+            if (obj.Property(propName) == null)
+                return 0;
+
+            return EzConv.ToInt((string)obj[propName]);
+        }
     }
 }

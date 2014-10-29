@@ -66,7 +66,7 @@ namespace ulib.Elements
             else
             {
                 Rectangle childrenWorldBounds = GetChildrenWorldBounds();
-                if (Base.MathUtil.IsInvalid(childrenWorldBounds))
+                if (ucore.EzMath.IsInvalid(childrenWorldBounds))
                 {
                     Position = Default_Position;
                     Size = Default_Size;

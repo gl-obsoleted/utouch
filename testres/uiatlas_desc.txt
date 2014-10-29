@@ -8,5 +8,9 @@
   "1980yuanbao.png": {
     "horiLeft": "46",
     "horiRight": "56"
+  },
+  "4880yuanbao.png": {
+    "vertTop": "46",
+    "vertBottom": "56"
   }
 }

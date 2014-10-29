@@ -23,7 +23,7 @@ namespace udesign
             // 当任意节点都支持自动转换为滑动面板之后，让父节点在缩放时保证其包围盒能包含所有子节点已经意义不大。
             // 所以下面的 clamping 代码已被注释掉。
             //Rectangle childrenBounds = m_selection.GetChildrenWorldBounds();
-            //if (childrenBounds == Constants.INVALID_RECT)
+            //if (childrenBounds == ucore.Const.INVALID_RECT)
             //{
             //    m_selection.Position = m_selection.Parent != null ? m_selection.Parent.WorldToLocal(bounds.Location) : bounds.Location;
             //    m_selection.Size = bounds.Size;
@@ -42,7 +42,7 @@ namespace udesign
 
             // Resize 时做出了一些限制 - 缩放时不可以超出当前父节点的边界
             if (m_selection.Parent != null)
-                newBounds = ulib.Base.MathUtil.Clamp(bounds, m_selection.Parent.GetWorldBounds());
+                newBounds = ucore.EzMath.Clamp(bounds, m_selection.Parent.GetWorldBounds());
 
             // Resize 可能会影响到控件的位置，这里处理
             m_selection.Position = newBounds.Location;

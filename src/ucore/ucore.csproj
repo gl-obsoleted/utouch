@@ -39,13 +39,17 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const.cs" />
+    <Compile Include="EzConv.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="EzMath.cs" />
     <Compile Include="JsonHelpers.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="SysPost.cs" />
