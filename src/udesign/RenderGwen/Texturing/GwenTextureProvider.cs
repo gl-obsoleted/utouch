@@ -96,6 +96,15 @@ namespace udesign
     {
         public static GwenTextureProvider Instance = new GwenTextureProvider();
 
+        public void ReleaseAllTextures()
+        {
+            foreach (var textureInfo in m_lut)
+            {
+                textureInfo.Value.texture.Dispose();
+            }
+            m_lut.Clear();
+        }
+
         public TextureRenderInfo GetTextureRenderInfo(Gwen.Renderer.Tao renderer, string url)
         {
             TextureRenderInfo tri;
