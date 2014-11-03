@@ -23,36 +23,47 @@ namespace ulib.Elements
         ///     [ReadOnly(true)]    是指该属性为只读属性，不可编辑
 
         [Category("Node")]
+        [DisplayName("名字")]
         [Description("名字 (可指定，但需要在当前路径下唯一)")]
         public string Name { get; set; }
         [Category("Node")]
+        [DisplayName("位置")]
         [Description("相对父节点的位置 (影响所有子节点)")]
         public Point Position { get; set; }
         [Category("Node")]
+        [DisplayName("尺寸")]
         [Description("尺寸")]
         public Size Size { get { return m_size; } set { InternalSetSize(value); } }
         [Category("Node")]
+        [DisplayName("逻辑尺寸")]
         [Description("逻辑尺寸（默认为零，当小于等于 Size 时认为二者相同，当逻辑尺寸 X 或 Y 大于可视尺寸 Size 时，对应维度转为可滑动）")]
         public Size LogicalSize { get; set; }
         [Category("Node")]
+        [DisplayName("是否可见")]
         [Description("是否可见 (影响所有子节点)")]
         public bool Visible { get; set; }
         [Category("Node")]
+        [DisplayName("停靠")]
         [Description("外部 Dock，用于描述与父节点的关系，是节点通用属性")]
         public DockType Dock { get; set; }
         [Category("Node")]
+        [DisplayName("水平对齐")]
         [Description("水平方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
         public AlignHori AlignH { get; set; }
         [Category("Node")]
+        [DisplayName("垂直对齐")]
         [Description("垂直方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
         public AlignVert AlignV { get; set; }
         [Category("Node")]
+        [DisplayName("外部间距")]
         [Description("外部间距")]
         public int Margin { get; set; }
         [Category("Node")]
+        [DisplayName("标记")]
         [Description("标记 (可任意起，不影响正常逻辑)")]
         public string Tag { get; set; }
         [Category("Node")]
+        [DisplayName("是否锁定")]
         [Description("是否锁定，锁定的控件无法选中，移动和缩放")]
         public bool Locked { get; set; }
 

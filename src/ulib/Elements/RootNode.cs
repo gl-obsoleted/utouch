@@ -13,6 +13,7 @@ namespace ulib.Elements
     public class RootNode : Node
     {
         [Category("Root")]
+        [DisplayName("是否全屏")]
         public bool IsFullscren 
         { 
             get 
@@ -27,6 +28,7 @@ namespace ulib.Elements
         }
 
         [Category("Root")]
+        [DisplayName("当前分辨率")]
         [JsonIgnore]
         public Resolution.Slot CurrentResolution
         {

@@ -16,7 +16,7 @@ namespace ulib.Elements
         }
 
         [Category("Image")]
-        [Description("资源名")]
+        [DisplayName("资源名")]
         public string Res { get; set; }
     }
 }
