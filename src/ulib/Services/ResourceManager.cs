@@ -67,6 +67,16 @@ namespace ulib
             return true;
         }
 
+        public ImageResource GetResource(string url)
+        {
+            string filePath;
+            string tileName;
+            if (!ResUtil.ExtractTextureInfo(url, out filePath, out tileName))
+                return null;
+
+            return GetResource(filePath, tileName);
+        }
+
         public ImageResource GetResource(string resFile, string resName)
         {
             if (resFile == m_defaultResGroup.ResFilePath)
@@ -79,6 +89,15 @@ namespace ulib
                 return null;
 
             return group.FindResource(resName);
+        }
+
+        public Size GetResourceSize(string url)
+        {
+            ImageResource ir = ResourceManager.Instance.GetResource(url);
+            if (ir == null)
+                return ucore.Const.ZERO_SIZE;
+
+            return ir.Size;
         }
 
         public Dictionary<string, ImageResourceGroup> ResGroups { get { return m_resGroupsLut; } }

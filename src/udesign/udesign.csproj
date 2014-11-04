@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="RenderGwen\GwenUtil.cs" />
     <Compile Include="RenderGwen\Texturing\AtlasManager.cs" />
+    <Compile Include="SceneEd\SceneEdCmdListener.cs" />
     <Compile Include="SceneEd\_Base\Actions\Action.cs" />
     <Compile Include="SceneEd\_Base\ActionQueue.cs" />
     <Compile Include="SceneEd\_Base\Actions\Action_Delete.cs" />

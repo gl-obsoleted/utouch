@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using ulib.Base;
 
 namespace ulib.Elements
 {
@@ -17,6 +18,25 @@ namespace ulib.Elements
 
         [Category("Image")]
         [DisplayName("资源名")]
-        public string Res { get; set; }
+        public string Res 
+        {
+            get { return m_res; } 
+            set 
+            {
+                m_res = value;
+
+                if (!GState.IsInLoadingProcess)
+                {
+                    ResizeToResSize(); 
+                }
+            } 
+        }
+
+        public override System.Drawing.Size GetExpectedResourceSize()
+        {
+            return ResourceManager.Instance.GetResourceSize(Res);
+        }
+
+        private string m_res;
     }
 }

@@ -266,5 +266,10 @@ namespace udesign
             PreviewForm f = new PreviewForm(Scene.Instance, SceneEd.Instance);
             f.Show();
         }
+
+        private void m_menuResizeControlToBeResSize_Click(object sender, EventArgs e)
+        {
+            SceneEdCmdListener.OnCommand(SceneEdCmdListener.Command.ResizeControlToResourceSize);
+        }
     }
 }

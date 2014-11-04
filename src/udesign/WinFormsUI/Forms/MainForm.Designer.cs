@@ -62,6 +62,8 @@
             this.pageControl = new System.Windows.Forms.TabPage();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
             this.m_glRenderBuffer = new udesign.EditorRenderBuffer();
+            this.高级AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_menuResizeControlToBeResSize = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -81,6 +83,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.高级AToolStripMenuItem,
             this.testFramesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -176,52 +179,52 @@
             // m_menuUndo
             // 
             this.m_menuUndo.Name = "m_menuUndo";
-            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuUndo.Size = new System.Drawing.Size(117, 22);
             this.m_menuUndo.Text = "撤销(&U)";
             this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
             // 
             // m_menuRedo
             // 
             this.m_menuRedo.Name = "m_menuRedo";
-            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuRedo.Size = new System.Drawing.Size(117, 22);
             this.m_menuRedo.Text = "重做(&R)";
             this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(114, 6);
             // 
             // m_menuCut
             // 
             this.m_menuCut.Name = "m_menuCut";
-            this.m_menuCut.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCut.Size = new System.Drawing.Size(117, 22);
             this.m_menuCut.Text = "剪切";
             this.m_menuCut.Click += new System.EventHandler(this.m_menuCut_Click);
             // 
             // m_menuCopy
             // 
             this.m_menuCopy.Name = "m_menuCopy";
-            this.m_menuCopy.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCopy.Size = new System.Drawing.Size(117, 22);
             this.m_menuCopy.Text = "复制";
             this.m_menuCopy.Click += new System.EventHandler(this.m_menuCopy_Click);
             // 
             // m_menuPaste
             // 
             this.m_menuPaste.Name = "m_menuPaste";
-            this.m_menuPaste.Size = new System.Drawing.Size(152, 22);
+            this.m_menuPaste.Size = new System.Drawing.Size(117, 22);
             this.m_menuPaste.Text = "粘贴";
             this.m_menuPaste.Click += new System.EventHandler(this.m_menuPaste_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
             // 
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Size = new System.Drawing.Size(117, 22);
             this.m_menuDelete.Text = "删除";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
@@ -371,6 +374,21 @@
             this.m_glRenderBuffer.Size = new System.Drawing.Size(629, 515);
             this.m_glRenderBuffer.TabIndex = 0;
             // 
+            // 高级AToolStripMenuItem
+            // 
+            this.高级AToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.m_menuResizeControlToBeResSize});
+            this.高级AToolStripMenuItem.Name = "高级AToolStripMenuItem";
+            this.高级AToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
+            this.高级AToolStripMenuItem.Text = "高级(&A)";
+            // 
+            // m_menuResizeControlToBeResSize
+            // 
+            this.m_menuResizeControlToBeResSize.Name = "m_menuResizeControlToBeResSize";
+            this.m_menuResizeControlToBeResSize.Size = new System.Drawing.Size(208, 22);
+            this.m_menuResizeControlToBeResSize.Text = "将控件尺寸设为资源尺寸";
+            this.m_menuResizeControlToBeResSize.Click += new System.EventHandler(this.m_menuResizeControlToBeResSize_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -439,6 +457,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem m_menuPreview;
         private EditorRenderBuffer m_glRenderBuffer;
+        private System.Windows.Forms.ToolStripMenuItem 高级AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem m_menuResizeControlToBeResSize;
     }
 }
 

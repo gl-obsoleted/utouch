@@ -32,7 +32,19 @@ namespace ulib.Controls
         }
 
         [Category("Button")]
-        public string Res_Normal { get; set; }
+        public string Res_Normal 
+        {
+            get { return m_resNormal; }
+            set
+            {
+                m_resNormal = value;
+
+                if (!GState.IsInLoadingProcess)
+                {
+                    ResizeToResSize();
+                }
+            }
+        }
 
         [Category("Button")]
         public string Res_Pressed { get; set; }
@@ -40,11 +52,21 @@ namespace ulib.Controls
         [Category("Button")]
         public string ButtonText { get { return m_textNode.Text; } set { m_textNode.Text = value; } }
 
+        [Browsable(false)]
+        [JsonIgnore]
         public bool Pressed { get { return m_isPressed; } }
-        
-        public string Res_Background { get { return m_isPressed ? Res_Pressed : Res_Normal ; } }
+
+        [Browsable(false)]
+        [JsonIgnore]
+        public string Res_Current { get { return m_isPressed ? Res_Pressed : Res_Normal; } }
+
+        public override System.Drawing.Size GetExpectedResourceSize()
+        {
+            return ResourceManager.Instance.GetResourceSize(Res_Normal);
+        }
 
         private bool m_isPressed = false;
         private TextNode m_textNode;
+        private string m_resNormal;
     }
 }

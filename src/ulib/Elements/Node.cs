@@ -351,5 +351,20 @@ namespace ulib.Elements
         {
             return !Locked;
         }
+
+        public virtual Size GetExpectedResourceSize()
+        {
+            return ucore.Const.ZERO_SIZE;            
+        }
+
+        public void ResizeToResSize()
+        {
+            Size size = GetExpectedResourceSize();
+            if (size != ucore.Const.ZERO_SIZE)
+            {
+                Size = size;
+                LogicalSize = ucore.Const.ZERO_SIZE;
+            }
+        }
     }
 }

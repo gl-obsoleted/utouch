@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseDef.cs" />
     <Compile Include="Base\BaseUtil.cs" />
+    <Compile Include="Base\GState.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\CheckBox.cs" />

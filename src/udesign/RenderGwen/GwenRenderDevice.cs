@@ -108,7 +108,7 @@ namespace udesign
 
         private void RenderButton(Button bt, GwenRenderContext grc)
         {
-            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), bt.Size), bt.Res_Background);
+            DrawImage(grc, new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), bt.Size), bt.Res_Current);
         }
 
         private void RenderCheckBox(CheckBox cb, GwenRenderContext grc)

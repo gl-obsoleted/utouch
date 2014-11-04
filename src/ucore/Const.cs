@@ -24,5 +24,6 @@ namespace ucore
         public static readonly Rectangle INVALID_RECT   = new Rectangle { X = -100123, Y = -100123, Width = 1, Height = 1 };
 
         public static readonly Point ZERO_POINT = new Point { X = 0, Y = 0 };
+        public static readonly Size ZERO_SIZE = new Size { Width = 0, Height = 0 };
     }
 }

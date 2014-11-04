@@ -38,15 +38,19 @@ namespace ulib
 
         public bool Load(string targetLocation)
         {
-            Node loaded = m_archiveSys.Load(targetLocation);
-            if (loaded == null || !(loaded is RootNode))
+            using (GScope_LoadingProcess lp = new GScope_LoadingProcess())
             {
-                Session.Log("Scene.Load 加载失败. '{0}'", targetLocation);
-                return false;
+                Node loaded = m_archiveSys.Load(targetLocation);
+                if (loaded == null || !(loaded is RootNode))
+                {
+                    Session.Log("Scene.Load 加载失败. '{0}'", targetLocation);
+                    return false;
+                }
+
+                m_currentFilePath = targetLocation;
+                m_root = loaded as RootNode;
             }
 
-            m_currentFilePath = targetLocation;
-            m_root = loaded as RootNode;
             return true;
         }
 
