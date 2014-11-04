@@ -31,7 +31,7 @@ namespace ulib.Elements
             base.m_parent = null;
             base.Name = Default_Name;
 
-            Position = Constants.ZeroPoint;
+            Position = ucore.Const.ZERO_POINT;
             Size = new System.Drawing.Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
         }
 

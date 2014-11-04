@@ -18,5 +18,8 @@ namespace udesign
         public static readonly int SlideBarThickness = 10;
         public static readonly Color SlideBarForeground = Color.Wheat;
         public static readonly Color SlideBarBackground = Color.DarkGray;
+
+        public static readonly Color SelectionCoordBgColor = Color.Wheat;
+        public static readonly Color SelectionCoordTextColor = Color.DarkRed;
     }
 }

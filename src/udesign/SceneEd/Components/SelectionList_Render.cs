@@ -26,6 +26,13 @@ namespace udesign
                 Color c = ctx.Renderer.DrawColor;
                 RenderSelectionBox(ctx.Renderer, rect);
 
+                Point textSize = ctx.Renderer.MeasureText(ctx.Font, n.Position.ToString());
+
+                ctx.Renderer.DrawColor = SceneEdConstants.SelectionCoordBgColor;
+                ctx.Renderer.DrawFilledRect(new Rectangle(rect.X, rect.Y - textSize.Y - 10, textSize.X, textSize.Y));
+                ctx.Renderer.DrawColor = SceneEdConstants.SelectionCoordTextColor;
+                ctx.Renderer.RenderText(ctx.Font, new Point(rect.X, rect.Y - textSize.Y - 10), n.Position.ToString());
+
                 if (rect.Contains(ctx.CurrentMousePos) || IsScrolling)
                 {
                     RenderHoveringSelectedNode(ctx.Renderer, ctx, n);

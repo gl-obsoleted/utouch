@@ -196,5 +196,37 @@ namespace udesign
                 SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
             }
         }
+
+        public bool OnDirKeyPressed(Keys shortcutKey)
+        {
+            if (!m_selectionList.IsSelectionDraggable())
+                return false;
+
+            Point offset = ucore.Const.ZERO_POINT;
+            switch (shortcutKey)
+            {
+                case Keys.Left:
+                    offset = new Point(-1, 0);
+                    break;
+                case Keys.Right:
+                    offset = new Point(1, 0);
+                    break;
+                case Keys.Up:
+                    offset = new Point(0, -1);
+                    break;
+                case Keys.Down:
+                    offset = new Point(0, 1);
+                    break;
+            }
+
+            if (offset == ucore.Const.ZERO_POINT)
+                return false;
+
+            Action_Move act;
+            act = new Action_Move(m_selectionList.Selection);
+            act.EndUpdatePosition(offset);
+            ActionQueue.Instance.PushAction(act);
+            return true;
+        }
     }
 }

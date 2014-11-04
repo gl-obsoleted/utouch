@@ -26,5 +26,10 @@ namespace ucore
             if (h != null)
                 h(e);
         }
+
+        public static void DbgPrintf(string format, params object[] args)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format(format, args));
+        }
     }
 }

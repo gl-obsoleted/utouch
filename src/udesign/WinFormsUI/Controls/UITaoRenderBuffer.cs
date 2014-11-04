@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
+using ucore;
 using udesign;
 using ulib;
 using ulib.Elements;
@@ -128,14 +129,16 @@ namespace udesign.Controls
 
         private void glControl_KeyDown(object sender, KeyEventArgs e)
         {
+            //Logging.DbgPrintf("KeyDown, key {0}", e.KeyCode);
+            SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
             m_canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), true);
             glControl.Invalidate();
         }
 
         private void glControl_KeyUp(object sender, KeyEventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(e.KeyCode | e.Modifiers);
-
+            //Logging.DbgPrintf("KeyUp, key {0}", e.KeyCode);
+            SceneEdShortcutListener.OnKeyReleased(e.KeyCode | e.Modifiers);
             m_canvas.Input_Key(ConvertKeysToGwenKey(e.KeyCode), false);
             glControl.Invalidate();
         }
@@ -200,9 +203,40 @@ namespace udesign.Controls
 
         private void glControl_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Logging.DbgPrintf("KeyPress, key {0}", e.KeyChar);
             m_canvas.Input_Character(e.KeyChar);
             glControl.Invalidate();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            //
+            // 这里只处理 Up / Down / Left / Right 四个按键的 KeyDown 消息
+            //
+            // 请注意，正常按键的 KeyDown 消息是在 glControl_KeyDown() 函数中处理的
+            // 这四个按键的特殊性解释如下：
+            // http://stackoverflow.com/questions/1646998/up-down-left-and-right-arrow-keys-do-not-trigger-keydown-event?rq=1
+            // "Microsoft chose to omit these keys from KeyDown events because they affect 
+            // multiple controls and move the focus, but this makes it very difficult to 
+            // make an app react to these keys in any other way."
+
+            //Logging.DbgPrintf("ProcessCmdKey, msg {0}, key {1}", msg, keyData);
+            switch (keyData)
+            {
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Up:
+                case Keys.Down:
+                    SceneEdShortcutListener.OnDirectionalKeysPressed(keyData);
+                    break;
+
+                default:
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
 
         private void DisposeUnmanaged()
         {

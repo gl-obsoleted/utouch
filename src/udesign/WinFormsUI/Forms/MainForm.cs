@@ -199,17 +199,17 @@ namespace udesign
 
         private void m_menuDelete_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Delete);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Delete);
         }
 
         private void m_menuUndo_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.Z);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Control | Keys.Z);
         }
 
         private void m_menuRedo_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.Y);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Control | Keys.Y);
         }
 
         private void m_menuOpenTestLayout_Click(object sender, EventArgs e)
@@ -248,17 +248,17 @@ namespace udesign
 
         private void m_menuCut_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.X);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Control | Keys.X);
         }
 
         private void m_menuCopy_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.C);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Control | Keys.C);
         }
 
         private void m_menuPaste_Click(object sender, EventArgs e)
         {
-            SceneEdShortcutListener.OnKeyPressed(Keys.Control | Keys.V);
+            SceneEdShortcutListener.OnKeyReleased(Keys.Control | Keys.V);
         }
 
         private void m_menuPreview_Click(object sender, EventArgs e)

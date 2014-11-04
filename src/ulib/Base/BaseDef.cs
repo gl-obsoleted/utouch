@@ -8,8 +8,6 @@ namespace ulib.Base
 {
     public class Constants
     {
-        public static readonly Point ZeroPoint = new Point { X = 0, Y = 0 };
-
         public const int INVALID_ID = -1;
 
         public const string LayoutPostfix = ".ui_layout";

@@ -9,7 +9,31 @@ namespace udesign
 {
     public static class SceneEdShortcutListener
     {
+        public static void OnDirectionalKeysPressed(Keys shortcutKey)
+        {
+            bool requestRefresh = false;
+            switch (shortcutKey)
+            {
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Up:
+                case Keys.Down:
+                    requestRefresh = SceneEd.Instance.OnDirKeyPressed(shortcutKey);
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (requestRefresh)
+                SceneEdEventNotifier.Instance.Emit_RefreshScene(RefreshSceneOpt.Refresh_All);
+        }
+
         public static void OnKeyPressed(Keys shortcutKey)
+        {
+        }
+
+        public static void OnKeyReleased(Keys shortcutKey)
         {
             switch (shortcutKey)
             {
