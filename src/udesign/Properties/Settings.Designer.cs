@@ -106,7 +106,7 @@ namespace udesign.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sample_layouts")]
+        [global::System.Configuration.DefaultSettingValueAttribute("testdata")]
         public string InitialOpenFileDir {
             get {
                 return ((string)(this["InitialOpenFileDir"]));

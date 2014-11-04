@@ -209,6 +209,8 @@ namespace udesign.Controls
             //TODO[GL]: 这个对象的 Dispose 内会抛空引用异常，待查
             try
             {
+                GwenTextureProvider.Instance.ReleaseAllTextures();
+
                 m_renderContext.Font.Dispose();
                 m_canvas.Dispose();
                 m_skin.Dispose();

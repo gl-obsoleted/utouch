@@ -31,9 +31,15 @@ namespace udesign
 
                 Node p = m_selection[i].Parent;
                 if (p != null)
-                    loc = ulib.Base.MathUtil.Clamp(loc, new Rectangle(0, 0,
+                    loc = ucore.EzMath.Clamp(loc, new Rectangle(0, 0,
                         (p.IsScrollableH() ? p.LogicalSize.Width : p.Size.Width) - m_selection[i].Size.Width,
                         (p.IsScrollableV() ? p.LogicalSize.Height : p.Size.Height) - m_selection[i].Size.Height));
+
+                // 如果是根节点的话，不能移出设计分辨率的边缘
+                if (m_selection[i] is RootNode)
+                    loc = ucore.EzMath.Clamp(loc, new Rectangle(0, 0,
+                        Scene.Instance.DesignTimeResolution.width - m_selection[i].Size.Width,
+                        Scene.Instance.DesignTimeResolution.height - m_selection[i].Size.Height));
 
                 m_selection[i].Position = loc;
             }

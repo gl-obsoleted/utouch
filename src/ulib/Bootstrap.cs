@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ulib.Base;
 using ulib.Elements;
 
 namespace ulib
@@ -11,6 +12,7 @@ namespace ulib
         public string DefaultReourceImage;
         public List<string> ReourceImages;
         public string ScenePath;
+        public ResolutionV2 DesignTimeResolution;
     }
 
     /// <summary>
@@ -65,7 +67,7 @@ namespace ulib
 
             // 初始化场景
             Scene.Instance = new Scene();
-            if (!Scene.Instance.Init())
+            if (!Scene.Instance.Init(bp.DesignTimeResolution))
                 return false;
             if (bp.ScenePath.Length != 0 && !Scene.Instance.Load(bp.ScenePath))
                 return false;

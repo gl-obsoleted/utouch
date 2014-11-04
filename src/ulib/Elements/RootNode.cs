@@ -13,6 +13,7 @@ namespace ulib.Elements
     public class RootNode : Node
     {
         [Category("Root")]
+        [DisplayName("是否全屏")]
         public bool IsFullscren 
         { 
             get 
@@ -27,6 +28,7 @@ namespace ulib.Elements
         }
 
         [Category("Root")]
+        [DisplayName("当前分辨率")]
         [JsonIgnore]
         public Resolution.Slot CurrentResolution
         {
@@ -53,7 +55,7 @@ namespace ulib.Elements
 
         public override bool IsResizable()
         {
-            return !IsFullscren;
+            return !IsFullscren && !Locked;
         }
 
         protected void OnFullscreenChanged()
@@ -66,7 +68,7 @@ namespace ulib.Elements
             else
             {
                 Rectangle childrenWorldBounds = GetChildrenWorldBounds();
-                if (Base.MathUtil.IsInvalid(childrenWorldBounds))
+                if (ucore.EzMath.IsInvalid(childrenWorldBounds))
                 {
                     Position = Default_Position;
                     Size = Default_Size;
@@ -82,8 +84,8 @@ namespace ulib.Elements
         protected bool m_isFullscreen = false;
         protected RootNodeSettings m_settings = new RootNodeSettings();
 
-        public static readonly Point Default_Position = new Point { X = 100, Y = 100 };
-        public static readonly Size Default_Size = new Size { Width = 600, Height = 500 };
+        public static readonly Point Default_Position = new Point { X = 50, Y = 30 };
+        public static readonly Size Default_Size = new Size { Width = 500, Height = 500 };
         public static readonly string Default_Name = "Root";
     }
 }

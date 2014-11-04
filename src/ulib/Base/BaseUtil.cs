@@ -9,33 +9,6 @@ using System.IO;
 
 namespace ulib.Base
 {
-    public class MathUtil
-    {
-        public static int Clamp(int x, int min, int max)
-        {
-            return x < min ? min : (x > max ? max : x);
-        }
-
-        public static Point Clamp(Point pt, Rectangle rect)
-        {
-            return new Point(
-                Clamp(pt.X, rect.Left, rect.Right),
-                Clamp(pt.Y, rect.Top, rect.Bottom));
-        }
-
-        public static Rectangle Clamp(Rectangle clampee, Rectangle clamper)
-        {
-            return new Rectangle(
-                Clamp(clampee.Location, clamper),
-                (Size)(Clamp(clampee.Location + clampee.Size, clamper) - (Size)clampee.Location));
-        }
-
-        public static bool IsInvalid(Rectangle rect)
-        {
-            return rect == Constants.INVALID_RECT;
-        }
-    }
-
     public class BaseUtil
     {
         public static bool Implements(Type sourceClass, Type targetInterface)

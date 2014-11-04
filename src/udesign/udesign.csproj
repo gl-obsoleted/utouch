@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr4.Runtime.net35">
-      <HintPath>..\packages\MoonSharp.0.5.5\lib\Antlr4.Runtime.net35.dll</HintPath>
+      <HintPath>..\packages\MoonSharp.0.6.0\lib\Antlr4.Runtime.net35.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=11.5.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -56,11 +56,10 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MoonSharp.Interpreter">
-      <HintPath>..\packages\MoonSharp.0.5.5\lib\MoonSharp.Interpreter.dll</HintPath>
+      <HintPath>..\packages\MoonSharp.0.6.0\lib\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -88,6 +87,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RenderGwen\GwenUtil.cs" />
+    <Compile Include="RenderGwen\Texturing\AtlasManager.cs" />
     <Compile Include="SceneEd\_Base\Actions\Action.cs" />
     <Compile Include="SceneEd\_Base\ActionQueue.cs" />
     <Compile Include="SceneEd\_Base\Actions\Action_Delete.cs" />
@@ -141,7 +141,7 @@
     </Compile>
     <Compile Include="RenderGwen\GwenRenderContext.cs" />
     <Compile Include="RenderGwen\GwenRenderDevice.cs" />
-    <Compile Include="RenderGwen\GwenTextureProvider.cs" />
+    <Compile Include="RenderGwen\Texturing\GwenTextureProvider.cs" />
     <Compile Include="SceneEd\_Base\SceneEdEventNotifier.cs" />
     <Compile Include="WinFormsUI\Forms\PreviewForm.cs">
       <SubType>Form</SubType>
@@ -161,15 +161,21 @@
     <Compile Include="WinFormsUI\Controls\RenderBuffers\PreviewRenderBuffer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\Forms\ResForm.cs">
+    <Compile Include="WinFormsUI\资源面板\ResForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFormsUI\Forms\ResForm.designer.cs">
+    <Compile Include="WinFormsUI\资源面板\ResForm.designer.cs">
       <DependentUpon>ResForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsUI\资源面板\UINineGridSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\资源面板\UINineGridSettings.Designer.cs">
+      <DependentUpon>UINineGridSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="_1_Core\CtrlUtil.cs" />
+    <Compile Include="_1_Core\LuaHelpers.cs" />
     <Compile Include="_1_Core\LuaRuntime.cs" />
-    <Compile Include="_1_Core\Resolution.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,8 +199,11 @@
     <EmbeddedResource Include="WinFormsUI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsUI\Forms\ResForm.resx">
+    <EmbeddedResource Include="WinFormsUI\资源面板\ResForm.resx">
       <DependentUpon>ResForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsUI\资源面板\UINineGridSettings.resx">
+      <DependentUpon>UINineGridSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="app.config">

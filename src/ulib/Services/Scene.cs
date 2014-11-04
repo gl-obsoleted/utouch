@@ -18,12 +18,15 @@ namespace ulib
         /// </summary>
         public RootNode Root { get { return m_root; } }
 
+        public ResolutionV2 DesignTimeResolution;
+
         public Scene()
         {
         }
 
-        public bool Init()
+        public bool Init(ResolutionV2 designTimeResolution)
         {
+            DesignTimeResolution = designTimeResolution;
             return true;
         }
 

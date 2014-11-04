@@ -19,11 +19,11 @@ namespace ulib.Elements
         }
 
         [Category("Text")]
-        [Description("文字内容")]
+        [DisplayName("文字内容")]
         public string Text { get { return m_text; } set { m_text = value; RequestedSizeRefreshing = true; } }
 
         [Category("Text")]
-        [Description("文字颜色")]
+        [DisplayName("文字颜色")]
         public Color TextColor { get; set; }
 
         public Base.Font Font { get; set; }

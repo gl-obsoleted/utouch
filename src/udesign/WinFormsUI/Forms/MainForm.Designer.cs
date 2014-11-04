@@ -57,9 +57,9 @@
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.pageLayout = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.pageControl = new System.Windows.Forms.TabPage();
             this.m_uiLayoutTree = new udesign.Controls.UILayoutTree();
             this.m_uiPropertyGrid = new udesign.Controls.UIObjectPropertyGrid();
+            this.pageControl = new System.Windows.Forms.TabPage();
             this.uiControlList2 = new udesign.WinFormsUI.Controls.UIControlList();
             this.m_glRenderBuffer = new udesign.EditorRenderBuffer();
             this.menuStrip1.SuspendLayout();
@@ -100,15 +100,15 @@
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.fileToolStripMenuItem.Text = "文件(&F)";
             // 
             // m_menuNew
             // 
             this.m_menuNew.Name = "m_menuNew";
             this.m_menuNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.m_menuNew.Size = new System.Drawing.Size(205, 22);
-            this.m_menuNew.Text = "&New";
+            this.m_menuNew.Text = "新建(&N)";
             this.m_menuNew.Click += new System.EventHandler(this.m_menuNew_Click);
             // 
             // m_menuOpen
@@ -116,7 +116,7 @@
             this.m_menuOpen.Name = "m_menuOpen";
             this.m_menuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.m_menuOpen.Size = new System.Drawing.Size(205, 22);
-            this.m_menuOpen.Text = "&Open...";
+            this.m_menuOpen.Text = "打开(&O)...";
             this.m_menuOpen.Click += new System.EventHandler(this.m_menuOpen_Click);
             // 
             // m_menuSave
@@ -124,14 +124,14 @@
             this.m_menuSave.Name = "m_menuSave";
             this.m_menuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.m_menuSave.Size = new System.Drawing.Size(205, 22);
-            this.m_menuSave.Text = "&Save";
+            this.m_menuSave.Text = "保存";
             this.m_menuSave.Click += new System.EventHandler(this.m_menuSave_Click);
             // 
             // m_menuSaveAs
             // 
             this.m_menuSaveAs.Name = "m_menuSaveAs";
             this.m_menuSaveAs.Size = new System.Drawing.Size(205, 22);
-            this.m_menuSaveAs.Text = "Save &As...";
+            this.m_menuSaveAs.Text = "另存为...";
             this.m_menuSaveAs.Click += new System.EventHandler(this.m_menuSaveAs_Click);
             // 
             // toolStripSeparator1
@@ -156,7 +156,7 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Text = "退出";
             // 
             // editToolStripMenuItem
             // 
@@ -170,59 +170,59 @@
             this.toolStripSeparator3,
             this.m_menuDelete});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
-            this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
+            this.editToolStripMenuItem.Text = "编辑(&E)";
             // 
             // m_menuUndo
             // 
             this.m_menuUndo.Name = "m_menuUndo";
-            this.m_menuUndo.Size = new System.Drawing.Size(113, 22);
-            this.m_menuUndo.Text = "&Undo";
+            this.m_menuUndo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuUndo.Text = "撤销(&U)";
             this.m_menuUndo.Click += new System.EventHandler(this.m_menuUndo_Click);
             // 
             // m_menuRedo
             // 
             this.m_menuRedo.Name = "m_menuRedo";
-            this.m_menuRedo.Size = new System.Drawing.Size(113, 22);
-            this.m_menuRedo.Text = "&Redo";
+            this.m_menuRedo.Size = new System.Drawing.Size(152, 22);
+            this.m_menuRedo.Text = "重做(&R)";
             this.m_menuRedo.Click += new System.EventHandler(this.m_menuRedo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(110, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // m_menuCut
             // 
             this.m_menuCut.Name = "m_menuCut";
-            this.m_menuCut.Size = new System.Drawing.Size(113, 22);
-            this.m_menuCut.Text = "Cu&t";
+            this.m_menuCut.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCut.Text = "剪切";
             this.m_menuCut.Click += new System.EventHandler(this.m_menuCut_Click);
             // 
             // m_menuCopy
             // 
             this.m_menuCopy.Name = "m_menuCopy";
-            this.m_menuCopy.Size = new System.Drawing.Size(113, 22);
-            this.m_menuCopy.Text = "&Copy";
+            this.m_menuCopy.Size = new System.Drawing.Size(152, 22);
+            this.m_menuCopy.Text = "复制";
             this.m_menuCopy.Click += new System.EventHandler(this.m_menuCopy_Click);
             // 
             // m_menuPaste
             // 
             this.m_menuPaste.Name = "m_menuPaste";
-            this.m_menuPaste.Size = new System.Drawing.Size(113, 22);
-            this.m_menuPaste.Text = "&Paste";
+            this.m_menuPaste.Size = new System.Drawing.Size(152, 22);
+            this.m_menuPaste.Text = "粘贴";
             this.m_menuPaste.Click += new System.EventHandler(this.m_menuPaste_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(110, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // m_menuDelete
             // 
             this.m_menuDelete.Name = "m_menuDelete";
-            this.m_menuDelete.Size = new System.Drawing.Size(113, 22);
-            this.m_menuDelete.Text = "&Delete";
+            this.m_menuDelete.Size = new System.Drawing.Size(152, 22);
+            this.m_menuDelete.Text = "删除";
             this.m_menuDelete.Click += new System.EventHandler(this.m_menuDelete_Click);
             // 
             // testFramesToolStripMenuItem
@@ -233,8 +233,8 @@
             this.m_menuOpenTestLayout,
             this.m_menuPreview});
             this.testFramesToolStripMenuItem.Name = "testFramesToolStripMenuItem";
-            this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.testFramesToolStripMenuItem.Text = "&Test";
+            this.testFramesToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
+            this.testFramesToolStripMenuItem.Text = "测试(&T)";
             // 
             // m_menuResForm
             // 
@@ -307,7 +307,7 @@
             this.pageLayout.Padding = new System.Windows.Forms.Padding(3);
             this.pageLayout.Size = new System.Drawing.Size(143, 489);
             this.pageLayout.TabIndex = 1;
-            this.pageLayout.Text = "Layout";
+            this.pageLayout.Text = "布局";
             this.pageLayout.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
@@ -328,17 +328,6 @@
             this.splitContainer2.SplitterDistance = 238;
             this.splitContainer2.TabIndex = 1;
             // 
-            // pageControl
-            // 
-            this.pageControl.Controls.Add(this.uiControlList2);
-            this.pageControl.Location = new System.Drawing.Point(4, 22);
-            this.pageControl.Name = "pageControl";
-            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
-            this.pageControl.Size = new System.Drawing.Size(143, 489);
-            this.pageControl.TabIndex = 2;
-            this.pageControl.Text = "Control";
-            this.pageControl.UseVisualStyleBackColor = true;
-            // 
             // m_uiLayoutTree
             // 
             this.m_uiLayoutTree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -355,6 +344,17 @@
             this.m_uiPropertyGrid.Size = new System.Drawing.Size(137, 241);
             this.m_uiPropertyGrid.TabIndex = 0;
             // 
+            // pageControl
+            // 
+            this.pageControl.Controls.Add(this.uiControlList2);
+            this.pageControl.Location = new System.Drawing.Point(4, 22);
+            this.pageControl.Name = "pageControl";
+            this.pageControl.Padding = new System.Windows.Forms.Padding(3);
+            this.pageControl.Size = new System.Drawing.Size(143, 489);
+            this.pageControl.TabIndex = 2;
+            this.pageControl.Text = "控件";
+            this.pageControl.UseVisualStyleBackColor = true;
+            // 
             // uiControlList2
             // 
             this.uiControlList2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -363,7 +363,7 @@
             this.uiControlList2.Size = new System.Drawing.Size(137, 483);
             this.uiControlList2.TabIndex = 0;
             // 
-            // editorRenderBuffer1
+            // m_glRenderBuffer
             // 
             this.m_glRenderBuffer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_glRenderBuffer.Location = new System.Drawing.Point(0, 0);
@@ -381,7 +381,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "UI Designer";
+            this.Text = "UI 编辑器";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

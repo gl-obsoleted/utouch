@@ -23,35 +23,49 @@ namespace ulib.Elements
         ///     [ReadOnly(true)]    是指该属性为只读属性，不可编辑
 
         [Category("Node")]
+        [DisplayName("名字")]
         [Description("名字 (可指定，但需要在当前路径下唯一)")]
         public string Name { get; set; }
         [Category("Node")]
+        [DisplayName("位置")]
         [Description("相对父节点的位置 (影响所有子节点)")]
         public Point Position { get; set; }
         [Category("Node")]
+        [DisplayName("尺寸")]
         [Description("尺寸")]
         public Size Size { get { return m_size; } set { InternalSetSize(value); } }
         [Category("Node")]
+        [DisplayName("逻辑尺寸")]
         [Description("逻辑尺寸（默认为零，当小于等于 Size 时认为二者相同，当逻辑尺寸 X 或 Y 大于可视尺寸 Size 时，对应维度转为可滑动）")]
         public Size LogicalSize { get; set; }
         [Category("Node")]
+        [DisplayName("是否可见")]
         [Description("是否可见 (影响所有子节点)")]
         public bool Visible { get; set; }
         [Category("Node")]
+        [DisplayName("停靠")]
         [Description("外部 Dock，用于描述与父节点的关系，是节点通用属性")]
         public DockType Dock { get; set; }
         [Category("Node")]
+        [DisplayName("水平对齐")]
         [Description("水平方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
         public AlignHori AlignH { get; set; }
         [Category("Node")]
+        [DisplayName("垂直对齐")]
         [Description("垂直方向上的内部对齐（非一般对齐用途，目前仅用在 TextNode 的内部对齐上）")]
         public AlignVert AlignV { get; set; }
         [Category("Node")]
+        [DisplayName("外部间距")]
         [Description("外部间距")]
         public int Margin { get; set; }
         [Category("Node")]
+        [DisplayName("标记")]
         [Description("标记 (可任意起，不影响正常逻辑)")]
         public string Tag { get; set; }
+        [Category("Node")]
+        [DisplayName("是否锁定")]
+        [Description("是否锁定，锁定的控件无法选中，移动和缩放")]
+        public bool Locked { get; set; }
 
         // 以下为编辑器内不可见的字段，这些字段不出现在编辑器里，所以不需要 Category 和 Description
         [Browsable(false)]
@@ -98,6 +112,7 @@ namespace ulib.Elements
             Position = new Point(0, 0);
             Size = new Size(100, 100);
             Visible = true;
+            Locked = false;
             LockChildrenLayoutRecursively = false;
             Dock = DockType.None;
             AlignH = AlignHori.Center;
@@ -126,8 +141,8 @@ namespace ulib.Elements
         public void SetScrollOffsetClamped(Point offset)
         {
             Point newOffset = new Point();
-            newOffset.X = ulib.Base.MathUtil.Clamp(offset.X, 0, LogicalSize.Width - Size.Width);
-            newOffset.Y = ulib.Base.MathUtil.Clamp(offset.Y, 0, LogicalSize.Height - Size.Height);
+            newOffset.X = ucore.EzMath.Clamp(offset.X, 0, LogicalSize.Width - Size.Width);
+            newOffset.Y = ucore.EzMath.Clamp(offset.Y, 0, LogicalSize.Height - Size.Height);
             CurrentScrollOffset = newOffset;
         }
 
@@ -255,10 +270,10 @@ namespace ulib.Elements
 
         public Rectangle GetChildrenWorldBounds()
         {
-            Rectangle rect = Constants.INVALID_RECT;
+            Rectangle rect = ucore.Const.INVALID_RECT;
             foreach (Node child in Children)
             {
-                if (Base.MathUtil.IsInvalid(rect))
+                if (ucore.EzMath.IsInvalid(rect))
                 {
                     rect = child.GetWorldBounds();
                 }
@@ -334,7 +349,7 @@ namespace ulib.Elements
 
         public virtual bool IsResizable()
         {
-            return true;
+            return !Locked;
         }
     }
 }

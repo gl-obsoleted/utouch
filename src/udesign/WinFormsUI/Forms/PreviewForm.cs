@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ulib;
+using ulib.Base;
 
 namespace udesign
 {
@@ -32,7 +33,7 @@ namespace udesign
             {
                 if (res.Type == MoonSharp.Interpreter.DataType.Table)
                 {
-                    Resolution resolution = new Resolution();
+                    ResolutionV2 resolution = new ResolutionV2();
                     resolution.width = Convert.ToInt32(res.Table["w"]);
                     resolution.height = Convert.ToInt32(res.Table["h"]);
                     resolution.category = Convert.ToInt32(res.Table["cat"]);
@@ -71,7 +72,7 @@ namespace udesign
                 ToolStripMenuItem mi = m_btResDesktop.ContextMenuStrip.Items[0] as ToolStripMenuItem;
                 if (mi != null)
                 {
-                    Resolution res = m_btResDesktop.ContextMenuStrip.Items[0].Tag as Resolution;
+                    ResolutionV2 res = m_btResDesktop.ContextMenuStrip.Items[0].Tag as ResolutionV2;
                     if (res != null)
                     {
                         m_defaultResolution = res;
@@ -151,7 +152,7 @@ namespace udesign
             ToolStripMenuItem mi = sender as ToolStripMenuItem;
             if (mi != null)
             {
-                Resolution res = mi.Tag as Resolution;
+                ResolutionV2 res = mi.Tag as ResolutionV2;
                 Control ctrl = FindButtonByCategory(res.category);
                 SelectResolution(res, mi, ctrl as ButtonX);
             }            

@@ -9,7 +9,6 @@ namespace ulib.Base
     public class Constants
     {
         public static readonly Point ZeroPoint = new Point { X = 0, Y = 0 };
-        public static readonly Rectangle INVALID_RECT = new Rectangle { X = -10000, Y = -10000, Width = 1, Height = 1 };
 
         public const int INVALID_ID = -1;
 
@@ -18,6 +17,7 @@ namespace ulib.Base
         public const string ResProtocol = "uires://";
         public const string ResIndexFilePostfix = ".txt";
         public const string ResImageFilePostfix = ".png";
+        public const string ResDescFilePostfix = "_desc.txt";
         public const char ResDelimeter = ':';
 
         public static readonly string LibName = "ulib";
@@ -47,6 +47,14 @@ namespace ulib.Base
             System.Diagnostics.Debug.Assert(ret);
             return size;
         }
+    }
+
+    public class ResolutionV2
+    {
+        public int width;
+        public int height;
+        public int category;
+        public string tag;
     }
 
     public enum AlignHori
