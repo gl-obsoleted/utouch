@@ -12,45 +12,27 @@ namespace ulib.Elements
 {
     public class RootNode : Node
     {
-        [Category("Root")]
+        [Category("根节点")]
         [DisplayName("是否全屏")]
         public bool IsFullscren 
         { 
             get 
             { 
                 return m_isFullscreen; 
-            } 
-            set 
-            { 
-                m_isFullscreen = value;
-                OnFullscreenChanged(); 
             }
         }
 
-        [Category("Root")]
-        [DisplayName("当前分辨率")]
-        [JsonIgnore]
-        public Resolution.Slot CurrentResolution
-        {
-            get
-            {
-                return m_settings.EditTimeResSlot;
-            }
-            set
-            {
-                m_settings.SetSlot(value);
-                OnFullscreenChanged();
-            }
-        }
+        [Category("根节点")]
+        [DisplayName("设计时分辨率")]
+        public Size DesignTimeResolution { get; set; }
 
         public RootNode()
         {
             base.m_parent = null;
             base.Name = Default_Name;
 
-            UserData = m_settings;
-
-            OnFullscreenChanged();
+            Position = Constants.ZeroPoint;
+            Size = new System.Drawing.Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
         }
 
         public override bool IsResizable()
@@ -58,31 +40,7 @@ namespace ulib.Elements
             return !IsFullscren && !Locked;
         }
 
-        protected void OnFullscreenChanged()
-        {
-            if (IsFullscren)
-            {
-                Position = Constants.ZeroPoint;
-                Size = m_settings.EditTimeResolution;
-            }
-            else
-            {
-                Rectangle childrenWorldBounds = GetChildrenWorldBounds();
-                if (ucore.EzMath.IsInvalid(childrenWorldBounds))
-                {
-                    Position = Default_Position;
-                    Size = Default_Size;
-                }
-                else
-                {
-                    Position = Constants.ZeroPoint;
-                    Size = new Size(childrenWorldBounds.Right, childrenWorldBounds.Bottom);
-                }
-            }
-        }
-
-        protected bool m_isFullscreen = false;
-        protected RootNodeSettings m_settings = new RootNodeSettings();
+        protected bool m_isFullscreen = true;
 
         public static readonly Point Default_Position = new Point { X = 50, Y = 30 };
         public static readonly Size Default_Size = new Size { Width = 500, Height = 500 };

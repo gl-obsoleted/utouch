@@ -27,6 +27,7 @@ namespace ulib
         public bool Init(ResolutionV2 designTimeResolution)
         {
             DesignTimeResolution = designTimeResolution;
+            m_root = new RootNode();
             return true;
         }
 
@@ -82,7 +83,7 @@ namespace ulib
         public string CurrentFilePath { get { return m_currentFilePath; } }
 
         private string m_currentFilePath;
-        private RootNode m_root = new RootNode();
+        private RootNode m_root;
         private RenderSystem m_renderSys = new RenderSystem();
         private ArchiveSystem m_archiveSys = new ArchiveSystem();
     }
