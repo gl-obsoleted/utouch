@@ -17,7 +17,7 @@
 /src/packages_local/GwenCS-2014-07-29/Gwen.UnitTest/bin
 /src/packages_local/GwenCS-2014-07-29/Gwen.UnitTest/obj
 /src/packages
-
+/src/.nuget
 /src/ulib/bin
 /src/ulib/obj
 /src/udesign/bin
