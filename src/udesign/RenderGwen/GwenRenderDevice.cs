@@ -38,6 +38,10 @@ namespace udesign
             {
                 RenderCheckBox(node as CheckBox, grc);
             }
+            else if (node is Grid)
+            {
+                RenderGrid(node as Grid, grc);
+            }
             else
             {
                 // defualt method for rendering an unknown node
@@ -116,6 +120,26 @@ namespace udesign
             Rectangle rect = new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), cb.MarkSize);
             DrawImage(grc, rect, cb.Res_Background);
             DrawImage(grc, rect, cb.Res_Mark);
+        }
+
+        private void RenderGrid(Grid g, GwenRenderContext grc)
+        {
+            Rectangle rect = new Rectangle(grc.GetAccumulatedDockedTranslate(), g.Size);
+            grc.Renderer.DrawLinedRect(rect);
+
+            Point loc = grc.GetAccumulatedDockedScrolledTranslate();
+            for (int i = 0; i < g.RowCount; i++)
+            {
+                for (int k = 0; k < g.ColumnCount; k++)
+                {
+                    Rectangle cellRect = new Rectangle();
+                    cellRect.X = loc.X + i * (g.CellSize.Width + g.CellPadding.Width);
+                    cellRect.Y = loc.Y + k * (g.CellSize.Height + g.CellPadding.Height);
+                    cellRect.Width = g.CellSize.Width;
+                    cellRect.Height = g.CellSize.Height;
+                    grc.Renderer.DrawLinedRect(cellRect);
+                }
+            }
         }
 
         private void DrawImage(GwenRenderContext grc, Rectangle rect, string url)

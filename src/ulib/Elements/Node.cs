@@ -37,7 +37,7 @@ namespace ulib.Elements
         [Category("Node")]
         [DisplayName("逻辑尺寸")]
         [Description("逻辑尺寸（默认为零，当小于等于 Size 时认为二者相同，当逻辑尺寸 X 或 Y 大于可视尺寸 Size 时，对应维度转为可滑动）")]
-        public Size LogicalSize { get; set; }
+        public virtual Size LogicalSize { get; set; }
         [Category("Node")]
         [DisplayName("是否可见")]
         [Description("是否可见 (影响所有子节点)")]

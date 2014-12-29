@@ -53,6 +53,7 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\CheckBox.cs" />
+    <Compile Include="Controls\Container\Grid.cs" />
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\Image.cs" />
     <Compile Include="Controls\Label.cs" />
