@@ -38,7 +38,7 @@ namespace ulib
 
         public bool Load(string targetLocation)
         {
-            using (GScope_LoadingProcess lp = new GScope_LoadingProcess())
+            //using (GScope_LoadingProcess lp = new GScope_LoadingProcess())
             {
                 Node loaded = m_archiveSys.Load(targetLocation);
                 if (loaded == null || !(loaded is RootNode))
