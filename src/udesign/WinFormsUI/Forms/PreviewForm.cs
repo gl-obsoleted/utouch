@@ -82,7 +82,7 @@ namespace udesign
                 }
             }
 
-            ucore.SysPost.AssertException(m_defaultResolution != null, "The default exception is not set properly.");
+            ucore.SysPost.AssertException(m_defaultResolution != null, "The default resolution is not set properly.");
             SelectResolution(m_defaultResolution, m_defaultResolutionMenuItem, m_defaultResolutionButton);
         }
 

@@ -14,7 +14,14 @@ namespace ucore
             System.Diagnostics.Debug.Assert(expr);
             return expr;
 #else
-            throw new AssertionFailure(msg);
+            if (!expr)
+            {
+                throw new AssertionFailure(msg);
+            }
+            else
+            {
+                return true;
+            }
 #endif
         }
     }

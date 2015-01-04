@@ -263,8 +263,15 @@ namespace udesign
 
         private void m_menuPreview_Click(object sender, EventArgs e)
         {
-            PreviewForm f = new PreviewForm(Scene.Instance, SceneEd.Instance);
-            f.Show();
+            try
+            {
+                PreviewForm f = new PreviewForm(Scene.Instance, SceneEd.Instance);
+                f.Show();
+            }
+            catch (Exception ex)
+            {
+                Session.Message("预览面板出现了一个异常情况 ('{0}')，目前暂时不可用，请把对应的 log 发给开发者，以方便修复该问题。", ex.Message);                
+            }
         }
 
         private void m_menuResizeControlToBeResSize_Click(object sender, EventArgs e)
