@@ -26,7 +26,14 @@ namespace ulib
 
         public bool Init(ResolutionV2 designTimeResolution)
         {
-            DesignTimeResolution = designTimeResolution;
+            if (designTimeResolution != null)
+            {
+                DesignTimeResolution = designTimeResolution;
+            }
+            else
+            {
+                DesignTimeResolution = new ResolutionV2() { width = 960, height = 640, category = 1, tag = "iPhone 4" };
+            }
             m_root = new RootNode();
             return true;
         }
