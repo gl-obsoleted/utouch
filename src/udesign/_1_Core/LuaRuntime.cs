@@ -26,9 +26,9 @@ namespace udesign
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (MoonSharp.Interpreter.InterpreterException e)
             {
-                Session.LogException(e, bootstrapFilename);
+                Session.LogException(e, e.DecoratedMessage);
                 return false;
             }
 

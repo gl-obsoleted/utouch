@@ -20,7 +20,9 @@ namespace udesign
         public MainForm()
         {
             InitializeComponent();
-            m_glRenderBuffer.InitContext();
+
+            if (!m_glRenderBuffer.InitContext())
+                throw new ucore.AppInitError_Fatal("failed to init GL render buffer.");
         }
 
         public bool Init()

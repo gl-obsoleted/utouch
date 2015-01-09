@@ -44,6 +44,12 @@ namespace ulib
             LogFile.Close();
         }
 
+        public static void FlushLog()
+        {
+            if (LogFile != null)
+                LogFile.Flush();
+        }
+
         public static void Log(string format, params object[] args) 
         {
             string fulltime = DateTime.Now.ToString("HH-mm-ss ");
@@ -71,6 +77,7 @@ namespace ulib
                 Log("    {0} ", additionalInfo);
             }
             Log("===== Exception #{0} End   =====", ExceptionCounter);
+            FlushLog();
         }
 
         public static void LogExceptionDetail(Exception e)

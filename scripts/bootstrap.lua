@@ -1,4 +1,16 @@
 
+
+DIR_ScriptsRoot = "scripts/"
+
+function run_script( filepath )
+    dofile(DIR_ScriptsRoot..filepath)
+end
+
+
+-- 其他的启动脚本
+run_script("res.lua")
+
+
 -- 分辨率分组
 ResCat_Desktop  = 0
 ResCat_iOS      = 1

@@ -16,4 +16,10 @@ namespace ucore
         public AssertionFailure(string message) : base(message) { }
         public AssertionFailure(string message, Exception innerException) : base(message, innerException) { }
     }
+
+    public class AppInitError_Fatal : UCoreException
+    {
+        public AppInitError_Fatal(string message) : base(message) { }
+        public AppInitError_Fatal(string message, Exception innerException) : base(message, innerException) { }
+    }
 }

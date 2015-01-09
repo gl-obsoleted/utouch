@@ -17,9 +17,6 @@
     <Setting Name="LogFilename" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ui_designer.log</Value>
     </Setting>
-    <Setting Name="GwenMediaFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">media/DefaultSkin.png</Value>
-    </Setting>
     <Setting Name="BuildTestScene" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">False</Value>
     </Setting>

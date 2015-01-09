@@ -21,7 +21,10 @@ namespace udesign
             InitializeComponent();
 
             m_renderBuffer.SetScene(scn);
-            m_renderBuffer.InitContext();
+
+            if (!m_renderBuffer.InitContext())
+                throw new ucore.AppInitError_Fatal("failed to init GL render buffer.");
+
             m_renderBuffer.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
 
             ftime = new List<long>();
