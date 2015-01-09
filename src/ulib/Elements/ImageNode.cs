@@ -25,6 +25,13 @@ namespace ulib.Elements
             {
                 m_res = value;
 
+                string filePath;
+                string tileName;
+                if (ResUtil.ExtractTextureInfo(m_res, out filePath, out tileName) && ResUtil.IsLegacyDefaultAtlas(filePath))
+                {
+                    m_res = ResourceManager.Instance.ComposeDefaultResURL(tileName);
+                }
+
                 if (!GState.IsInLoadingProcess)
                 {
                     ResizeToResSize(); 

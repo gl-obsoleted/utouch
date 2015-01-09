@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ucore;
 using udesign;
 using ulib;
 using ulib.Base;
@@ -127,8 +128,18 @@ namespace udesign
         private void m_menuOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog diag = new OpenFileDialog();
-            diag.InitialDirectory = Path.Combine(UDesignApp.Instance.RootPath, Properties.Settings.Default.InitialOpenFileDir);
             diag.Filter = "ui layout files (*.ui_layout)|*.ui_layout|All files (*.*)|*.*";
+
+            diag.InitialDirectory = UDesignApp.Instance.RootPath;
+
+            string testDir = LuaHelpers.GetGlobalString("ResPath_Test");
+            if (!string.IsNullOrEmpty(testDir))
+            {
+                var testDirFull = EzSys.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
+                if (Directory.Exists(testDirFull))
+                    diag.InitialDirectory = testDirFull;
+            }
+
             if (diag.ShowDialog(this) == DialogResult.OK)
             {
                 string file = diag.FileName;
@@ -151,12 +162,19 @@ namespace udesign
 
         private bool ResetScene(string sceneName)
         {
+            string atlasPath = LuaHelpers.GetGlobalString("ResPath_Atlases");
+            string defaultAtlas = LuaHelpers.GetGlobalString("ResName_DefaultAtlas");
+            List<string> additionalAtlases = LuaHelpers.GetGlobalStringArray("ResName_AdditionalAtlases");
+            if (string.IsNullOrEmpty(atlasPath) || string.IsNullOrEmpty(defaultAtlas) || additionalAtlases.Count == 0)
+                return false;
+
             SceneEd.Instance.Selection.ClearSelection();
             ActionQueue.Instance.ClearActions();
 
             BootParams bp = new BootParams {
-                DefaultReourceImage = Properties.Settings.Default.DefaultResFile,
-                ReourceImages = ConfigTypical.Instance.ReourceImages,
+                ReourcePath = atlasPath,
+                DefaultReourceImage = defaultAtlas,
+                ReourceImages = additionalAtlases,
                 ScenePath = sceneName,
                 DesignTimeResolution = LuaHelpers.GetDefaultResolution()
             };

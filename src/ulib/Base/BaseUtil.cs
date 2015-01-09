@@ -64,5 +64,13 @@ namespace ulib.Base
             tileName = parts[1];
             return true;
         }
+
+        private static string s_legacyDefaultAtlas = "uiatlas";
+
+        public static bool IsLegacyDefaultAtlas(string resFile)
+        {
+            string name = Path.GetFileName(resFile);
+            return string.Compare(name, s_legacyDefaultAtlas, true) == 0;
+        }
     }
 }

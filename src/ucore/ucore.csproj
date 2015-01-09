@@ -52,6 +52,7 @@
     <Compile Include="EzConv.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="EzMath.cs" />
+    <Compile Include="EzSys.cs" />
     <Compile Include="JsonHelpers.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="SysPost.cs" />

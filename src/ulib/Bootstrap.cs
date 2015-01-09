@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using ulib.Base;
@@ -9,6 +10,7 @@ namespace ulib
 {
     public class BootParams
     {
+        public string ReourcePath;
         public string DefaultReourceImage;
         public List<string> ReourceImages;
         public string ScenePath;
@@ -46,8 +48,7 @@ namespace ulib
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
 
             // 初始化资源系统
-            if (bp.DefaultReourceImage.Length == 0 ||
-                !ResourceManager.Instance.LoadDefault(bp.DefaultReourceImage))
+            if (!ResourceManager.Instance.LoadDefault(Path.Combine(bp.ReourcePath, bp.DefaultReourceImage)))
             {
                 Session.Log("加载默认资源 ('{0}') 失败.", bp.DefaultReourceImage);
                 return false;
@@ -56,9 +57,10 @@ namespace ulib
             {
                 foreach (string resFile in bp.ReourceImages)
                 {
-                    if (!ResourceManager.Instance.LoadFile(resFile))
+                    string resCombined = Path.Combine(bp.ReourcePath, resFile);
+                    if (!ResourceManager.Instance.LoadFile(resCombined))
                     {
-                        Session.Log("加载资源 ('{0}') 失败.", bp.DefaultReourceImage);
+                        Session.Log("加载资源 ('{0}') 失败.", resCombined);
                         return false;
                     }
                 }

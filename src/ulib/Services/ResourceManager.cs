@@ -79,7 +79,7 @@ namespace ulib
 
         public ImageResource GetResource(string resFile, string resName)
         {
-            if (resFile == m_defaultResGroup.ResFilePath)
+            if (ResUtil.IsLegacyDefaultAtlas(resFile) || resFile == m_defaultResGroup.ResFilePath)
             {
                 return GetDefaultResource(resName);
             }
