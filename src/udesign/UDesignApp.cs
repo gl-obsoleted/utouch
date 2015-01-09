@@ -61,13 +61,7 @@ namespace udesign
                 return false;
             }
 
-            if (!ConfigTypical.Instance.LoadTypical())
-            {
-                MessageBox.Show(string.Format("配置文件初始化失败。 \n\n按 'OK' 退出程序。"));
-                return false;
-            }
-
-            ConfigUserPref.Instance.Init();
+            UserPreference.Instance.Init(Path.Combine(Properties.Settings.Default.TempFolderName, Properties.Settings.Default.UserPrefFile));
 
             Session.Log("Log started. '{0}'", Session.GetLogFilePath());
             return true;
@@ -75,7 +69,7 @@ namespace udesign
 
         public void Dispose()
         {
-            ConfigUserPref.Instance.Save();
+            UserPreference.Instance.Save();
 
             Session.Deinit();
         }

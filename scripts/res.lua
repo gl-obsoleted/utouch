@@ -23,5 +23,3 @@ ResName_AdditionalAtlases = {"backpack", "test9grid" }
 -- 给 GWEN 的内部控件使用的默认皮肤
 ResPath_GwenDefaultSkin = ResPath_Root.."ed_gwen_DefaultSkin.png"
 
-
-

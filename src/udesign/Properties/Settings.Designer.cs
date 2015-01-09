@@ -34,33 +34,6 @@ namespace udesign.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("temp/user_pref.json")]
-        public string UserPrefFilePath {
-            get {
-                return ((string)(this["UserPrefFilePath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cfg_default.json")]
-        public string ConfigFileDefault {
-            get {
-                return ((string)(this["ConfigFileDefault"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cfg_user.json")]
-        public string ConfigFileUser {
-            get {
-                return ((string)(this["ConfigFileUser"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ui_designer.log")]
         public string LogFilename {
             get {
@@ -79,15 +52,6 @@ namespace udesign.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("testres/uiatlas")]
-        public string DefaultResFile {
-            get {
-                return ((string)(this["DefaultResFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("udesign")]
         public string AppName {
             get {
@@ -101,6 +65,15 @@ namespace udesign.Properties {
         public string LuaBootstrap {
             get {
                 return ((string)(this["LuaBootstrap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("user_pref.json")]
+        public string UserPrefFile {
+            get {
+                return ((string)(this["UserPrefFile"]));
             }
         }
     }

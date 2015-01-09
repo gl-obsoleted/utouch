@@ -197,8 +197,8 @@ namespace udesign
             m_resForm = new ResForm();
             m_resForm.Show(this);
 
-            string loc = ConfigUserPref.Instance.GetValue("forms.res_form", "location");
-            string size = ConfigUserPref.Instance.GetValue("forms.res_form", "size");
+            string loc = UserPreference.Instance.GetValue("forms.res_form", "location");
+            string size = UserPreference.Instance.GetValue("forms.res_form", "size");
             if (loc.Length != 0 && size.Length != 0)
             {
                 Point pt = BaseUtil.StringToPoint(loc);
@@ -212,8 +212,8 @@ namespace udesign
             if (m_resForm != null)
             {
                 Point pt = PointToScreen(m_resForm.Location);
-                ConfigUserPref.Instance.SetValue("forms.res_form", "location", BaseUtil.PointToString(pt));
-                ConfigUserPref.Instance.SetValue("forms.res_form", "size", BaseUtil.SizeToString(m_resForm.Size));
+                UserPreference.Instance.SetValue("forms.res_form", "location", BaseUtil.PointToString(pt));
+                UserPreference.Instance.SetValue("forms.res_form", "size", BaseUtil.SizeToString(m_resForm.Size));
             }
         }
 

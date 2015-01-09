@@ -104,7 +104,7 @@
     <Compile Include="SceneEd\SceneEd.cs" />
     <Compile Include="SceneEd\_Base\Actions\Action_PropertyChange.cs" />
     <Compile Include="SceneEd\_Base\SceneEdConstants.cs" />
-    <Compile Include="ConfigVars.cs" />
+    <Compile Include="UserPreference.cs" />
     <Compile Include="SceneEd\Components\SelectionList.cs" />
     <Compile Include="SceneEd\SceneEdShortcutListener.cs" />
     <Compile Include="SceneEd\SceneEd_DragLeft_Moving.cs" />
