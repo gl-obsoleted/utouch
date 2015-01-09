@@ -49,7 +49,7 @@ namespace udesign.Controls
             return m_renderer;
         }
 
-        public void InitContext()
+        public bool InitContext()
         {
             Gl.glClearColor(1f, 0f, 0f, 1f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
@@ -58,8 +58,16 @@ namespace udesign.Controls
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
 
+            string resfile = LuaRuntime.Instance.BootstrapScript.Globals["ResPath_GwenDefaultSkin"] as string;
+            if (string.IsNullOrEmpty(resfile))
+            {
+                Logging.Printf("Error: failed to get global var 'ResPath_GwenDefaultSkin' from script.");
+                Logging.Printf("Error: failed to locate the default gwen skin due to error above.");
+                return false;
+            }
+                                                                                          
             m_renderer = new Gwen.Renderer.Tao();
-            m_skin = new Gwen.Skin.TexturedBase(m_renderer, Properties.Settings.Default.GwenMediaFile);
+            m_skin = new Gwen.Skin.TexturedBase(m_renderer, resfile);
             m_canvas = new Canvas(m_skin);
             m_canvas.SetSize(glControl.Width, glControl.Height);
             m_canvas.ShouldDrawBackground = true;
@@ -73,6 +81,8 @@ namespace udesign.Controls
             SceneEd.Instance.InitSelectionContainer(m_canvas);
             glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
             glControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
+
+            return true;
         }
 
         private void UIRenderBuffer_GL_Tao_Resize(object sender, System.EventArgs e)
