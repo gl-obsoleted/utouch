@@ -17,10 +17,11 @@
 [2015-01-12] v0.1.2 - 在 v0.1.1 的基础上，调整和简化了目录结构。改进了一些调试机制。
 
     资源整理，配置挪到脚本：
-  - 把所有的 atlas 挪到 res/atlases 目录内
-  - 把所有的 samples 挪到 tests 目录内
-  - 把默认 atlas 改名为 !atlas!
-  - 把程序内对上面资源的引用都改为由 res.lua 获取
+
+      - 把所有的 atlas 挪到 res/atlases 目录内
+      - 把所有的 samples 挪到 tests 目录内
+      - 把默认 atlas 改名为 !atlas!
+      - 把程序内对上面资源的引用都改为由 res.lua 获取
 
     删去老的不再使用的配置文件 cfg_default.json 和相应的代码，统一用 lua 配置
     开始把资源文件的配置信息从 app.config 转移到 lua 中去，同时把资源区分为开发时需要的（放入 dev 目录）和运行时需要的（放入 res 目录），第一步是移动 DefaultSkin.png 到 res 目录
