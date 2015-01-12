@@ -17,13 +17,13 @@ namespace udesign
             root.Size = new Size(300, 300);
 
             ImageNode m_child = new ImageNode();
-            m_child.Res = "uires://testres/uiatlas:4880yuanbao.png";
+            m_child.Res = ResourceManager.Instance.ComposeDefaultResURL("4880yuanbao.png");
             m_child.Position = new Point(50, 50);
             m_child.Size = new Size(50, 50);
             root.Attach(m_child);
 
             ImageNode m_child2 = new ImageNode();
-            m_child2.Res = "uires://testres/uiatlas:+.png";
+            m_child2.Res = ResourceManager.Instance.ComposeDefaultResURL("+.png");
             m_child2.Position = new Point(150, 50);
             m_child2.Size = new Size(50, 50);
             root.Attach(m_child2);

@@ -13,7 +13,7 @@ namespace ulib.Elements
             : base()
         {
             // 给一个合理的默认值
-            Res = "uires://testres/uiatlas:tongyi.png";
+            Res = ResourceManager.Instance.ComposeDefaultResURL("tongyi.png");
         }
 
         [Category("Image")]
