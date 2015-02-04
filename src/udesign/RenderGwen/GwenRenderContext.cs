@@ -21,5 +21,6 @@ namespace udesign
         public Gwen.Renderer.Tao Renderer { get; set; }
         public Gwen.Font Font { get; set; }
         public Point CurrentMousePos { get; set; }
+        public OrthoTransform CurrentOrthoTransform { get; set; }
     }
 }

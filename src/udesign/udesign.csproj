@@ -116,6 +116,7 @@
     <Compile Include="WinFormsUI\Controls\RenderBuffers\EditorRenderBuffer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="_1_Core\OrthoTransform.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
       <SubType>UserControl</SubType>
     </Compile>

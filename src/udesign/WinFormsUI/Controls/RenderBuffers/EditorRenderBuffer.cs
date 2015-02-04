@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ucore;
 using udesign.Controls;
 using ulib;
 
@@ -37,47 +38,47 @@ namespace udesign
 
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            int btn = -1;
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Middle)
             {
-                btn = 0;
+                m_isMiddleDown = true;
+                BeginOrthoTransform(e.Location);
             }
-            else if (e.Button == MouseButtons.Right)
+            else if (!m_canvas.Input_MouseButton(ToGwenMouseButton(e.Button), true))
             {
-                btn = 1;
+                m_sceneEd.MouseDown(e.Button, m_cameraTransform.TransformMouseLocation(e.Location));
             }
-            if (!m_canvas.Input_MouseButton(btn, true))
-            {
-                m_sceneEd.MouseDown(e);
-            }
+
             GLCtrl.Invalidate();
         }
 
         private void OnMouseUp(object sender, MouseEventArgs e)
         {
-            int btn = -1;
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Middle)
             {
-                btn = 0;
+                UpdateOrthoTransform(e.Location);
+                m_isMiddleDown = false;
             }
-            else if (e.Button == MouseButtons.Right)
+            else if (!m_canvas.Input_MouseButton(ToGwenMouseButton(e.Button), false))
             {
-                btn = 1;
+                m_sceneEd.MouseUp(e.Button, m_cameraTransform.TransformMouseLocation(e.Location));
             }
-            if (!m_canvas.Input_MouseButton(btn, false))
-            {
-                m_sceneEd.MouseUp(e);
-            }
+
             GLCtrl.Invalidate();
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            bool handled = m_canvas.Input_MouseMoved(e.X, e.Y, e.X - prevX, e.Y - prevY);
-
-            if (!handled)
+            if (m_isMiddleDown)
             {
-                m_sceneEd.MouseMove(e);
+                UpdateOrthoTransform(e.Location);
+            }
+            else
+            {
+                Point mouseLoc = m_cameraTransform.TransformMouseLocation(e.Location);
+                if (!m_canvas.Input_MouseMoved(mouseLoc.X, mouseLoc.Y, mouseLoc.X - prevX, mouseLoc.Y - prevY))
+                {
+                    m_sceneEd.MouseMove(mouseLoc);
+                }
             }
         }
 
@@ -112,6 +113,45 @@ namespace udesign
                 Point clientPos = GLCtrl.PointToClient(new Point(e.X, e.Y));
                 m_sceneEd.DragAndDrop.NotifyUpdated(clientPos.X, clientPos.Y);
             }
+        }
+
+        private int ToGwenMouseButton(MouseButtons Button)
+        {
+            int btn = -1;
+            if (Button == MouseButtons.Left)
+            {
+                btn = 0;
+            }
+            else if (Button == MouseButtons.Right)
+            {
+                btn = 1;
+            }
+            return btn;
+        }
+
+        private bool m_isMiddleDown = false;
+        private Point m_middleDownInitalPos = Const.ZERO_POINT;
+        private OrthoTransform m_middleDownInitalCameraTrans = new OrthoTransform();
+
+        private void BeginOrthoTransform(Point beginMouseLocation)
+        {
+            m_middleDownInitalPos = beginMouseLocation;
+            m_middleDownInitalCameraTrans = m_cameraTransform;
+        }
+
+        private void UpdateOrthoTransform(Point newMouseLocation)
+        {
+            m_cameraTransform.Translate = new Vec2(
+                m_middleDownInitalCameraTrans.Translate.X + newMouseLocation.X - m_middleDownInitalPos.X,
+                m_middleDownInitalCameraTrans.Translate.Y + newMouseLocation.Y - m_middleDownInitalPos.Y);
+        }
+
+        private void EndOrthoTransform(Point endMouseLocation)
+        {
+            UpdateOrthoTransform(endMouseLocation);
+
+            m_middleDownInitalPos = Const.ZERO_POINT;
+            m_middleDownInitalCameraTrans = OrthoTransform.ZERO;
         }
 
         private SceneEd m_sceneEd;

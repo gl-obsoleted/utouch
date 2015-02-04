@@ -57,6 +57,7 @@
     <Compile Include="Logging.cs" />
     <Compile Include="SysPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vec2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

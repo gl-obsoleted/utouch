@@ -41,21 +41,21 @@ namespace udesign
             m_selectionList.Render(ctx);
         }
 
-        public void MouseDown(MouseEventArgs e)
+        public void MouseDown(MouseButtons mouseButton, Point mouseLocation)
         {
-            Node pickedNode = Scene.Instance.Pick(e.Location);
-            switch (e.Button)
+            Node pickedNode = Scene.Instance.Pick(mouseLocation);
+            switch (mouseButton)
             {
                 case MouseButtons.Left:
                     if (m_selectionList.Selection.Contains(pickedNode) && m_selectionList.IsSelectionDraggable())
                     {
-                        DragLeft_BeginMoving(e.Location);
+                        DragLeft_BeginMoving(mouseLocation);
                     }
                     break;
                 case MouseButtons.Right:
                     if (m_selectionList.Selection.Contains(pickedNode) && m_selectionList.Selection.Count == 1 && pickedNode.IsScrollable())
                     {
-                        DragRight_BeginScrolling(e.Location);
+                        DragRight_BeginScrolling(mouseLocation);
                     }
                     break;
                 default:
@@ -63,37 +63,37 @@ namespace udesign
             }
         }
 
-        public void MouseMove(MouseEventArgs e)
+        public void MouseMove(Point mouseLocation)
         {
             if (IsDraggingLeft())
             {
-                DragLeft_UpdateMoving(e.Location);
+                DragLeft_UpdateMoving(mouseLocation);
             }
             else if (IsDragRightScrolling())
             {
-                DragRight_UpdateScrolling(e.Location);
+                DragRight_UpdateScrolling(mouseLocation);
             }
         }
 
-        public void MouseUp(MouseEventArgs e)
+        public void MouseUp(MouseButtons mouseButton, Point mouseLocation)
         {
-            switch (e.Button)
+            switch (mouseButton)
             {
                 case MouseButtons.Left:
                     if (IsDraggingLeft())
                     {
-                        DragLeft_EndMoving(e.Location);
+                        DragLeft_EndMoving(mouseLocation);
                     }
                     else
                     {
-                        Node n = Scene.Instance.Pick(e.Location);
+                        Node n = Scene.Instance.Pick(mouseLocation);
                         Select(n);
                     }
                     break;
                 case MouseButtons.Right:
                     if (IsDragRightScrolling())
                     {
-                        DragRight_EndScrolling(e.Location);
+                        DragRight_EndScrolling(mouseLocation);
                     }
                     break;
                 default:

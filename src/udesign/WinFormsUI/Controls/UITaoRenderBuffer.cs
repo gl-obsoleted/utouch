@@ -51,12 +51,7 @@ namespace udesign.Controls
 
         public bool InitContext()
         {
-            Gl.glClearColor(1f, 0f, 0f, 1f);
-            Gl.glMatrixMode(Gl.GL_PROJECTION);
-            Gl.glLoadIdentity();
-            Gl.glOrtho(0, glControl.Width, glControl.Height, 0, -1, 1);
-            Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            Gl.glViewport(0, 0, glControl.Width, glControl.Height);
+            ResetViewport();
 
             string resfile = LuaRuntime.Instance.BootstrapScript.Globals["ResPath_GwenDefaultSkin"] as string;
             if (string.IsNullOrEmpty(resfile))
@@ -95,12 +90,22 @@ namespace udesign.Controls
             }
         }
 
+        protected OrthoTransform m_cameraTransform;
+
         private void ResetViewport()
         {
+            Rectangle cameraOrtho = m_cameraTransform.TransformCameraProjection(
+                new Rectangle(0, 0, glControl.Width, glControl.Height));
+
+            // 请注意，这里的 cameraOrtho.Bottom 和 cameraOrtho.Top 是按照原点在左上角计算的，也就是 Y 轴向下
+            // 也就是说 Bottom 值较大， Top 值较小；然而 glOrtho 期望的 bottom 和 top 是 Y 轴向上的
+            // 把上面的值直接传给 GL 的后果是 GL 的投影矩阵中 Y 轴被反过来了 (也就是场景还是正的，只不过反过来看)
+            // 变换后的 GL 原点已经到了左上角，这样就跟一般的 UI 系统保持一致了
+
             Gl.glClearColor(1f, 0f, 0f, 1f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
-            Gl.glOrtho(0, glControl.Width, glControl.Height, 0, -1, 1);
+            Gl.glOrtho(cameraOrtho.Left, cameraOrtho.Right, cameraOrtho.Bottom, cameraOrtho.Top, -1, 1);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glViewport(0, 0, glControl.Width, glControl.Height);
         }
@@ -112,6 +117,7 @@ namespace udesign.Controls
             m_canvas.RenderCanvas();
 
             m_renderContext.CurrentMousePos = new Point(prevX, prevY);
+            m_renderContext.CurrentOrthoTransform = m_cameraTransform;
 
             m_renderer.Begin();
 

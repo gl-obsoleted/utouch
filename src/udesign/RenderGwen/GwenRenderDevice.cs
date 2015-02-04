@@ -44,7 +44,7 @@ namespace udesign
             }
             else
             {
-                // defualt method for rendering an unknown node
+                // default method for rendering an unknown node
                 grc.Renderer.DrawLinedRect(worldBounds);
             }
         }
@@ -55,7 +55,7 @@ namespace udesign
             if (grc == null)
                 return ucore.Const.INVALID_RECT;
 
-            return grc.Renderer.ClipRegion;
+            return grc.CurrentOrthoTransform.UntransformClipRegion(grc.Renderer.ClipRegion);
         }
 
         public void SetCurrentClip(RenderContext rc, Rectangle clip)
@@ -64,9 +64,9 @@ namespace udesign
             if (grc == null)
                 return;
 
-            grc.Renderer.ClipRegion = clip;
-            if (grc.Renderer.ClipRegion != ucore.Const.INVALID_RECT)
+            if (clip != ucore.Const.INVALID_RECT)
             {
+                grc.Renderer.ClipRegion = grc.CurrentOrthoTransform.TransformClipRegion(clip);
                 grc.Renderer.StartClip();
             }
             else
