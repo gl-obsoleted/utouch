@@ -26,6 +26,8 @@ namespace udesign.Controls
 
         protected Scene m_scene;
 
+        protected Color m_background = Color.FromArgb(255, 150, 170, 170);
+
         protected Tao.Platform.Windows.SimpleOpenGlControl GLCtrl { get { return glControl; } }
 
         public UITaoRenderBuffer()
@@ -66,7 +68,7 @@ namespace udesign.Controls
             m_canvas = new Canvas(m_skin);
             m_canvas.SetSize(glControl.Width, glControl.Height);
             m_canvas.ShouldDrawBackground = true;
-            m_canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
+            m_canvas.BackgroundColor = m_background;
             m_canvas.KeyboardInputEnabled = true;
             m_canvas.MouseInputEnabled = true;
 
@@ -102,7 +104,7 @@ namespace udesign.Controls
             // 把上面的值直接传给 GL 的后果是 GL 的投影矩阵中 Y 轴被反过来了 (也就是场景还是正的，只不过反过来看)
             // 变换后的 GL 原点已经到了左上角，这样就跟一般的 UI 系统保持一致了
 
-            Gl.glClearColor(1f, 0f, 0f, 1f);
+            Gl.glClearColor(m_background.R / 255.0f, m_background.G / 255.0f, m_background.B / 255.0f, m_background.A / 255.0f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
             Gl.glOrtho(cameraOrtho.Left, cameraOrtho.Right, cameraOrtho.Bottom, cameraOrtho.Top, -1, 1);
