@@ -26,16 +26,24 @@ namespace udesign
         public void Render(GwenRenderContext ctx)
         {
             // 把当前的设计时分辨率画下来
+            Color c = ctx.Renderer.DrawColor;
             {
+                // draw the coordinate
+                ctx.Renderer.DrawColor = Color.LightGray;
+                ctx.Renderer.DrawLinedRect(new Rectangle(-1000, 0, 5000, 1));
+                ctx.Renderer.DrawLinedRect(new Rectangle(0, -1000, 1, 5000));
+                ctx.Renderer.DrawColor = Color.White;
+                ctx.Renderer.RenderText(ctx.Font, new Point(-35, -20), "(0, 0)");
+
+                // draw the boundary
                 int w = Scene.Instance.DesignTimeResolution.width;
                 int h = Scene.Instance.DesignTimeResolution.height;
-                Color c = ctx.Renderer.DrawColor;
                 ctx.Renderer.DrawColor = Color.DarkGreen;
                 ctx.Renderer.DrawLinedRect(new Rectangle(0, 0, w, h));
                 ctx.Renderer.RenderText(ctx.Font, new Point(w + 10, h / 2), h.ToString());
                 ctx.Renderer.RenderText(ctx.Font, new Point(w / 2 - 30, h), w.ToString());
-                ctx.Renderer.DrawColor = c;
             }
+            ctx.Renderer.DrawColor = c;
 
             m_dragAndDropReceiver.Render(ctx);
             m_selectionList.Render(ctx);
