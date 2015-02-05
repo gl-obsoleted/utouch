@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ucore;
 using ulib;
 using ulib.Base;
 
@@ -44,7 +45,7 @@ namespace udesign
                 }
                 catch (Exception e)
                 {
-                    Session.LogExceptionDetail(e);
+                    Logging.Instance.LogExceptionDetail(e);
                 }
             }
         }

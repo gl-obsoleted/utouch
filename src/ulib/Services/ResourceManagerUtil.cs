@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 
 namespace ulib
@@ -17,7 +18,7 @@ namespace ulib
             string imageFile = resFile + Constants.ResImageFilePostfix;
             if (!File.Exists(indexFile) || !File.Exists(imageFile))
             {
-                Session.Message("Resource '{0}' broken. ({1} or {2} not found)",
+                Logging.Instance.Message("Resource '{0}' broken. ({1} or {2} not found)",
                     resFile, Constants.ResIndexFilePostfix, Constants.ResImageFilePostfix);
                 return null;
             }
@@ -25,7 +26,7 @@ namespace ulib
             JObject jobj = ucore.JsonHelpers.ReadTextIntoJObject(indexFile);
             if (jobj == null || jobj.Property("frames").Value as JObject == null)
             {
-                Session.Message("Resource index file '{0}' loading failed.", indexFile);
+                Logging.Instance.Message("Resource index file '{0}' loading failed.", indexFile);
                 return null;
             }
 
@@ -47,7 +48,7 @@ namespace ulib
                 {
                     // 这里不高兴处理各种琐碎的错误了，要是格式不符合就直接跳过吧
                     // 不过问题还是记在 log 里了，想看还是可以看的
-                    Session.LogExceptionDetail(e);
+                    Logging.Instance.LogExceptionDetail(e);
                 }
             }
             return resGroup;

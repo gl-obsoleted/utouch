@@ -15,6 +15,7 @@ using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using System.Drawing.Imaging;
 using System.IO;
+using ucore;
 
 namespace udesign
 {
@@ -46,7 +47,7 @@ namespace udesign
             Image img = LoadResourceImageFile(group.ResFilePath);
             if (img == null)
             {
-                Session.Log("加载资源文件 '{0}' 失败。", group.ResFilePath);
+                Logging.Instance.Log("加载资源文件 '{0}' 失败。", group.ResFilePath);
                 return;
             }
 
@@ -200,7 +201,7 @@ namespace udesign
         {
             if (string.IsNullOrEmpty(SelectedResourceURL) && DialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                Session.Message("请先选中一个图片，或点击 Cancel 撤销本次操作。");
+                Logging.Instance.Message("请先选中一个图片，或点击 Cancel 撤销本次操作。");
                 e.Cancel = true;
             }
         }

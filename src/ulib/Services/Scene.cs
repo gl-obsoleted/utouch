@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib;
 using ulib.Base;
 using ulib.Elements;
@@ -50,7 +51,7 @@ namespace ulib
                 Node loaded = m_archiveSys.Load(targetLocation);
                 if (loaded == null || !(loaded is RootNode))
                 {
-                    Session.Log("Scene.Load 加载失败. '{0}'", targetLocation);
+                    Logging.Instance.Log("Scene.Load 加载失败. '{0}'", targetLocation);
                     return false;
                 }
 
@@ -65,7 +66,7 @@ namespace ulib
         {
             if (string.IsNullOrEmpty(m_currentFilePath))
             {
-                Session.Log("保存文件时 m_currentFilePath 无效，且未传入有效的路径。");
+                Logging.Instance.Log("保存文件时 m_currentFilePath 无效，且未传入有效的路径。");
                 return false;
             }
 

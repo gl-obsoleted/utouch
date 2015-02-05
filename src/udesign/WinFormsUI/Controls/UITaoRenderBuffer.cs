@@ -58,8 +58,8 @@ namespace udesign.Controls
             string resfile = LuaRuntime.Instance.BootstrapScript.Globals["ResPath_GwenDefaultSkin"] as string;
             if (string.IsNullOrEmpty(resfile))
             {
-                Logging.Printf("Error: failed to get global var 'ResPath_GwenDefaultSkin' from script.");
-                Logging.Printf("Error: failed to locate the default gwen skin due to error above.");
+                Log.Printf("Error: failed to get global var 'ResPath_GwenDefaultSkin' from script.");
+                Log.Printf("Error: failed to locate the default gwen skin due to error above.");
                 return false;
             }
                                                                                           

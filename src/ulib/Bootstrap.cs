@@ -53,14 +53,14 @@ namespace ulib
             bool runUserLua = File.Exists(userLua);
             if (runUserLua && !LuaRuntime.RunScript(userLua))
             {
-                Session.Log("执行用户脚本 ('{0}') 失败.", userLua);
+                Logging.Instance.Log("执行用户脚本 ('{0}') 失败.", userLua);
                 return false;
             }
 
             // 初始化资源系统
             if (!ResourceManager.Instance.LoadDefault(Path.Combine(bp.ReourcePath, bp.DefaultReourceImage)))
             {
-                Session.Log("加载默认资源 ('{0}') 失败.", bp.DefaultReourceImage);
+                Logging.Instance.Log("加载默认资源 ('{0}') 失败.", bp.DefaultReourceImage);
                 return false;
             }
             if (bp.ReourceImages != null)
@@ -70,7 +70,7 @@ namespace ulib
                     string resCombined = Path.Combine(bp.ReourcePath, resFile);
                     if (!ResourceManager.Instance.LoadFile(resCombined))
                     {
-                        Session.Log("加载资源 ('{0}') 失败.", resCombined);
+                        Logging.Instance.Log("加载资源 ('{0}') 失败.", resCombined);
                         return false;
                     }
                 }
@@ -84,12 +84,12 @@ namespace ulib
                     string userAtlas = Path.Combine(Path.GetDirectoryName(bp.ScenePath), userAtlasName);
                     if (!ResourceManager.Instance.LoadFile(userAtlas, userAtlasName))
                     {
-                        Session.Log("加载用户资源 ('{0}') 失败.", userAtlas);
+                        Logging.Instance.Log("加载用户资源 ('{0}') 失败.", userAtlas);
                         return false;
                     }
                 }
             }
-            Session.Log("资源系统初始化成功.");
+            Logging.Instance.Log("资源系统初始化成功.");
 
             // 初始化场景
             Scene.Instance = new Scene();
@@ -97,7 +97,7 @@ namespace ulib
                 return false;
             if (bp.ScenePath.Length != 0 && !Scene.Instance.Load(bp.ScenePath))
                 return false;
-            Session.Log("场景初始化成功.");
+            Logging.Instance.Log("场景初始化成功.");
 
             return true;
         }

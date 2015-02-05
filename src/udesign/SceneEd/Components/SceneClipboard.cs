@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ulib.Elements;
 using ulib;
+using ucore;
 
 namespace udesign
 {
@@ -24,7 +25,7 @@ namespace udesign
             {
                 if (parent != n.Parent)
                 {
-                    Session.Message("待操作的节点没有一个公共的父节点。");
+                    Logging.Instance.Message("待操作的节点没有一个公共的父节点。");
                     return false;
                 }
             }
@@ -34,7 +35,7 @@ namespace udesign
                 string str = NodeJsonUtil.NodeToString(n);
                 if (str.Length == 0)
                 {
-                    Session.Message("SetClippedContent() 时发现无效节点，操作失败。");
+                    Logging.Instance.Message("SetClippedContent() 时发现无效节点，操作失败。");
                     return false;
                 }
                 m_clippedContent.Add(str);
@@ -62,7 +63,7 @@ namespace udesign
 
             if (actualParent == null)
             {
-                Session.Message("SceneClipboard.AttachTo() 时发现目标父节点无效，操作失败。");
+                Logging.Instance.Message("SceneClipboard.AttachTo() 时发现目标父节点无效，操作失败。");
                 return newlyCreated;
             }
 
@@ -72,7 +73,7 @@ namespace udesign
                 Node n = NodeJsonUtil.StringToNode(str);
                 if (n == null)
                 {
-                    Session.Message("SceneClipboard.AttachTo() 时发现无效节点，操作失败。");
+                    Logging.Instance.Message("SceneClipboard.AttachTo() 时发现无效节点，操作失败。");
                     return newlyCreated;
                 }
 

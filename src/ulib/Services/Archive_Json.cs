@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Elements;
 
 namespace ulib
@@ -36,7 +37,7 @@ namespace ulib
             }
             catch (Exception e)
             {
-                Session.Log(e.Message);
+                Logging.Instance.Log(e.Message);
                 return null;
             }
         }
@@ -56,7 +57,7 @@ namespace ulib
             }
             catch (System.Exception ex)
             {
-                Session.LogExceptionDetail(ex);
+                Logging.Instance.LogExceptionDetail(ex);
                 return false;
             }
 

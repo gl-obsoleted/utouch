@@ -95,7 +95,7 @@ namespace udesign
             if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
             {
                 string dragInfo = e.Data.GetData(DataFormats.Text).ToString();
-                Session.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, e.X, e.Y);
+                Logging.Instance.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, e.X, e.Y);
                 Point clientPos = GLCtrl.PointToClient(new Point(e.X, e.Y));
                 m_sceneEd.DragAndDrop.NotifyDroppped(clientPos.X, clientPos.Y, dragInfo);
             }

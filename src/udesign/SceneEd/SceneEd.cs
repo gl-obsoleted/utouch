@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ucore;
 using udesign;
 using ulib;
 using ulib.Elements;
@@ -150,7 +151,7 @@ namespace udesign
         {
             if (m_selectionList.HasSelectedRoot())
             {
-                Session.Message("无法删除根节点。");                
+                Logging.Instance.Message("无法删除根节点。");                
             }
             else
             {

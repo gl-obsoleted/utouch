@@ -115,7 +115,7 @@ namespace udesign
             {
                 if (!Scene.Instance.Save())
                 {
-                    Session.Message("文件保存失败（细节请查看日志）。('{0}')", Scene.Instance.CurrentFilePath);
+                    Logging.Instance.Message("文件保存失败（细节请查看日志）。('{0}')", Scene.Instance.CurrentFilePath);
                 }
             }
         }
@@ -147,14 +147,14 @@ namespace udesign
                 {
                     // 这里重置前，应先提示用户保存
                     if (!ResetScene(file))
-                        Session.Message("打开文件失败。");
+                        Logging.Instance.Message("打开文件失败。");
                 }
             }
         }
 
         private void m_menuNew_Click(object sender, EventArgs e)
         {
-            if (Session.Confirm("新建文件将会清楚当前场景内所有数据并重置整个场景，继续操作吗？"))
+            if (Logging.Instance.Confirm("新建文件将会清楚当前场景内所有数据并重置整个场景，继续操作吗？"))
             {
                 ResetScene("");
             }
@@ -236,7 +236,7 @@ namespace udesign
         {
             // 这里重置前，应先提示用户保存
             if (!ResetScene(@"testdata\test" + Constants.LayoutPostfix))
-                Session.Message("打开文件失败。");
+                Logging.Instance.Message("打开文件失败。");
         }
 
         private void PerformSaveAs()
@@ -251,7 +251,7 @@ namespace udesign
                 // perform saving
                 if (!Scene.Instance.Save(file))
                 {
-                    Session.Message("文件保存失败（细节请查看日志）。('{0}')", file);
+                    Logging.Instance.Message("文件保存失败（细节请查看日志）。('{0}')", file);
                 }
                 else
                 {
@@ -260,7 +260,7 @@ namespace udesign
                     string userLua = LuaRuntime.GetGlobalString("LuaTemplate_UserDefault");
                     if (string.IsNullOrEmpty(userLua))
                     {
-                        Session.Message("未定义用户脚本模板的文件路径。('LuaTemplate_UserDefault' 未在脚本中定义) ");
+                        Logging.Instance.Message("未定义用户脚本模板的文件路径。('LuaTemplate_UserDefault' 未在脚本中定义) ");
                     }
                     else
                     {
@@ -271,7 +271,7 @@ namespace udesign
                         }
                         catch (Exception)
                         {
-                            Session.Message("拷贝用户脚本模板失败。(src='{0}' dest='{1}')", userLua, destLuaPath);
+                            Logging.Instance.Message("拷贝用户脚本模板失败。(src='{0}' dest='{1}')", userLua, destLuaPath);
                         }
                     }
                 }
@@ -307,7 +307,7 @@ namespace udesign
             }
             catch (Exception ex)
             {
-                Session.Message("预览面板出现了一个异常情况 ('{0}')，目前暂时不可用，请把对应的 log 发给开发者，以方便修复该问题。", ex.Message);                
+                Logging.Instance.Message("预览面板出现了一个异常情况 ('{0}')，目前暂时不可用，请把对应的 log 发给开发者，以方便修复该问题。", ex.Message);                
             }
         }
 

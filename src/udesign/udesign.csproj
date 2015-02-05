@@ -54,9 +54,6 @@
     <Reference Include="Gwen.UnitTest">
       <HintPath>..\packages_local\GwenCS-2014-07-29\Binaries\Gwen.UnitTest.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="MoonSharp.Interpreter">
       <HintPath>..\packages\MoonSharp.0.6.0\lib\MoonSharp.Interpreter.dll</HintPath>
     </Reference>

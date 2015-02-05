@@ -11,6 +11,7 @@ using ulib.Base;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using ulib;
+using ucore;
 
 namespace udesign
 {
@@ -71,7 +72,7 @@ namespace udesign
                     {
                         // 这里不高兴处理各种琐碎的错误了，要是格式不符合就直接跳过吧
                         // 不过问题还是记在 log 里了，想看还是可以看的
-                        Session.LogExceptionDetail(e);
+                        Logging.Instance.LogExceptionDetail(e);
 
                         ResetHoriSettingsToDefault();
                         ResetVertSettingsToDefault();
@@ -247,7 +248,7 @@ namespace udesign
                 {
                     // 这里不高兴处理各种琐碎的错误了，要是格式不符合就直接跳过吧
                     // 不过问题还是记在 log 里了，想看还是可以看的
-                    Session.LogExceptionDetail(e);
+                    Logging.Instance.LogExceptionDetail(e);
 
                     ResetHoriSettingsToDefault();
                     ResetVertSettingsToDefault();

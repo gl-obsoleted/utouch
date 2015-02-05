@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 
 namespace ulib
@@ -65,7 +66,7 @@ namespace ulib
             ImageResourceGroup rg = ResourceManagerUtil.LoadResFileIntoResourceGroup(resFile);
             if (rg == null)
             {
-                Session.Message("Resource group '{0}' loading failed. ", resFile);
+                Logging.Instance.Message("Resource group '{0}' loading failed. ", resFile);
                 return false;
             }
             m_resGroupsLut.Add(resName, rg);
@@ -129,7 +130,7 @@ namespace ulib
             ImageResourceGroup rg = ResourceManagerUtil.LoadResFileIntoResourceGroup(resFile);
             if (rg == null)
             {
-                Session.Message("默认资源组 '{0}' 加载失败. ", resFile);
+                Logging.Instance.Message("默认资源组 '{0}' 加载失败. ", resFile);
                 return false;
             }
 

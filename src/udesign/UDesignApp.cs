@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ucore;
 using ulib;
 
 namespace udesign
@@ -48,23 +49,39 @@ namespace udesign
                 return false;
             }
 
-            if (!Session.Init(sessionFolder, Properties.Settings.Default.LogFilename, Properties.Settings.Default.LuaBootstrap))
+            ucore.UCoreStartParam p = new ucore.UCoreStartParam();
+            p.SessionFolder = sessionFolder;
+            p.LogFile = Properties.Settings.Default.LogFilename;
+            p.LuaBootstrapFile = Properties.Settings.Default.LuaBootstrap;
+            p.MsgBoxHandler = (title, msg) => { MessageBox.Show(msg, title); };
+            p.ConfirmHandler = (title, msg) => { return MessageBox.Show(msg, title, MessageBoxButtons.OKCancel) == DialogResult.OK; };
+
+            string errMsg;
+            if (!ucore.UCoreStart.Init(p, out errMsg))
             {
-                MessageBox.Show(string.Format("临时目录('{0}')初始化失败。 \n\n按 'OK' 退出程序。", sessionFolder));
+                MessageBox.Show(string.Format("ucore init failed. \n\n  Detail: {0} \n\n  按 'OK' 退出程序。", errMsg));
                 return false;
             }
 
             UserPreference.Instance.Init(Path.Combine(Properties.Settings.Default.TempFolderName, Properties.Settings.Default.UserPrefFile));
 
-            Session.Log("Log started. '{0}'", Session.GetLogFilePath());
+            Logging.Instance.Log("Log started. '{0}'", Logging.Instance.GetLogFilePath());
             return true;
         }
 
         public void Dispose()
         {
-            UserPreference.Instance.Save();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            Session.Deinit();
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                UserPreference.Instance.Save();
+                ucore.UCoreStart.Destroy();
+            }
         }
 
         public string RootPath { get { return m_rootPath; } }

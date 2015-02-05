@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ucore;
 
 namespace ulib.Elements
 {
@@ -86,7 +87,7 @@ namespace ulib.Elements
             object obj = jobj.ToObject(NodeJsonUtil.GetNodeType(jobj), se);
             if (!(obj is Node))
             {
-                Session.Log("Invalid json object.");
+                Logging.Instance.Log("Invalid json object.");
                 return null;
             }
 
@@ -105,7 +106,7 @@ namespace ulib.Elements
             }
             catch (System.Exception ex)
             {
-                Session.LogExceptionDetail(ex);
+                Logging.Instance.LogExceptionDetail(ex);
                 return "";
             }
         }
@@ -118,7 +119,7 @@ namespace ulib.Elements
             }
             catch (System.Exception ex)
             {
-                Session.LogExceptionDetail(ex);
+                Logging.Instance.LogExceptionDetail(ex);
                 return null;
             }
         }
@@ -138,7 +139,7 @@ namespace ulib.Elements
             }
             catch (System.Exception ex)
             {
-                Session.LogExceptionDetail(ex);
+                Logging.Instance.LogExceptionDetail(ex);
                 return false;
             }
         }

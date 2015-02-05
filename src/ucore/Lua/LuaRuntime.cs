@@ -17,7 +17,7 @@ namespace ucore
             DynValue ret;
             if (!RunScript(bootstrapFilename, out ret) || !ret.IsNil())
             {
-                Logging.Printf("Lua 引导脚本执行异常（返回非 nil 值）.");
+                Log.Printf("Lua 引导脚本执行异常（返回非 nil 值）.");
                 return false;
             }
 
@@ -39,7 +39,7 @@ namespace ucore
             }
             catch (MoonSharp.Interpreter.InterpreterException e)
             {
-                Logging.PrintException(e, e.DecoratedMessage);
+                Log.PrintException(e, e.DecoratedMessage);
 
                 ret = DynValue.Nil;
                 return false;
@@ -50,7 +50,7 @@ namespace ucore
         {
             string varValue = Instance.BootstrapScript.Globals[varName] as string;
             if (varValue == null)
-                Logging.Printf("Error: failed to get global var '{0}' from lua.", varName);
+                Log.Printf("Error: failed to get global var '{0}' from lua.", varName);
             return varValue;
         }
 

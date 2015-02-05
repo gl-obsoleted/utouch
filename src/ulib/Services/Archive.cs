@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 using ulib.Elements;
 
@@ -44,15 +45,15 @@ namespace ulib
             ArchiveType at = ArchiveUtil.FindCompatibleArchiveType(targetLocation);
             if (at == ArchiveType.None)
             {
-                Session.Log("No compatible archive found.");
+                Logging.Instance.Log("No compatible archive found.");
                 return null;
             }
 
-            Session.Log("Creating archive '{0}'", at);
+            Logging.Instance.Log("Creating archive '{0}'", at);
             IArchive arc = ArchiveUtil.CreateArchive(at);
             if (arc == null)
             {
-                Session.Log("CreateArchive() failed.");
+                Logging.Instance.Log("CreateArchive() failed.");
                 return null;
             }
 

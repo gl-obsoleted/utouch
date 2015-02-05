@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ucore;
 using udesign;
 using ulib;
 using ulib.Elements;
@@ -37,7 +38,7 @@ namespace udesign
                             MessageBox.Show(string.Format("主界面初始化失败。 \n\n按 'OK' 退出程序。"));
                             return;
                         }
-                        Session.Log("主界面初始化完毕。");
+                        Logging.Instance.Log("主界面初始化完毕。");
 
                         if (Properties.Settings.Default.BuildTestScene)
                             TestScene.Run();
@@ -49,8 +50,8 @@ namespace udesign
                 }
                 catch (Exception e)
                 {
-                    Session.LogExceptionDetail(e);
-                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Session.GetLogFilePath()));
+                    Logging.Instance.LogExceptionDetail(e);
+                    MessageBox.Show(string.Format("程序遇到了未预料的异常。\n\n{0} - {1}\n\n细节请查看 log 文件 '{2}'，按 'OK' 退出程序。", e.GetType().Name, e.Message, Logging.Instance.GetLogFilePath()));
                 }
 #endif
             }
