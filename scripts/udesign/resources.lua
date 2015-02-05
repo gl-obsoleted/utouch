@@ -1,4 +1,7 @@
 
+-- 用户脚本的模板文件 (DIR_ScriptsRoot 在 bootstrap.lua 中定义)
+LuaTemplate_UserDefault = DIR_ScriptsRoot.."__templates__/user_default.lua"
+
 -- 系统的测试目录，内含一些测试和展示用的 .ui_layout 文件
 ResPath_Test = "tests/"
 

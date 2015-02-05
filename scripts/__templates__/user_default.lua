@@ -1,0 +1,5 @@
+
+
+UserAtlasDir 	= ""
+UserAtlasName 	= ""
+
