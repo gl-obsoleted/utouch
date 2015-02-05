@@ -8,7 +8,7 @@ using ulib.Base;
 
 namespace udesign
 {
-    public class LuaHelpers
+    public class UDesignLuaHelpers
     {
         public static ResolutionV2 GetDefaultResolution()
         {
@@ -27,26 +27,6 @@ namespace udesign
             }
 
             return null;
-        }
-
-        public static string GetGlobalString(string varName)
-        {
-            string varValue = LuaRuntime.Instance.BootstrapScript.Globals[varName] as string;
-            if (varValue == null)
-                Logging.Printf("Error: failed to get global var '{0}' from lua.", varName);
-            return varValue;
-        }
-
-        public static List<string> GetGlobalStringArray(string varName)
-        {
-            List<string> ret = new List<string>();
-            MoonSharp.Interpreter.Table t = LuaRuntime.Instance.BootstrapScript.Globals[varName] as MoonSharp.Interpreter.Table;
-            foreach (var res in t.Values)
-            {
-                ret.Add(res.CastToString());
-            }
-
-            return ret;
         }
     }
 }

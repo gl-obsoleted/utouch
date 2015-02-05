@@ -6,7 +6,7 @@ using System.Text;
 namespace ucore
 {
     public delegate void LoggingHandler(string format, params object[] args);
-    public delegate void LoggingExceptionHandler(Exception e);
+    public delegate void LoggingExceptionHandler(Exception e, string exMsg);
 
     public class Logging
     {
@@ -20,11 +20,11 @@ namespace ucore
                 h(format, args);
         }
 
-        public static void PrintException(Exception e)
+        public static void PrintException(Exception e, string exMsg)
         {
             LoggingExceptionHandler h = ExceptionReceivers;
             if (h != null)
-                h(e);
+                h(e, exMsg);
         }
 
         public static void DbgPrintf(string format, params object[] args)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 using ulib.Elements;
 
@@ -47,6 +48,15 @@ namespace ulib
             // 初始化工厂
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
 
+            // 跑用户脚本
+            string userLua = Path.ChangeExtension(bp.ScenePath, ".lua");
+            bool runUserLua = File.Exists(userLua);
+            if (runUserLua && !LuaRuntime.RunScript(userLua))
+            {
+                Session.Log("执行用户脚本 ('{0}') 失败.", userLua);
+                return false;
+            }
+
             // 初始化资源系统
             if (!ResourceManager.Instance.LoadDefault(Path.Combine(bp.ReourcePath, bp.DefaultReourceImage)))
             {
@@ -61,6 +71,20 @@ namespace ulib
                     if (!ResourceManager.Instance.LoadFile(resCombined))
                     {
                         Session.Log("加载资源 ('{0}') 失败.", resCombined);
+                        return false;
+                    }
+                }
+            }
+
+            if (runUserLua)
+            {
+                string userAtlasName = LuaRuntime.GetGlobalString("UserAtlasName");
+                if (!string.IsNullOrEmpty(userAtlasName))
+                {
+                    string userAtlas = Path.Combine(Path.GetDirectoryName(bp.ScenePath), userAtlasName);
+                    if (!ResourceManager.Instance.LoadFile(userAtlas, userAtlasName))
+                    {
+                        Session.Log("加载用户资源 ('{0}') 失败.", userAtlas);
                         return false;
                     }
                 }

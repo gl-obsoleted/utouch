@@ -18,7 +18,7 @@ namespace ulib
 
         public static event OutputHandler OutputLog;
 
-        public static bool Init(string sessionFolder, string logFilename)
+        public static bool Init(string sessionFolder, string logFilename, string luaFilename)
         {
             if (!Directory.Exists(sessionFolder))
                 return false;
@@ -30,6 +30,13 @@ namespace ulib
             }
             catch (Exception)
             {
+                return false;
+            }
+
+            ucore.LuaRuntime.Instance = new ucore.LuaRuntime();
+            if (!ucore.LuaRuntime.Instance.Init(luaFilename))
+            {
+                MessageBox.Show(string.Format("Lua 环境初始化失败。 \n\n按 'OK' 退出程序。"));
                 return false;
             }
 
@@ -82,12 +89,24 @@ namespace ulib
 
         public static void LogExceptionDetail(Exception e)
         {
+            LogExceptionDetail(e, "");
+        }
+
+        public static void LogExceptionDetail(Exception e, string exMsg)
+        {
             Interlocked.Increment(ref ExceptionCounter);
 
             Log("===== Exception #{0} Begin =====", ExceptionCounter);
             Log(e.GetType().Name);
             Log(e.Message);
             Log(e.StackTrace);
+
+            if (!string.IsNullOrEmpty(exMsg))
+            {
+                Log("  Additional Info:");
+                Log(exMsg);
+            }
+
             Log("===== Exception #{0} End   =====", ExceptionCounter);
         }
 

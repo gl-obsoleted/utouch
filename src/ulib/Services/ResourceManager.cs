@@ -57,27 +57,46 @@ namespace ulib
 
         public bool LoadFile(string resFile)
         {
+            return LoadFile(resFile, resFile);
+        }
+
+        public bool LoadFile(string resFile, string resName)
+        {
             ImageResourceGroup rg = ResourceManagerUtil.LoadResFileIntoResourceGroup(resFile);
             if (rg == null)
             {
                 Session.Message("Resource group '{0}' loading failed. ", resFile);
                 return false;
             }
-            m_resGroupsLut.Add(resFile, rg);
+            m_resGroupsLut.Add(resName, rg);
             return true;
         }
 
         public ImageResource GetResource(string url)
         {
-            string filePath;
+            string atlasName;
             string tileName;
-            if (!ResUtil.ExtractTextureInfo(url, out filePath, out tileName))
+            if (!ResUtil.ExtractTextureInfo(url, out atlasName, out tileName))
                 return null;
 
-            return GetResource(filePath, tileName);
+            return GetResource(atlasName, tileName);
         }
 
-        public ImageResource GetResource(string resFile, string resName)
+        public string GetAtlasFilePath(string atlasName)
+        {
+            if (ResUtil.IsLegacyDefaultAtlas(atlasName) || atlasName == m_defaultResGroup.ResFilePath)
+            {
+                return atlasName;
+            }
+
+            ImageResourceGroup group;
+            if (!m_resGroupsLut.TryGetValue(atlasName, out group))
+                return null;
+
+            return group.ResFilePath;
+        }
+
+        private ImageResource GetResource(string resFile, string resName)
         {
             if (ResUtil.IsLegacyDefaultAtlas(resFile) || resFile == m_defaultResGroup.ResFilePath)
             {

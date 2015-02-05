@@ -48,16 +48,9 @@ namespace udesign
                 return false;
             }
 
-            if (!Session.Init(sessionFolder, Properties.Settings.Default.LogFilename))
+            if (!Session.Init(sessionFolder, Properties.Settings.Default.LogFilename, Properties.Settings.Default.LuaBootstrap))
             {
                 MessageBox.Show(string.Format("临时目录('{0}')初始化失败。 \n\n按 'OK' 退出程序。", sessionFolder));
-                return false;
-            }
-
-            LuaRuntime.Instance = new LuaRuntime();
-            if (!LuaRuntime.Instance.Init())
-            {
-                MessageBox.Show(string.Format("Lua 环境初始化失败。 \n\n按 'OK' 退出程序。"));
                 return false;
             }
 

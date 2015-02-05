@@ -23,7 +23,7 @@ namespace ucore
             }
             catch (Exception e)
             {
-                Logging.PrintException(e);
+                Logging.PrintException(e, textFile);
                 return null;
             }
         }

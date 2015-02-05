@@ -132,7 +132,7 @@ namespace udesign
 
             diag.InitialDirectory = UDesignApp.Instance.RootPath;
 
-            string testDir = LuaHelpers.GetGlobalString("ResPath_Test");
+            string testDir = LuaRuntime.GetGlobalString("ResPath_Test");
             if (!string.IsNullOrEmpty(testDir))
             {
                 var testDirFull = EzSys.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
@@ -162,9 +162,9 @@ namespace udesign
 
         private bool ResetScene(string sceneName)
         {
-            string atlasPath = LuaHelpers.GetGlobalString("ResPath_Atlases");
-            string defaultAtlas = LuaHelpers.GetGlobalString("ResName_DefaultAtlas");
-            List<string> additionalAtlases = LuaHelpers.GetGlobalStringArray("ResName_AdditionalAtlases");
+            string atlasPath = LuaRuntime.GetGlobalString("ResPath_Atlases");
+            string defaultAtlas = LuaRuntime.GetGlobalString("ResName_DefaultAtlas");
+            List<string> additionalAtlases = LuaRuntime.GetGlobalStringArray("ResName_AdditionalAtlases");
             if (string.IsNullOrEmpty(atlasPath) || string.IsNullOrEmpty(defaultAtlas) || additionalAtlases.Count == 0)
                 return false;
 
@@ -176,7 +176,7 @@ namespace udesign
                 DefaultReourceImage = defaultAtlas,
                 ReourceImages = additionalAtlases,
                 ScenePath = sceneName,
-                DesignTimeResolution = LuaHelpers.GetDefaultResolution()
+                DesignTimeResolution = UDesignLuaHelpers.GetDefaultResolution()
             };
             if (!Bootstrap.Instance.Init(bp))
                 return false;
@@ -257,16 +257,14 @@ namespace udesign
                 {
                     UpdateFormTitle();
 
-                    string userLua = LuaHelpers.GetGlobalString("LuaTemplate_UserDefault");
+                    string userLua = LuaRuntime.GetGlobalString("LuaTemplate_UserDefault");
                     if (string.IsNullOrEmpty(userLua))
                     {
                         Session.Message("未定义用户脚本模板的文件路径。('LuaTemplate_UserDefault' 未在脚本中定义) ");
                     }
                     else
                     {
-                        string destLuaFile = Path.GetFileNameWithoutExtension(file) + ".lua";
-                        string destLuaPath = Path.Combine(Path.GetDirectoryName(file), destLuaFile);
-                        
+                        string destLuaPath = Path.ChangeExtension(file, ".lua");
                         try
                         {
                             File.Copy(userLua, destLuaPath);

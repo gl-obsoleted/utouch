@@ -111,16 +111,17 @@ namespace udesign
             if (m_lut.TryGetValue(url, out tri))
                 return tri;
 
-            string filePath;
+            string atlasName;
             string tileName;
-            if (!ResUtil.ExtractTextureInfo(url, out filePath, out tileName))
+            if (!ResUtil.ExtractTextureInfo(url, out atlasName, out tileName))
                 return null;
 
+            string filePath = ResourceManager.Instance.GetAtlasFilePath(atlasName);
             Atlas atlas = AtlasManager.Instance.GetAtlas(renderer, filePath);
             if (atlas == null)
                 return null;
 
-            ImageResource res = ResourceManager.Instance.GetResource(filePath, tileName);
+            ImageResource res = ResourceManager.Instance.GetResource(url);
             if (res == null)
                 return null;
 
