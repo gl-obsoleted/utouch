@@ -132,12 +132,20 @@ namespace udesign
 
             diag.InitialDirectory = UDesignApp.Instance.RootPath;
 
-            string testDir = LuaRuntime.GetGlobalString("ResPath_Test");
-            if (!string.IsNullOrEmpty(testDir))
+            string lastDir = Properties.Settings.Default.RecentAccessedDir;
+            if (!string.IsNullOrEmpty(lastDir) && Directory.Exists(lastDir))
             {
-                var testDirFull = EzSys.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
-                if (Directory.Exists(testDirFull))
-                    diag.InitialDirectory = testDirFull;
+                diag.InitialDirectory = lastDir;
+            }
+            else
+            {
+                string testDir = LuaRuntime.GetGlobalString("ResPath_Test");
+                if (!string.IsNullOrEmpty(testDir))
+                {
+                    var testDirFull = EzSys.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
+                    if (Directory.Exists(testDirFull))
+                        diag.InitialDirectory = testDirFull;
+                }
             }
 
             if (diag.ShowDialog(this) == DialogResult.OK)
@@ -148,6 +156,8 @@ namespace udesign
                     // 这里重置前，应先提示用户保存
                     if (!ResetScene(file))
                         Logging.Instance.Message("打开文件失败。");
+
+                    GVars.SetRecentAccessedDirectory(Path.GetDirectoryName(file));
                 }
             }
         }
@@ -255,6 +265,9 @@ namespace udesign
                 }
                 else
                 {
+                    // saved the file successfully for the first time!
+                    // do some house keeping works here
+
                     UpdateFormTitle();
 
                     string userLua = LuaRuntime.GetGlobalString("LuaTemplate_UserDefault");
@@ -274,6 +287,8 @@ namespace udesign
                             Logging.Instance.Message("拷贝用户脚本模板失败。(src='{0}' dest='{1}')", userLua, destLuaPath);
                         }
                     }
+
+                    GVars.SetRecentAccessedDirectory(Path.GetDirectoryName(file));
                 }
             }
         }

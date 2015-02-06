@@ -20,5 +20,8 @@
     <Setting Name="UserPrefFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">user_pref.json</Value>
     </Setting>
+    <Setting Name="RecentAccessedDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
