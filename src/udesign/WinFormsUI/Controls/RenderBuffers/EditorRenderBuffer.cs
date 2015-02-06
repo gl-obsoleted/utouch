@@ -21,7 +21,6 @@ namespace udesign
             GLCtrl.DragLeave += new System.EventHandler(this.glControl_DragLeave);
 
             GLCtrl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
-            GLCtrl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
             GLCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
         }
 
@@ -66,8 +65,10 @@ namespace udesign
             GLCtrl.Invalidate();
         }
 
-        private void OnMouseMove(object sender, MouseEventArgs e)
+        protected override void OnMouseMove(object sender, MouseEventArgs e)
         {
+            base.OnMouseMove(sender, e);
+
             if (m_isMiddleDown)
             {
                 UpdateOrthoTransform(e.Location);
@@ -75,7 +76,7 @@ namespace udesign
             else
             {
                 Point mouseLoc = m_cameraTransform.TransformMouseLocation(e.Location);
-                if (!m_canvas.Input_MouseMoved(mouseLoc.X, mouseLoc.Y, mouseLoc.X - prevX, mouseLoc.Y - prevY))
+                if (!m_canvas.Input_MouseMoved(mouseLoc.X, mouseLoc.Y, mouseLoc.X - m_mouseLocTransformed.X, mouseLoc.Y - m_mouseLocTransformed.Y))
                 {
                     m_sceneEd.MouseMove(mouseLoc);
                 }

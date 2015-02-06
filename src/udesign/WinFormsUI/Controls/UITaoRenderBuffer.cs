@@ -28,6 +28,9 @@ namespace udesign.Controls
 
         protected Color m_background = Color.FromArgb(255, 150, 170, 170);
 
+        protected int m_maximumWidth = 10000;
+        protected int m_maximumHeight = 10000;
+
         protected Tao.Platform.Windows.SimpleOpenGlControl GLCtrl { get { return glControl; } }
 
         public UITaoRenderBuffer()
@@ -66,7 +69,7 @@ namespace udesign.Controls
             m_renderer = new Gwen.Renderer.Tao();
             m_skin = new Gwen.Skin.TexturedBase(m_renderer, resfile);
             m_canvas = new Canvas(m_skin);
-            m_canvas.SetSize(glControl.Width, glControl.Height);
+            m_canvas.SetSize(m_maximumWidth, m_maximumHeight);      // the size of gwen canvas is now only used to hold maximum possible scene size
             m_canvas.ShouldDrawBackground = true;
             m_canvas.BackgroundColor = m_background;
             m_canvas.KeyboardInputEnabled = true;
@@ -86,10 +89,10 @@ namespace udesign.Controls
         {
             ResetViewport();
 
-            if (m_canvas != null && (m_canvas.Width != glControl.Width || m_canvas.Height != glControl.Height))
-            {
-                m_canvas.SetSize(glControl.Width, glControl.Height);
-            }
+            // originally the gwen canvas is resized here,
+            // after we supported 'draggable-scene', the gwen size became meaningless since the 
+            // screen pixel is not aligned with scene coordinate any more, due to the whole-scene 
+            // translation and scaling
         }
 
         protected OrthoTransform m_cameraTransform;
@@ -118,7 +121,7 @@ namespace udesign.Controls
             Gl.glClear(Gl.GL_DEPTH_BUFFER_BIT | Gl.GL_COLOR_BUFFER_BIT);
             m_canvas.RenderCanvas();
 
-            m_renderContext.CurrentMousePos = new Point(prevX, prevY);
+            m_renderContext.CurrentMousePos = m_mouseLocTransformed;
             m_renderContext.CurrentOrthoTransform = m_cameraTransform;
 
             m_renderer.Begin();
@@ -133,12 +136,11 @@ namespace udesign.Controls
             m_renderer.End();
         }
 
-        protected int prevX = -1;
-        protected int prevY = -1;
-        private void OnMouseMove(object sender, MouseEventArgs e)
+        protected Point m_mouseLocTransformed;
+        protected virtual void OnMouseMove(object sender, MouseEventArgs e)
         {
-            prevX = e.X;
-            prevY = e.Y;
+            m_mouseLocTransformed = m_cameraTransform.TransformMouseLocation(e.Location);
+
             GLCtrl.Invalidate();
         }
 

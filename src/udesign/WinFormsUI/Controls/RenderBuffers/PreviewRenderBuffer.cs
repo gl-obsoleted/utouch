@@ -14,7 +14,6 @@ namespace udesign
         public PreviewRenderBuffer()
             : base()
         {
-            GLCtrl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
         }
 
         protected override void PreSceneRender()
@@ -27,8 +26,9 @@ namespace udesign
         {
         }
 
-        private void OnMouseMove(object sender, MouseEventArgs e)
+        protected override void OnMouseMove(object sender, MouseEventArgs e)
         {
+            base.OnMouseMove(sender, e);
         }
 
         public int ResWidth { get; set; }
