@@ -95,8 +95,9 @@ namespace udesign
             if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
             {
                 string dragInfo = e.Data.GetData(DataFormats.Text).ToString();
-                Logging.Instance.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, e.X, e.Y);
-                Point clientPos = GLCtrl.PointToClient(new Point(e.X, e.Y));
+                Point mouseLoc = m_cameraTransform.TransformMouseLocation(new Point(e.X, e.Y));
+                Logging.Instance.Log("Dragging object {0} is dropped at {1}, {2}", dragInfo, mouseLoc.X, mouseLoc.Y);
+                Point clientPos = GLCtrl.PointToClient(mouseLoc);
                 m_sceneEd.DragAndDrop.NotifyDroppped(clientPos.X, clientPos.Y, dragInfo);
             }
         }
@@ -110,7 +111,7 @@ namespace udesign
         {
             if (e.AllowedEffect == e.Effect && e.Data.GetDataPresent(DataFormats.Text))
             {
-                Point clientPos = GLCtrl.PointToClient(new Point(e.X, e.Y));
+                Point clientPos = GLCtrl.PointToClient(m_cameraTransform.TransformMouseLocation(new Point(e.X, e.Y)));
                 m_sceneEd.DragAndDrop.NotifyUpdated(clientPos.X, clientPos.Y);
             }
         }
