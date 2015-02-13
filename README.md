@@ -17,7 +17,7 @@
 
 ### Release Note
 
-[2015-02-13] v0.1.3 - 转移项目到 [GitHub](https://github.com/mc-gulu/utouch)；新增了可拖动画布的功能。
+#### [2015-02-13] v0.1.3 - 转移项目到 [GitHub](https://github.com/mc-gulu/utouch)；新增了可拖动画布的功能。
 
 * 由 BitBucket 转到 GitHub，更方便对外发布。
 * 统一 OpenGL 的背景颜色
@@ -38,7 +38,7 @@
 * close #4 recent accessed directory is now saved in per-user .config file
 
 
-[2015-01-12] v0.1.2 - 在 v0.1.1 的基础上，调整和简化了目录结构。改进了一些调试机制。
+#### [2015-01-12] v0.1.2 - 在 v0.1.1 的基础上，调整和简化了目录结构。改进了一些调试机制。
 
     资源整理，配置挪到脚本：
 
@@ -53,7 +53,7 @@
     改进了 logging （当汇报异常时，总会紧跟着 flush 一下，避免因直接退出而导致的关键信息未打印）
 
 
-[2015-01-04] v0.1.1 - 在 0.1 的基础上修了几个稳定性问题，整理出一个较稳定的 utouch 版本，发布给美术先用起来，以便后续迭代
+#### [2015-01-04] v0.1.1 - 在 0.1 的基础上修了几个稳定性问题，整理出一个较稳定的 utouch 版本，发布给美术先用起来，以便后续迭代
 
     [13:51] 二进制发布到 utouch 的 download 区，并将项目改为公开可见，这样美术不需要注册 BitBucket 账号也能自由下载。
     [13:26] [utouch/ngui_integration - bugfix] 修复了 ngui_integration 无法与最新的 utouch 协同工作的兼容性问题。
@@ -64,30 +64,4 @@
         1)  SysPost.AssertException 内的逻辑错误，已改为 assert 失败时抛异常
         2) 这里虽然预览面板抛出异常，但实际上是一个不影响正常流程的错误，对这种错误，通常只需弹框提醒即可，程序仍应无伤地继续运行。
 
----------------------------------
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
