@@ -8,12 +8,35 @@
 
 项目发布包可以在这里下载：  
 
+[utouch-0.1.3](https://github.com/mc-gulu/utouch/releases/download/v0.1.3/utouch-v0.1.3.zip) [2015-02-13 14:04] 
 [utouch-0.1.2](https://bitbucket.org/mc_gulu/utouch/downloads/utouch-0.1.2.7z) [2015-01-12 16:19]  
 [utouch-0.1.1](https://bitbucket.org/mc_gulu/utouch/downloads/utouch-0.1.1.7z) [2015-01-04 13:48]  
+
 
 ----------------------------------------
 
 ### Release Note
+
+[2015-02-13] v0.1.3 - 转移项目到 [GitHub](https://github.com/mc-gulu/utouch)；新增了可拖动画布的功能。
+
+* 由 BitBucket 转到 GitHub，更方便对外发布。
+* 统一 OpenGL 的背景颜色
+* 首次支持整个 canvas 的拖动 (鼠标中键)，主要改动包括
+  - 当鼠标中键拖动时，更新当前的 OrthoTransform (OT)
+  - 调用 glOrtho 时，使用 OT 变换摄像机的投影矩阵，由 TransformCameraProjection 实现
+  - 每个控件的裁剪都是通过设置 Renderer 的 ClipRegion 来实现的，使用 OT 变换，由 TransformClipRegion 实现
+  - 把当前的鼠标传递给编辑器逻辑层时，使用 OT 变换，由 TransformMouseLocation 实现
+* 把坐标系画出来，方便在画布上定位
+* 新增用户脚本模板，在保存新建的 layout 文件时，该脚本将被复制到目标目录，用于记录用户图集信息
+* add user script support; move LuaRuntime into ucore
+* refactor - move class Session into ucore; adding new class UCoreStart; remove log4net dependency
+* fix #1 - convert mouse position to help adding new control to the correct parent location
+* fix #2, resizing control is fixed by properly transform the mouse location;
+    the size of gwen canvas is also enlarged to a maximum possible size,
+    in order to validate a given mouse location which now can go beyond the screen coordinate,
+    after the implementing of the 'draggable scene'.
+* close #4 recent accessed directory is now saved in per-user .config file
+
 
 [2015-01-12] v0.1.2 - 在 v0.1.1 的基础上，调整和简化了目录结构。改进了一些调试机制。
 
