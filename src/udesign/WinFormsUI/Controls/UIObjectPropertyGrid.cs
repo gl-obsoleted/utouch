@@ -69,11 +69,14 @@ namespace udesign.Controls
 
         private void m_propertyGrid_ValidatePropertyValue(object sender, ValidatePropertyValueEventArgs e)
         {
-            if (e.PropertyName == "Name" && NodeNameUtil.HasNameCollisionWithSiblings(m_propertyGrid.SelectedObject as Node, e.NewValue.ToString()))
+            if (e.PropertyName == "Name")
             {
-                // 未通过验证就撤销更改
-                e.Cancel = true;
-                e.Message = "该命名与当前父节点下的其他节点有冲突，请重新命名。";
+                if (e.NewValue == null || NodeNameUtil.HasNameCollisionWithSiblings(m_propertyGrid.SelectedObject as Node, e.NewValue.ToString()))
+                {
+                    // 未通过验证就撤销更改
+                    e.Cancel = true;
+                    e.Message = "该命名与当前父节点下的其他节点有冲突，请重新命名。";
+                }
             }
         }
     }
