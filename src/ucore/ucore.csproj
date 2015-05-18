@@ -60,6 +60,7 @@
     <Compile Include="JsonHelpers.cs" />
     <Compile Include="Log\Logging.cs" />
     <Compile Include="Lua\LuaRuntime.cs" />
+    <Compile Include="OrthoTransform.cs" />
     <Compile Include="SysPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UCoreStart.cs" />

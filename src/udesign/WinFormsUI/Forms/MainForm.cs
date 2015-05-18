@@ -157,7 +157,7 @@ namespace udesign
                     if (!ResetScene(file))
                         Logging.Instance.Message("打开文件失败。");
 
-                    GVars.SetRecentAccessedDirectory(Path.GetDirectoryName(file));
+                    SetRecentAccessedDirectory(Path.GetDirectoryName(file));
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace udesign
                 DefaultReourceImage = defaultAtlas,
                 ReourceImages = additionalAtlases,
                 ScenePath = sceneName,
-                DesignTimeResolution = UDesignLuaHelpers.GetDefaultResolution()
+                DesignTimeResolution = GetDefaultResolution()
             };
             if (!Bootstrap.Instance.Init(bp))
                 return false;
@@ -288,7 +288,7 @@ namespace udesign
                         }
                     }
 
-                    GVars.SetRecentAccessedDirectory(Path.GetDirectoryName(file));
+                    SetRecentAccessedDirectory(Path.GetDirectoryName(file));
                 }
             }
         }
@@ -329,6 +329,31 @@ namespace udesign
         private void m_menuResizeControlToBeResSize_Click(object sender, EventArgs e)
         {
             SceneEdCmdListener.OnCommand(SceneEdCmdListener.Command.ResizeControlToResourceSize);
+        }
+
+        private void SetRecentAccessedDirectory(string recentDir)
+        {
+            Properties.Settings.Default.RecentAccessedDir = recentDir;
+            Properties.Settings.Default.Save();
+        }
+
+        private static ResolutionV2 GetDefaultResolution()
+        {
+            MoonSharp.Interpreter.Table t = LuaRuntime.Instance.BootstrapScript.Globals["Resolutions"] as MoonSharp.Interpreter.Table;
+            foreach (var res in t.Values)
+            {
+                if (res.Type == MoonSharp.Interpreter.DataType.Table && Convert.ToBoolean(res.Table["default"]))
+                {
+                    ResolutionV2 resolution = new ResolutionV2();
+                    resolution.width = Convert.ToInt32(res.Table["w"]);
+                    resolution.height = Convert.ToInt32(res.Table["h"]);
+                    resolution.category = Convert.ToInt32(res.Table["cat"]);
+                    resolution.tag = (string)res.Table["tag"];
+                    return resolution;
+                }
+            }
+
+            return null;
         }
     }
 }

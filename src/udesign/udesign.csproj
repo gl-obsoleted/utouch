@@ -113,8 +113,6 @@
     <Compile Include="WinFormsUI\Controls\RenderBuffers\EditorRenderBuffer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="_1_Core\GVars.cs" />
-    <Compile Include="_1_Core\OrthoTransform.cs" />
     <Compile Include="WinFormsUI\Controls\UIControlList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,8 +173,6 @@
     <Compile Include="WinFormsUI\资源面板\UINineGridSettings.Designer.cs">
       <DependentUpon>UINineGridSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="_1_Core\CtrlUtil.cs" />
-    <Compile Include="_1_Core\UDesignLuaHelpers.cs" />
     <EmbeddedResource Include="WinFormsUI\Controls\UIControlList.resx">
       <DependentUpon>UIControlList.cs</DependentUpon>
     </EmbeddedResource>
