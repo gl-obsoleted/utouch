@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using ucore;
@@ -75,8 +76,23 @@ namespace ulib
 
         public bool Save(string targetLocation)
         {
-            if (!m_archiveSys.Save(m_root, targetLocation))
+            if (!SysUtil.InTheSameDrive(GState.AssetRoot, targetLocation))
+            {
+                Logging.Instance.Log("将要保存的 {0} 文件与资源路径不在同一个分区，无法使用相对路径。", Constants.LayoutPostfix);
+                Logging.Instance.Log("    请将 {0} 文件保存到分区 {1}。", Constants.LayoutPostfix, Path.GetPathRoot(GState.AssetRoot));
+                Logging.Instance.Log("    目标路径：{0}", targetLocation);
+                Logging.Instance.Log("    资源路径：{1}", GState.AssetRoot);
                 return false;
+            }
+
+            string folderPath = Path.GetDirectoryName(targetLocation);
+            m_root.Assets.AssetRoot = SysUtil.GetRelativePath(GState.AssetRoot, folderPath);
+
+            if (!m_archiveSys.Save(m_root, targetLocation))
+            {
+                m_root.Assets.AssetRoot = GState.AssetRoot;
+                return false;
+            }
 
             m_currentFilePath = targetLocation;
             return true;

@@ -8,6 +8,8 @@ namespace ulib.Base
     public static class GState
     {
         public static bool IsInLoadingProcess { get; set; }
+
+        public static string AssetRoot { get; set; }
     }
 
     public class GScope_LoadingProcess : IDisposable

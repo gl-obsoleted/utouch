@@ -29,6 +29,7 @@ namespace udesign
 
             m_rootPath = Application.StartupPath.Substring(0, Application.StartupPath.Length - startupFolder.Length - 1);
             Directory.SetCurrentDirectory(m_rootPath);
+
             return true;
         }
 
@@ -66,6 +67,39 @@ namespace udesign
             UserPreference.Instance.Init(Path.Combine(Properties.Settings.Default.TempFolderName, Properties.Settings.Default.UserPrefFile));
 
             Logging.Instance.Log("Log started. '{0}'", Logging.Instance.GetLogFilePath());
+            return true;
+        }
+
+        public bool InitAssetRoot()
+        {
+            if (Directory.Exists(Properties.Settings.Default.Proj_AssetRoot))
+            {
+                Logging.Instance.Log("AssetRoot 有效 ('{0}').", Properties.Settings.Default.Proj_AssetRoot);
+                return true;
+            }
+
+            // would keep asking for valid asset root to proceed
+            while (true)
+            {
+                FolderBrowserDialog Fld = new FolderBrowserDialog();
+                Fld.Description = "请选择资源目录 (Asset Root)：";
+                Fld.SelectedPath = m_rootPath;
+                Fld.ShowNewFolderButton = true;
+                if (Fld.ShowDialog() == DialogResult.OK && Directory.Exists(Fld.SelectedPath))
+                {
+                    Properties.Settings.Default.Proj_AssetRoot = Fld.SelectedPath;
+                    Properties.Settings.Default.Save();
+                    break;
+                }
+                else
+                {
+                    string msg = "未选择资源目录，或选择的目录无效。\n选择 Retry 重试，选择 Cancel 退出程序。";
+                    if (MessageBox.Show(msg, "utouch", MessageBoxButtons.RetryCancel) == DialogResult.Cancel)
+                        return false;
+                }
+            }
+
+            Logging.Instance.Log("AssetRoot 设置为 ('{0}').", Properties.Settings.Default.Proj_AssetRoot);
             return true;
         }
 

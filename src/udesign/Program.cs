@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ucore;
 using udesign;
 using ulib;
+using ulib.Base;
 using ulib.Elements;
 
 namespace udesign
@@ -26,6 +27,11 @@ namespace udesign
                     return;
                 if (!UDesignApp.Instance.InitSession())
                     return;
+
+                if (!UDesignApp.Instance.InitAssetRoot())
+                    return;
+
+                GState.AssetRoot = Properties.Settings.Default.Proj_AssetRoot;
 
 #if (!DEBUG)
                 try

@@ -26,6 +26,8 @@ namespace ulib.Elements
         [DisplayName("设计时分辨率")]
         public Size DesignTimeResolution { get; set; }
 
+        public AssetLut Assets { get; set; }
+
         public RootNode()
         {
             base.m_parent = null;
@@ -33,6 +35,9 @@ namespace ulib.Elements
 
             Position = ucore.Const.ZERO_POINT;
             Size = new System.Drawing.Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
+
+            Assets = new AssetLut();
+            Assets.AssetRoot = GState.AssetRoot;
         }
 
         public override bool IsResizable()

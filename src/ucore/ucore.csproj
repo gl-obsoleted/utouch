@@ -60,6 +60,7 @@
     <Compile Include="OrthoTransform.cs" />
     <Compile Include="SysPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysUtil.cs" />
     <Compile Include="UCoreStart.cs" />
     <Compile Include="Vec2.cs" />
   </ItemGroup>
