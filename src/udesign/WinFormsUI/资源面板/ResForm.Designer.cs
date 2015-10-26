@@ -86,7 +86,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.m_metroTilePanel);
-            this.splitContainer1.Size = new System.Drawing.Size(918, 541);
+            this.splitContainer1.Size = new System.Drawing.Size(918, 600);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -153,7 +153,7 @@
             this.itemContainer2});
             this.m_metroTilePanel.Location = new System.Drawing.Point(0, 0);
             this.m_metroTilePanel.Name = "m_metroTilePanel";
-            this.m_metroTilePanel.Size = new System.Drawing.Size(918, 505);
+            this.m_metroTilePanel.Size = new System.Drawing.Size(918, 564);
             this.m_metroTilePanel.TabIndex = 0;
             this.m_metroTilePanel.Text = "metroTilePanel1";
             // 
@@ -331,9 +331,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Panel2MinSize = 200;
+            this.splitContainer2.Panel2MinSize = 120;
             this.splitContainer2.Size = new System.Drawing.Size(918, 745);
-            this.splitContainer2.SplitterDistance = 541;
+            this.splitContainer2.SplitterDistance = 600;
             this.splitContainer2.TabIndex = 2;
             // 
             // splitContainer3
@@ -350,7 +350,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer3.Size = new System.Drawing.Size(918, 200);
+            this.splitContainer3.Size = new System.Drawing.Size(918, 141);
             this.splitContainer3.SplitterDistance = 300;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -360,7 +360,7 @@
             this.m_previewImage.Location = new System.Drawing.Point(0, 0);
             this.m_previewImage.Margin = new System.Windows.Forms.Padding(30);
             this.m_previewImage.Name = "m_previewImage";
-            this.m_previewImage.Size = new System.Drawing.Size(300, 200);
+            this.m_previewImage.Size = new System.Drawing.Size(300, 141);
             this.m_previewImage.TabIndex = 0;
             this.m_previewImage.TabStop = false;
             this.m_previewImage.Paint += new System.Windows.Forms.PaintEventHandler(this.m_previewImage_Paint);
@@ -369,23 +369,23 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.07166F));
-            this.tableLayoutPanel2.Controls.Add(this.m_imgFullQualifiedLocation, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.m_nineGridSettings, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.m_imgFullQualifiedLocation, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.9697F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 158F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(614, 200);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(614, 141);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // m_imgFullQualifiedLocation
             // 
             this.m_imgFullQualifiedLocation.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.m_imgFullQualifiedLocation.AutoSize = true;
-            this.m_imgFullQualifiedLocation.Location = new System.Drawing.Point(8, 15);
+            this.m_imgFullQualifiedLocation.Location = new System.Drawing.Point(8, 25);
             this.m_imgFullQualifiedLocation.Name = "m_imgFullQualifiedLocation";
             this.m_imgFullQualifiedLocation.Size = new System.Drawing.Size(179, 12);
             this.m_imgFullQualifiedLocation.TabIndex = 4;
@@ -393,9 +393,9 @@
             // 
             // m_nineGridSettings
             // 
-            this.m_nineGridSettings.Location = new System.Drawing.Point(8, 40);
+            this.m_nineGridSettings.Location = new System.Drawing.Point(8, 60);
             this.m_nineGridSettings.Name = "m_nineGridSettings";
-            this.m_nineGridSettings.Size = new System.Drawing.Size(450, 87);
+            this.m_nineGridSettings.Size = new System.Drawing.Size(450, 73);
             this.m_nineGridSettings.TabIndex = 5;
             // 
             // ResForm
