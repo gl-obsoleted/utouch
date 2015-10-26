@@ -77,7 +77,7 @@ namespace ulib
         {
             string atlasName;
             string tileName;
-            if (!ResUtil.ExtractTextureInfo(url, out atlasName, out tileName))
+            if (!ResProtocol.ParseURL(url, out atlasName, out tileName))
                 return null;
 
             return GetResource(atlasName, tileName);
@@ -85,7 +85,7 @@ namespace ulib
 
         public string GetAtlasFilePath(string atlasName)
         {
-            if (ResUtil.IsLegacyDefaultAtlas(atlasName) || atlasName == m_defaultResGroup.ResFilePath)
+            if (atlasName == m_defaultResGroup.ResFilePath)
             {
                 return atlasName;
             }
@@ -99,7 +99,7 @@ namespace ulib
 
         private ImageResource GetResource(string resFile, string resName)
         {
-            if (ResUtil.IsLegacyDefaultAtlas(resFile) || resFile == m_defaultResGroup.ResFilePath)
+            if (resFile == m_defaultResGroup.ResFilePath)
             {
                 return GetDefaultResource(resName);
             }
@@ -143,7 +143,7 @@ namespace ulib
             if (m_defaultResGroup == null)
                 return "";
 
-            return BaseUtil.ComposeResURL(m_defaultResGroup.ResFilePath, resName);
+            return ResProtocol.ComposeURL(m_defaultResGroup.ResFilePath, resName);
         }
 
         public ImageResource GetDefaultResource(string resName)

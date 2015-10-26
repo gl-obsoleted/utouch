@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 
 namespace ulib
@@ -9,7 +10,7 @@ namespace ulib
     public class ArchiveConstants
     {
         public static string[] FilePostfixes = new string[] {
-            Constants.LayoutPostfix,
+            ConstDefault.LayoutPostfix,
         };
     }
 

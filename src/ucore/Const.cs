@@ -25,5 +25,13 @@ namespace ucore
 
         public static readonly Point ZERO_POINT = new Point { X = 0, Y = 0 };
         public static readonly Size ZERO_SIZE = new Size { Width = 0, Height = 0 };
+
+        public const int INVALID_ID = -1;
+    }
+
+    public class ConstDefault
+    {
+        public static readonly string MessageBoxTitle = "utouch";
+        public static readonly string LayoutPostfix = ".ui_layout";
     }
 }

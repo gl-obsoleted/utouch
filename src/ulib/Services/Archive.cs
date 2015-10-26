@@ -10,7 +10,7 @@ namespace ulib
 {
     public enum ArchiveType
     {
-        None = Constants.INVALID_ID,
+        None = Const.INVALID_ID,
         Json = 0,
         Num,
     }

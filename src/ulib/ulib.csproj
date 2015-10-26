@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\AssetLut.cs" />
-    <Compile Include="Base\BaseDef.cs" />
-    <Compile Include="Base\BaseUtil.cs" />
+    <Compile Include="Elements\NodeDef.cs" />
     <Compile Include="Base\GState.cs" />
+    <Compile Include="Base\ResProtocol.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\CheckBox.cs" />

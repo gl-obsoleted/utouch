@@ -29,11 +29,11 @@
       "__type_info__": "Node",
       "Children": [
         {
-          "Res_Normal": "uires://testres/uiatlas:anniu2changtai.png",
-          "Res_Pressed": "uires://testres/uiatlas:anniu2hui.png",
+          "Res_Normal": "uires://res/atlases/!default!:anniu2changtai.png",
+          "Res_Pressed": "uires://res/atlases/!default!:anniu2hui.png",
           "ButtonText": "Button",
           "Pressed": false,
-          "Res_Background": "uires://testres/uiatlas:anniu2changtai.png",
+          "Res_Background": "uires://res/atlases/!default!:anniu2changtai.png",
           "Name": "Button",
           "Position": "60, 80",
           "Size": "172, 68",
@@ -47,8 +47,8 @@
           "__type_info__": "Button"
         },
         {
-          "Res_Background": "uires://testres/uiatlas:yulanxiaoguodi.png",
-          "Res_On": "uires://testres/uiatlas:duigou.png",
+          "Res_Background": "uires://res/atlases/!default!:yulanxiaoguodi.png",
+          "Res_On": "uires://res/atlases/!default!:duigou.png",
           "Res_Off": "",
           "MarkSize": "20, 20",
           "DescText": "Checkbox",

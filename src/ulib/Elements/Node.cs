@@ -243,24 +243,24 @@ namespace ulib.Elements
             Point dockedPos = Position;
             switch (Dock)
             {
-                case Base.DockType.Left:
+                case DockType.Left:
                     dockedPos.X = 0;
                     break;
-                case Base.DockType.Right:
+                case DockType.Right:
                     dockedPos.X = Parent.Size.Width - Size.Width;
                     break;
-                case Base.DockType.Top:
+                case DockType.Top:
                     dockedPos.Y = 0;
                     break;
-                case Base.DockType.Bottom:
+                case DockType.Bottom:
                     dockedPos.Y = Parent.Size.Height - Size.Height;
                     break;
-                case Base.DockType.Center:
+                case DockType.Center:
                     dockedPos.X = Parent.Size.Width / 2 - Size.Width / 2;
                     dockedPos.Y = Parent.Size.Height / 2 - Size.Height / 2;
                     break;
 
-                case Base.DockType.None:
+                case DockType.None:
                 default:
                     break;
             }

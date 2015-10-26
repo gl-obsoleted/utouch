@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ulib;
 using ulib.Base;
 
 namespace udesign
@@ -51,16 +52,16 @@ namespace udesign
             t = new Gwen.Texture(renderer);
             if (t == null)
                 return null;
-            t.Load(filePath + Constants.ResImageFilePostfix);
+            t.Load(filePath + ResProtocol.ResImageFilePostfix);
             if (t.Failed)
                 return null;
 
             // 加载描述文件，如果这个过程失败，仍返回有效的 atlas
-            string descFilePath = filePath + Constants.ResDescFilePostfix;
+            string descFilePath = filePath + ResProtocol.ResDescFilePostfix;
             JObject desc = null;
             if (File.Exists(descFilePath))
             {
-                desc = ucore.JsonHelpers.ReadTextIntoJObject(filePath + Constants.ResDescFilePostfix);
+                desc = ucore.JsonHelpers.ReadTextIntoJObject(filePath + ResProtocol.ResDescFilePostfix);
             }
 
             // 拼装成有效的 atlas

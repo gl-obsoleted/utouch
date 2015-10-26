@@ -113,7 +113,7 @@ namespace udesign
 
             string atlasName;
             string tileName;
-            if (!ResUtil.ExtractTextureInfo(url, out atlasName, out tileName))
+            if (!ResProtocol.ParseURL(url, out atlasName, out tileName))
                 return null;
 
             string filePath = ResourceManager.Instance.GetAtlasFilePath(atlasName);

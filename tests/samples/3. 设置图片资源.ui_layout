@@ -1,6 +1,10 @@
 {
   "IsFullscren": true,
   "DesignTimeResolution": "0, 0",
+  "Assets": {
+    "AssetRoot": "..\\..\\..\\..\\games\\02-bubbletown\\Resources\\ui_v2",
+    "Assets": []
+  },
   "Name": "Root",
   "Position": "0, 0",
   "Size": "1024, 768",

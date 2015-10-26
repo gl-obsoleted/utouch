@@ -1,5 +1,10 @@
 {
   "IsFullscren": true,
+  "DesignTimeResolution": "0, 0",
+  "Assets": {
+    "AssetRoot": "..\\..\\..\\..\\games\\02-bubbletown\\Resources\\ui_v2",
+    "Assets": []
+  },
   "Name": "Root",
   "Position": "0, 0",
   "Size": "1024, 768",
@@ -10,6 +15,7 @@
   "AlignV": 1,
   "Margin": 3,
   "Tag": null,
+  "Locked": false,
   "UserData": {
     "EditTimeResSlot": 2,
     "EditTimeResolution": "1024, 768"
@@ -30,6 +36,7 @@
       "AlignV": 1,
       "Margin": 3,
       "Tag": null,
+      "Locked": false,
       "UserData": null,
       "__type_info__": "Label",
       "Children": []
@@ -48,6 +55,7 @@
       "AlignV": 1,
       "Margin": 3,
       "Tag": null,
+      "Locked": false,
       "UserData": null,
       "__type_info__": "Label",
       "Children": []
@@ -66,6 +74,7 @@
       "AlignV": 1,
       "Margin": 3,
       "Tag": null,
+      "Locked": false,
       "UserData": null,
       "__type_info__": "Label",
       "Children": []

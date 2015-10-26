@@ -14,12 +14,12 @@ namespace ulib
     {
         public static ImageResourceGroup LoadResFileIntoResourceGroup(string resFile)
         {
-            string indexFile = resFile + Constants.ResIndexFilePostfix;
-            string imageFile = resFile + Constants.ResImageFilePostfix;
+            string indexFile = resFile + ResProtocol.ResIndexFilePostfix;
+            string imageFile = resFile + ResProtocol.ResImageFilePostfix;
             if (!File.Exists(indexFile) || !File.Exists(imageFile))
             {
                 Logging.Instance.Message("Resource '{0}' broken. ({1} or {2} not found)",
-                    resFile, Constants.ResIndexFilePostfix, Constants.ResImageFilePostfix);
+                    resFile, ResProtocol.ResIndexFilePostfix, ResProtocol.ResImageFilePostfix);
                 return null;
             }
 

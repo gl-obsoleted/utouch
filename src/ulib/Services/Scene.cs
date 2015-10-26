@@ -71,15 +71,15 @@ namespace ulib
                 return false;
             }
 
-            return m_archiveSys.Save(m_root, m_currentFilePath);
+            return Save(m_currentFilePath);
         }
 
         public bool Save(string targetLocation)
         {
             if (!SysUtil.InTheSameDrive(GState.AssetRoot, targetLocation))
             {
-                Logging.Instance.Log("将要保存的 {0} 文件与资源路径不在同一个分区，无法使用相对路径。", Constants.LayoutPostfix);
-                Logging.Instance.Log("    请将 {0} 文件保存到分区 {1}。", Constants.LayoutPostfix, Path.GetPathRoot(GState.AssetRoot));
+                Logging.Instance.Log("将要保存的 {0} 文件与资源路径不在同一个分区，无法使用相对路径。", ConstDefault.LayoutPostfix);
+                Logging.Instance.Log("    请将 {0} 文件保存到分区 {1}。", ConstDefault.LayoutPostfix, Path.GetPathRoot(GState.AssetRoot));
                 Logging.Instance.Log("    目标路径：{0}", targetLocation);
                 Logging.Instance.Log("    资源路径：{1}", GState.AssetRoot);
                 return false;
@@ -94,7 +94,10 @@ namespace ulib
                 return false;
             }
 
-            m_currentFilePath = targetLocation;
+            if (m_currentFilePath != targetLocation)
+            {
+                m_currentFilePath = targetLocation;
+            }
             return true;
         }
 

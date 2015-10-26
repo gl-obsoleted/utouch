@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseUtil.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="ConstDefault.cs" />
     <Compile Include="EzConv.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="EzMath.cs" />

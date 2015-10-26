@@ -39,7 +39,7 @@ namespace udesign
             m_atlasTileName = atlasTileName;
             m_atlasTileSize = atlasTileSize;
 
-            string descFilePath = atlasFileName + Constants.ResDescFilePostfix;
+            string descFilePath = atlasFileName + ResProtocol.ResDescFilePostfix;
             if (File.Exists(descFilePath))
             {
                 JObject jobj = ucore.JsonHelpers.ReadTextIntoJObject(descFilePath);
@@ -175,7 +175,7 @@ namespace udesign
             }
 
             JObject jobj;
-            string descFilePath = m_atlasFileName + Constants.ResDescFilePostfix;
+            string descFilePath = m_atlasFileName + ResProtocol.ResDescFilePostfix;
             if (File.Exists(descFilePath))
             {
                 jobj = ucore.JsonHelpers.ReadTextIntoJObject(descFilePath);

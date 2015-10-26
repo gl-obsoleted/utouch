@@ -26,7 +26,7 @@ namespace ulib.Elements
         [DisplayName("文字颜色")]
         public Color TextColor { get; set; }
 
-        public Base.Font Font { get; set; }
+        public Font Font { get; set; }
 
         [JsonIgnore]
         [Browsable(false)]

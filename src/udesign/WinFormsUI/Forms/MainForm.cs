@@ -245,7 +245,7 @@ namespace udesign
         private void m_menuOpenTestLayout_Click(object sender, EventArgs e)
         {
             // 这里重置前，应先提示用户保存
-            if (!ResetScene(@"testdata\test" + Constants.LayoutPostfix))
+            if (!ResetScene(@"testdata\test" + ConstDefault.LayoutPostfix))
                 Logging.Instance.Message("打开文件失败。");
         }
 

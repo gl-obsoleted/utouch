@@ -26,6 +26,7 @@ namespace ulib.Elements
         [DisplayName("设计时分辨率")]
         public Size DesignTimeResolution { get; set; }
 
+        [Browsable(false)]
         public AssetLut Assets { get; set; }
 
         public RootNode()

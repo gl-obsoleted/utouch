@@ -113,7 +113,7 @@ namespace udesign
 
         private void UpdateSelectedResourceURL(string fileName, string tileName, Size s)
         {
-            string newURL = BaseUtil.ComposeResURL(fileName, tileName);
+            string newURL = ResProtocol.ComposeURL(fileName, tileName);
             m_selectedResourceURL = newURL;
             m_imgFullQualifiedLocation.Text = string.Format("尺寸: {0},{1} 路径: {2}", s.Width, s.Height, newURL);
         }
@@ -128,7 +128,7 @@ namespace udesign
 
         private Image LoadResourceImageFile(string resPath)
         {
-            string imageFile = resPath + Constants.ResImageFilePostfix;
+            string imageFile = resPath + ResProtocol.ResImageFilePostfix;
             Image img = Image.FromFile(imageFile);
             return img;
         }

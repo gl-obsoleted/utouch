@@ -24,13 +24,13 @@ namespace ulib.Elements
 
             switch (textNode.AlignH)
             {
-                case ulib.Base.AlignHori.Left:
+                case AlignHori.Left:
                     actualOffset.X = 0;
                     break;
-                case ulib.Base.AlignHori.Center:
+                case AlignHori.Center:
                     actualOffset.X = textNode.Size.Width / 2 - measuredTextSize.X / 2;
                     break;
-                case ulib.Base.AlignHori.Right:
+                case AlignHori.Right:
                     actualOffset.X = textNode.Size.Width - measuredTextSize.X;
                     break;
                 default:
@@ -38,13 +38,13 @@ namespace ulib.Elements
             }
             switch (textNode.AlignV)
             {
-                case ulib.Base.AlignVert.Top:
+                case AlignVert.Top:
                     actualOffset.Y = 0;
                     break;
-                case ulib.Base.AlignVert.Middle:
+                case AlignVert.Middle:
                     actualOffset.Y = textNode.Size.Height / 2 - measuredTextSize.Y / 2;
                     break;
-                case ulib.Base.AlignVert.Bottom:
+                case AlignVert.Bottom:
                     actualOffset.Y = textNode.Size.Height - measuredTextSize.Y;
                     break;
                 default:
