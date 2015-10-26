@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B92355
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ucore", "..\external\ucore\ucore\ucore.csproj", "{8C67519B-310E-451D-99ED-E75E597C3011}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ucore", "ucore\ucore.csproj", "{8C67519B-310E-451D-99ED-E75E597C3011}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

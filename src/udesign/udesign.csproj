@@ -218,16 +218,6 @@
     <None Include="_Docs\SceneEd 内部依赖关系.dgml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\external\ucore\ucore\ucore.csproj">
-      <Project>{8c67519b-310e-451d-99ed-e75e597c3011}</Project>
-      <Name>ucore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ulib\ulib.csproj">
-      <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
-      <Name>ulib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\appbar.folder.png" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +228,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\os-ios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ucore\ucore.csproj">
+      <Project>{8c67519b-310e-451d-99ed-e75e597c3011}</Project>
+      <Name>ucore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ulib\ulib.csproj">
+      <Project>{f0872212-c4f0-46ff-87d8-65a77d708d57}</Project>
+      <Name>ulib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -76,13 +76,13 @@
     <Compile Include="Elements\RootNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\external\ucore\ucore\ucore.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ucore\ucore.csproj">
       <Project>{8c67519b-310e-451d-99ed-e75e597c3011}</Project>
       <Name>ucore</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
