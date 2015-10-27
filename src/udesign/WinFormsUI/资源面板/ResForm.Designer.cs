@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.metroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.wizard1 = new DevComponents.DotNetBar.Wizard();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.m_tabAtlas = new System.Windows.Forms.TabPage();
+            this.m_tabIndividual = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.m_searchBox = new System.Windows.Forms.TextBox();
@@ -42,25 +51,24 @@
             this.metroTileItem6 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem7 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem8 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.metroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.metroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.wizard1 = new DevComponents.DotNetBar.Wizard();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.m_previewImage = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.m_imgFullQualifiedLocation = new System.Windows.Forms.Label();
             this.m_nineGridSettings = new udesign.UINineGridSettings();
+            this.m_imgFullQualifiedLocation = new System.Windows.Forms.Label();
+            this.m_assetBrowser = new udesign.AssetBrowser();
+            this.tabControl1.SuspendLayout();
+            this.m_tabAtlas.SuspendLayout();
+            this.m_tabIndividual.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -68,6 +76,128 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_previewImage)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // metroTileItem3
+            // 
+            this.metroTileItem3.Name = "metroTileItem3";
+            this.metroTileItem3.SymbolColor = System.Drawing.Color.Empty;
+            this.metroTileItem3.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
+            // 
+            // 
+            // 
+            this.metroTileItem3.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // metroTileItem4
+            // 
+            this.metroTileItem4.Name = "metroTileItem4";
+            this.metroTileItem4.SymbolColor = System.Drawing.Color.Empty;
+            this.metroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
+            // 
+            // 
+            // 
+            this.metroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // metroTileItem9
+            // 
+            this.metroTileItem9.Name = "metroTileItem9";
+            this.metroTileItem9.SymbolColor = System.Drawing.Color.Empty;
+            this.metroTileItem9.Text = "metroTileItem9";
+            this.metroTileItem9.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
+            // 
+            // 
+            // 
+            this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // wizard1
+            // 
+            this.wizard1.CancelButtonText = "Cancel";
+            this.wizard1.FinishButtonTabIndex = 3;
+            // 
+            // 
+            // 
+            this.wizard1.FooterStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.wizard1.HeaderCaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wizard1.HeaderDescriptionFont = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.wizard1.HeaderDescriptionIndent = 16;
+            // 
+            // 
+            // 
+            this.wizard1.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.wizard1.HeaderStyle.BackColorGradientAngle = 90;
+            this.wizard1.HeaderStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Etched;
+            this.wizard1.HeaderStyle.BorderBottomWidth = 1;
+            this.wizard1.HeaderStyle.BorderColor = System.Drawing.SystemColors.Control;
+            this.wizard1.HeaderStyle.BorderLeftWidth = 1;
+            this.wizard1.HeaderStyle.BorderRightWidth = 1;
+            this.wizard1.HeaderStyle.BorderTopWidth = 1;
+            this.wizard1.HeaderStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.wizard1.HeaderStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.wizard1.HeaderStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Name = "wizard1";
+            this.wizard1.Size = new System.Drawing.Size(548, 375);
+            this.wizard1.TabIndex = 0;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 723);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(918, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.m_tabIndividual);
+            this.tabControl1.Controls.Add(this.m_tabAtlas);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(918, 723);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // m_tabAtlas
+            // 
+            this.m_tabAtlas.Controls.Add(this.splitContainer2);
+            this.m_tabAtlas.Location = new System.Drawing.Point(4, 22);
+            this.m_tabAtlas.Name = "m_tabAtlas";
+            this.m_tabAtlas.Padding = new System.Windows.Forms.Padding(3);
+            this.m_tabAtlas.Size = new System.Drawing.Size(910, 697);
+            this.m_tabAtlas.TabIndex = 0;
+            this.m_tabAtlas.Text = "Atlas 浏览";
+            this.m_tabAtlas.UseVisualStyleBackColor = true;
+            // 
+            // m_tabIndividual
+            // 
+            this.m_tabIndividual.Controls.Add(this.m_assetBrowser);
+            this.m_tabIndividual.Location = new System.Drawing.Point(4, 22);
+            this.m_tabIndividual.Name = "m_tabIndividual";
+            this.m_tabIndividual.Padding = new System.Windows.Forms.Padding(3);
+            this.m_tabIndividual.Size = new System.Drawing.Size(910, 697);
+            this.m_tabIndividual.TabIndex = 1;
+            this.m_tabIndividual.Text = "单张图浏览";
+            this.m_tabIndividual.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Panel2MinSize = 120;
+            this.splitContainer2.Size = new System.Drawing.Size(904, 691);
+            this.splitContainer2.SplitterDistance = 546;
+            this.splitContainer2.TabIndex = 3;
             // 
             // splitContainer1
             // 
@@ -86,7 +216,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.m_metroTilePanel);
-            this.splitContainer1.Size = new System.Drawing.Size(918, 600);
+            this.splitContainer1.Size = new System.Drawing.Size(904, 546);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -104,7 +234,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(918, 32);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(904, 32);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // m_searchBox
@@ -113,15 +243,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_searchBox.Location = new System.Drawing.Point(3, 3);
             this.m_searchBox.Name = "m_searchBox";
-            this.m_searchBox.Size = new System.Drawing.Size(712, 21);
+            this.m_searchBox.Size = new System.Drawing.Size(698, 21);
             this.m_searchBox.TabIndex = 1;
-            this.m_searchBox.TextChanged += new System.EventHandler(this.m_searchBox_TextChanged);
             // 
             // m_btOK
             // 
             this.m_btOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.m_btOK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_btOK.Location = new System.Drawing.Point(721, 3);
+            this.m_btOK.Location = new System.Drawing.Point(707, 3);
             this.m_btOK.Name = "m_btOK";
             this.m_btOK.Size = new System.Drawing.Size(94, 26);
             this.m_btOK.TabIndex = 2;
@@ -132,7 +261,7 @@
             // 
             this.m_btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.m_btCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_btCancel.Location = new System.Drawing.Point(821, 3);
+            this.m_btCancel.Location = new System.Drawing.Point(807, 3);
             this.m_btCancel.Name = "m_btCancel";
             this.m_btCancel.Size = new System.Drawing.Size(94, 26);
             this.m_btCancel.TabIndex = 3;
@@ -148,12 +277,13 @@
             this.m_metroTilePanel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.m_metroTilePanel.ContainerControlProcessDialogKey = true;
             this.m_metroTilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_metroTilePanel.DragDropSupport = true;
             this.m_metroTilePanel.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer1,
             this.itemContainer2});
             this.m_metroTilePanel.Location = new System.Drawing.Point(0, 0);
             this.m_metroTilePanel.Name = "m_metroTilePanel";
-            this.m_metroTilePanel.Size = new System.Drawing.Size(918, 564);
+            this.m_metroTilePanel.Size = new System.Drawing.Size(904, 510);
             this.m_metroTilePanel.TabIndex = 0;
             this.m_metroTilePanel.Text = "metroTilePanel1";
             // 
@@ -255,87 +385,6 @@
             // 
             this.metroTileItem8.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // metroTileItem3
-            // 
-            this.metroTileItem3.Name = "metroTileItem3";
-            this.metroTileItem3.SymbolColor = System.Drawing.Color.Empty;
-            this.metroTileItem3.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
-            // 
-            // 
-            // 
-            this.metroTileItem3.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // metroTileItem4
-            // 
-            this.metroTileItem4.Name = "metroTileItem4";
-            this.metroTileItem4.SymbolColor = System.Drawing.Color.Empty;
-            this.metroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
-            // 
-            // 
-            // 
-            this.metroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // metroTileItem9
-            // 
-            this.metroTileItem9.Name = "metroTileItem9";
-            this.metroTileItem9.SymbolColor = System.Drawing.Color.Empty;
-            this.metroTileItem9.Text = "metroTileItem9";
-            this.metroTileItem9.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
-            // 
-            // 
-            // 
-            this.metroTileItem9.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // wizard1
-            // 
-            this.wizard1.CancelButtonText = "Cancel";
-            this.wizard1.FinishButtonTabIndex = 3;
-            // 
-            // 
-            // 
-            this.wizard1.FooterStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.wizard1.HeaderCaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.HeaderDescriptionFont = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.wizard1.HeaderDescriptionIndent = 16;
-            // 
-            // 
-            // 
-            this.wizard1.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.wizard1.HeaderStyle.BackColorGradientAngle = 90;
-            this.wizard1.HeaderStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Etched;
-            this.wizard1.HeaderStyle.BorderBottomWidth = 1;
-            this.wizard1.HeaderStyle.BorderColor = System.Drawing.SystemColors.Control;
-            this.wizard1.HeaderStyle.BorderLeftWidth = 1;
-            this.wizard1.HeaderStyle.BorderRightWidth = 1;
-            this.wizard1.HeaderStyle.BorderTopWidth = 1;
-            this.wizard1.HeaderStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.wizard1.HeaderStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.wizard1.HeaderStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
-            this.wizard1.Name = "Wizard";
-            this.wizard1.Size = new System.Drawing.Size(548, 375);
-            this.wizard1.TabIndex = 0;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Panel2MinSize = 120;
-            this.splitContainer2.Size = new System.Drawing.Size(918, 745);
-            this.splitContainer2.SplitterDistance = 600;
-            this.splitContainer2.TabIndex = 2;
-            // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -350,7 +399,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer3.Size = new System.Drawing.Size(918, 141);
+            this.splitContainer3.Size = new System.Drawing.Size(904, 141);
             this.splitContainer3.SplitterDistance = 300;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -363,7 +412,6 @@
             this.m_previewImage.Size = new System.Drawing.Size(300, 141);
             this.m_previewImage.TabIndex = 0;
             this.m_previewImage.TabStop = false;
-            this.m_previewImage.Paint += new System.Windows.Forms.PaintEventHandler(this.m_previewImage_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -378,8 +426,15 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.9697F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(614, 141);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(600, 141);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // m_nineGridSettings
+            // 
+            this.m_nineGridSettings.Location = new System.Drawing.Point(8, 60);
+            this.m_nineGridSettings.Name = "m_nineGridSettings";
+            this.m_nineGridSettings.Size = new System.Drawing.Size(450, 73);
+            this.m_nineGridSettings.TabIndex = 5;
             // 
             // m_imgFullQualifiedLocation
             // 
@@ -391,33 +446,38 @@
             this.m_imgFullQualifiedLocation.TabIndex = 4;
             this.m_imgFullQualifiedLocation.Text = "image full qualified location";
             // 
-            // m_nineGridSettings
+            // m_assetBrowser
             // 
-            this.m_nineGridSettings.Location = new System.Drawing.Point(8, 60);
-            this.m_nineGridSettings.Name = "m_nineGridSettings";
-            this.m_nineGridSettings.Size = new System.Drawing.Size(450, 73);
-            this.m_nineGridSettings.TabIndex = 5;
+            this.m_assetBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_assetBrowser.Location = new System.Drawing.Point(3, 3);
+            this.m_assetBrowser.Name = "m_assetBrowser";
+            this.m_assetBrowser.Size = new System.Drawing.Size(904, 691);
+            this.m_assetBrowser.TabIndex = 0;
             // 
             // ResForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 745);
-            this.Controls.Add(this.splitContainer2);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.statusStrip1);
             this.Name = "ResForm";
             this.Text = "ResForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResForm_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.ResForm_VisibleChanged);
+            this.tabControl1.ResumeLayout(false);
+            this.m_tabAtlas.ResumeLayout(false);
+            this.m_tabIndividual.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -426,12 +486,25 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem3;
+        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem4;
+        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem9;
+        private DevComponents.DotNetBar.Wizard wizard1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage m_tabAtlas;
+        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox m_searchBox;
+        private System.Windows.Forms.Button m_btOK;
+        private System.Windows.Forms.Button m_btCancel;
         private DevComponents.DotNetBar.Metro.MetroTilePanel m_metroTilePanel;
         private DevComponents.DotNetBar.ItemContainer itemContainer1;
         private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem1;
@@ -441,19 +514,12 @@
         private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem6;
         private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem7;
         private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem8;
-        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem3;
-        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem4;
-        private DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem9;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox m_searchBox;
-        private System.Windows.Forms.Button m_btOK;
-        private System.Windows.Forms.Button m_btCancel;
-        private DevComponents.DotNetBar.Wizard wizard1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.PictureBox m_previewImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label m_imgFullQualifiedLocation;
         private UINineGridSettings m_nineGridSettings;
+        private System.Windows.Forms.Label m_imgFullQualifiedLocation;
+        private System.Windows.Forms.TabPage m_tabIndividual;
+        private AssetBrowser m_assetBrowser;
     }
 }

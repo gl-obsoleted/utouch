@@ -27,6 +27,8 @@ namespace udesign
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
 
             m_nineGridSettings.BorderChanged += m_nineGridSettings_BorderChanged;
+
+            m_assetBrowser.AssetRoot = GState.AssetRoot;
         }
 
         private void ResForm_VisibleChanged(object sender, EventArgs e)
