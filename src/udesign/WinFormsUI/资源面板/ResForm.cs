@@ -29,6 +29,34 @@ namespace udesign
             m_nineGridSettings.BorderChanged += m_nineGridSettings_BorderChanged;
 
             m_assetBrowser.AssetRoot = GState.AssetRoot;
+            m_assetBrowser.AssetSelected += m_assetBrowser_AssetSelected;
+
+            m_mainSplit.Panel2Collapsed = true;
+        }
+
+        public event SysPost.StdMulticastDelegation AssetApplyingRequested;
+        
+        void m_assetBrowser_AssetSelected(object sender, EventArgs e)
+        {
+            m_mainSplit.Panel2Collapsed = false;
+            m_selectedAssetLabel.Text = "Asset Selected:   " + m_assetBrowser.SelectedAsset;
+        }
+        private void m_btClear_Click(object sender, EventArgs e)
+        {
+            m_mainSplit.Panel2Collapsed = true;
+            m_selectedAssetLabel.Text = "";
+            m_assetBrowser.ClearSelectedAsset();
+        }
+
+        private void m_btApply_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(m_assetBrowser.SelectedAsset))
+            {
+                Logging.Instance.Message("请先选中一个资源。");
+                return; 
+            }
+
+            SysPost.InvokeMulticast(this, AssetApplyingRequested, new AssetApplyingArgs(m_assetBrowser.SelectedAsset));
         }
 
         private void ResForm_VisibleChanged(object sender, EventArgs e)
@@ -63,7 +91,7 @@ namespace udesign
                 MetroTileItem tile = new MetroTileItem(res.Key, res.Key);
                 tile.TitleText = res.Key;
                 tile.Text = res.Key.ToLower();
-                tile.Image = GetAtlasThumbnail(img, res.Value, tile.TileSize);
+                tile.Image = ImageUtil.GetAtlasThumbnail(img, res.Value, tile.TileSize);
                 tile.Click += Tile_Clicked;
                 tile.DoubleClick += Tile_DoubleClicked;
                 tile.ContainerControl = ic;
@@ -89,7 +117,7 @@ namespace udesign
             ImageResource ir;
             if (group.ResLut.TryGetValue(ti.Name, out ir))
             {
-                m_previewImage.Image = GetAtlasThumbnail(img, ir, m_previewImage.Size);
+                m_previewImage.Image = ImageUtil.GetAtlasThumbnail(img, ir, m_previewImage.Size);
             }
 
             m_nineGridSettings.RefreshUI(ic.Name, ti.Name, ir.Size);
@@ -123,41 +151,11 @@ namespace udesign
         public string SelectedResourceURL { get { return m_selectedResourceURL; } }
         private string m_selectedResourceURL;
 
-        bool GetThumbnailImageAbort()
-        {
-            return true;
-        }
-
         private Image LoadResourceImageFile(string resPath)
         {
             string imageFile = resPath + ResProtocol.ResImageFilePostfix;
             Image img = Image.FromFile(imageFile);
             return img;
-        }
-
-        private Image GetAtlasThumbnail(Image sourceImage, ImageResource ir, Size targetClampSize)
-        {
-            // 创建 atlas 预览小图
-            Bitmap bmp32bppArgb = new Bitmap(ir.Size.Width, ir.Size.Height, PixelFormat.Format32bppArgb);
-            using (var g = Graphics.FromImage(bmp32bppArgb))
-            {
-                g.DrawImage(sourceImage,
-                    new Rectangle(0, 0, ir.Size.Width, ir.Size.Height),
-                    new Rectangle(ir.Position.X, ir.Position.Y, ir.Size.Width, ir.Size.Height), GraphicsUnit.Pixel);
-            }
-
-            // 判断是否需要缩放
-            float widthScale = (float)targetClampSize.Width / (float)bmp32bppArgb.Width;
-            float heightScale = (float)targetClampSize.Height / (float)bmp32bppArgb.Height;
-            if (widthScale >= 1.0f && heightScale >= 1.0f)
-                return bmp32bppArgb;
-
-            // 缩放
-            float downScale = System.Math.Min(widthScale, heightScale);
-            float scaledWidth = System.Math.Max((float)bmp32bppArgb.Width * downScale, 1.0f);
-            float scaledHeight = System.Math.Max((float)bmp32bppArgb.Height * downScale, 1.0f);
-            IntPtr ip = System.IntPtr.Zero;
-            return bmp32bppArgb.GetThumbnailImage((int)scaledWidth, (int)scaledHeight, GetThumbnailImageAbort, ip);
         }
 
         Size m_hidden = new Size(0, 0);

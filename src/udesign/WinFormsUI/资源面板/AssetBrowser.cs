@@ -29,6 +29,20 @@ namespace udesign
 
         public string SelectedAsset { get { return m_selectedAsset; } }
         private string m_selectedAsset;
+        private MetroTileItem m_selectedTile;
+
+        public event SysPost.StdMulticastDelegation AssetSelected;
+
+        public void ClearSelectedAsset()
+        {
+            m_selectedAsset = "";
+
+            if (m_selectedTile != null)
+            {
+                m_selectedTile.Checked = false;
+                m_selectedTile = null;
+            }
+        }
 
         private void AssetBrowser_Load(object sender, EventArgs e)
         {
@@ -113,17 +127,20 @@ namespace udesign
             MetroTileItem ti = sender as MetroTileItem;
             if (ti == null)
                 return;
-             
+
+            ti.Checked = true;
+            if (m_selectedTile != null)
+                m_selectedTile.Checked = false;
+
+            m_selectedTile = ti;
             m_selectedAsset = SysUtil.GetRelativePath((string)ti.Tag, m_assetRoot);
+            SysPost.InvokeMulticast(this, AssetSelected);
         }
 
         private void Tile_DoubleClicked(object sender, EventArgs e)
         {
-            MetroTileItem ti = sender as MetroTileItem;
-            if (ti == null)
-                return;
+            Tile_Clicked(sender, e);
 
-            m_selectedAsset = SysUtil.GetRelativePath((string)ti.Tag, m_assetRoot);
         }
     }
 }

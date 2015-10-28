@@ -205,6 +205,7 @@ namespace udesign
         private void m_menuResForm_Click(object sender, EventArgs e)
         {
             m_resForm = new ResForm();
+            m_resForm.AssetApplyingRequested += m_resForm_AssetApplyingRequested;
             m_resForm.Show(this);
 
             string loc = UserPreference.Instance.GetValue("forms.res_form", "location");
@@ -215,6 +216,12 @@ namespace udesign
                 Size sz = BaseUtil.StringToSize(size);
                 m_resForm.SetDesktopBounds(pt.X, pt.Y, sz.Width, sz.Height);
             }
+        }
+
+        void m_resForm_AssetApplyingRequested(object sender, EventArgs e)
+        {
+            AssetApplyingArgs args = e as AssetApplyingArgs;
+            Logging.Instance.Log("Asset selected: {0}.", args.m_selectedAsset);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
