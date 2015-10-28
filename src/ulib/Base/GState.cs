@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ulib.Base
+namespace ulib
 {
     public static class GState
     {
