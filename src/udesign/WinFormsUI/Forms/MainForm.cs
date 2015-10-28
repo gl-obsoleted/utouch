@@ -205,7 +205,6 @@ namespace udesign
         private void m_menuResForm_Click(object sender, EventArgs e)
         {
             m_resForm = new ResForm();
-            m_resForm.AssetApplyingRequested += m_resForm_AssetApplyingRequested;
             m_resForm.Show(this);
 
             string loc = UserPreference.Instance.GetValue("forms.res_form", "location");

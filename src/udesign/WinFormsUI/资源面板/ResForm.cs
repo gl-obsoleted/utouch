@@ -34,8 +34,6 @@ namespace udesign
             m_mainSplit.Panel2Collapsed = true;
         }
 
-        public event SysPost.StdMulticastDelegation AssetApplyingRequested;
-        
         void m_assetBrowser_AssetSelected(object sender, EventArgs e)
         {
             m_mainSplit.Panel2Collapsed = false;
@@ -56,7 +54,10 @@ namespace udesign
                 return; 
             }
 
-            SysPost.InvokeMulticast(this, AssetApplyingRequested, new AssetApplyingArgs(m_assetBrowser.SelectedAsset));
+            UpdateSingleTextureURL(m_assetBrowser.SelectedAsset);
+
+            DialogResult = System.Windows.Forms.DialogResult.OK;
+            Close();
         }
 
         private void ResForm_VisibleChanged(object sender, EventArgs e)
@@ -139,6 +140,11 @@ namespace udesign
                 DialogResult = System.Windows.Forms.DialogResult.OK;
                 Close();
             }
+        }
+
+        private void UpdateSingleTextureURL(string fileName)
+        {
+            m_selectedResourceURL = ResProtocol.ComposeURL(fileName, ResProtocol.TileSingleTextureMarker);
         }
 
         private void UpdateSelectedResourceURL(string fileName, string tileName, Size s)

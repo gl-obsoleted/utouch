@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
 using ulib.Base;
 
 namespace ulib.Elements
@@ -34,7 +37,29 @@ namespace ulib.Elements
 
         public override System.Drawing.Size GetExpectedResourceSize()
         {
-            return ResourceManager.Instance.GetResourceSize(Res);
+            if (ResProtocol.IsSingleTexture(Res))
+            {
+                string tex = ResProtocol.GetSingleTextureFullPath(Res);
+                
+                if (string.IsNullOrEmpty(tex))
+                    return Const.ZERO_SIZE;
+
+                if (!File.Exists(tex))
+                    return Const.ZERO_SIZE;
+
+                try
+                {
+                    return Image.FromFile(tex).Size;
+                }
+                catch (Exception)
+                {
+                    return Const.ZERO_SIZE;
+                }
+            }
+            else 
+            {
+                return ResourceManager.Instance.GetResourceSize(Res);
+            }
         }
 
         private string m_res;

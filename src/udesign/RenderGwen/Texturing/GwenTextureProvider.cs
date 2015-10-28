@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,14 @@ namespace udesign
             TextureRenderInfo tri;
             if (m_lut.TryGetValue(url, out tri))
                 return tri;
+
+            // 如果是单张贴图，直接处理后返回
+            if (ResProtocol.IsSingleTexture(url))
+            {
+                tri = GwenTextureUtil.BuildSingleTexture(renderer, url);
+                m_lut[url] = tri;
+                return tri;
+            }
 
             string atlasName;
             string tileName;

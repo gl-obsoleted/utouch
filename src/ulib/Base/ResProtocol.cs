@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using ulib.Base;
 
 namespace ulib
 {
@@ -12,6 +14,37 @@ namespace ulib
         public const string ResImageFilePostfix = ".png";
         public const string ResDescFilePostfix = "_desc.txt";
         public const char ResDelimeter = ':';
+
+        public const string TileSingleTextureMarker = "<tex>";
+
+        public static bool IsSingleTexture(string url)
+        {
+            if (!url.StartsWith(ResProtocol.ProtocolPrefix))
+                return false;
+
+            return url.EndsWith(ResDelimeter + TileSingleTextureMarker);
+        }
+
+        public static string ParseSingleTexture(string url)
+        {
+            if (!IsSingleTexture(url))
+                return "";
+
+            string[] parts = url.Substring(ResProtocol.ProtocolPrefix.Length).Split(ResProtocol.ResDelimeter);
+            if (parts.Length != 2)
+                return "";
+
+            return parts[0];
+        }
+
+        public static string GetSingleTextureFullPath(string url)
+        {
+            string p = ParseSingleTexture(url);
+            if (string.IsNullOrEmpty(p))
+                return "";
+
+            return Path.Combine(GState.AssetRoot, p);
+        }
 
         public static string ComposeURL(string atlasFileName, string atlasTileName)
         {
