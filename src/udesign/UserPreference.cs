@@ -23,7 +23,7 @@ namespace udesign
         /// </summary>
         public void Init(string filePath)
         {
-            JObject loaded = ucore.JsonHelpers.ReadTextIntoJObject(filePath);
+            JObject loaded = ucore.JsonUtil.ReadTextIntoJObject(filePath);
             if (loaded != null)
             {
                 m_jsonObject = loaded;

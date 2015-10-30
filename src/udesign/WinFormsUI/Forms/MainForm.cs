@@ -142,7 +142,7 @@ namespace udesign
                 string testDir = LuaRuntime.GetGlobalString("ResPath_Test");
                 if (!string.IsNullOrEmpty(testDir))
                 {
-                    var testDirFull = EzSys.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
+                    var testDirFull = SysUtil.NormalizePath(Path.Combine(UDesignApp.Instance.RootPath, testDir));
                     if (Directory.Exists(testDirFull))
                         diag.InitialDirectory = testDirFull;
                 }

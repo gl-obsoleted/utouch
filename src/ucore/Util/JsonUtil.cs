@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ucore
 {
-    public class JsonHelpers
+    public class JsonUtil
     {
         public static JObject ReadTextIntoJObject(string textFile)
         {
@@ -33,7 +33,7 @@ namespace ucore
             if (obj.Property(propName) == null)
                 return 0;
 
-            return EzConv.ToInt((string)obj[propName]);
+            return BaseUtil.ToInt((string)obj[propName]);
         }
     }
 }

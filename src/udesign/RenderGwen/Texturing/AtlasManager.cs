@@ -28,10 +28,10 @@ namespace udesign
 
             JObject jsub = jTile.Value as JObject;
             Rectangle rect = Rectangle.FromLTRB(
-                ucore.JsonHelpers.GetIntProperty(jsub, "horiLeft"),
-                ucore.JsonHelpers.GetIntProperty(jsub, "vertTop"),
-                ucore.JsonHelpers.GetIntProperty(jsub, "horiRight"),
-                ucore.JsonHelpers.GetIntProperty(jsub, "vertBottom"));
+                ucore.JsonUtil.GetIntProperty(jsub, "horiLeft"),
+                ucore.JsonUtil.GetIntProperty(jsub, "vertTop"),
+                ucore.JsonUtil.GetIntProperty(jsub, "horiRight"),
+                ucore.JsonUtil.GetIntProperty(jsub, "vertBottom"));
             return rect;
         }
     }
@@ -61,7 +61,7 @@ namespace udesign
             JObject desc = null;
             if (File.Exists(descFilePath))
             {
-                desc = ucore.JsonHelpers.ReadTextIntoJObject(filePath + ResProtocol.ResDescFilePostfix);
+                desc = ucore.JsonUtil.ReadTextIntoJObject(filePath + ResProtocol.ResDescFilePostfix);
             }
 
             // 拼装成有效的 atlas

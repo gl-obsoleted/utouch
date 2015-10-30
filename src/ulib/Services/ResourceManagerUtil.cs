@@ -23,7 +23,7 @@ namespace ulib
                 return null;
             }
 
-            JObject jobj = ucore.JsonHelpers.ReadTextIntoJObject(indexFile);
+            JObject jobj = ucore.JsonUtil.ReadTextIntoJObject(indexFile);
             if (jobj == null || jobj.Property("frames").Value as JObject == null)
             {
                 Logging.Instance.Message("Resource index file '{0}' loading failed.", indexFile);

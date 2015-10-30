@@ -8,6 +8,12 @@ namespace ucore
 {
     public class SysUtil
     {
+        // 归一化系统路径
+        public static string NormalizePath(string path)
+        {
+            return new Uri(path).LocalPath;
+        }
+
         // 判断两个绝对路径是否在同一个分区（是否可以用相对路径表示）
         public static bool InTheSameDrive(string path1, string path2)
         {
