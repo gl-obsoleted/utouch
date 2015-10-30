@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ucore;
  
 
 namespace ulib
@@ -43,12 +44,21 @@ namespace ulib
             if (string.IsNullOrEmpty(p))
                 return "";
 
-            return Path.Combine(GState.AssetRoot, p);
+            return Path.Combine(GState.AssetRoot, SysUtil.ToWindowsPath(p));
         }
 
         public static string ComposeURL(string atlasFileName, string atlasTileName)
         {
             return string.Format("{0}{1}:{2}", ResProtocol.ProtocolPrefix, atlasFileName, atlasTileName);
+        }
+
+        public static string ComposeSingleTextureURL(string singleTexturePath)
+        {
+            //      '\\abc\\foo\\' 
+            //      会被转为
+            //      'abc/foo'
+            string unixStyle = SysUtil.ToUnixPath(SysUtil.TrimHeadTailSeparators(singleTexturePath));
+            return ComposeURL(unixStyle, ResProtocol.TileSingleTextureMarker);
         }
 
         public static bool ParseURL(string url, out string filePath, out string tileName)

@@ -8,10 +8,29 @@ namespace ucore
 {
     public class SysUtil
     {
-        // 归一化系统路径
+        // 归一化系统路径 (需要传入绝对路径)
         public static string NormalizePath(string path)
         {
             return new Uri(path).LocalPath;
+        }
+
+        // 去掉两端的分隔符 - 头尾的 '/' 和 '\\'
+        public static string TrimHeadTailSeparators(string path)
+        {
+            return path.TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+                .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        }
+
+        // 把路径中的 '\\' 转为 '/'
+        public static string ToUnixPath(string path)
+        {
+            return path.Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        }
+
+        // 把路径中的 '/' 转为 '\\'
+        public static string ToWindowsPath(string path)
+        {
+            return path.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
 
         // 判断两个绝对路径是否在同一个分区（是否可以用相对路径表示）

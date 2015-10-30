@@ -144,7 +144,7 @@ namespace udesign
 
         private void UpdateSingleTextureURL(string fileName)
         {
-            m_selectedResourceURL = ResProtocol.ComposeURL(fileName, ResProtocol.TileSingleTextureMarker);
+            m_selectedResourceURL = ResProtocol.ComposeSingleTextureURL(fileName);
         }
 
         private void UpdateSelectedResourceURL(string fileName, string tileName, Size s)
