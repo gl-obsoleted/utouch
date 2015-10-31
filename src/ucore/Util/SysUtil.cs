@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ucore
@@ -56,6 +57,42 @@ namespace ucore
             }
             Uri folderUri = new Uri(folder);
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+        }
+
+        public static byte[] GetFileMD5(string filepath)
+        {
+            try
+            {
+                using (var md5 = MD5.Create())
+                {
+                    using (var stream = File.OpenRead(filepath))
+                    {
+                        return md5.ComputeHash(stream);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Instance.Log("GetFileMD5() failed. ({0}) ({1})", filepath, ex.Message);
+                return null;
+            }
+        }
+
+        public static string GetFileMD5AsString(string filepath)
+        {
+            byte[] md5 = GetFileMD5(filepath);
+            if (md5 == null)
+                return "";
+
+            try
+            {
+                return BitConverter.ToString(md5).Replace("-", "").ToLower();
+            }
+            catch (Exception ex)
+            {
+                Logging.Instance.Log("GetFileMD5AsString() failed. ({0}) ({1})", filepath, ex.Message);
+                return "";
+            }
         }
     }
 }

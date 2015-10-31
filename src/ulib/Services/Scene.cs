@@ -111,6 +111,18 @@ namespace ulib
             return SceneGraphUtil.Pick(m_root, location);
         }
 
+        public AssetDesc GetAssetDesc(string url)
+        {
+            if (!ResProtocol.IsSingleTexture(url))
+                return null;
+
+            string assetName = ResProtocol.GetSingleTextureAssetName(url);
+            if (string.IsNullOrEmpty(assetName))
+                return null;
+
+            return Root.Assets.GetAssetDesc(assetName);
+        }
+
         public string CurrentFilePath { get { return m_currentFilePath; } }
 
         private string m_currentFilePath;

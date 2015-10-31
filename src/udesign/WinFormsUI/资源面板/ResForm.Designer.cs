@@ -203,7 +203,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.40621F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.59379F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
             this.tableLayoutPanel3.Controls.Add(this.m_btApply, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.m_selectedAssetLabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.m_btClear, 1, 0);
@@ -221,7 +221,7 @@
             this.m_btApply.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.m_btApply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.m_btApply.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.m_btApply.Location = new System.Drawing.Point(656, 7);
+            this.m_btApply.Location = new System.Drawing.Point(655, 7);
             this.m_btApply.Name = "m_btApply";
             this.m_btApply.Size = new System.Drawing.Size(90, 26);
             this.m_btApply.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -262,7 +262,7 @@
             this.m_tabAtlas.Location = new System.Drawing.Point(4, 22);
             this.m_tabAtlas.Name = "m_tabAtlas";
             this.m_tabAtlas.Padding = new System.Windows.Forms.Padding(3);
-            this.m_tabAtlas.Size = new System.Drawing.Size(910, 697);
+            this.m_tabAtlas.Size = new System.Drawing.Size(910, 719);
             this.m_tabAtlas.TabIndex = 0;
             this.m_tabAtlas.Text = "Atlas 浏览";
             this.m_tabAtlas.UseVisualStyleBackColor = true;
@@ -283,8 +283,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel2MinSize = 120;
-            this.splitContainer2.Size = new System.Drawing.Size(904, 691);
-            this.splitContainer2.SplitterDistance = 546;
+            this.splitContainer2.Size = new System.Drawing.Size(904, 713);
+            this.splitContainer2.SplitterDistance = 568;
             this.splitContainer2.TabIndex = 3;
             // 
             // splitContainer1
@@ -304,7 +304,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.m_metroTilePanel);
-            this.splitContainer1.Size = new System.Drawing.Size(904, 546);
+            this.splitContainer1.Size = new System.Drawing.Size(904, 568);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -371,7 +371,7 @@
             this.itemContainer2});
             this.m_metroTilePanel.Location = new System.Drawing.Point(0, 0);
             this.m_metroTilePanel.Name = "m_metroTilePanel";
-            this.m_metroTilePanel.Size = new System.Drawing.Size(904, 510);
+            this.m_metroTilePanel.Size = new System.Drawing.Size(904, 532);
             this.m_metroTilePanel.TabIndex = 0;
             this.m_metroTilePanel.Text = "metroTilePanel1";
             // 

@@ -38,13 +38,13 @@ namespace ulib
             return parts[0];
         }
 
-        public static string GetSingleTextureFullPath(string url)
+        public static string GetSingleTextureAssetName(string url)
         {
             string p = ParseSingleTexture(url);
             if (string.IsNullOrEmpty(p))
                 return "";
 
-            return Path.Combine(GState.AssetRoot, SysUtil.ToWindowsPath(p));
+            return p;
         }
 
         public static string ComposeURL(string atlasFileName, string atlasTileName)

@@ -54,7 +54,16 @@ namespace udesign
                 return; 
             }
 
-            UpdateSingleTextureURL(m_assetBrowser.SelectedAsset);
+            AssetDesc desc = AssetUtil.CreateDesc(m_assetBrowser.SelectedAsset);
+            if (desc == null)
+            {
+                Logging.Instance.Message("无法引用该资源，细节请查看 Log。");
+                return; 
+            }
+
+            UpdateSingleTextureURL(desc.Name);
+
+            Scene.Instance.Root.Assets.Assets.Add(desc);
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
             Close();
@@ -142,9 +151,9 @@ namespace udesign
             }
         }
 
-        private void UpdateSingleTextureURL(string fileName)
+        private void UpdateSingleTextureURL(string textureName)
         {
-            m_selectedResourceURL = ResProtocol.ComposeSingleTextureURL(fileName);
+            m_selectedResourceURL = ResProtocol.ComposeSingleTextureURL(textureName);
         }
 
         private void UpdateSelectedResourceURL(string fileName, string tileName, Size s)
@@ -156,6 +165,9 @@ namespace udesign
 
         public string SelectedResourceURL { get { return m_selectedResourceURL; } }
         private string m_selectedResourceURL;
+
+        public AssetDesc AssetDesc { get { return m_assetDesc; } }
+        private AssetDesc m_assetDesc;
 
         private Image LoadResourceImageFile(string resPath)
         {

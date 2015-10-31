@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ucore;
 using ulib;
  
 
@@ -16,8 +17,12 @@ namespace udesign
             if (!ResProtocol.IsSingleTexture(url))
                 return null;
 
-            string texFullPath = Path.Combine(GState.AssetRoot, ResProtocol.ParseSingleTexture(url));
-            if (!File.Exists(texFullPath))
+            AssetDesc desc = Scene.Instance.GetAssetDesc(url);
+            if (desc == null)
+                return null;
+
+            string fullpath = Path.Combine(GState.AssetRoot, SysUtil.ToWindowsPath(desc.Path));
+            if (!File.Exists(fullpath))
                 return null;
 
             Gwen.Texture t;
@@ -25,7 +30,7 @@ namespace udesign
             if (t == null)
                 return null;
 
-            t.Load(texFullPath);
+            t.Load(fullpath);
             if (t.Failed)
                 return null;
 

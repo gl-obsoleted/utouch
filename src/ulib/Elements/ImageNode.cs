@@ -39,22 +39,11 @@ namespace ulib.Elements
         {
             if (ResProtocol.IsSingleTexture(Res))
             {
-                string tex = ResProtocol.GetSingleTextureFullPath(Res);
-                
-                if (string.IsNullOrEmpty(tex))
+                AssetDesc desc = Scene.Instance.GetAssetDesc(Res);
+                if (desc == null)
                     return Const.ZERO_SIZE;
 
-                if (!File.Exists(tex))
-                    return Const.ZERO_SIZE;
-
-                try
-                {
-                    return Image.FromFile(tex).Size;
-                }
-                catch (Exception)
-                {
-                    return Const.ZERO_SIZE;
-                }
+                return AssetUtil.GetImageSize(desc.Path);
             }
             else 
             {
