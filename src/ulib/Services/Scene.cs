@@ -86,7 +86,7 @@ namespace ulib
             }
 
             string folderPath = Path.GetDirectoryName(targetLocation);
-            m_root.Assets.AssetRoot = SysUtil.GetRelativePath(GState.AssetRoot, folderPath);
+            m_root.Assets.AssetRoot = SysUtil.ToUnixPath(SysUtil.GetRelativePath(GState.AssetRoot, folderPath));
 
             if (!m_archiveSys.Save(m_root, targetLocation))
             {

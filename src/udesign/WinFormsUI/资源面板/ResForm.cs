@@ -61,9 +61,8 @@ namespace udesign
                 return; 
             }
 
-            UpdateSingleTextureURL(desc.Name);
-
-            Scene.Instance.Root.Assets.Assets.Add(desc);
+            string name = Scene.Instance.Root.Assets.AppendIfNotExist(desc);
+            UpdateSingleTextureURL(name);
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
             Close();
@@ -165,9 +164,6 @@ namespace udesign
 
         public string SelectedResourceURL { get { return m_selectedResourceURL; } }
         private string m_selectedResourceURL;
-
-        public AssetDesc AssetDesc { get { return m_assetDesc; } }
-        private AssetDesc m_assetDesc;
 
         private Image LoadResourceImageFile(string resPath)
         {

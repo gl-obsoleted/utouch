@@ -105,5 +105,19 @@ namespace ulib
 
             return null;
         }
+
+        public string AppendIfNotExist(AssetDesc desc)
+        {
+            foreach (var item in Assets)
+            {
+                if (item.Path == desc.Path)
+                {
+                    return item.Name;
+                }
+            }
+
+            Assets.Add(desc);
+            return desc.Name;            
+        }
     }
 }
