@@ -20,6 +20,10 @@ namespace ulib.Elements
             { 
                 return m_isFullscreen; 
             }
+            set 
+            {
+                m_isFullscreen = value;
+            }
         }
 
         [Category("根节点")]
@@ -35,7 +39,8 @@ namespace ulib.Elements
             base.Name = Default_Name;
 
             Position = ucore.Const.ZERO_POINT;
-            Size = new System.Drawing.Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
+            Size = new Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
+            DesignTimeResolution = new Size(Scene.Instance.DesignTimeResolution.width, Scene.Instance.DesignTimeResolution.height);
 
             Assets = new AssetLut();
             Assets.AssetRoot = GState.AssetRoot;
