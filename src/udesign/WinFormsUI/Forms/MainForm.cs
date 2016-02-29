@@ -276,24 +276,6 @@ namespace udesign
 
                     UpdateFormTitle();
 
-                    string userLua = LuaRuntime.GetGlobalString("LuaTemplate_UserDefault");
-                    if (string.IsNullOrEmpty(userLua))
-                    {
-                        Logging.Instance.Message("未定义用户脚本模板的文件路径。('LuaTemplate_UserDefault' 未在脚本中定义) ");
-                    }
-                    else
-                    {
-                        string destLuaPath = Path.ChangeExtension(file, ".lua");
-                        try
-                        {
-                            File.Copy(userLua, destLuaPath);
-                        }
-                        catch (Exception)
-                        {
-                            Logging.Instance.Message("拷贝用户脚本模板失败。(src='{0}' dest='{1}')", userLua, destLuaPath);
-                        }
-                    }
-
                     SetRecentAccessedDirectory(Path.GetDirectoryName(file));
                 }
             }

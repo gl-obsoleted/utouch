@@ -48,15 +48,6 @@ namespace ulib
             // 初始化工厂
             ArchiveUtil.RegisterCreator(ArchiveType.Json, typeof(Archive_Json));
 
-            // 跑用户脚本
-            string userLua = Path.ChangeExtension(bp.ScenePath, ".lua");
-            bool runUserLua = File.Exists(userLua);
-            if (runUserLua && !LuaRuntime.RunScript(userLua))
-            {
-                Logging.Instance.Log("执行用户脚本 ('{0}') 失败.", userLua);
-                return false;
-            }
-
             // 初始化资源系统
             if (!ResourceManager.Instance.LoadDefault(Path.Combine(bp.ReourcePath, bp.DefaultReourceImage)))
             {
@@ -76,20 +67,20 @@ namespace ulib
                 }
             }
 
-            if (runUserLua)
+            // 用户 atlas 加载
+            if (bp.ScenePath.Length > 0)
             {
-                string userAtlasName = LuaRuntime.GetGlobalString("UserAtlasName");
-                if (!string.IsNullOrEmpty(userAtlasName))
+                string userAtlasName = Path.GetFileNameWithoutExtension(bp.ScenePath);
+                string userAtlasPath = Path.Combine(Path.GetDirectoryName(bp.ScenePath), userAtlasName);
+                if (!ResourceManager.Instance.LoadFile(userAtlasPath, userAtlasName))
                 {
-                    string userAtlas = Path.Combine(Path.GetDirectoryName(bp.ScenePath), userAtlasName);
-                    if (!ResourceManager.Instance.LoadFile(userAtlas, userAtlasName))
-                    {
-                        Logging.Instance.Log("加载用户资源 ('{0}') 失败.", userAtlas);
-                        return false;
-                    }
+                    Logging.Instance.Log("加载用户资源 ('{0}') 失败.", userAtlasPath);
+                }
+                else
+                {
+                    Logging.Instance.Log("加载用户资源 ('{0}') 成功.", userAtlasPath);
                 }
             }
-            Logging.Instance.Log("资源系统初始化成功.");
 
             // 初始化场景
             Scene.Instance = new Scene();
