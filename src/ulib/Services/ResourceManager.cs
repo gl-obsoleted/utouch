@@ -66,7 +66,7 @@ namespace ulib
             ImageResourceGroup rg = ResourceManagerUtil.LoadResFileIntoResourceGroup(resFile);
             if (rg == null)
             {
-                Logging.Instance.Message("Resource group '{0}' loading failed. ", resFile);
+                Logging.Instance.Log("Resource group '{0}' loading failed. ", resFile);
                 return false;
             }
             m_resGroupsLut.Add(resName, rg);

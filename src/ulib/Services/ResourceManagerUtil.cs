@@ -18,7 +18,7 @@ namespace ulib
             string imageFile = resFile + ResProtocol.ResImageFilePostfix;
             if (!File.Exists(indexFile) || !File.Exists(imageFile))
             {
-                Logging.Instance.Message("Resource '{0}' broken. ({1} or {2} not found)",
+                Logging.Instance.Log("Resource '{0}' broken. ({1} or {2} not found)",
                     resFile, ResProtocol.ResIndexFilePostfix, ResProtocol.ResImageFilePostfix);
                 return null;
             }
@@ -26,7 +26,7 @@ namespace ulib
             JObject jobj = ucore.JsonUtil.ReadTextIntoJObject(indexFile);
             if (jobj == null || jobj.Property("frames").Value as JObject == null)
             {
-                Logging.Instance.Message("Resource index file '{0}' loading failed.", indexFile);
+                Logging.Instance.Log("Resource index file '{0}' loading failed.", indexFile);
                 return null;
             }
 
