@@ -51,29 +51,64 @@ namespace udesign
 
             m_assetFolderTree.BeginUpdate();
             m_assetFolderTree.Nodes.Clear();
-            DevComponents.AdvTree.Node node = new DevComponents.AdvTree.Node();
-            node.Tag = new DirectoryInfo(m_assetRoot);
-            node.Text = "Asset Root";
-            node.Image = Properties.Resources.FolderClosed;
-            m_assetFolderTree.Nodes.Add(node);
-            // We will load drive content on demand
-            node.ExpandVisibility = eNodeExpandVisibility.Visible;
-            // Enable tree layout and display updates, performs any pending layout and display updates
+
+            Node root = ResFormUtil.CreateNode(new DirectoryInfo(m_assetRoot));
+            m_assetFolderTree.Nodes.Add(root);
+
+            // load all subnodes recursively manually
+            LoadDirectories(root, (DirectoryInfo)root.Tag, true);
+
             m_assetFolderTree.EndUpdate();
+
+            // load last opened dir 
+            string prevPath = Properties.Settings.Default.RecentAccessedAssetDir;
+            DirectoryInfo prevDI = new DirectoryInfo(prevPath);
+            if (prevDI.Exists)
+	        {
+                TryExpandAndSelectNode(m_assetFolderTree.Nodes[0], prevPath);
+	        }
+        }
+
+        private bool TryExpandAndSelectNode(Node n, string path)
+        {
+            string nodePath = ((DirectoryInfo)n.Tag).FullName;
+            if (path.IndexOf(nodePath) == 0)
+            {
+                if (((DirectoryInfo)n.Tag).GetDirectories().Length != 0)
+                {
+                    n.Expand();
+                    foreach (Node child in n.Nodes)
+                    {
+                        if (TryExpandAndSelectNode(child, path))
+                            return true;
+                    }
+                }
+                else
+                {
+                    if (path == nodePath)
+                    {
+                        m_assetFolderTree.SelectedNode = n;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private void m_assetFolderTree_BeforeExpand(object sender, AdvTreeNodeCancelEventArgs e)
         {
             Node parent = e.Node;
-            if (parent.Nodes.Count > 0) return;
+            if (parent.Nodes.Count > 0) 
+                return;
 
             if (parent.Tag is DirectoryInfo)
             {
-                LoadDirectories(parent, (DirectoryInfo)parent.Tag);
+                LoadDirectories(parent, (DirectoryInfo)parent.Tag, false);
             }
         }
 
-        private void LoadDirectories(Node parent, DirectoryInfo directoryInfo)
+        private void LoadDirectories(Node parent, DirectoryInfo directoryInfo, bool recursively)
         {
             DirectoryInfo[] directories = directoryInfo.GetDirectories();
             foreach (DirectoryInfo dir in directories)
@@ -81,13 +116,13 @@ namespace udesign
                 if ((dir.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden) 
                     continue;
 
-                Node node = new Node();
-                node.Tag = dir;
-                node.Text = string.Format("{0} ({1})", dir.Name, dir.GetFiles().Length);
-                node.Image = Properties.Resources.FolderClosed;
-                node.ImageExpanded = Properties.Resources.FolderOpen;
-                node.ExpandVisibility = dir.GetDirectories().Length != 0 ? eNodeExpandVisibility.Visible : eNodeExpandVisibility.Hidden;
+                Node node = ResFormUtil.CreateNode(dir);
                 parent.Nodes.Add(node);
+
+                if (recursively)
+                {
+                    LoadDirectories(node, dir, recursively);
+                }
             }
         }
 
@@ -120,6 +155,10 @@ namespace udesign
             }
             m_metroTilePanel.Items.Add(ic);
             m_metroTilePanel.Refresh();
+
+            Properties.Settings.Default.RecentAccessedAssetDir = dir.FullName;
+            Properties.Settings.Default.Save();
+            Logging.Instance.Log("RecentAccessedAssetDir refreshed: {0}", dir.FullName);
         }
 
         private void Tile_Clicked(object sender, EventArgs e)

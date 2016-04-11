@@ -100,5 +100,17 @@ namespace udesign.Properties {
                 this["Proj_AssetRoot"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RecentAccessedAssetDir {
+            get {
+                return ((string)(this["RecentAccessedAssetDir"]));
+            }
+            set {
+                this["RecentAccessedAssetDir"] = value;
+            }
+        }
     }
 }
