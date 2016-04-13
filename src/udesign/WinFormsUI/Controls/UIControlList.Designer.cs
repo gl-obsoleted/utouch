@@ -38,6 +38,7 @@
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Label");
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Image");
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Grid");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("ProgressBar");
             this.m_controlList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             listViewItem6.Group = listViewGroup2;
             listViewItem7.Group = listViewGroup2;
             listViewItem8.Group = listViewGroup2;
+            listViewItem9.Group = listViewGroup2;
             this.m_controlList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
@@ -67,7 +69,8 @@
             listViewItem5,
             listViewItem6,
             listViewItem7,
-            listViewItem8});
+            listViewItem8,
+            listViewItem9});
             this.m_controlList.Location = new System.Drawing.Point(0, 0);
             this.m_controlList.MultiSelect = false;
             this.m_controlList.Name = "m_controlList";

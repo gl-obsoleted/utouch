@@ -38,6 +38,10 @@ namespace udesign
             {
                 RenderCheckBox(node as CheckBox, grc);
             }
+            else if (node is ProgressBar)
+            {
+                RenderProgressBar(node as ProgressBar, grc);
+            }
             else if (node is Grid)
             {
                 RenderGrid(node as Grid, grc);
@@ -120,6 +124,12 @@ namespace udesign
             Rectangle rect = new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), cb.MarkSize);
             DrawImage(grc, rect, cb.Res_Background);
             DrawImage(grc, rect, cb.Res_Mark);
+        }
+
+        private void RenderProgressBar(ProgressBar pb, GwenRenderContext grc)
+        {
+            Rectangle rect = new Rectangle(grc.GetAccumulatedDockedScrolledTranslate(), pb.Size);
+            DrawImage(grc, rect, pb.Res_Progress);
         }
 
         private void RenderGrid(Grid g, GwenRenderContext grc)

@@ -20,7 +20,7 @@ namespace udesign.Controls
     {
         public event OnPropertyValueChanged PropertyValueChanged;
 
-        string[] m_resProperties = { "Res", "Res_Normal", "Res_Pressed", "Res_On", "Res_Off", "Res_Background" };
+        string[] m_resProperties = { "Res", "Res_Normal", "Res_Pressed", "Res_On", "Res_Off", "Res_Background", "Res_Progress" };
 
         public UIObjectPropertyGrid()
         {

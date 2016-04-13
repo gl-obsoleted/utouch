@@ -20,7 +20,7 @@ namespace ulib.Controls
                 Size = ir.Size;
             }
             Res_Normal = ResourceManager.Instance.ComposeDefaultResURL("anniu2changtai.png");
-            Res_Pressed = ResourceManager.Instance.ComposeDefaultResURL("anniu2hui.png");
+            Res_Pressed = "";
                                  
             m_textNode = new TextNode();
             m_textNode.Text = "Button";

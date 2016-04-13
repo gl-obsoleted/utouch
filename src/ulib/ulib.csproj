@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\AssetLut.cs" />
+    <Compile Include="Controls\ProgressBar.cs" />
     <Compile Include="Elements\NodeDef.cs" />
     <Compile Include="Base\GState.cs" />
     <Compile Include="Base\ResProtocol.cs" />
