@@ -30,7 +30,7 @@ namespace ulib.Controls
         public string Res_Progress { get; set; }
 
         [Category("ProgressBar")]
-        public int DescTextSize { get { return m_text.Size; } set { m_text.Size = value; } }
+        public Size DescTextSize { get { return m_text.Size; } set { m_text.Size = value; } }
 
 
         public string Text { get { return m_text.Text; } }

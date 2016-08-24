@@ -62,11 +62,11 @@ namespace udesign
 
             // load last opened dir 
             string prevPath = Properties.Settings.Default.RecentAccessedAssetDir;
-            DirectoryInfo prevDI = new DirectoryInfo(prevPath);
-            if (prevDI.Exists)
-	        {
+            if (!string.IsNullOrEmpty(prevPath) && Directory.Exists(prevPath))
+            {
+                DirectoryInfo prevDI = new DirectoryInfo(prevPath);
                 TryExpandAndSelectNode(m_assetFolderTree.Nodes[0], prevPath);
-	        }
+            }
         }
 
         private bool TryExpandAndSelectNode(Node n, string path)
